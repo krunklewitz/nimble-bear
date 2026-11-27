@@ -316,11 +316,13 @@
               "id": "action.ancestry.dragonborn.draconic-heritage",
               "name": "Draconic Heritage",
               "kind": "ability",
-              "limit": {
-                "uses": "1",
-                "per": "safeRest"
-              },
-              "text": "(1/Safe Rest) Deal an additional LVL+KEY damage on an attack divided as you choose among any of the attack’s targets (recharges whenever you gain a Wound)."
+              "text": "(1/Safe Rest) Deal an additional LVL+KEY damage on an attack divided as you choose among any of the attack’s targets (recharges whenever you gain a Wound).",
+              "cost": {
+                "resource": {
+                  "id": "resource.ancestry.dragonborn.draconic-heritage",
+                  "amount": "1"
+                }
+              }
             }
           },
           {
@@ -328,10 +330,28 @@
             "languages": [
               "draconic"
             ]
+          },
+          {
+            "type": "resource",
+            "resource": {
+              "id": "resource.ancestry.dragonborn.draconic-heritage",
+              "name": "Draconic Heritage",
+              "max": "1",
+              "recover": [
+                {
+                  "on": "safeRest",
+                  "amount": "all"
+                },
+                {
+                  "on": "woundGained",
+                  "amount": "all"
+                }
+              ]
+            }
           }
         ],
         "automation": "partial",
-        "manualNote": "Add the LVL+KEY damage and divide it among targets by hand; restore the use by hand whenever you gain a Wound. Draconic is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative.",
+        "manualNote": "Add the LVL+KEY damage and divide it among targets by hand; Draconic is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative.",
         "source": {
           "file": "NimbleCoreRules3.2.pdf",
           "version": "3.2",
@@ -852,13 +872,15 @@
             }
           },
           {
-            "type": "text"
-          },
-          {
             "type": "proficiency",
             "languages": [
               "elvish"
             ]
+          },
+          {
+            "type": "hook",
+            "on": "woundGained",
+            "text": "Danger Pollen/Spores: all adjacent enemies are Dazed."
           }
         ],
         "automation": "partial",

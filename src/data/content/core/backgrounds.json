@@ -185,9 +185,22 @@
         "effects": [
           {
             "type": "text"
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.haunted-past.advantage",
+              "label": "Haunted Past",
+              "on": "save",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Against fear"
+              }
+            }
           }
         ],
-        "automation": "manual",
+        "automation": "partial",
         "manualNote": "Roll with advantage against fear.",
         "source": {
           "file": "NimbleCoreRules3.2.pdf",
@@ -217,9 +230,22 @@
         "effects": [
           {
             "type": "text"
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.ear-to-the-ground.advantage",
+              "label": "Ear to the Ground",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Knowing or obtaining gossip about events soon to happen or less than 1 year ago"
+              }
+            }
           }
         ],
-        "automation": "manual",
+        "automation": "partial",
         "manualNote": "Roll with advantage on qualifying gossip checks.",
         "source": {
           "file": "NimbleCoreRules3.2.pdf",
@@ -412,7 +438,17 @@
             "value": "1"
           },
           {
-            "type": "text"
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.survivalist.advantage",
+              "label": "Survivalist",
+              "on": "save",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Against poison"
+              }
+            }
           }
         ],
         "automation": "partial",
@@ -445,9 +481,22 @@
         "effects": [
           {
             "type": "text"
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.home-at-sea.advantage",
+              "label": "Home at Sea",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Water-related skill check"
+              }
+            }
           }
         ],
-        "automation": "manual",
+        "automation": "partial",
         "manualNote": "Double Wounds and HP recovered when Resting on a ship or near water; advantage on water-related skill checks.",
         "source": {
           "file": "NimbleCoreRules3.2.pdf",
@@ -514,7 +563,17 @@
             ]
           },
           {
-            "type": "text"
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.raised-by-goblins.advantage",
+              "label": "Raised by Goblins",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Noticing or disarming more sophisticated traps"
+              }
+            }
           }
         ],
         "automation": "partial",
@@ -579,9 +638,23 @@
         "effects": [
           {
             "type": "text"
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.history-buff.advantage",
+              "label": "History Buff",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Lore about items, facts, or events more than 100 years ago"
+              },
+              "scope": "lore"
+            }
           }
         ],
-        "automation": "manual",
+        "automation": "partial",
         "manualNote": "Roll Lore with advantage when the subject is more than 100 years old.",
         "source": {
           "file": "NimbleCoreRules3.2.pdf",
@@ -644,9 +717,23 @@
         "effects": [
           {
             "type": "text"
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.taste-for-the-finer-things.advantage",
+              "label": "Taste for the Finer Things",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Influence with the upper class"
+              },
+              "scope": "influence"
+            }
           }
         ],
-        "automation": "manual",
+        "automation": "partial",
         "manualNote": "Roll Influence with advantage when dealing with the upper class.",
         "source": {
           "file": "NimbleCoreRules3.2.pdf",
@@ -894,7 +981,17 @@
             }
           },
           {
-            "type": "text"
+            "type": "rollOption",
+            "option": {
+              "id": "roll.background.tradesman-artisan.advantage",
+              "label": "Tradesman/Artisan",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Check related to your profession"
+              }
+            }
           }
         ],
         "automation": "partial",

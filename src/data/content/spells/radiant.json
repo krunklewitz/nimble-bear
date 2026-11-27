@@ -7,10 +7,20 @@
     "actions": 1,
     "aoe": false,
     "reach": "4",
-    "roll": { "kind": "damage", "dice": "1d8", "ignoresArmor": true },
+    "roll": {
+      "kind": "damage",
+      "dice": "1d8",
+      "ignoresArmor": true
+    },
     "text": "Reach: 4. Damage: 1d8 (ignoring armor). 2× damage against undead or cowardly (those Frightened or behind Cover).",
     "highLevels": "+3 damage every 5th level.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.true-strike",
@@ -22,7 +32,13 @@
     "reach": "4",
     "text": "Reach: 4. A target gains advantage (ignoring all sources of disadvantage) and +1 Reach on their next attack this encounter.",
     "highLevels": "+1 Reach every 5th level.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.heal",
@@ -32,10 +48,20 @@
     "actions": 1,
     "aoe": false,
     "reach": "1",
-    "roll": { "kind": "heal", "dice": "1d8+KEY" },
+    "roll": {
+      "kind": "heal",
+      "dice": "1d8+KEY"
+    },
     "text": "Reach: 1. Heal a target 1d8+KEY HP. Powerful Healing. If 5+ mana is spent, heal a negative condition as well (e.g., Blind, 1 Wound).",
     "upcast": "(Choose 1) +1d8, +1 target, OR +4 Reach.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified", "note": "\"Powerful Healing.\" is a sidebar box printed under the spell (after the Upcast line); appended to text." }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified",
+      "note": "\"Powerful Healing.\" is a sidebar box printed under the spell (after the Upcast line); appended to text."
+    }
   },
   {
     "id": "spell.radiant.warding-bond",
@@ -48,7 +74,14 @@
     "reach": "4",
     "text": "Concentration: 1 min. Reach: 4. Make an ally your ward: they take 2 less damage from all sources. (1/round) When they are attacked, you may be attacked for some or all of the damage instead.",
     "upcast": "+2 Reach and +2 damage reduction.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified", "note": "The (1/round) limits the redirect, not casting the spell, so no spell limit is set." }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified",
+      "note": "The (1/round) limits the redirect, not casting the spell, so no spell limit is set."
+    }
   },
   {
     "id": "spell.radiant.condemn",
@@ -59,10 +92,21 @@
     "aoe": false,
     "restriction": "Vs enemies who have crit since you last damaged them.",
     "reach": "4",
-    "roll": { "kind": "damage", "dice": "30" },
+    "roll": {
+      "kind": "damage",
+      "dice": "30",
+      "ignoresArmor": true
+    },
     "text": "Vs enemies who have crit since you last damaged them. Reach: 4. Damage: 30. Cannot be reduced by any means. The next attack against that enemy gains advantage.",
     "upcast": "+2 Reach and +1 advantage.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified",
+      "note": "ignoresArmor set because the text says the damage “Cannot be reduced by any means” (review fix)."
+    }
   },
   {
     "id": "spell.radiant.shield-of-justice",
@@ -74,7 +118,13 @@
     "restriction": "Castable only while Defending.",
     "text": "Castable only while Defending. Creatures who attack you are Blinded (until the end of their next turn); you deal damage back to each (ignoring armor) equal to damage you take this round.",
     "upcast": "+5 damage OR +5 Defense.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.vengeance",
@@ -85,10 +135,19 @@
     "aoe": false,
     "restriction": "Can only target enemies who attacked a Dying ally or reduced one to 0 HP since your last turn.",
     "reach": "1",
-    "roll": { "kind": "damage", "dice": "1d100" },
+    "roll": {
+      "kind": "damage",
+      "dice": "1d100"
+    },
     "text": "Can only target enemies who attacked a Dying ally or reduced one to 0 HP since your last turn. Reach: 1. Damage: 1d100.",
     "upcast": "+1 Reach and +1 advantage.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.sacrifice",
@@ -100,7 +159,14 @@
     "reach": "4",
     "text": "Reach: 4. Reduce yourself to 0 HP and you cannot have more than 0 HP until you Safe Rest. Heal HP equal to your max HP, divided as you choose among any other creatures. Dead? You may revive a creature that has died in the past minute if you give them at least 20 HP (also healing 2 Wounds from them), provided they have not been revived with this spell before.",
     "upcast": "+4 Reach.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified", "note": "\"Dead?\" is a sidebar box printed under the spell (after the Upcast line); appended to text. Healing equals max HP, divided by choice, so no roll is encoded." }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified",
+      "note": "\"Dead?\" is a sidebar box printed under the spell (after the Upcast line); appended to text. Healing equals max HP, divided by choice, so no roll is encoded."
+    }
   },
   {
     "id": "spell.radiant.celestial-legion",
@@ -111,7 +177,14 @@
     "aoe": false,
     "text": "(1/turn) Any friendly creature may use 1 of 3 charges to call upon higher powers for aid this encounter:\n• Reckoning. When you attack, gain advantage (ignoring all disadvantage) and add 1d20 damage to the attack; with advantage too, if Bloodied.\n• Trembling. When attacked, the enemy becomes Frightened of you until the end of their next turn. Reduce the incoming damage by 1d20 if Bloodied.",
     "upcast": "+1 charge.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified", "note": "The (1/turn) limits charge use, not casting, so no spell limit is set. Charge bonuses (1d20) are not encoded as a roll." }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified",
+      "note": "The (1/turn) limits charge use, not casting, so no spell limit is set. Charge bonuses (1d20) are not encoded as a roll."
+    }
   },
   {
     "id": "spell.radiant.redeem",
@@ -123,7 +196,13 @@
     "restriction": "Requires (and consumes) a diamond worth 10,000 gp.",
     "reach": "1 mile",
     "text": "Requires (and consumes) a diamond worth 10,000 gp. Reach: 1 mile. Revive any number of creatures that have died in the past year, provided they have not died of old age or been revived with this spell before.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 26, "printedPage": 50, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 26,
+      "printedPage": 50,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.light",
@@ -133,7 +212,13 @@
     "actions": 1,
     "aoe": false,
     "text": "Cause an item to brightly glow as a torch with radiant light for as long as you hold it.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 27, "printedPage": 53, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 27,
+      "printedPage": 53,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.beautify",
@@ -143,7 +228,13 @@
     "actions": 1,
     "aoe": false,
     "text": "Clean stains or repair a small tear/break in a non-magical item, or conjure tiny beautiful things: flowers, butterflies, etc.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 27, "printedPage": 53, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 27,
+      "printedPage": 53,
+      "status": "verified"
+    }
   },
   {
     "id": "spell.radiant.bond-of-peace",
@@ -153,6 +244,12 @@
     "actions": 1,
     "aoe": false,
     "text": "Bond. Telepathically communicate simple thoughts or feelings with a friendly creature you can see. OR: Peace. Imbue your spoken words with calming magic, granting advantage on any check made to soothe anger or fear in creatures who can hear you.",
-    "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 27, "printedPage": 53, "status": "verified" }
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 27,
+      "printedPage": 53,
+      "status": "verified"
+    }
   }
 ]
