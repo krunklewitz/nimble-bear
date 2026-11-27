@@ -83,6 +83,8 @@ export const ActionDef = z
     id: Id,
     name: z.string(),
     kind: z.enum(["attack", "spell", "ability", "reaction", "free", "passive"]),
+    /** Who makes it, for Rushed Attacks (a companion counts as a different creature). Default: the hero. */
+    creature: z.enum(["hero", "companion"]).optional(),
     /** Actions it costs (0 = free/reaction-on-trigger). Omit for passives. */
     actions: z.number().int().min(0).max(3).optional(),
     cost: z.object({ mana: Formula.optional(), resource: z.object({ id: Id, amount: Formula }).strict().optional() }).strict().optional(),
@@ -412,3 +414,4 @@ export type ActionDefT = z.infer<typeof ActionDef>;
 export type ResourceDefT = z.infer<typeof ResourceDef>;
 export type ChoiceDefT = z.infer<typeof ChoiceDef>;
 export type RollDefT = z.infer<typeof RollDef>;
+export type RollOptionDefT = z.infer<typeof RollOptionDef>;
