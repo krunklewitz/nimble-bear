@@ -1,0 +1,14 @@
+[
+  {
+    "id": "spell.shepherd.lifebinding-spirit",
+    "name": "Lifebinding Spirit",
+    "school": "shepherd",
+    "tier": 0,
+    "actions": 1,
+    "aoe": false,
+    "reach": "4",
+    "text": "Summon a spirit companion (max 1) that follows you and is immune to harm. It can act upon a target within Reach 4 of you before returning to your side. It can:\n• Harm. 1 Action: It attacks for 1d8+STR radiant damage (ignoring Armor).\n• Mend. 1 Action: (WIL/Safe Rest) It restores WIL d20 HP to a Dying creature.",
+    "highLevels": "+STR damage every 5 levels.",
+    "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 4, "printedPage": 7, "status": "verified", "note": "Header “SHEPHERD ONLY, CANTRIP”. Harm/Mend rolls are encoded as grant actions on feature.shepherd.my-buddy, not here. The “Flavor is Free” and “Rushed Attacks and My Companion?” sidebar boxes are left out of text. Reach 4 is from the summon sentence (no separate Reach: line)." }
+  }
+]

@@ -1,0 +1,670 @@
+[
+  {
+    "id": "weapon.dagger",
+    "name": "Dagger",
+    "group": "melee",
+    "damage": [
+      "1d4+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "Light, Thrown 4",
+    "properties": {
+      "light": true,
+      "thrown": 4
+    },
+    "tags": [
+      "melee",
+      "dex"
+    ],
+    "cost": "3 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.sickle",
+    "name": "Sickle",
+    "group": "melee",
+    "damage": [
+      "1d4+DEX"
+    ],
+    "damageType": [
+      "slashing"
+    ],
+    "propertiesText": "Vicious",
+    "properties": {
+      "vicious": true
+    },
+    "tags": [
+      "melee",
+      "dex"
+    ],
+    "cost": "10 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.club-mace",
+    "name": "Club/Mace",
+    "group": "melee",
+    "damage": [
+      "1d6+STR"
+    ],
+    "damageType": [
+      "bludgeoning"
+    ],
+    "propertiesText": "—",
+    "properties": {},
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "2 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.hand-axe",
+    "name": "Hand Axe",
+    "group": "melee",
+    "damage": [
+      "1d6+STR"
+    ],
+    "damageType": [
+      "slashing"
+    ],
+    "propertiesText": "Thrown 4",
+    "properties": {
+      "thrown": 4
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "8 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.spear",
+    "name": "Spear",
+    "group": "melee",
+    "damage": [
+      "1d6+STR"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "2-handed (1-handed: Req. 2 STR), Reach 2",
+    "properties": {
+      "oneHandedRequiresStr": 2,
+      "twoHanded": true,
+      "reach": 2
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "10 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.short-sword",
+    "name": "Short Sword",
+    "group": "melee",
+    "damage": [
+      "1d6+STR",
+      "1d6+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "Light",
+    "properties": {
+      "light": true
+    },
+    "tags": [
+      "melee",
+      "str",
+      "dex"
+    ],
+    "cost": "15 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.rapier",
+    "name": "Rapier",
+    "group": "melee",
+    "damage": [
+      "2d4+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "—",
+    "properties": {},
+    "tags": [
+      "melee",
+      "dex"
+    ],
+    "cost": "60 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.staff",
+    "name": "Staff",
+    "group": "melee",
+    "damage": [
+      "1d8+STR"
+    ],
+    "damageType": [
+      "bludgeoning"
+    ],
+    "propertiesText": "2-handed",
+    "properties": {
+      "twoHanded": true
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "8 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.longsword",
+    "name": "Longsword",
+    "group": "melee",
+    "damage": [
+      "1d8+STR"
+    ],
+    "damageType": [
+      "slashing"
+    ],
+    "propertiesText": "2-handed (1-handed: Req. 2 STR)",
+    "properties": {
+      "oneHandedRequiresStr": 2,
+      "twoHanded": true
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "60 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.battleaxe",
+    "name": "Battleaxe",
+    "group": "melee",
+    "damage": [
+      "1d10+STR"
+    ],
+    "damageType": [
+      "slashing"
+    ],
+    "propertiesText": "2-handed",
+    "properties": {
+      "twoHanded": true
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "30 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.pole-hammer",
+    "name": "Pole Hammer",
+    "group": "melee",
+    "damage": [
+      "1d10+STR"
+    ],
+    "damageType": [
+      "bludgeoning"
+    ],
+    "propertiesText": "2-handed, Reach 2",
+    "properties": {
+      "twoHanded": true,
+      "reach": 2
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "60 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.glaive",
+    "name": "Glaive",
+    "group": "melee",
+    "damage": [
+      "1d10+STR"
+    ],
+    "damageType": [
+      "slashing"
+    ],
+    "propertiesText": "2-handed, Reach 2",
+    "properties": {
+      "twoHanded": true,
+      "reach": 2
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "60 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.great-spear",
+    "name": "Great Spear",
+    "group": "melee",
+    "damage": [
+      "1d10+STR"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "2-handed, Reach 2",
+    "properties": {
+      "twoHanded": true,
+      "reach": 2
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "60 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.greatmaul",
+    "name": "Greatmaul",
+    "group": "melee",
+    "damage": [
+      "3d4+STR"
+    ],
+    "damageType": [
+      "bludgeoning"
+    ],
+    "propertiesText": "2-handed (Req. 2 STR)",
+    "properties": {
+      "requiresStr": 2,
+      "twoHanded": true
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "80 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.greataxe",
+    "name": "Greataxe",
+    "group": "melee",
+    "damage": [
+      "2d6+STR"
+    ],
+    "damageType": [
+      "slashing"
+    ],
+    "propertiesText": "2-handed (Req. 2 STR)",
+    "properties": {
+      "requiresStr": 2,
+      "twoHanded": true
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "100 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.greatsword",
+    "name": "Greatsword",
+    "group": "melee",
+    "damage": [
+      "1d12+STR"
+    ],
+    "damageType": [
+      "slashing",
+      "piercing"
+    ],
+    "propertiesText": "2-handed (Req. 2 STR)",
+    "properties": {
+      "requiresStr": 2,
+      "twoHanded": true
+    },
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "120 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.sling",
+    "name": "Sling",
+    "group": "ranged",
+    "damage": [
+      "1d4+DEX"
+    ],
+    "damageType": [
+      "bludgeoning"
+    ],
+    "propertiesText": "2-handed, Range 12, Vicious",
+    "properties": {
+      "twoHanded": true,
+      "vicious": true,
+      "range": 12
+    },
+    "tags": [
+      "ranged",
+      "dex"
+    ],
+    "cost": "4 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.javelins",
+    "name": "Javelins",
+    "group": "ranged",
+    "damage": [
+      "1d6+STR"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "Range 8, Stack of 4",
+    "properties": {
+      "range": 8,
+      "stack": 4
+    },
+    "tags": [
+      "ranged",
+      "str"
+    ],
+    "cost": "20 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.throwing-hammers",
+    "name": "Throwing Hammers",
+    "group": "ranged",
+    "damage": [
+      "1d8+STR"
+    ],
+    "damageType": [
+      "bludgeoning"
+    ],
+    "propertiesText": "Range 4, Stack of 3",
+    "properties": {
+      "range": 4,
+      "stack": 3
+    },
+    "tags": [
+      "ranged",
+      "str"
+    ],
+    "cost": "25 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.shortbow",
+    "name": "Shortbow",
+    "group": "ranged",
+    "damage": [
+      "1d6+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "2-handed, Range 12",
+    "properties": {
+      "twoHanded": true,
+      "range": 12
+    },
+    "tags": [
+      "ranged",
+      "dex"
+    ],
+    "cost": "25 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.longbow",
+    "name": "Longbow",
+    "group": "ranged",
+    "damage": [
+      "1d8+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "2-handed, Range 16 (Req. 1 STR)",
+    "properties": {
+      "requiresStr": 1,
+      "twoHanded": true,
+      "range": 16
+    },
+    "tags": [
+      "ranged",
+      "dex"
+    ],
+    "cost": "30 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.crossbow",
+    "name": "Crossbow",
+    "group": "ranged",
+    "damage": [
+      "4d4+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "2-handed, Load: 1 action, Range 8",
+    "properties": {
+      "twoHanded": true,
+      "range": 8,
+      "load": 1
+    },
+    "tags": [
+      "ranged",
+      "dex"
+    ],
+    "cost": "60 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.handheld-ballista",
+    "name": "Handheld Ballista",
+    "group": "ranged",
+    "damage": [
+      "1d20+DEX"
+    ],
+    "damageType": [
+      "piercing"
+    ],
+    "propertiesText": "2-handed, Load: 2 actions, Range 8 (Req. 2 STR)",
+    "properties": {
+      "requiresStr": 2,
+      "twoHanded": true,
+      "range": 8,
+      "load": 2
+    },
+    "tags": [
+      "ranged",
+      "dex"
+    ],
+    "cost": "120 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 35,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "weapon.unarmed-strike",
+    "name": "Unarmed Strike",
+    "group": "melee",
+    "damage": [
+      "1d4+STR"
+    ],
+    "damageType": [
+      "unarmed"
+    ],
+    "propertiesText": "",
+    "properties": {},
+    "tags": [
+      "melee",
+      "str"
+    ],
+    "cost": "",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "unverified",
+      "note": "From the Unarmed Strikes box (\"To attack with your bare hands or feet, roll 1d4+STR.\"), not a table row. The page gives no damage type, properties or cost; damageType \"unarmed\", empty propertiesText and empty cost are placeholders."
+    }
+  }
+]

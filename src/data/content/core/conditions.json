@@ -1,0 +1,359 @@
+[
+  {
+    "id": "condition.blind",
+    "name": "Blind",
+    "text": "Can’t see. Attacks against you have advantage, and your attacks have disadvantage.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.dazed",
+    "name": "Dazed",
+    "text": "Heroes lose 1 action; monsters lose their move OR 1 attack on their next turn.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.dying",
+    "name": "Dying",
+    "text": "At 0 HP. Max 1 action. Taking damage while Dying causes 2 Wounds; a crit causes 3 instead.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Shorter Glossary entry (PDF 29, printed 56): “When a hero is at 0 HP (see Hit Points & Dying on pg. 9 for more).”"
+    }
+  },
+  {
+    "id": "condition.empowered",
+    "name": "Empowered X",
+    "text": "Attack damage increased by X.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Text from the separate Glossary entry. The Conditions list (PDF 6, printed 11) combines them: “Empowered/Weakened X. Attack damage increased/reduced by X.”"
+    }
+  },
+  {
+    "id": "condition.weakened",
+    "name": "Weakened X",
+    "text": "Attack damage decreased by X.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Text from the separate Glossary entry. The Conditions list (PDF 6, printed 11) combines them: “Empowered/Weakened X. Attack damage increased/reduced by X.”"
+    }
+  },
+  {
+    "id": "condition.frightened",
+    "name": "Frightened",
+    "text": "Disadvantage on rolls when source of fear is near; Speed halved when moving closer to it.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.incapacitated",
+    "name": "Incapacitated",
+    "text": "Can’t do anything. Attacks against you have advantage, and melee attacks that hit, crit.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.invisible",
+    "name": "Invisible",
+    "text": "Cannot be seen. Your attacks have advantage, and attacks against you have disadvantage.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.poisoned",
+    "name": "Poisoned",
+    "text": "Disadvantage (typically, healing ends).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Glossary (PDF 29, printed 56) reads “Disadvantage on rolls (typically, healing ends).”"
+    }
+  },
+  {
+    "id": "condition.prone",
+    "name": "Prone",
+    "text": "Movement costs twice as much, and disadvantage on attacks. Melee attacks against you have advantage; Ranged have disadvantage. Spend 3 spaces of your Speed to stand up.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.restrained",
+    "name": "Restrained",
+    "text": "Can’t move. Attacks against you have advantage.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Glossary (PDF 29, printed 56): “Cannot move. Attacks against you have advantage.” Also under Grappling, Riding, & Restrained (PDF 6, printed 10): “Held by something rather than someone (sticky tar, chains, rope, roots): you can’t move, and attacks against you have advantage.” Breaking Free box (printed 10): escaping takes an action and a STR or DEX save, or other sensible means."
+    }
+  },
+  {
+    "id": "condition.silenced",
+    "name": "Silenced",
+    "text": "Cannot cast spells or use other abilities that require speaking (e.g., Commander’s Orders).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.slowed",
+    "name": "Slowed",
+    "text": "Speed halved during your next turn.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.taunted",
+    "name": "Taunted",
+    "text": "Disadvantage on attacks except against the most recent taunter.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified",
+      "note": "Same text also in the Glossary (PDF 29, printed 56)."
+    }
+  },
+  {
+    "id": "condition.bloodied",
+    "name": "Bloodied",
+    "text": "At half HP or less.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "condition.charged",
+    "name": "Charged",
+    "text": "Some spells/abilities have additional effects when Charged (e.g., Overload, Electrickery). Become Charged whenever you take lightning damage. Lasts 1 min or until combat ends.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "condition.charmed",
+    "name": "Charmed",
+    "text": "Sees the charmer as an ally. Charmer has advantage on social interactions with you.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "condition.deafened",
+    "name": "Deafened",
+    "text": "Can’t hear.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "condition.distracted",
+    "name": "Distracted",
+    "text": "A target is Distracted if it is adjacent to or Taunted by an ally, or if it cannot see you.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Also named in the Other Minor/Rare Statuses box (PDF 6, printed 11)."
+    }
+  },
+  {
+    "id": "condition.grappled",
+    "name": "Grappled",
+    "text": "Held by another creature; attacks against either of you have advantage (see Grappling, Riding, & Restrained on pg. 10 for more).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Full Grappling rule under Grappling, Riding, & Restrained (PDF 6, printed 10): “Use an action to make a DC 10 Might or Finesse check on a creature your size or smaller to Grapple it: Attacks against either of you have advantage. If it’s smaller, it can’t move, but you can drag it along when you move; if you’re the same size, either of you can move at half Speed together.”"
+    }
+  },
+  {
+    "id": "condition.hampered",
+    "name": "Hampered",
+    "text": "Any creature with actions or movement reduced (e.g., Dazed, Grappled/Restrained, Prone, Slowed, in Difficult Terrain).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "condition.paralyzed",
+    "name": "Paralyzed",
+    "text": "Incapacitated. Can’t do anything. Attacks against you have advantage, and melee attacks that hit, crit.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Glossary entry “Paralyzed, Stunned, Unconscious.” covers three statuses; split into three entries with the same text."
+    }
+  },
+  {
+    "id": "condition.stunned",
+    "name": "Stunned",
+    "text": "Incapacitated. Can’t do anything. Attacks against you have advantage, and melee attacks that hit, crit.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Glossary entry “Paralyzed, Stunned, Unconscious.” covers three statuses; split into three entries with the same text."
+    }
+  },
+  {
+    "id": "condition.unconscious",
+    "name": "Unconscious",
+    "text": "Incapacitated. Can’t do anything. Attacks against you have advantage, and melee attacks that hit, crit.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Glossary entry “Paralyzed, Stunned, Unconscious.” covers three statuses; split into three entries with the same text."
+    }
+  },
+  {
+    "id": "condition.petrified",
+    "name": "Petrified",
+    "text": "Incapacitated with all the benefits and drawbacks of being a rock! Immune to most damage except from large explosions, picks, or similar tools.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "condition.riding",
+    "name": "Riding",
+    "text": "You move with the creature you’re riding; it attacks you with disadvantage, and attacks that miss you strike it (see Grappling, Riding, & Restrained on pg. 10 for more).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Also under Grappling, Riding, & Restrained (PDF 6, printed 10): “Grab a bigger creature and you’re Riding it instead: you move with it, it attacks you with disadvantage, and attacks that miss you strike it.”"
+    }
+  },
+  {
+    "id": "condition.smoldering",
+    "name": "Smoldering",
+    "text": "This condition does nothing on its own, though some spells and abilities have additional effects against Smoldering creatures, ending the condition (e.g., Ignite, Pyroclasm).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Also named in the Other Minor/Rare Statuses box (PDF 6, printed 11)."
+    }
+  },
+  {
+    "id": "condition.wounded",
+    "name": "Wounded",
+    "text": "Has any Wounds.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified"
+    }
+  }
+]

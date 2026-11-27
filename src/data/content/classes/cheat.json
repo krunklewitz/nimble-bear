@@ -1,0 +1,157 @@
+{
+  "id": "class.cheat",
+  "name": "The Cheat",
+  "keyStats": ["DEX", "INT"],
+  "secondaryStats": ["WIL", "STR"],
+  "hitDie": "d6",
+  "startingHp": 10,
+  "saves": { "advantaged": "DEX", "disadvantaged": "WIL" },
+  "armorText": "Leather Armor",
+  "weaponsText": "DEX Weapons",
+  "startingGearText": "2 Daggers, Sling, Cheap Hides, Chalk",
+  "startingGear": [
+    { "id": "weapon.dagger", "qty": 2 },
+    { "id": "weapon.sling", "qty": 1 },
+    { "id": "armor.cheap-hides", "qty": 1 },
+    { "id": "gear.chalk", "qty": 1 }
+  ],
+  "proficiency": { "armor": ["leather"], "shields": false, "weapons": ["dex"] },
+  "vars": { "sneakAttack": "1d6" },
+  "levels": {
+    "1": ["feature.cheat.sneak-attack", "feature.cheat.vicious-opportunist"],
+    "2": ["feature.cheat.cheat"],
+    "3": ["feature.cheat.subclass", "feature.cheat.sneak-attack-2", "feature.cheat.thieves-cant"]
+  },
+  "subclassLevels": [3, 7, 11, 15],
+  "features": [
+    {
+      "id": "feature.cheat.sneak-attack",
+      "name": "Sneak Attack",
+      "text": "(1/turn) When you crit, deal +1d6 damage.",
+      "effects": [
+        { "type": "setVar", "var": "sneakAttack", "value": "1d6" },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.cheat.sneak-attack",
+            "label": "Sneak Attack",
+            "on": "damage",
+            "change": "addDice",
+            "value": "var.sneakAttack",
+            "mode": "auto",
+            "when": { "situation": "This attack crit" },
+            "limit": { "uses": "1", "per": "turn" }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    },
+    {
+      "id": "feature.cheat.vicious-opportunist",
+      "name": "Vicious Opportunist",
+      "text": "(1/turn) When you HIT a Distracted target with a melee attack, you may change the Primary Die roll to whatever you like (changing it to the max value counts as a crit).",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.cheat.vicious-opportunist",
+            "label": "Vicious Opportunist",
+            "on": "attack",
+            "change": "setPrimary",
+            "scope": "melee",
+            "mode": "toggle",
+            "when": { "situation": "You hit a Distracted target with a melee attack" },
+            "limit": { "uses": "1", "per": "turn" }
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Distracted. A target is Distracted if it is adjacent to (or Taunted by) an ally, or if it cannot see you. Yes! If you can figure out how to attack on someone else’s turn, you can use this again in the same round!",
+      "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified", "note": "manualNote is the Distracted sidebar printed under Level 1. Player picks the new Primary Die face." }
+    },
+    {
+      "id": "feature.cheat.cheat",
+      "name": "Cheat",
+      "text": "You’re a well-rounded cheater. Gain the following abilities:\n• (1/round) You may either Move or Hide for free.\n• (1/Safe Rest) You may change any of your skill checks to 10+INT.\n• If you roll less than 10 on Initiative, you may change it to 10 instead.\n• You may gain advantage on skill checks while playing any games, competitions, or placing wagers. If you’re caught though…",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.cheat.move-or-hide",
+            "name": "Move or Hide (Cheat)",
+            "kind": "free",
+            "actions": 0,
+            "limit": { "uses": "1", "per": "round" },
+            "text": "(1/round) You may either Move or Hide for free."
+          }
+        },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.cheat.skill-check-10-int",
+            "label": "Cheat: change skill check to 10+INT",
+            "on": "check",
+            "change": "floor",
+            "value": "10+INT",
+            "mode": "toggle",
+            "limit": { "uses": "1", "per": "safeRest" }
+          }
+        },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.cheat.initiative-10",
+            "label": "Cheat: Initiative at least 10",
+            "on": "initiative",
+            "change": "floor",
+            "value": "10",
+            "mode": "auto"
+          }
+        },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.cheat.games-advantage",
+            "label": "Cheat: advantage at games and wagers",
+            "on": "check",
+            "change": "advantage",
+            "mode": "toggle",
+            "when": { "situation": "Playing any games, competitions, or placing wagers" }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified", "note": "The 10+INT bullet is modelled as a floor toggle: the printed text sets the check to 10+INT, which only matters when the roll is lower." }
+    },
+    {
+      "id": "feature.cheat.subclass",
+      "name": "Subclass",
+      "text": "Choose a Cheat subclass.",
+      "effects": [
+        { "type": "choice", "choice": { "id": "choice.cheat.subclass", "prompt": "Choose a Cheat subclass.", "count": 1, "from": { "kind": "subclass" } } }
+      ],
+      "automation": "full",
+      "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    },
+    {
+      "id": "feature.cheat.sneak-attack-2",
+      "name": "Sneak Attack (2)",
+      "text": "Your Sneak Attack becomes 1d8.",
+      "effects": [{ "type": "setVar", "var": "sneakAttack", "value": "1d8" }],
+      "automation": "full",
+      "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    },
+    {
+      "id": "feature.cheat.thieves-cant",
+      "name": "Thieves’ Cant",
+      "text": "You learn the secret language of rogues and scoundrels.",
+      "effects": [{ "type": "proficiency", "languages": ["thieves-cant"] }],
+      "automation": "full",
+      "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    }
+  ],
+  "optionPools": {},
+  "retrainText": "Trade Secrets. Whenever you spend a night talking shop with other roguish types during a Safe Rest, you may choose different Cheat options available to you.",
+  "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified", "note": "Stat block and level table on PDF 3 (printed 4–5; subclass levels 3, 7, 11, 15 from printed 4–5). retrainText (Trade Secrets) is on PDF 4, printed 6." }
+}

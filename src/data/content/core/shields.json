@@ -1,0 +1,57 @@
+[
+  {
+    "id": "shield.wooden-buckler",
+    "name": "Wooden Buckler",
+    "defense": 2,
+    "cost": "5 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "shield.iron-shield",
+    "name": "Iron Shield",
+    "defense": 4,
+    "requiresStr": 2,
+    "cost": "80 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "shield.tower-shield",
+    "name": "Tower Shield",
+    "defense": 6,
+    "requiresStr": 3,
+    "cost": "1,500 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "shield.dragon-shield",
+    "name": "Dragon Shield",
+    "defense": 8,
+    "requiresStr": 3,
+    "cost": "9,000 gp",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  }
+]

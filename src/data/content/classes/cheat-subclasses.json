@@ -1,0 +1,305 @@
+[
+  {
+    "id": "subclass.cheat.silent-blade",
+    "classId": "class.cheat",
+    "name": "Tools of the Silent Blade",
+    "tagline": "Kill, kill, kill.",
+    "storyBased": false,
+    "levels": {
+      "3": ["feature.cheat.silent-blade.amidst-all-this-commotion", "feature.cheat.silent-blade.leave-no-trace"]
+    },
+    "features": [
+      {
+        "id": "feature.cheat.silent-blade.amidst-all-this-commotion",
+        "name": "Amidst All This Commotion…",
+        "text": "If a creature dies while you Sneak Attack them, you may turn Invisible until you attack again or until the beginning of your next turn.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "When a creature you Sneak Attack dies, mark yourself Invisible by hand; remove it when you attack again or at the beginning of your next turn.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 5, "printedPage": 9, "status": "verified" }
+      },
+      {
+        "id": "feature.cheat.silent-blade.leave-no-trace",
+        "name": "Leave No Trace",
+        "text": "Advantage on Stealth checks when you are at full health.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.silent-blade.leave-no-trace",
+              "label": "Leave No Trace",
+              "on": "check",
+              "change": "advantage",
+              "scope": "stealth",
+              "mode": "auto",
+              "when": "self.fullHp"
+            }
+          }
+        ],
+        "automation": "full",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 5, "printedPage": 9, "status": "verified" }
+      }
+    ],
+    "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 5, "printedPage": 9, "status": "verified" }
+  },
+  {
+    "id": "subclass.cheat.scoundrel",
+    "classId": "class.cheat",
+    "name": "Tools of the Scoundrel",
+    "tagline": "Stay alive, fight dirty.",
+    "storyBased": false,
+    "levels": {
+      "3": ["feature.cheat.scoundrel.low-blow", "feature.cheat.scoundrel.sweet-talk"]
+    },
+    "features": [
+      {
+        "id": "feature.cheat.scoundrel.low-blow",
+        "name": "Low Blow",
+        "text": "When you Sneak Attack a creature not already Taunted by you, you may spend 1 additional action to roll 1d4. They are:\n1. Taunted by you for the rest of this encounter.\n2. Knocked Prone, then Taunted by you for the rest of this encounter.\n3. Dazed, then Taunted by you for the rest of this encounter.\n4. Incapacitated until the end of the next hero’s turn.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.scoundrel.low-blow",
+              "name": "Low Blow",
+              "kind": "ability",
+              "actions": 1,
+              "roll": { "kind": "other", "dice": "1d4" },
+              "text": "When you Sneak Attack a creature not already Taunted by you, you may spend 1 additional action to roll 1d4. They are:\n1. Taunted by you for the rest of this encounter.\n2. Knocked Prone, then Taunted by you for the rest of this encounter.\n3. Dazed, then Taunted by you for the rest of this encounter.\n4. Incapacitated until the end of the next hero’s turn."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Use only right after a Sneak Attack on a creature not already Taunted by you. Apply the rolled result (Taunted, Prone, Dazed or Incapacitated) to the target by hand.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 11, "status": "verified" }
+      },
+      {
+        "id": "feature.cheat.scoundrel.sweet-talk",
+        "name": "Sweet Talk",
+        "text": "You may gain advantage on all Influence checks with NPCs you’ve just met for the first time. This lasts until you fail an Influence check with them or until you meet a 2nd time. You have disadvantage on Influence checks with them after you use this ability (until you get back on their good side).",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.scoundrel.sweet-talk",
+              "label": "Sweet Talk",
+              "on": "check",
+              "change": "advantage",
+              "scope": "influence",
+              "mode": "toggle",
+              "when": { "situation": "Influence check with an NPC you’ve just met for the first time (until you fail one with them or meet a 2nd time)" }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Track per NPC when the advantage ends, and apply disadvantage on later Influence checks with that NPC by hand (until you get back on their good side).",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 11, "status": "verified" }
+      }
+    ],
+    "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 11, "status": "verified" }
+  },
+  {
+    "id": "subclass.cheat.serpent",
+    "classId": "class.cheat",
+    "name": "Tools of the Serpent",
+    "tagline": "You have harnessed the terrible fangs of nature to her deadly array of poisons. Choose this subclass if you want to debilitate your foes with venom and viciousness.",
+    "storyBased": false,
+    "levels": {
+      "3": ["feature.cheat.serpent.vipers-kiss", "feature.cheat.serpent.ive-tried-this-one-before"]
+    },
+    "features": [
+      {
+        "id": "feature.cheat.serpent.vipers-kiss",
+        "name": "Viper’s Kiss",
+        "text": "Creatures you damage become Poisoned until the end of their next turn. Creatures Poisoned this way are also Distracted.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "Mark creatures you damage as Poisoned (and Distracted) until the end of their next turn by hand.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 12, "status": "verified" }
+      },
+      {
+        "id": "feature.cheat.serpent.ive-tried-this-one-before",
+        "name": "I’ve Tried This One Before",
+        "text": "You have advantage on saves against poison. Additionally, you can identify any poison you inspect.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.serpent.poison-saves",
+              "label": "I’ve Tried This One Before",
+              "on": "save",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": { "situation": "Save against poison" }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Identifying poisons you inspect is handled with the GM.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 12, "status": "verified" }
+      }
+    ],
+    "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 12, "status": "verified" }
+  },
+  {
+    "id": "subclass.cheat.gambler",
+    "classId": "class.cheat",
+    "name": "Tools of the Gambler",
+    "tagline": "Trust me—this time it’s a SURE THING. Choose this subclass if you want to risk it all with dangerous plays and walk the line of ruin.",
+    "storyBased": false,
+    "levels": {
+      "3": ["feature.cheat.gambler.all-in", "feature.cheat.gambler.that-was-just-a-practice-roll", "feature.cheat.gambler.its-all-fun-and-games"]
+    },
+    "features": [
+      {
+        "id": "feature.cheat.gambler.all-in",
+        "name": "All In",
+        "text": "When you Sneak Attack, you may go All In: Roll a single All In die; if it rolls higher than average, maximize ALL of your Sneak Attack dice; otherwise minimize them.",
+        "effects": [{ "type": "handler", "name": "cheat.allIn" }],
+        "automation": "partial",
+        "manualNote": "The page does not name the All In die's size or define \"average\". Until confirmed, roll the die your GM agrees on and maximize or minimize your Sneak Attack dice by hand.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 13, "status": "unverified", "note": "Text verified against the image, but the All In die size and the meaning of \"higher than average\" are not stated (presumably one Sneak Attack die vs. its average). Open rules question." }
+      },
+      {
+        "id": "feature.cheat.gambler.that-was-just-a-practice-roll",
+        "name": "That Was Just a Practice Roll",
+        "text": "(1/encounter) You may reroll ANY die.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.gambler.practice-roll",
+              "label": "That Was Just a Practice Roll",
+              "on": "any",
+              "change": "reroll",
+              "mode": "toggle",
+              "limit": { "uses": "1", "per": "encounter" }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Rerolling a die that isn't on your sheet (an ally's or the GM's) is done by hand; spend the use on the sheet.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 13, "status": "verified" }
+      },
+      {
+        "id": "feature.cheat.gambler.its-all-fun-and-games",
+        "name": "It’s All Fun and Games",
+        "text": "If you’re caught cheating at a game, competition, or wager, you gain advantage on skill checks to get out of the consequences.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.gambler.fun-and-games",
+              "label": "It’s All Fun and Games",
+              "on": "check",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": { "situation": "Getting out of the consequences of being caught cheating at a game, competition, or wager" }
+            }
+          }
+        ],
+        "automation": "full",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 13, "status": "verified" }
+      }
+    ],
+    "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 13, "status": "verified" }
+  },
+  {
+    "id": "subclass.cheat.honorseeker",
+    "classId": "class.cheat",
+    "name": "The Honorseeker",
+    "tagline": "“No more tricks. Honest.”",
+    "storyBased": true,
+    "levels": {
+      "3": [
+        "feature.cheat.honorseeker.honorseeker",
+        "feature.cheat.honorseeker.worthy-underdog",
+        "feature.cheat.honorseeker.tenacious-fighter",
+        "feature.cheat.honorseeker.prove-your-worth"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.cheat.honorseeker.honorseeker",
+        "name": "Honorseeker",
+        "text": "You give up Sneak Attack, Vicious Opportunist, Underhanded Abilities, and Twist the Blade, in exchange gain:\n• Honorable Gambits. For every Underhanded Ability you would have (except for your Old Habits…), choose an Honorable Gambit instead.",
+        "effects": [
+          {
+            "type": "replace",
+            "features": ["feature.cheat.sneak-attack", "feature.cheat.sneak-attack-2", "feature.cheat.vicious-opportunist"],
+            "with": ["feature.cheat.honorseeker.worthy-underdog", "feature.cheat.honorseeker.tenacious-fighter"]
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Underhanded Abilities and Twist the Blade (level 4+) are also given up, and Honorable Gambits replace each Underhanded Ability (except Old Habits…); these are added in a later phase.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 8, "printedPage": 14, "status": "verified", "note": "Worthy Underdog and Tenacious Fighter bullets of this block are separate features. Sneak Attack scaling: Tenacious Fighter uses var.sneakAttack, so the engine must keep applying the replaced Sneak Attack features' setVar (or the rules owner must decide another way) for its die to grow." }
+      },
+      {
+        "id": "feature.cheat.honorseeker.worthy-underdog",
+        "name": "Worthy Underdog",
+        "text": "When enemies have The Upper Hand, attacks miss you on 2 or less.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "The Upper Hand. Whenever there are more of them adjacent to you than allies. While enemies have it, their attacks against you miss on a Primary Die of 2 or less (GM applies).",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 8, "printedPage": 14, "status": "verified" }
+      },
+      {
+        "id": "feature.cheat.honorseeker.tenacious-fighter",
+        "name": "Tenacious Fighter",
+        "text": "(1/turn) When you HIT an enemy that has The Upper Hand you may change the Primary Die roll to whatever you like and deal +1d6 damage (this increases as your Sneak Attack dice would).",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.honorseeker.tenacious-fighter",
+              "label": "Tenacious Fighter",
+              "on": "attack",
+              "change": "setPrimary",
+              "mode": "toggle",
+              "when": { "situation": "You hit an enemy that has The Upper Hand" },
+              "limit": { "uses": "1", "per": "turn" }
+            }
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.honorseeker.tenacious-fighter-damage",
+              "label": "Tenacious Fighter damage",
+              "on": "damage",
+              "change": "addDice",
+              "value": "var.sneakAttack",
+              "mode": "toggle",
+              "when": { "situation": "You hit an enemy that has The Upper Hand (same use as Tenacious Fighter)" }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "The Upper Hand. Whenever there are more of them adjacent to you than allies. Pick the new Primary Die face; the extra damage die is +1d6, growing as Sneak Attack would (1d8 from level 3).",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 8, "printedPage": 14, "status": "unverified", "note": "Text verified. Interpretation: the +1d6 grows on the Sneak Attack schedule (so 1d8 at level 3, via var.sneakAttack), and the damage option shares the one 1/turn use with the Primary Die change (limit is only on the attack option). Open rules question." }
+      },
+      {
+        "id": "feature.cheat.honorseeker.prove-your-worth",
+        "name": "Prove Your Worth!",
+        "text": "(Reach 12, 1/turn) Taunt an enemy for free (lasts until they damage you). Gain DEX damage reduction vs enemies Taunted by you.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.honorseeker.prove-your-worth",
+              "name": "Prove Your Worth!",
+              "kind": "free",
+              "actions": 0,
+              "reach": "12",
+              "limit": { "uses": "1", "per": "turn" },
+              "text": "(Reach 12, 1/turn) Taunt an enemy for free (lasts until they damage you). Gain DEX damage reduction vs enemies Taunted by you."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Track the Taunt by hand (it lasts until that enemy damages you) and subtract DEX from damage those Taunted enemies deal to you.",
+        "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 8, "printedPage": 14, "status": "verified" }
+      }
+    ],
+    "source": { "file": "TheCheat3.0.pdf", "version": "3.0", "pdfPage": 8, "printedPage": 14, "status": "verified" }
+  }
+]

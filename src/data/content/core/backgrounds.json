@@ -1,0 +1,920 @@
+[
+  {
+    "id": "background.back-out-of-retirement",
+    "name": "Back Out of Retirement",
+    "features": [
+      {
+        "id": "feature.background.back-out-of-retirement.lets-see-if-i-remember-how-to-do-this",
+        "name": "Let’s see if I remember how to do this…",
+        "text": "Gain 1 Wound to use an ability or cast a spell as if you were 1 level higher.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Mark 1 Wound by hand and resolve the ability or spell as if 1 level higher.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.background.back-out-of-retirement.these-old-bones",
+        "name": "These old bones…",
+        "text": "Your age has long since started to show. –1 max Wounds.",
+        "effects": [
+          {
+            "type": "modifier",
+            "target": "maxWounds",
+            "op": "add",
+            "value": "-1"
+          }
+        ],
+        "automation": "full",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified",
+      "note": "Intro text not stored (BackgroundDef has no description field): “You’ve forgotten more than most adventurers these days know! Talk with your GM: what made you come out of retirement?”"
+    }
+  },
+  {
+    "id": "background.devoted-protector",
+    "name": "Devoted Protector",
+    "features": [
+      {
+        "id": "feature.background.devoted-protector.devoted-protector",
+        "name": "Devoted Protector",
+        "text": "Choose 1 ally in your party. You can survive +3 max Wounds as long as they are nearby. Whenever they take a Wound, you do too.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.background.devoted-protector.ally",
+              "prompt": "Choose 1 ally in your party",
+              "count": 1,
+              "from": {
+                "kind": "text"
+              }
+            }
+          },
+          {
+            "type": "modifier",
+            "target": "maxWounds",
+            "op": "add",
+            "value": "3",
+            "when": {
+              "situation": "Your chosen ally is nearby"
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Toggle when your chosen ally is nearby. Mark a Wound yourself whenever they take a Wound.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.academy-dropout",
+    "name": "Academy Dropout",
+    "features": [
+      {
+        "id": "feature.background.academy-dropout.academy-dropout",
+        "name": "Academy Dropout",
+        "text": "School just isn’t for everyone! You learn by experience in the real world (or at least that’s what you tell yourself). Learn any 1 Utility Spell.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.background.academy-dropout.utility-spell",
+              "prompt": "Learn any 1 Utility Spell",
+              "count": 1,
+              "from": {
+                "kind": "spell",
+                "tier": "utility"
+              }
+            }
+          }
+        ],
+        "automation": "full",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.made-a-bad-choice",
+    "name": "Made a BAD Choice",
+    "features": [
+      {
+        "id": "feature.background.made-a-bad-choice.made-a-bad-choice",
+        "name": "Made a BAD Choice",
+        "text": "Start with 500 or 1,000 extra gold, or an uncommon/rare magical item (that your GM allows). Gain an equally powerful curse or enemy who wants it back. If you choose this background, your GM may allow you to choose another.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Agree the gold or item and the curse/enemy with your GM; add the gold or item by hand. A second background is at the GM’s discretion.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.haunted-past",
+    "name": "Haunted Past",
+    "features": [
+      {
+        "id": "feature.background.haunted-past.haunted-past",
+        "name": "Haunted Past",
+        "text": "You are haunted by voices that occasionally give you cryptic advice. The voices are sometimes VERY helpful. Other times they only want to see you suffer. Advantage against fear.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Roll with advantage against fear.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.ear-to-the-ground",
+    "name": "Ear to the Ground",
+    "features": [
+      {
+        "id": "feature.background.ear-to-the-ground.ear-to-the-ground",
+        "name": "Ear to the Ground",
+        "text": "Advantage on checks to know or obtain gossip for events that will soon happen or have happened less than 1 year ago.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Roll with advantage on qualifying gossip checks.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.what-ive-been-around",
+    "name": "What? I’ve Been Around",
+    "features": [
+      {
+        "id": "feature.background.what-ive-been-around.what-ive-been-around",
+        "name": "What? I’ve Been Around",
+        "text": "(1/location; or at the GM’s discretion). You happen to know JUST the person who has the information you’re looking for, or could get you out of a jam, and… Roll 1d20:\n• 1–5. They want you DEAD.\n• 6–12. You owe them money.\n• 13–19. They can be convinced to help you.\n• 20. They are your biggest fan, or are madly in love with you.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.background.what-ive-been-around.roll",
+              "name": "What? I’ve Been Around",
+              "kind": "ability",
+              "roll": {
+                "kind": "other",
+                "dice": "1d20"
+              },
+              "text": "(1/location; or at the GM’s discretion). You happen to know JUST the person who has the information you’re looking for, or could get you out of a jam, and… Roll 1d20:\n• 1–5. They want you DEAD.\n• 6–12. You owe them money.\n• 13–19. They can be convinced to help you.\n• 20. They are your biggest fan, or are madly in love with you."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "The 1/location limit has no tracker; track it by hand. The GM applies the result.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified",
+          "note": "Bullet list kept as separate lines (newline + “• ”)."
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.acrobat",
+    "name": "Acrobat",
+    "features": [
+      {
+        "id": "feature.background.acrobat.acrobat",
+        "name": "Acrobat",
+        "text": "Can be thrown by a larger ally, REALLY far. Resistant to falling and forced movement damage.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Apply Resistance to falling and forced movement damage by hand.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.wild-one",
+    "name": "Wild One",
+    "features": [
+      {
+        "id": "feature.background.wild-one.wild-one",
+        "name": "Wild One",
+        "text": "Whether it is the sticks or flowers in your hair, your smell, or the way you carry yourself, wild creatures are less frightened of you and more willing to aid you. +1 Naturecraft. While Field Resting in the wild, your Hit Dice recover +KEY HP.",
+        "effects": [
+          {
+            "type": "modifier",
+            "target": "skill.naturecraft",
+            "op": "add",
+            "value": "1"
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "When Field Resting in the wild, add KEY to the HP each Hit Die recovers.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.fey-touched",
+    "name": "Fey Touched",
+    "features": [
+      {
+        "id": "feature.background.fey-touched.fey-touched",
+        "name": "Fey Touched",
+        "text": "You take half damage from all magical effects, double from weapons made of metal (before Defense is applied).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Halve damage from magical effects; double damage from metal weapons before Defense.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.survivalist",
+    "name": "Survivalist",
+    "features": [
+      {
+        "id": "feature.background.survivalist.survivalist",
+        "name": "Survivalist",
+        "text": "You never run out of your own personal rations. Anything can be food if you try hard enough! (1/Safe Rest) End poison on yourself. Advantage against poison saves. +1 max Hit Die.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.background.survivalist.end-poison",
+              "name": "End Poison",
+              "kind": "ability",
+              "limit": {
+                "uses": "1",
+                "per": "safeRest"
+              },
+              "text": "(1/Safe Rest) End poison on yourself."
+            }
+          },
+          {
+            "type": "modifier",
+            "target": "maxHitDice",
+            "op": "add",
+            "value": "1"
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Rations are never tracked. Roll poison saves with advantage. The action cost to end poison isn’t stated.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.home-at-sea",
+    "name": "Home at Sea",
+    "features": [
+      {
+        "id": "feature.background.home-at-sea.home-at-sea",
+        "name": "Home at Sea",
+        "text": "Recover twice as many Wounds and HP while Resting on a ship or near water. You can fill in for a first mate or captain in a pinch. Advantage on water-related skill checks.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Double Wounds and HP recovered when Resting on a ship or near water; advantage on water-related skill checks.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.at-home-underground",
+    "name": "At Home Underground",
+    "features": [
+      {
+        "id": "feature.background.at-home-underground.at-home-underground",
+        "name": "At Home Underground",
+        "text": "You can dig twice as fast as others. Safe Resting locations underground always count as Lavish lodging for you. You struggle to rest (INT save) while it’s raining. “Water… from the SKY?!”",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Underground Safe Rests count as Lavish lodging; make an INT save to rest while it’s raining.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.raised-by-goblins",
+    "name": "Raised by Goblins",
+    "features": [
+      {
+        "id": "feature.background.raised-by-goblins.raised-by-goblins",
+        "name": "Raised by Goblins",
+        "text": "You speak Goblin natively (much better than one who has learned it later in life). You automatically notice and can avoid crudely made traps and have advantage to notice and disarm more sophisticated traps.",
+        "effects": [
+          {
+            "type": "proficiency",
+            "languages": [
+              "goblin"
+            ]
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Crude traps are noticed automatically; roll with advantage to notice and disarm sophisticated traps.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 28,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 28,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.former-con-artist",
+    "name": "(Former) Con Artist",
+    "features": [
+      {
+        "id": "feature.background.former-con-artist.former-con-artist",
+        "name": "(Former) Con Artist",
+        "text": "You can forge most documents or mimic voices flawlessly. You have a criminal contact in most major cities. However, your reputation often precedes you—until you prove yourself to be trustworthy.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Roleplay and GM rulings.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.history-buff",
+    "name": "History Buff",
+    "features": [
+      {
+        "id": "feature.background.history-buff.history-buff",
+        "name": "History Buff",
+        "text": "Advantage on all Lore checks about items, facts, or events that happened more than 100 years ago.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Roll Lore with advantage when the subject is more than 100 years old.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.secretly-undead",
+    "name": "(Secretly) Undead",
+    "features": [
+      {
+        "id": "feature.background.secretly-undead.secretly-undead",
+        "name": "(Secretly) Undead",
+        "text": "Unnatural Resilience: You are immune to disease and do not need to eat, drink, or breathe. Children, animals, and Celestials are uneasy in your presence; many will be horrified to discover your true nature.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Immune to disease; no need to eat, drink, or breathe. GM handles reactions.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified",
+          "note": "“Unnatural Resilience:” is not bold in the image, so it is kept in the text rather than made a separate feature."
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.taste-for-the-finer-things",
+    "name": "Taste for the Finer Things",
+    "features": [
+      {
+        "id": "feature.background.taste-for-the-finer-things.taste-for-the-finer-things",
+        "name": "Taste for the Finer Things",
+        "text": "You always have up-to-date knowledge of the customs and dress of the upper classes and may even know many of their secrets. Advantage on Influence checks with the upper class.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Roll Influence with advantage when dealing with the upper class.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.fearless",
+    "name": "Fearless",
+    "features": [
+      {
+        "id": "feature.background.fearless.fearless",
+        "name": "Fearless",
+        "text": "You are immune to being Frightened. +1 Initiative. –1 Defense.",
+        "effects": [
+          {
+            "type": "modifier",
+            "target": "initiative",
+            "op": "add",
+            "value": "1"
+          },
+          {
+            "type": "modifier",
+            "target": "defense",
+            "op": "add",
+            "value": "-1"
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Immune to the Frightened condition: ignore it if applied.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.so-dumb-im-smart-sometimes",
+    "name": "So Dumb I’m Smart Sometimes",
+    "requires": {
+      "stat": "INT",
+      "max": 0
+    },
+    "features": [
+      {
+        "id": "feature.background.so-dumb-im-smart-sometimes.so-dumb-im-smart-sometimes",
+        "name": "So Dumb I’m Smart Sometimes",
+        "text": "Req. 0 or negative INT at character creation. (2/Safe Rest) Reroll a failed INT-related skill or save with advantage.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.background.so-dumb-im-smart-sometimes.reroll",
+              "name": "So Dumb I’m Smart Sometimes",
+              "kind": "free",
+              "limit": {
+                "uses": "2",
+                "per": "safeRest"
+              },
+              "text": "(2/Safe Rest) Reroll a failed INT-related skill or save with advantage."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Use after failing an INT-related skill check or save, then reroll it with advantage.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.wily-underdog",
+    "name": "Wily Underdog",
+    "requires": {
+      "stat": "STR",
+      "max": 0
+    },
+    "features": [
+      {
+        "id": "feature.background.wily-underdog.wily-underdog",
+        "name": "Wily Underdog",
+        "text": "Req. 0 or negative STR at character creation. (2/Safe Rest) Reroll a failed STR attack, STR save, or Might check and use another stat instead.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.background.wily-underdog.reroll",
+              "name": "Wily Underdog",
+              "kind": "free",
+              "limit": {
+                "uses": "2",
+                "per": "safeRest"
+              },
+              "text": "(2/Safe Rest) Reroll a failed STR attack, STR save, or Might check and use another stat instead."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Use after failing a STR attack, STR save or Might check; reroll it using another stat.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.bumblewise",
+    "name": "Bumblewise",
+    "requires": {
+      "stat": "WIL",
+      "max": 0
+    },
+    "features": [
+      {
+        "id": "feature.background.bumblewise.bumblewise",
+        "name": "Bumblewise",
+        "text": "Req. 0 or negative WIL at character creation. A total of 1 or less on any WIL-related roll counts as a natural 20 (WIL save, Naturecraft, Perception, Influence, or Insight check).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When a WIL-related roll totals 1 or less, treat it as a natural 20.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.accidental-acrobat",
+    "name": "Accidental Acrobat",
+    "requires": {
+      "stat": "DEX",
+      "max": 0
+    },
+    "features": [
+      {
+        "id": "feature.background.accidental-acrobat.accidental-acrobat",
+        "name": "Accidental Acrobat",
+        "text": "Req. 0 or negative DEX at character creation. Whenever you fail a DEX-related roll (e.g., DEX attack, DEX save, Stealth check, Finesse check), you may roll again. If you still fail, the consequences are BAD.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "After failing a DEX-related roll you may reroll; the GM decides the consequences of a second failure.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "background.tradesman-artisan",
+    "name": "Tradesman/Artisan",
+    "features": [
+      {
+        "id": "feature.background.tradesman-artisan.tradesman-artisan",
+        "name": "Tradesman/Artisan",
+        "text": "Choose a profession (Baker/Cook, Smith, Stonemason, Weaver, Leatherworker, etc.). Checks you make related to that profession have advantage. You also retain special knowledge related to your profession.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.background.tradesman-artisan.profession",
+              "prompt": "Choose a profession (Baker/Cook, Smith, Stonemason, Weaver, Leatherworker, etc.)",
+              "count": 1,
+              "from": {
+                "kind": "text"
+              }
+            }
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Roll checks related to your profession with advantage.",
+        "source": {
+          "file": "NimbleCoreRules3.2.pdf",
+          "version": "3.2",
+          "pdfPage": 15,
+          "printedPage": 29,
+          "status": "verified",
+          "note": "Text continues from the bottom of the third column to the top of the fourth column on printed page 29."
+        }
+      }
+    ],
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 15,
+      "printedPage": 29,
+      "status": "verified"
+    }
+  }
+]

@@ -1,0 +1,125 @@
+[
+  {
+    "id": "subclass.shepherd.malice",
+    "classId": "class.shepherd",
+    "name": "Luminary of Malice",
+    "tagline": "With death as your companion, you can unleash dark powers on your foes.",
+    "storyBased": false,
+    "levels": { "3": ["feature.shepherd.malice.soul-reaper", "feature.shepherd.malice.harbinger-of-decay"] },
+    "features": [
+      {
+        "id": "feature.shepherd.malice.soul-reaper",
+        "name": "Soul Reaper",
+        "text": "(1/round) Your companion’s attacks can target a 2nd adjacent enemy.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "Once per round, when your Lifebinding Spirit attacks, apply the attack to a 2nd enemy adjacent to the first by hand.",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 5, "printedPage": 8, "status": "verified" }
+      },
+      {
+        "id": "feature.shepherd.malice.harbinger-of-decay",
+        "name": "Harbinger of Decay",
+        "text": "Vibrant colors and lovely smells are suppressed near you. Foods spoil more rapidly in your presence, and you frequently awaken to flies wherever you lodge. You may have your Lifebinding Spirit shift into a deathly version of itself (a zombie dog, a devious imp, etc.) and have its damage type become necrotic.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "Optional: if you choose the deathly form, treat your Lifebinding Spirit’s Harm damage as necrotic instead of radiant (the sheet still shows radiant).",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 5, "printedPage": 8, "status": "verified" }
+      }
+    ],
+    "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 5, "printedPage": 8, "status": "verified" }
+  },
+  {
+    "id": "subclass.shepherd.mercy",
+    "classId": "class.shepherd",
+    "name": "Luminary of Mercy",
+    "tagline": "Save the dying, wield the light, embody your virtue. Your compassion makes you a worthy vessel for radiant energy.",
+    "storyBased": false,
+    "levels": { "3": ["feature.shepherd.mercy.merciful-healing", "feature.shepherd.mercy.life-is-beautiful"] },
+    "features": [
+      {
+        "id": "feature.shepherd.mercy.merciful-healing",
+        "name": "Merciful Healing",
+        "text": "You can use Mend on non-Dying creatures. While you are Dying, your Lifebinding Spirit can act 1/round without spending an action.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "Mend may target creatures that aren’t Dying. While you are Dying, your Lifebinding Spirit can act once per round without spending an action; track this by hand.",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 10, "status": "verified" }
+      },
+      {
+        "id": "feature.shepherd.mercy.life-is-beautiful",
+        "name": "Life is Beautiful",
+        "text": "Harmless and lovely creatures such as butterflies and hummingbirds are attracted to your presence and often follow you. Flowers bloom more vibrantly in your presence.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "Roleplay flavor; nothing to track.",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 10, "status": "verified" }
+      }
+    ],
+    "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 10, "status": "verified" }
+  },
+  {
+    "id": "subclass.shepherd.protection",
+    "classId": "class.shepherd",
+    "name": "Luminary of Protection",
+    "tagline": "“An ounce of prevention is worth a pound of cure. Why wait for your friends to get hurt to heal them when you could prevent them from being hurt in the first place?”",
+    "storyBased": false,
+    "levels": { "3": ["feature.shepherd.protection.guardian-spirit"] },
+    "features": [
+      {
+        "id": "feature.shepherd.protection.guardian-spirit",
+        "name": "Guardian Spirit",
+        "text": "Whenever you Interpose, you may have your Lifebinding Spirit do so instead by spending one of its Mend charges.",
+        "effects": [{ "type": "text" }],
+        "automation": "manual",
+        "manualNote": "When you Interpose, you may spend 1 Mend use to have your Lifebinding Spirit Interpose instead; spend the Mend use by hand.",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 11, "status": "verified" }
+      }
+    ],
+    "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 6, "printedPage": 11, "status": "verified" }
+  },
+  {
+    "id": "subclass.shepherd.forge",
+    "classId": "class.shepherd",
+    "name": "Luminary of the Forge",
+    "tagline": "“Your Lifebinding Spirit is the furnace’s flame incarnate.”",
+    "storyBased": true,
+    "levels": { "3": ["feature.shepherd.forge.flameworker", "feature.shepherd.forge.seasoned-journeyman"] },
+    "features": [
+      {
+        "id": "feature.shepherd.forge.flameworker",
+        "name": "Flameworker",
+        "text": "Exchange knowledge of the Necrotic spell school for Fire. Your Lifebinding Spirit inflicts Smoldering on crit.",
+        "effects": [{ "type": "spells", "replaceSchool": { "from": "necrotic", "to": "fire" } }, { "type": "text" }],
+        "automation": "partial",
+        "manualNote": "When your Lifebinding Spirit crits, apply Smoldering to the target by hand.",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 12, "status": "verified" }
+      },
+      {
+        "id": "feature.shepherd.forge.seasoned-journeyman",
+        "name": "Seasoned Journeyman",
+        "text": "Whenever you Safe Rest, choose one:\n• Weaponsmith. Your weapons gain +STR damage until your next Safe Rest.\n• Armorsmith. Your armor gains +STR Defense until your next Safe Rest.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.shepherd.forge.seasoned-journeyman",
+              "prompt": "Seasoned Journeyman: choose one until your next Safe Rest.",
+              "count": 1,
+              "from": {
+                "kind": "options",
+                "options": [
+                  { "id": "option.shepherd.forge.weaponsmith", "label": "Weaponsmith. Your weapons gain +STR damage until your next Safe Rest.", "effects": [{ "type": "text" }] },
+                  { "id": "option.shepherd.forge.armorsmith", "label": "Armorsmith. Your armor gains +STR Defense until your next Safe Rest.", "effects": [{ "type": "modifier", "target": "defense", "op": "add", "value": "STR" }] }
+                ]
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Re-choose this at every Safe Rest. Weaponsmith: add +STR to your weapon damage rolls by hand (not to spells or your Lifebinding Spirit). Armorsmith adds +STR Defense automatically; it should only apply while you wear armor, so ignore it if you are unarmored.",
+        "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 12, "status": "unverified", "note": "Text checked against the image. Interpreted: Armorsmith encoded as an unconditional +STR Defense modifier, but the text says “your armor gains”, so it arguably shouldn’t apply when unarmored (no ‘wearing armor’ predicate exists). Weaponsmith left as text because there is no weapon-only damage target (damage.all would also hit spells/spirit). The per-Safe-Rest re-choice isn’t modeled by the choice schema." }
+      }
+    ],
+    "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 7, "printedPage": 12, "status": "verified" }
+  }
+]

@@ -1,0 +1,444 @@
+[
+  {
+    "id": "gear.healing-potion",
+    "name": "Healing Potion",
+    "cost": "50 gp",
+    "text": "(action) Heal 2d4+4 HP.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.greater-healing-potion",
+    "name": "Greater Healing Potion",
+    "cost": "150 gp",
+    "text": "(action) Heal 3d6+6 HP.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.supreme-healing-potion",
+    "name": "Supreme Healing Potion",
+    "cost": "450 gp",
+    "text": "(action) Heal 4d8+8 HP.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.torch",
+    "name": "Torch (stack of 2)",
+    "cost": "5 sp",
+    "text": "For when it’s dark. 1 use each.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.lantern-oil",
+    "name": "Lantern & Oil",
+    "cost": "10 gp",
+    "text": "Like a torch, but not as cool (refill: 1 gp).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.medical-kit",
+    "name": "Medical Kit (1 use)",
+    "cost": "20 gp",
+    "text": "Recover 1 Wound during a Field Rest.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.vial-of-pitch",
+    "name": "Vial of Pitch",
+    "cost": "2 gp",
+    "text": "Sticky, and VERY flammable.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.rope",
+    "name": "Rope (50 ft.)",
+    "cost": "10 gp",
+    "text": "You always need rope.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.chain",
+    "name": "Chain (10 ft.)",
+    "cost": "50 gp",
+    "text": "Like rope, but stronger (and heavy).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.bucket",
+    "name": "Bucket",
+    "cost": "1 gp",
+    "text": "Also works as a hat in a pinch!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.padlock-key",
+    "name": "Padlock & Key",
+    "cost": "3 gp",
+    "text": "Lock it or lose it.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.mirror",
+    "name": "Mirror",
+    "cost": "4 gp",
+    "text": "For medusas AND spinach teeth.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.telescope",
+    "name": "Telescope",
+    "cost": "10 gp",
+    "text": "Arrr.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.magnifying-glass",
+    "name": "Magnifying Glass",
+    "cost": "5 gp",
+    "text": "Make the small, big.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.chalk",
+    "name": "Chalk",
+    "cost": "1 sp",
+    "text": "Not JUST for kids.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.shovel",
+    "name": "Shovel",
+    "cost": "3 gp",
+    "text": "Sometimes you need a hole dug.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.pulley",
+    "name": "Pulley",
+    "cost": "3 gp",
+    "text": "Pull down, go up.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.grappling-hook",
+    "name": "Grappling Hook",
+    "cost": "4 gp",
+    "text": "For climbing or catching BIG fish.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.quiver-ammo",
+    "name": "Quiver & Ammo",
+    "cost": "10 gp",
+    "text": "Don’t leave home without it.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.saw",
+    "name": "Saw",
+    "cost": "4 gp",
+    "text": "For cutting lumber.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.soap",
+    "name": "Soap",
+    "cost": "1 sp",
+    "text": "Useless.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.strange-plant",
+    "name": "Strange Plant",
+    "cost": "5 sp",
+    "text": "Who knows?",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.shiny-object",
+    "name": "Shiny Object",
+    "cost": "1 sp",
+    "text": "Worthless, but VERY pretty.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.lock-pick",
+    "name": "Lock Pick",
+    "cost": "5 gp",
+    "text": "It’s not mine, honest!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.bell",
+    "name": "Bell",
+    "cost": "2 gp",
+    "text": "For service.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.dice",
+    "name": "Dice",
+    "cost": "5 sp",
+    "text": "Math rocks. LOTS of fun.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.blanket",
+    "name": "Blanket",
+    "cost": "1 gp",
+    "text": "Warm & fuzzy.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.hunting-trap",
+    "name": "Hunting Trap",
+    "cost": "10 gp",
+    "text": "Snap snap, don’t lose a finger!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.camping-supplies",
+    "name": "Camping Supplies",
+    "cost": "5 gp",
+    "text": "Bedroll, rations, simple tent.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.crowbar",
+    "name": "Crowbar",
+    "cost": "2 gp",
+    "text": "It’s LIKE a key.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.pitons",
+    "name": "Pitons",
+    "cost": "5 gp",
+    "text": "Metal spikes, for sealing doors.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.manacles",
+    "name": "Manacles",
+    "cost": "3 gp",
+    "text": "For when someone has been bad.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.instrument",
+    "name": "Instrument",
+    "cost": "5–50 gp",
+    "text": "Drums, Horn, Lyre, Flute, etc.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "gear.large-sack",
+    "name": "Large Sack",
+    "cost": "5 sp",
+    "text": "Like a BIG pocket.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  }
+]

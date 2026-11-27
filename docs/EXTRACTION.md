@@ -49,11 +49,11 @@ Dagger (Core Rules PDF 18, printed 35):
 {
   "id": "weapon.dagger", "name": "Dagger", "group": "melee", "damage": ["1d4+DEX"], "damageType": ["piercing"],
   "propertiesText": "Light, Thrown 4", "properties": { "light": true, "thrown": 4 },
-  "tags": ["melee", "dex", "blade"], "cost": "3 gp",
+  "tags": ["melee", "dex"], "cost": "3 gp",
   "source": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 18, "printedPage": 35, "status": "verified" }
 }
 ```
-Weapon `tags`: `melee`/`ranged`; `str` and/or `dex` from the damage stat; `blade` for blades (daggers, swords, axes are NOT blades unless the book says so; if unsure, leave `blade` off and note it).
+Weapon `tags`: `melee`/`ranged`; `str` and/or `dex` from the damage stat. The Core Rules never define which weapons are "blades" (RQ-008), so no `blade` tag until that is answered.
 
 Sneak Attack (The Cheat PDF 3, printed 4):
 ```json

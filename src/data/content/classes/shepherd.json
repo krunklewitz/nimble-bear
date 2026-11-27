@@ -1,0 +1,105 @@
+{
+  "id": "class.shepherd",
+  "name": "Shepherd",
+  "keyStats": ["WIL", "STR"],
+  "secondaryStats": ["INT", "DEX"],
+  "hitDie": "d10",
+  "startingHp": 17,
+  "saves": { "advantaged": "WIL", "disadvantaged": "DEX" },
+  "armorText": "Mail Armor, Shields",
+  "weaponsText": "STR Weapons, Wands",
+  "startingGearText": "Rusty Mail, Mace, Wooden Buckler, Bell",
+  "startingGear": [
+    { "id": "armor.rusty-mail", "qty": 1 },
+    { "id": "weapon.club-mace", "qty": 1 },
+    { "id": "shield.wooden-buckler", "qty": 1 },
+    { "id": "gear.bell", "qty": 1 }
+  ],
+  "proficiency": { "armor": ["mail"], "shields": true, "weapons": ["str", "wand"] },
+  "vars": {},
+  "levels": {
+    "1": ["feature.shepherd.keeper-of-life-death", "feature.shepherd.my-buddy"],
+    "2": ["feature.shepherd.mana-and-unlock-tier-1-spells"],
+    "3": ["feature.shepherd.subclass", "feature.shepherd.master-of-twilight"]
+  },
+  "subclassLevels": [3, 7, 11, 15],
+  "features": [
+    {
+      "id": "feature.shepherd.keeper-of-life-death",
+      "name": "Keeper of Life & Death",
+      "text": "You know the Radiant & Necrotic cantrips.",
+      "effects": [{ "type": "spells", "schools": ["radiant", "necrotic"], "cantrips": true, "maxTier": 0 }],
+      "automation": "full",
+      "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    },
+    {
+      "id": "feature.shepherd.my-buddy",
+      "name": "My Buddy!",
+      "text": "Learn the Lifebinding Spirit cantrip.",
+      "effects": [
+        { "type": "spells", "extra": ["spell.shepherd.lifebinding-spirit"] },
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.shepherd.spirit-harm",
+            "name": "Harm",
+            "kind": "attack",
+            "actions": 1,
+            "reach": "4",
+            "roll": { "kind": "damage", "dice": "1d8+STR", "damageType": "radiant", "ignoresArmor": true },
+            "text": "Harm. 1 Action: It attacks for 1d8+STR radiant damage (ignoring Armor)."
+          }
+        },
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.shepherd.spirit-mend",
+            "name": "Mend",
+            "kind": "ability",
+            "actions": 1,
+            "reach": "4",
+            "roll": { "kind": "heal", "dice": "WIL d20" },
+            "limit": { "uses": "WIL", "per": "safeRest" },
+            "text": "Mend. 1 Action: (WIL/Safe Rest) It restores WIL d20 HP to a Dying creature."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Harm and Mend come from the Lifebinding Spirit cantrip (Shepherd3.0.pdf PDF 4, printed 7). Add the cantrip's High Levels bonus (+STR damage every 5 levels) to Harm by hand. Mend only targets a Dying creature.",
+      "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified", "note": "Harm/Mend action data and text taken from the Lifebinding Spirit cantrip, PDF 4, printed 7 (checked against the page image)." }
+    },
+    {
+      "id": "feature.shepherd.mana-and-unlock-tier-1-spells",
+      "name": "Mana and Unlock Tier 1 Spells",
+      "text": "You unlock tier 1 Radiant & Necrotic spells and gain a mana pool to cast them. This mana pool’s max is always equal to (WIL×3)+LVL and recharges on a Safe Rest.",
+      "effects": [
+        { "type": "resource", "resource": { "id": "resource.mana", "name": "Mana", "max": "(WIL*3)+LVL", "recover": [{ "on": "safeRest", "amount": "all" }] } },
+        { "type": "spells", "schools": ["radiant", "necrotic"], "maxTier": 1 }
+      ],
+      "automation": "full",
+      "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    },
+    {
+      "id": "feature.shepherd.subclass",
+      "name": "Subclass",
+      "text": "Choose a Shepherd subclass.",
+      "effects": [{ "type": "choice", "choice": { "id": "choice.shepherd.subclass", "prompt": "Choose a Shepherd subclass.", "count": 1, "from": { "kind": "subclass" } } }],
+      "automation": "full",
+      "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    },
+    {
+      "id": "feature.shepherd.master-of-twilight",
+      "name": "Master of Twilight",
+      "text": "Choose 1 Necrotic and 1 Radiant Utility Spell.",
+      "effects": [
+        { "type": "choice", "choice": { "id": "choice.shepherd.master-of-twilight-necrotic", "prompt": "Choose 1 Necrotic Utility Spell.", "count": 1, "from": { "kind": "spell", "school": "necrotic", "tier": "utility" } } },
+        { "type": "choice", "choice": { "id": "choice.shepherd.master-of-twilight-radiant", "prompt": "Choose 1 Radiant Utility Spell.", "count": 1, "from": { "kind": "spell", "school": "radiant", "tier": "utility" } } }
+      ],
+      "automation": "full",
+      "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified" }
+    }
+  ],
+  "optionPools": {},
+  "retrainText": "Serve. After spending a day tending to a sacred place or serving others during a Safe Rest, you may choose different Shepherd options available to you.",
+  "source": { "file": "Shepherd3.0.pdf", "version": "3.0", "pdfPage": 3, "printedPage": 4, "status": "verified", "note": "Level table spans printed 4–5 (PDF 3); subclassLevels 3, 7, 11, 15 checked on both halves. Starting gear “Mace” mapped to Core Rules weapon “Club/Mace” (NimbleCoreRules3.2.pdf PDF 18)." }
+}
