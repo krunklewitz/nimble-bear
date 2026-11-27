@@ -368,6 +368,35 @@ export const SubclassDef = z
 
 export const ConditionDef = z.object({ id: Id, name: z.string(), text: z.string(), source: SourceRef }).strict();
 
+/**
+ * A rule that applies to equipment, shown with every item it applies to (verbatim book text).
+ * appliesTo picks the items: a weapon property (WeaponDef.properties key), an armor category,
+ * one item id, or a whole kind of item.
+ */
+export const EquipmentRuleDef = z
+  .object({
+    id: Id,
+    name: z.string(),
+    appliesTo: z.discriminatedUnion("kind", [
+      z.object({ kind: z.literal("weaponProperty"), property: z.enum(["twoHanded", "oneHandedRequiresStr", "requiresStr", "light", "vicious", "reach", "range", "thrown", "load", "stack"]) }).strict(),
+      z.object({ kind: z.literal("armorCategory"), category: z.enum(["cloth", "leather", "mail", "plate"]) }).strict(),
+      z.object({ kind: z.literal("item"), id: Id }).strict(),
+      z.object({ kind: z.literal("allArmor") }).strict(),
+      z.object({ kind: z.literal("allShields") }).strict(),
+      z.object({ kind: z.literal("allWeapons") }).strict(),
+      z.object({ kind: z.literal("meleeWeapons") }).strict(),
+      z.object({ kind: z.literal("rangedWeapons") }).strict(),
+      z.object({ kind: z.literal("allGear") }).strict(),
+    ]),
+    /** Verbatim rules text. */
+    text: z.string(),
+    /** True for optional rules (e.g. Deflect!). */
+    optional: z.boolean().optional(),
+    source: SourceRef,
+  })
+  .strict();
+export type EquipmentRuleDefT = z.infer<typeof EquipmentRuleDef>;
+
 /** Core character rules (Core Rules: Character Sheet, Leveling Up, Glossary). */
 export const CoreRulesDef = z
   .object({

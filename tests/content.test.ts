@@ -10,6 +10,7 @@ import {
   BackgroundDef,
   ClassDef,
   ConditionDef,
+  EquipmentRuleDef,
   CoreRulesDef,
   GearDef,
   ShieldDef,
@@ -31,6 +32,7 @@ function schemaFor(rel: string): z.ZodType | null {
   if (p === "core/shields.json") return ShieldDef.array();
   if (p === "core/weapons.json") return WeaponDef.array();
   if (p === "core/gear.json") return GearDef.array();
+  if (p === "core/equipment-rules.json") return EquipmentRuleDef.array();
   if (/^spells\/[a-z-]+\.json$/.test(p)) return SpellDef.array();
   if (/^classes\/[a-z-]+-subclasses\.json$/.test(p)) return SubclassDef.array();
   if (/^classes\/[a-z-]+\.json$/.test(p)) return ClassDef;
