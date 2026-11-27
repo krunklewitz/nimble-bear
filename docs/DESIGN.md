@@ -225,15 +225,22 @@ LevelRecord { level, classId, hp: {method: "roll"|"average", value}, skill: {add
 6. **Room/token metadata:** only `{ characterId, name, hp, hpMax, wounds, woundsMax }`-sized summaries; never the sheet.
 7. **GM collection (Phase 5–6):** players can send a party summary over broadcast (≤16 KB, well within for a summary), or the full file by download → GM loads it. The GM's campaign file (encounters, monsters, reveals) is a separate format, `nimble-sheet/campaign`, saved and loaded the same way.
 
-### 5.4 Fallbacks if the iframe blocks files (decided by the Phase 1 spike)
+### 5.4 Spike results and fallbacks (Phase 1, 2026-11-27, desktop Chrome 158 inside Owlbear)
 
-| Blocked | Fallback (no server) |
-|---|---|
-| Download | "Copy character file" to the clipboard (manifest `clipboard-write`) + "Open in pop-out window" (our site as a top-level tab, where downloads work; the character goes over by paste) |
-| File picker | "Paste character file" textarea; pop-out window picker |
-| IndexedDB in the iframe | Sheet still works in memory for the session, with a red banner telling the player to save the file often; pop-out window as the main sheet |
+| Feature inside Owlbear's iframe | Result | Phase 2 use |
+|---|---|---|
+| Download (`<a download>` + Blob) | ✅ works (the downloaded file was then opened by the picker test) | **Primary "Save character file".** |
+| File picker (`<input type=file>`) | ✅ works | **Primary "Load character file".** |
+| IndexedDB write/read | ✅ works | Autosave store. |
+| IndexedDB kept data across closing and reopening the popover | ✅ works | Sheet opens ready to play. |
+| `navigator.storage.persist()` | ✅ already persistent | Chrome won't auto-clear under storage pressure (still lost if the user clears site data). |
+| Clipboard write / read (manifest permissions) | ✅ both work | Secondary backup: "Copy character file" / "Paste character file". |
+| Pop-out window | ✅ opens | Not needed as a fallback; keep in reserve. |
+| Save dialog (`showSaveFilePicker`) | ❌ `SecurityError: Cross origin sub frames aren't allowed to show a file picker` | Not used. Plain download is the save method. |
 
-**Proof before Phase 3 (Phase 2 gate):** a test character saved to a file restores exactly (a deep-equal check runs in the app) after clearing all site data, and in a second browser.
+So none of the planned fallbacks are required. Phase 2 still offers copy/paste as a secondary backup, because it costs little and is a second way out if downloads are ever blocked by a browser setting.
+
+**Proof before Phase 3 (Phase 2 gate):** a test character saved to a file restores exactly (a deep-equal check runs in the app) after clearing all site data, and in a second Chrome profile (or another computer), since the target is Chrome only.
 
 ## 6. Dice and rolling (confirmed from Core p.8–9, 14–15)
 

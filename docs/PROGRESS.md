@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 1 (Skeleton, license notice, deploy), built; waiting for the Owlbear install test
+## Current: Phase 1 gate passed; waiting for approval to start Phase 2
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -27,9 +27,10 @@
 - GitHub Actions: typecheck, lint, test, build, no-PDF guard, deploy to Pages.
 - npm audit: 2 moderate (uuid inside @owlbear-rodeo/sdk; advisory only affects v3/v5/v6 with a caller-supplied buffer). No fix available upstream.
 
-### Phase 1 gate (needs the user)
-- Enable Pages (Settings → Pages → Source: GitHub Actions); confirm the deploy succeeded.
-- Install https://krunklewitz.github.io/nimble-bear/manifest.json in Owlbear, open it in a room, run the Storage check, paste results here.
-- Unverified: whether Owlbear shows the black-stroke icon well in dark mode.
+### Phase 1 gate, passed 2026-11-27
+- Deployed by GitHub Actions to https://krunklewitz.github.io/nimble-bear/ (manifest served with CORS *).
+- Installed in Owlbear and opened in a real room in desktop Chrome 158.
+- Storage check inside Owlbear: download, file picker, IndexedDB (incl. surviving popover close/reopen), persistent storage, clipboard read/write and pop-out all work. Save dialog (showSaveFilePicker) is blocked in cross-origin iframes. Details: DESIGN.md §5.4.
+- Not reported: whether the paw icon is easy to see in Owlbear.
 
 ### Next: Phase 2 (Persistence), after the gate
