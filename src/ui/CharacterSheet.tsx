@@ -127,6 +127,17 @@ export function CharacterSheet({ id, onBack, onSnapshots, onLevelUp }: Props) {
         </p>
       ))}
 
+      {!sheet.cls ? (
+        <div className="panel">
+          <p>
+            <strong>{character.name}</strong> is a test character from before classes existed (Phase 2), so there's no sheet to show. Make a new hero from the character list..
+          </p>
+          <button type="button" className="danger" onClick={() => setDialog("delete")}>
+            Remove from this computer
+          </button>
+        </div>
+      ) : (
+        <>
       <Vitals sheet={sheet} character={character} update={update} onRoll={setRoll} />
 
       <nav className="tabs" role="tablist">
@@ -161,6 +172,8 @@ export function CharacterSheet({ id, onBack, onSnapshots, onLevelUp }: Props) {
           }}
           onDelete={() => setDialog("delete")}
         />
+      )}
+        </>
       )}
       {dialog === "delete" && (
         <div className="panel" role="dialog" aria-label="Remove character">
