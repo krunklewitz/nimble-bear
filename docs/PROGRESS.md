@@ -21,8 +21,8 @@
 
 ### Phase 1, built 2026-11-26
 - Vite 8 + React 19 + TypeScript 6 (strict) + Zod 4 + Vitest 5 + ESLint 10. Extra dev deps: jsdom, @testing-library/react (UI tests), globals.
--  builds the Owlbear manifest with absolute URLs (dev: localhost:5173, prod: krunklewitz.github.io/nimble-bear/). Served in dev, written to dist/ on build.
-- : Owlbear implementation + mock (normal tab) + storage capability checks. ESLint blocks React/SDK/storage in  and the SDK in .
+- `manifest.config.ts` builds the Owlbear manifest with absolute URLs (dev: localhost:5173, prod: krunklewitz.github.io/nimble-bear/). Served in dev, written to dist/ on build.
+- `src/platform/`: Owlbear implementation + mock (normal tab) + storage capability checks. ESLint blocks React/SDK/storage in `src/rules/` and the SDK in `src/ui/`.
 - UI: welcome screen with the exact license notice, About page (notice, attribution, unofficial statement, SRD 5.1 notice), placeholder home, Storage check screen.
 - GitHub Actions: typecheck, lint, test, build, no-PDF guard, deploy to Pages.
 - npm audit: 2 moderate (uuid inside @owlbear-rodeo/sdk; advisory only affects v3/v5/v6 with a caller-supplied buffer). No fix available upstream.
