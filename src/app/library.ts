@@ -192,6 +192,33 @@ export class CharacterLibrary {
     return id;
   }
 
+  /** Adds a character built elsewhere (the creation wizard) and opens it. */
+  async add(character: Character): Promise<string> {
+    const parsed = CharacterSchema.parse(character);
+    this.entries.set(parsed.id, { status: "ok", id: parsed.id, character: parsed, checksum: await checksumOf(parsed, this.deps.hash), meta: emptyMeta() });
+    this.scheduleWrite(parsed.id);
+    await this.setActive(parsed.id);
+    return parsed.id;
+  }
+
+  /** Small per-device settings (e.g. the creation wizard's resumable draft). */
+  getSetting(key: string): Promise<string | undefined> {
+    return this.deps.store.getSetting(key);
+  }
+  async putSetting(key: string, value: string): Promise<void> {
+    await this.deps.store.putSetting(key, value);
+  }
+
+  /** Snapshot before a level-up (DESIGN §5.3). */
+  async snapshotBeforeLevelUp(id: string) {
+    const entry = this.entries.get(id);
+    if (entry) await this.snapshotEntry(entry, "before-level-up");
+  }
+
+  newId(): string {
+    return this.deps.newId();
+  }
+
   /** Applies a change in memory at once, then autosaves. `label` names it for Undo. */
   update(id: string, change: (draft: Character) => void, label = "Change"): void {
     const entry = this.entries.get(id);
