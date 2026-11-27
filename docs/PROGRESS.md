@@ -31,6 +31,6 @@
 - Deployed by GitHub Actions to https://krunklewitz.github.io/nimble-bear/ (manifest served with CORS *).
 - Installed in Owlbear and opened in a real room in desktop Chrome 158.
 - Storage check inside Owlbear: download, file picker, IndexedDB (incl. surviving popover close/reopen), persistent storage, clipboard read/write and pop-out all work. Save dialog (showSaveFilePicker) is blocked in cross-origin iframes. Details: DESIGN.md §5.4.
-- Not reported: whether the paw icon is easy to see in Owlbear.
+- Paw icon confirmed easy to see in Owlbear.
 
 ### Next: Phase 2 (Persistence), after the gate
