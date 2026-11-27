@@ -307,7 +307,7 @@ Importing Ember Vault characters: technically easy (YAML frontmatter → our `bu
 
 ### Optional rules relevant to these four classes
 
-Sources: Core p.9 (PDF 5), p.21 (PDF 11), p.33 (PDF 17), p.54–55 (PDF 28); GMG p.75 (PDF 38). Each one that's built becomes a table setting stored in the character file (default off).
+Sources: Core p.9 (PDF 5), p.21 (PDF 11), p.33 (PDF 17), p.54–55 (PDF 28); GMG p.75 (PDF 38). **Decision (2026-11-26): the table uses only Deflect!** It is the only optional rule built (Phase 3, Shepherd's Defend option), as a character setting that defaults to on. The rest of this table is reference only; nothing else is built.
 
 | Optional rule | What it changes on the sheet | Who it matters for | Plan |
 |---|---|---|---|

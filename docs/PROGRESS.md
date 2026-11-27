@@ -17,8 +17,7 @@
 - Owlbear Rodeo account: user has one.
 - Extension URL will be https://krunklewitz.github.io/nimble-bear/ (Pages set up in Phase 1).
 
-### Still needed from the user
-- Which optional rules the table uses (DESIGN.md §11). Needed by Phase 3.
+- Optional rules: only **Deflect!** (Core p.33). No other optional rules.
 
 ### Next: Phase 1
 Skeleton, license notice screen, manifest, GitHub Pages deploy, iframe capability spike (download / file picker / IndexedDB / clipboard in desktop Chrome).
