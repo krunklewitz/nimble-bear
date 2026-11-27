@@ -7,7 +7,8 @@ Read first: `nimble-sheet-prompt.md` (requirements, decides what gets built), `d
 - `reference/` and `private/` are git-ignored. Never commit, upload or deploy them. No monster data in the public build.
 - Read PDFs in page ranges (`pdftotext -f N -l N -layout`). Pages are 2-page spreads: PDF n = printed 2n−2/2n−1 (Monsters & More: 2n−6/2n−5). Spot-check tables against `pdftoppm` images.
 - Persistence is the top priority: every change autosaves; the character file is the durable copy; never overwrite newer data without asking; snapshots before load/level-up/migration.
-- Layers: `rules/` pure TS (no React/SDK/storage); `platform/` is the only code touching Owlbear, files or storage (with mocks); `ui/` has no rules logic.
+- Layers: `rules/` pure TS (no React/SDK/storage); `platform/` is the only code touching Owlbear, files or storage (with mocks); `app/` is glue with no React (character library); `ui/` has no rules logic. ESLint enforces these.
+- Save format changes: bump CURRENT_SCHEMA_VERSION, add MIGRATIONS[n], keep old fixtures in tests/fixtures/saves/vN/ forever, regenerate the new one with UPDATE_FIXTURES=1.
 - Check Owlbear SDK APIs against https://docs.owlbear.rodeo/extensions/ before use (WebFetch gets 403; use the browser).
 - One phase at a time. Gate: typecheck, lint, tests, build, commit, manual test steps, then stop for approval. Don't weaken tests.
 

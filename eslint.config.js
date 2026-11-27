@@ -29,6 +29,19 @@ export default tseslint.config(
     },
   },
   {
+    // app/ is glue: uses rules/ and platform interfaces, never React, the SDK, or storage directly.
+    files: ["src/app/**/*.ts"],
+    rules: {
+      "no-restricted-imports": ["error", {
+        patterns: [
+          { group: ["react", "react-dom", "@owlbear-rodeo/*"], message: "app/ has no React or SDK code." },
+          { group: ["**/ui/**"], message: "app/ must not depend on ui/." },
+        ],
+      }],
+      "no-restricted-globals": ["error", "indexedDB", "localStorage", "sessionStorage", "document"],
+    },
+  },
+  {
     // Only platform/ may talk to Owlbear.
     files: ["src/ui/**/*.{ts,tsx}", "src/data/**/*.ts"],
     rules: {

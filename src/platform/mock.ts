@@ -46,5 +46,6 @@ export function createMockPlatform(options: MockOptions = {}): Platform {
       notices.push(message);
       console.info(`[notification] ${message}`);
     },
+    setUnsavedBadge: async () => undefined,
   };
 }

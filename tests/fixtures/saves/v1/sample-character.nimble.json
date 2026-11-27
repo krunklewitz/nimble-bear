@@ -1,0 +1,122 @@
+{
+  "format": "nimble-bear/character",
+  "schemaVersion": 1,
+  "appVersion": "fixture",
+  "savedAt": "2026-11-27T14:00:00.000Z",
+  "checksum": "sha256:73e587b3984d4f9cad010cc8688d00e73cc96661ae58fc951685efaf74d8f45c",
+  "character": {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "revision": 7,
+    "createdAt": "2026-11-27T12:00:00.000Z",
+    "updatedAt": "2026-11-27T13:00:00.000Z",
+    "name": "Test Hero",
+    "content": {
+      "core": "3.2",
+      "test-class": "1.0"
+    },
+    "build": {
+      "stats": {
+        "method": "standard",
+        "assign": {
+          "STR": 2,
+          "DEX": 2,
+          "INT": 0,
+          "WIL": -1
+        }
+      },
+      "ancestry": {
+        "id": "ancestry.test",
+        "choices": {
+          "size": [
+            "small"
+          ]
+        }
+      },
+      "background": {
+        "id": "background.test",
+        "choices": {}
+      },
+      "languages": [
+        "common"
+      ],
+      "levels": [
+        {
+          "level": 1,
+          "classId": "class.test",
+          "hp": {
+            "method": "starting",
+            "value": 10
+          },
+          "skill": {
+            "add": null,
+            "move": null
+          },
+          "choices": {}
+        },
+        {
+          "level": 2,
+          "classId": "class.test",
+          "hp": {
+            "method": "average",
+            "value": 4
+          },
+          "skill": {
+            "add": "skill.a",
+            "move": {
+              "from": "skill.b",
+              "to": "skill.c"
+            }
+          },
+          "choices": {
+            "choice.x": [
+              "opt.y"
+            ]
+          }
+        }
+      ]
+    },
+    "play": {
+      "hp": 11,
+      "tempHp": 3,
+      "wounds": 1,
+      "hitDiceSpent": 1,
+      "resources": {
+        "res.dice": {
+          "current": 1,
+          "faces": [
+            3
+          ]
+        },
+        "res.count": {
+          "current": 2
+        }
+      },
+      "conditions": [
+        {
+          "id": "condition.test",
+          "note": "until end of turn"
+        }
+      ],
+      "inventory": [
+        {
+          "itemId": "item.test",
+          "name": "Test Item",
+          "qty": 2,
+          "equipped": true,
+          "notes": ""
+        }
+      ],
+      "gold": 12.5,
+      "notes": "Unicode check: é ñ ü — “quotes” 🐻",
+      "restChoices": {
+        "feature.rest": "opt.a"
+      }
+    },
+    "overrides": {
+      "defense": 7
+    },
+    "settings": {
+      "deflect": true
+    }
+  }
+}

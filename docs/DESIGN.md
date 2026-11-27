@@ -38,7 +38,8 @@ src/
   data/       content JSON + Zod schemas (classes, ancestries, backgrounds, items, spells, conditions, boons)
   rules/      pure TS: formulas, dice, derivation, actions, resources, rests, leveling, migrations, encounters
   platform/   the only code touching Owlbear, files, IndexedDB, clipboard; each with a mock
-  ui/         React components; call rules/ and platform/ through small hooks; no rules logic
+  app/        glue (no React): character library: autosave, file load/save, snapshots, migrations of stored data
+  ui/         React components; call rules/, app/ and platform/ through small hooks; no rules logic
 tests/
   fixtures/saves/v1/…   every save-format version, kept forever
   fixtures/builds/…     quick-build heroes from the class PDFs, with expected derived numbers
@@ -199,7 +200,7 @@ LevelRecord { level, classId, hp: {method: "roll"|"average", value}, skill: {add
 
 ```json
 {
-  "format": "nimble-sheet/character",
+  "format": "nimble-bear/character",
   "schemaVersion": 1,
   "appVersion": "0.2.0",
   "savedAt": "2026-11-26T21:04:00Z",
@@ -223,7 +224,7 @@ LevelRecord { level, classId, hp: {method: "roll"|"average", value}, skill: {add
 4. **Prompts:** after a level-up ("Save your character file now?") and from an **End session** button (shows the save step, then marks the session ended). Nothing depends on close/unload warnings.
 5. **Migrations:** `migrations[n]: (vN) → vN+1`, pure and tested. `tests/fixtures/saves/vN/*.json` is kept forever; CI loads every fixture through the whole chain, then validates and derives.
 6. **Room/token metadata:** only `{ characterId, name, hp, hpMax, wounds, woundsMax }`-sized summaries; never the sheet.
-7. **GM collection (Phase 5–6):** players can send a party summary over broadcast (≤16 KB, well within for a summary), or the full file by download → GM loads it. The GM's campaign file (encounters, monsters, reveals) is a separate format, `nimble-sheet/campaign`, saved and loaded the same way.
+7. **GM collection (Phase 5–6):** players can send a party summary over broadcast (≤16 KB, well within for a summary), or the full file by download → GM loads it. The GM's campaign file (encounters, monsters, reveals) is a separate format, `nimble-bear/campaign`, saved and loaded the same way.
 
 ### 5.4 Spike results and fallbacks (Phase 1, 2026-11-27, desktop Chrome 158 inside Owlbear)
 

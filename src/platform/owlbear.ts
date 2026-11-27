@@ -1,5 +1,6 @@
 // Owlbear Rodeo implementation. APIs checked against docs.owlbear.rodeo/extensions
-// (OBR.onReady/isReady, player.getRole/getName, theme.getTheme/onChange, notification.show).
+// (OBR.onReady/isReady, player.getRole/getName, theme.getTheme/onChange, notification.show,
+// action.setBadgeText/setBadgeBackgroundColor).
 import OBR, { type Theme } from "@owlbear-rodeo/sdk";
 import type { AppTheme, NotifyVariant, Platform, Role } from "./types";
 
@@ -29,6 +30,15 @@ export function createOwlbearPlatform(): Platform {
     onThemeChange: (callback) => OBR.theme.onChange((theme) => callback(toAppTheme(theme))),
     notify: async (message: string, variant?: NotifyVariant) => {
       await OBR.notification.show(message, variant);
+    },
+    setUnsavedBadge: async (unsaved: boolean) => {
+      // Badge text undefined removes the badge (docs: action.setBadgeText).
+      if (unsaved) {
+        await OBR.action.setBadgeBackgroundColor("#d4a72c");
+        await OBR.action.setBadgeText("!");
+      } else {
+        await OBR.action.setBadgeText(undefined);
+      }
     },
   };
 }

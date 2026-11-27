@@ -25,4 +25,6 @@ export interface Platform {
   /** Returns an unsubscribe function. */
   onThemeChange(callback: (theme: AppTheme) => void): () => void;
   notify(message: string, variant?: NotifyVariant): Promise<void>;
+  /** Shows or clears a marker on the extension icon (Owlbear action badge). */
+  setUnsavedBadge(unsaved: boolean): Promise<void>;
 }

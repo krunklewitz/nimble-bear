@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 1 gate passed; waiting for approval to start Phase 2
+## Current: Phase 2 (Persistence) built; waiting for the restore proof
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -33,4 +33,17 @@
 - Storage check inside Owlbear: download, file picker, IndexedDB (incl. surviving popover close/reopen), persistent storage, clipboard read/write and pop-out all work. Save dialog (showSaveFilePicker) is blocked in cross-origin iframes. Details: DESIGN.md §5.4.
 - Paw icon confirmed easy to see in Owlbear.
 
-### Next: Phase 2 (Persistence), after the gate
+### Phase 2, built 2026-11-27 (v0.2.0)
+- Character format v1 (Zod, strict): choices + play state only. File envelope nimble-bear/character with SHA-256 checksum of canonical JSON; names like Name_L1_2026-11-27.nimble.json.
+- Load rules: new or same load directly; a newer file replaces only when nothing local is unsaved (snapshot first); anything else shows both copies (keep local / use file / keep both). Invalid files change nothing. After loading, the stored copy is read back and compared to the file checksum (shown as "Restored exactly").
+- IndexedDB store (characters, snapshots, settings) with in-memory fallback; autosave on every change; snapshots before load, restore, delete and stored-data migration (20 per character kept, migration ones kept forever); deleted characters recoverable.
+- Screens: character list, test sheet (stand-in fields), load review / compare, snapshots, End session; badge on the Owlbear icon while unsaved.
+- Migrations framework + v1 fixture (tests/fixtures/saves/v1/). New dev dep: fake-indexeddb (tests run the real IndexedDB code).
+- Deferred to Phase 3: per-change undo stack (comes with rules events), level-up save prompt and snapshots (level-up doesn't exist yet).
+
+### Phase 2 gate (needs the user)
+- In Owlbear: create a test character, change values, save file, close and reopen (still there).
+- Clear site data, reopen (list empty), load the file: expect "Restored exactly" and the same fingerprint.
+- In a second Chrome profile: install the extension, load the file: expect "Restored exactly" and the same fingerprint.
+
+### Next: Phase 3 (dice, rules core, The Cheat + Shepherd to level 3), after the gate
