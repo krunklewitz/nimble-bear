@@ -188,6 +188,23 @@ for (const [kind, makeStore] of stores) {
       expect((await store.getCharacter("bad"))?.character).toEqual({ name: "Oops", revision: "x" });
     });
 
+    it("undoes changes in order and keeps revisions increasing", async () => {
+      const { store, lib } = await open();
+      const id = await lib.create("Brakka");
+      lib.update(id, (d) => void (d.play.hp = 5), "Set HP");
+      lib.update(id, (d) => void (d.play.gold = 9), "Set gold");
+      expect(lib.undoLabel(id)).toBe("Set gold");
+      expect(lib.undo(id)).toBe(true);
+      let e = lib.get(id);
+      expect(e?.status === "ok" && [e.character.play.hp, e.character.play.gold, e.character.revision]).toEqual([5, 0, 3]);
+      expect(lib.undo(id)).toBe(true);
+      e = lib.get(id);
+      expect(e?.status === "ok" && [e.character.play.hp, e.character.revision]).toEqual([0, 4]);
+      expect(lib.undo(id)).toBe(false);
+      await lib.flush();
+      expect(((await store.getCharacter(id))?.character as { play: { hp: number } }).play.hp).toBe(0);
+    });
+
     it("records the end of a session", async () => {
       const { store, lib } = await open();
       const id = await lib.create("Brakka");

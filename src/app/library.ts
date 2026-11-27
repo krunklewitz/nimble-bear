@@ -9,6 +9,7 @@ import { CURRENT_SCHEMA_VERSION, migrateCharacter } from "../rules/persistence/m
 import type { CharacterRecord, CharacterStore, SnapshotReason, SnapshotRecord } from "../platform/storage/types";
 
 export const SNAPSHOTS_KEPT_PER_CHARACTER = 20;
+export const UNDO_STEPS = 50;
 const ACTIVE_KEY = "activeCharacterId";
 
 export interface LibraryDeps {
@@ -68,6 +69,8 @@ export class CharacterLibrary {
   activeId: string | null = null;
   /** Last error writing to browser storage, shown to the player. */
   storageError: string | null = null;
+  /** Earlier states for Undo, newest last (this session only). */
+  private readonly undoStack = new Map<string, { label: string; character: Character }[]>();
 
   private constructor(private readonly deps: LibraryDeps) {}
 
@@ -189,10 +192,14 @@ export class CharacterLibrary {
     return id;
   }
 
-  /** Applies a change in memory at once, then autosaves. */
-  update(id: string, change: (draft: Character) => void): void {
+  /** Applies a change in memory at once, then autosaves. `label` names it for Undo. */
+  update(id: string, change: (draft: Character) => void, label = "Change"): void {
     const entry = this.entries.get(id);
     if (entry?.status !== "ok") return;
+    const stack = this.undoStack.get(id) ?? [];
+    stack.push({ label, character: entry.character });
+    if (stack.length > UNDO_STEPS) stack.shift();
+    this.undoStack.set(id, stack);
     const character = edit(entry.character, this.iso(), change);
     const parsed = CharacterSchema.safeParse(character);
     if (!parsed.success) throw new Error(`Invalid change: ${parsed.error.issues[0]?.message ?? "unknown"}`);
@@ -200,6 +207,25 @@ export class CharacterLibrary {
     this.changed();
     this.scheduleWrite(id);
     void this.refreshChecksum(id);
+  }
+
+  /** Label of the change Undo would reverse, or null. */
+  undoLabel(id: string): string | null {
+    const stack = this.undoStack.get(id);
+    return stack?.[stack.length - 1]?.label ?? null;
+  }
+
+  /** Reverses the latest change. The revision still goes up, so files and comparisons stay correct. */
+  undo(id: string): boolean {
+    const entry = this.entries.get(id);
+    const previous = this.undoStack.get(id)?.pop();
+    if (entry?.status !== "ok" || !previous) return false;
+    const restored: Character = { ...structuredClone(previous.character), revision: entry.character.revision + 1, updatedAt: this.iso() };
+    this.entries.set(id, { ...entry, character: restored, checksum: null });
+    this.changed();
+    this.scheduleWrite(id);
+    void this.refreshChecksum(id);
+    return true;
   }
 
   // ---- saving to a file ----
@@ -295,6 +321,7 @@ export class CharacterLibrary {
     const existing = this.entries.get(id);
     if (existing) await this.snapshotEntry(existing, "before-load");
     await this.flush();
+    this.undoStack.delete(id); // a loaded file starts a fresh history
     const entry: Entry = { status: "ok", id, character: parsed.character, checksum: parsed.checksum, meta: savedMeta };
     this.entries.set(id, entry);
     this.dirty.delete(id);
