@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 2 (Persistence) built; waiting for the restore proof
+## Current: Phase 2 gate passed; waiting for approval to start Phase 3
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -41,9 +41,10 @@
 - Migrations framework + v1 fixture (tests/fixtures/saves/v1/). New dev dep: fake-indexeddb (tests run the real IndexedDB code).
 - Deferred to Phase 3: per-change undo stack (comes with rules events), level-up save prompt and snapshots (level-up doesn't exist yet).
 
-### Phase 2 gate (needs the user)
-- In Owlbear: create a test character, change values, save file, close and reopen (still there).
-- Clear site data, reopen (list empty), load the file: expect "Restored exactly" and the same fingerprint.
-- In a second Chrome profile: install the extension, load the file: expect "Restored exactly" and the same fingerprint.
+### Phase 2 gate, passed 2026-11-27
+- In Owlbear (Chrome): test character autosaved, saved to file, survived closing/reopening the panel and a page reload.
+- After deleting owlbear.rodeo site data in Chrome: welcome screen and empty list (data really cleared); loading the file showed "Restored exactly", fingerprint 823cf2b2.
+- In a second, fresh Chrome profile joining the same room: loading the file showed "Restored exactly", fingerprint 823cf2b2.
+- Part A fingerprint not recorded by the user; "Restored exactly" compares against the file checksum written in Part A, so B and C match it.
 
 ### Next: Phase 3 (dice, rules core, The Cheat + Shepherd to level 3), after the gate
