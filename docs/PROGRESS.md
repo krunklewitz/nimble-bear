@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 0 done; ready for Phase 1
+## Current: Phase 1 (Skeleton, license notice, deploy), built; waiting for the Owlbear install test
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -19,5 +19,17 @@
 
 - Optional rules: only **Deflect!** (Core p.33). No other optional rules.
 
-### Next: Phase 1
-Skeleton, license notice screen, manifest, GitHub Pages deploy, iframe capability spike (download / file picker / IndexedDB / clipboard in desktop Chrome).
+### Phase 1, built 2026-11-26
+- Vite 8 + React 19 + TypeScript 6 (strict) + Zod 4 + Vitest 5 + ESLint 10. Extra dev deps: jsdom, @testing-library/react (UI tests), globals.
+-  builds the Owlbear manifest with absolute URLs (dev: localhost:5173, prod: krunklewitz.github.io/nimble-bear/). Served in dev, written to dist/ on build.
+- : Owlbear implementation + mock (normal tab) + storage capability checks. ESLint blocks React/SDK/storage in  and the SDK in .
+- UI: welcome screen with the exact license notice, About page (notice, attribution, unofficial statement, SRD 5.1 notice), placeholder home, Storage check screen.
+- GitHub Actions: typecheck, lint, test, build, no-PDF guard, deploy to Pages.
+- npm audit: 2 moderate (uuid inside @owlbear-rodeo/sdk; advisory only affects v3/v5/v6 with a caller-supplied buffer). No fix available upstream.
+
+### Phase 1 gate (needs the user)
+- Enable Pages (Settings → Pages → Source: GitHub Actions); confirm the deploy succeeded.
+- Install https://krunklewitz.github.io/nimble-bear/manifest.json in Owlbear, open it in a room, run the Storage check, paste results here.
+- Unverified: whether Owlbear shows the black-stroke icon well in dark mode.
+
+### Next: Phase 2 (Persistence), after the gate
