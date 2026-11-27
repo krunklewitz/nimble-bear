@@ -1,7 +1,7 @@
 // The character library: glue between pure rules (src/rules/persistence) and storage
 // (src/platform/storage). No React. Owns autosave, file save/load, snapshots and
 // migration of stored data. Persistence rules: DESIGN.md §5.3.
-import { CharacterV1, edit, newCharacter, type Character } from "../rules/persistence/character";
+import { CharacterSchema, edit, newCharacter, type Character } from "../rules/persistence/character";
 import { checksumOf, type Hasher } from "../rules/persistence/canonical";
 import { buildCharacterFile, characterFileName, parseCharacterFile } from "../rules/persistence/fileFormat";
 import { decideLoad, emptyMeta, type SaveMeta } from "../rules/persistence/loadDecision";
@@ -194,7 +194,7 @@ export class CharacterLibrary {
     const entry = this.entries.get(id);
     if (entry?.status !== "ok") return;
     const character = edit(entry.character, this.iso(), change);
-    const parsed = CharacterV1.safeParse(character);
+    const parsed = CharacterSchema.safeParse(character);
     if (!parsed.success) throw new Error(`Invalid change: ${parsed.error.issues[0]?.message ?? "unknown"}`);
     this.entries.set(id, { ...entry, character: parsed.data, checksum: null });
     this.changed();

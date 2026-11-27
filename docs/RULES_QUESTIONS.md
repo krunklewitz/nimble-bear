@@ -31,6 +31,30 @@ Core p.12 (PDF 7): a single-digit total gives 1 action, 2 digits gives 2, and 20
 ### RQ-006 · Monsters & More is incomplete
 v0.1 has placeholder text and blank pages from PDF 102. Plan: don't use it for data until a later version. Use the GMG Bestiary for the Phase 5 encounter builder. `unverified`.
 
+### RQ-007 · Vicious: one extra die per crit, or per exploding roll?
+Core p.34 (PDF 18): "Vicious. Roll 1 additional die whenever you roll crit damage." and the sidebar "Every time you roll crit damage, roll the additional Vicious die as well!" Planned reading: one Vicious die with every crit roll (each explosion). Status: unverified.
+
+### RQ-008 · Which weapons are "blades"?
+The Core Rules never define it (only flavor text on p.23–24). Used by Hexbinder ("Weapons: Blades, Wands") and The Cheat level 20 Supreme Execution. Not needed until Phase 4. Status: unverified.
+
+### RQ-009 · What is KEY when a hero's two Key Stats differ?
+Core p.7 (PDF 4): "When an ability or spell references KEY, use one of your Key Stats." Planned: use the higher Key Stat (shown, and overridable). Status: unverified.
+
+### RQ-010 · Gambler "All In": what die, and what is "higher than average"?
+Cheat PDF 7 (printed 13): "Roll a single All In die; if it rolls higher than average, maximize ALL of your Sneak Attack dice; otherwise minimize them." No die size is given. Planned: roll one die of your Sneak Attack die size; higher than average means above half its max (e.g. 4+ on a d6). Status: unverified.
+
+### RQ-011 · Luminary of the Forge: does Master of Twilight's Necrotic pick become Fire?
+Shepherd PDF 7: Flameworker "Exchange knowledge of the Necrotic spell school for Fire." Master of Twilight (L3): "Choose 1 Necrotic and 1 Radiant Utility Spell." Planned: yes, for a Forge Shepherd the Necrotic utility pick becomes a Fire utility pick. Status: unverified.
+
+### RQ-012 · Forge Seasoned Journeyman: scope of the bonuses
+"Weaponsmith. Your weapons gain +STR damage" (weapon attacks only, not spells or the spirit?) and "Armorsmith. Your armor gains +STR Defense" (only while wearing armor?). Planned: weapon attacks only; Defense bonus only while wearing armor. Status: unverified.
+
+### RQ-013 · Unarmed Strike damage type
+Core p.34: "roll 1d4+STR"; no damage type or properties. Planned: bludgeoning is NOT assumed; shown as "unarmed". Status: unverified.
+
+### RQ-014 · Gnome "Optimistic" reset
+Core p.23: "Allow an ally to reroll any 1 die; resets when healed to max HP." Planned: one use, refilled when you're healed to max HP. Status: unverified.
+
 ## Resolved
 
 ### RQ-R1 · Which die is the Primary Die after advantage/disadvantage?
@@ -38,3 +62,6 @@ Core p.9 (PDF 5), checked against the page image: roll the extra dice, remove th
 
 ### RQ-R2 · Epic Boons location
 Classes cite "pg. 75 of the Game Master's Guide". Confirmed at GMG PDF 38 (printed 75).
+
+### RQ-R3 · Starting skill points
+The quick builds have 4 more skill points than "mark your stat values" (Core p.20) explains. Core Glossary p.56 (PDF 29): "Skill Points. Use them to increase your skills. Start with 4 at level 1 and gain 1 each level." Both quick builds (Cheat PDF 9, Shepherd PDF 9) match this. Moving a point may take a skill below its stat value (Shepherd quick build level 2: Naturecraft +3 → +2).

@@ -16,12 +16,12 @@ export function sampleCharacter(): Character {
     background: { id: "background.test", choices: {} },
     languages: ["common"],
     levels: [
-      { level: 1, classId: "class.test", hp: { method: "starting", value: 10 }, skill: { add: null, move: null }, choices: {} },
+      { level: 1, classId: "class.test", hp: { method: "starting", value: 10 }, skillPoints: { stealth: 2, finesse: 1, influence: 1 }, choices: {} },
       {
         level: 2,
         classId: "class.test",
         hp: { method: "average", value: 4 },
-        skill: { add: "skill.a", move: { from: "skill.b", to: "skill.c" } },
+        skillPoints: { stealth: 1, arcana: -1, finesse: 1 },
         choices: { "choice.x": ["opt.y"] },
       },
     ],
@@ -37,6 +37,9 @@ export function sampleCharacter(): Character {
     gold: 12.5,
     notes: "Unicode check: é ñ ü — “quotes” 🐻",
     restChoices: { "feature.rest": "opt.a" },
+    combat: { active: true, round: 2, actions: 1, attacks: { hero: 1 }, reactionsUsed: ["defend"] },
+    uses: { "feature.test": 1 },
+    flags: { companion: true },
   };
   c.overrides = { defense: 7 };
   c.settings = { deflect: true };

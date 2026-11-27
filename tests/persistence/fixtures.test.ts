@@ -55,3 +55,22 @@ describe("saved-file fixtures", () => {
     expect(migrateCharacter({}, CURRENT_SCHEMA_VERSION + 1).ok).toBe(false);
   });
 });
+
+describe("v1 → v2 migration", () => {
+  it("turns level skill records into point maps and adds combat state", async () => {
+    const text = readFileSync(join(root, "v1", "sample-character.nimble.json"), "utf8");
+    const parsed = await parseCharacterFile(text, nodeHash);
+    expect(parsed.ok).toBe(true);
+    if (!parsed.ok) return;
+    expect(parsed.migratedFrom).toBe(1);
+    // v1 level 2 had { add: "skill.a", move: { from: "skill.b", to: "skill.c" } }.
+    expect(parsed.character.build.levels[1]?.skillPoints).toEqual({ "skill.a": 1, "skill.b": -1, "skill.c": 1 });
+    expect(parsed.character.build.levels[0]?.skillPoints).toEqual({});
+    expect(parsed.character.play.combat).toEqual({ active: false, round: 0, actions: 3, attacks: {}, reactionsUsed: [] });
+    expect(parsed.character.play.uses).toEqual({});
+    expect(parsed.character.play.flags).toEqual({});
+    // Everything else is carried over unchanged.
+    expect(parsed.character.play.notes).toBe("Unicode check: é ñ ü — “quotes” 🐻");
+    expect(parsed.character.revision).toBe(7);
+  });
+});
