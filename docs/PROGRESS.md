@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 2 gate passed; waiting for approval to start Phase 3
+## Current: Phase 3 in progress (rules engine done; UI not started)
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -47,4 +47,19 @@
 - In a second, fresh Chrome profile joining the same room: loading the file showed "Restored exactly", fingerprint 823cf2b2.
 - Part A fingerprint not recorded by the user; "Restored exactly" compares against the file checksum written in Part A, so B and C match it.
 
-### Next: Phase 3 (dice, rules core, The Cheat + Shepherd to level 3), after the gate
+
+### Phase 3, in progress (2026-11-27)
+Done and committed (127 tests passing):
+- Content schema (src/data/schema.ts), extraction guide (docs/EXTRACTION.md), validation test (tests/content.test.ts).
+- Data extracted by subagents and independently reviewed against page images (no errors found; review fixes applied): ancestries, backgrounds, conditions, armor/shields/weapons/gear, Radiant/Necrotic/Fire spells (+utility), Lifebinding Spirit, The Cheat and Shepherd levels 1-3 with all subclasses at level 3. Core rules values in core/rules.json.
+- Rules engine: formula language (rules/formula.ts), dice engine per Core p.9/p.14 (rules/dice.ts), derivation (rules/derive.ts; quick builds Stabs! and Grace match printed numbers at L1-2), play rules (rules/play.ts: damage/Wounds/Dying, healing, Hit Dice, Field/Safe Rest, combat turns, costs, Rushed Attacks), creation and level-up rules (rules/build.ts).
+- Save format v2 with v1 migration + fixtures; undo (last 50 per session) in the library.
+- Platform: crypto RNG (platform/random.ts), roll broadcast sendRoll/onRoll on channel com.krunklewitz.nimble-bear/roll (platform/owlbear.ts).
+- Roll service (app/rolls.ts): option handling, roll outcome, breakdown text, RollLog. NOT yet tested.
+
+Remaining for Phase 3:
+1. Tests for app/rolls.ts.
+2. UI: creation wizard (class, ancestry, background, stats, skills, languages, equipment, name; resumable draft; back clears invalid choices), real sheet replacing the test sheet (tabs: Play, Actions, Spells, Features, Gear, Notes; HP damage/heal, temp HP, Wounds, resources, conditions, toggles, overrides), roll dialog (advantage, options, privacy, change Primary Die, pay costs with warnings), roll log, rest buttons, combat bar, level-up wizard (snapshot before, save prompt after, undo last level), Deflect option on Defend for shield users.
+3. docs/AUTOMATION.md listing manual/partial features.
+4. Gate: typecheck, lint, tests, build, deploy, test in Owlbear (create, roll, rest, level up, reload).
+Open rules questions added: RQ-007 to RQ-014 (docs/RULES_QUESTIONS.md).

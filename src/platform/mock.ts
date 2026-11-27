@@ -47,5 +47,7 @@ export function createMockPlatform(options: MockOptions = {}): Platform {
       console.info(`[notification] ${message}`);
     },
     setUnsavedBadge: async () => undefined,
+    sendRoll: async () => undefined,
+    onRoll: () => () => undefined,
   };
 }

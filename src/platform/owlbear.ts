@@ -2,7 +2,13 @@
 // (OBR.onReady/isReady, player.getRole/getName, theme.getTheme/onChange, notification.show,
 // action.setBadgeText/setBadgeBackgroundColor).
 import OBR, { type Theme } from "@owlbear-rodeo/sdk";
-import type { AppTheme, NotifyVariant, Platform, Role } from "./types";
+import type { AppTheme, NotifyVariant, Platform, Role, RollMessage } from "./types";
+
+/** Broadcast channel for rolls (docs: OBR.broadcast, 16 KB limit, destination REMOTE). */
+export const ROLL_CHANNEL = "com.krunklewitz.nimble-bear/roll";
+
+const isRollMessage = (d: unknown): d is RollMessage =>
+  typeof d === "object" && d !== null && (d as RollMessage).v === 1 && typeof (d as RollMessage).label === "string" && Array.isArray((d as RollMessage).detail);
 
 function toAppTheme(theme: Theme): AppTheme {
   return {
@@ -17,6 +23,7 @@ function toAppTheme(theme: Theme): AppTheme {
 }
 
 export function createOwlbearPlatform(): Platform {
+  let role: Role = "PLAYER";
   return {
     host: "owlbear",
     ready: () =>
@@ -24,7 +31,7 @@ export function createOwlbearPlatform(): Platform {
         if (OBR.isReady) resolve();
         else OBR.onReady(() => resolve());
       }),
-    getRole: async (): Promise<Role> => OBR.player.getRole(),
+    getRole: async (): Promise<Role> => (role = await OBR.player.getRole()),
     getPlayerName: () => OBR.player.getName(),
     getTheme: async () => toAppTheme(await OBR.theme.getTheme()),
     onThemeChange: (callback) => OBR.theme.onChange((theme) => callback(toAppTheme(theme))),
@@ -40,6 +47,18 @@ export function createOwlbearPlatform(): Platform {
         await OBR.action.setBadgeText(undefined);
       }
     },
+    sendRoll: async (message: RollMessage) => {
+      if (message.privacy === "self") return;
+      await OBR.broadcast.sendMessage(ROLL_CHANNEL, message, { destination: "REMOTE" });
+    },
+    onRoll: (callback) =>
+      OBR.broadcast.onMessage(ROLL_CHANNEL, (event) => {
+        if (!isRollMessage(event.data)) return;
+        // GM-only rolls reach every client (broadcast can't target one player); non-GMs ignore them.
+        if (event.data.privacy === "gm" && role !== "GM") return;
+        if (event.data.privacy === "self") return;
+        callback(event.data);
+      }),
   };
 }
 

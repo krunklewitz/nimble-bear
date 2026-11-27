@@ -15,6 +15,24 @@ export interface AppTheme {
   primaryContrast: string;
 }
 
+/** A roll shared with the room (kept well under Owlbear's 16 KB broadcast limit). */
+export interface RollMessage {
+  v: 1;
+  id: string;
+  character: string;
+  player: string;
+  label: string;
+  /** e.g. "1d8+2 → 7" */
+  summary: string;
+  total: number;
+  /** Full breakdown, one line per part. */
+  detail: string[];
+  crit: boolean;
+  miss: boolean;
+  privacy: "public" | "gm" | "self";
+  at: string;
+}
+
 export interface Platform {
   readonly host: Host;
   /** Resolves once the host is ready to talk to. */
@@ -27,4 +45,8 @@ export interface Platform {
   notify(message: string, variant?: NotifyVariant): Promise<void>;
   /** Shows or clears a marker on the extension icon (Owlbear action badge). */
   setUnsavedBadge(unsaved: boolean): Promise<void>;
+  /** Sends a roll to other players (public, or GM only). "self" rolls are never sent. */
+  sendRoll(message: RollMessage): Promise<void>;
+  /** Rolls from other players that this player may see. Returns an unsubscribe function. */
+  onRoll(callback: (message: RollMessage) => void): () => void;
 }
