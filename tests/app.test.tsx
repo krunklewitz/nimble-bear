@@ -8,6 +8,8 @@ import { LibraryProvider } from "../src/ui/LibraryContext";
 import { FREE_APP_NOTICE } from "../src/ui/legalText";
 import { PlatformProvider } from "../src/ui/PlatformContext";
 
+const hpLine = (hp: number, max: number) => screen.getByText((_, el) => el?.tagName === "P" && new RegExp(`^${hp} / ${max} HP`).test(el.textContent ?? ""));
+
 function renderApp(store: CharacterStore = createMemoryStore()) {
   return render(
     <PlatformProvider platform={createMockPlatform()}>
@@ -50,36 +52,63 @@ describe("App", () => {
     expect(screen.getByText(/independent product published under the Nimble 3rd Party Creator License/)).toBeTruthy();
   });
 
-  it("creates a character, autosaves edits, and marks it saved after saving a file", async () => {
+  async function createGrace(store = createMemoryStore()) {
     localStorage.setItem("nimble-bear:welcome-seen", "1");
-    const store = createMemoryStore();
     renderApp(store);
-    fireEvent.change(await screen.findByPlaceholderText("Name for a test character"), { target: { value: "Brakka" } });
-    fireEvent.click(screen.getByRole("button", { name: "Create" }));
-    expect(await screen.findByRole("heading", { name: "Brakka" })).toBeTruthy();
-    expect(screen.getByText(/Unsaved changes/)).toBeTruthy();
+    fireEvent.click(await screen.findByRole("button", { name: "+ New hero" }));
+    const next = () => fireEvent.click(screen.getByRole("button", { name: "Next" }));
+    fireEvent.click(await screen.findByRole("radio", { name: /^Shepherd/ }));
+    next();
+    fireEvent.click(screen.getByRole("radio", { name: /^Human/ }));
+    next();
+    fireEvent.click(screen.getByRole("radio", { name: /^Wild One/ }));
+    next();
+    fireEvent.click(screen.getByRole("radio", { name: /^Standard/ }));
+    next();
+    fireEvent.click(screen.getByRole("button", { name: "Add a point to Influence" }));
+    fireEvent.click(screen.getByRole("button", { name: "Add a point to Influence" }));
+    fireEvent.click(screen.getByRole("button", { name: "Add a point to Insight" }));
+    fireEvent.click(screen.getByRole("button", { name: "Add a point to Perception" }));
+    next();
+    next(); // languages (INT -1: none)
+    next(); // class gear
+    fireEvent.change(screen.getByLabelText("Hero name"), { target: { value: "Grace" } });
+    fireEvent.click(screen.getByRole("button", { name: "Create hero" }));
+    return store;
+  }
 
-    fireEvent.click(screen.getByRole("button", { name: "Increase HP" }));
-    await vi.waitFor(async () => {
-      const [record] = await store.listCharacters();
-      expect((record?.character as { play: { hp: number } }).play.hp).toBe(1);
-    });
-
-    fireEvent.click(screen.getByRole("button", { name: "Save character file" }));
-    expect(await screen.findByText(/Saved to file just now/)).toBeTruthy();
-    expect(screen.getByText(/Brakka_L1_.*\.nimble\.json/)).toBeTruthy();
+  it("creates the book's quick-build Shepherd through the wizard", async () => {
+    const store = await createGrace();
+    expect(await screen.findByRole("heading", { name: "Grace" })).toBeTruthy();
+    expect(screen.getByText(/Level 1 Human Shepherd/)).toBeTruthy();
+    expect(hpLine(17, 17)).toBeTruthy();
+    const defense = screen.getByText("Defense").parentElement;
+    expect(defense?.textContent).toContain("8");
+    await vi.waitFor(async () => expect((await store.listCharacters()).length).toBe(1));
   });
 
-  it("reopens on the last open character", async () => {
-    localStorage.setItem("nimble-bear:welcome-seen", "1");
-    const store = createMemoryStore();
-    renderApp(store);
-    fireEvent.change(await screen.findByPlaceholderText("Name for a test character"), { target: { value: "Brakka" } });
-    fireEvent.click(screen.getByRole("button", { name: "Create" }));
-    await screen.findByRole("heading", { name: "Brakka" });
+  it("autosaves damage and marks the hero saved after saving a file", async () => {
+    const store = await createGrace();
+    await screen.findByRole("heading", { name: "Grace" });
+    fireEvent.change(screen.getByLabelText("Amount"), { target: { value: "5" } });
+    fireEvent.click(screen.getByRole("button", { name: "Damage" }));
+    expect(hpLine(12, 17)).toBeTruthy();
+    await vi.waitFor(async () => {
+      const [record] = await store.listCharacters();
+      expect((record?.character as { play: { hp: number } }).play.hp).toBe(12);
+    });
+    fireEvent.click(screen.getByRole("button", { name: /Undo: Take 5 damage/ }));
+    expect(hpLine(17, 17)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Save character file" }));
+    expect(await screen.findByText(/Saved to file just now/)).toBeTruthy();
+  });
+
+  it("reopens on the last open hero", async () => {
+    const store = await createGrace();
+    await screen.findByRole("heading", { name: "Grace" });
     cleanup();
     renderApp(store);
-    expect(await screen.findByRole("heading", { name: "Brakka" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: "Grace" })).toBeTruthy();
   });
 
   it("explains an invalid pasted file and changes nothing", async () => {

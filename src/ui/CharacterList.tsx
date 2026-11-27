@@ -7,6 +7,7 @@ import { useLibrary } from "./LibraryContext";
 
 interface Props {
   onOpen: (id: string) => void;
+  onCreate: () => void;
   onImportText: (text: string) => void;
   onRecover: () => void;
 }
@@ -17,29 +18,20 @@ function Status({ entry }: { entry: Entry }) {
   return <span className="badge pass">Saved {timeAgo(entry.meta.lastSavedAt)}</span>;
 }
 
-export function CharacterList({ onOpen, onImportText, onRecover }: Props) {
+export function CharacterList({ onOpen, onCreate, onImportText, onRecover }: Props) {
   const { library } = useLibrary();
   const fileInput = useRef<HTMLInputElement>(null);
-  const [newName, setNewName] = useState("");
   const [showPaste, setShowPaste] = useState(false);
   const [pasteText, setPasteText] = useState("");
   const [message, setMessage] = useState("");
   const entries = library.list();
-
-  const create = async () => {
-    const name = newName.trim();
-    if (!name) return;
-    const id = await library.create(name);
-    setNewName("");
-    onOpen(id);
-  };
 
   return (
     <section className="screen" aria-labelledby="list-title">
       <h1 id="list-title">Characters</h1>
 
       {entries.length === 0 ? (
-        <p className="small">No characters on this computer yet. Make a test character, or load a character file.</p>
+        <p className="small">No characters on this computer yet. Make a new hero, or load a character file.</p>
       ) : (
         <ul className="char-list">
           {entries.map((e) => (
@@ -65,24 +57,12 @@ export function CharacterList({ onOpen, onImportText, onRecover }: Props) {
         </ul>
       )}
 
-      <form
-        className="row"
-        onSubmit={(ev) => {
-          ev.preventDefault();
-          void create();
-        }}
-      >
-        <label className="grow">
-          <span className="sr-only">New character name</span>
-          <input value={newName} onChange={(ev) => setNewName(ev.target.value)} placeholder="Name for a test character" maxLength={80} />
-        </label>
-        <button type="submit" disabled={!newName.trim()}>
-          Create
-        </button>
-      </form>
+      <button type="button" className="primary wide" onClick={onCreate}>
+        + New hero
+      </button>
 
       <div className="button-grid">
-        <button type="button" className="primary" onClick={() => fileInput.current?.click()}>
+        <button type="button" onClick={() => fileInput.current?.click()}>
           Load character file
         </button>
         <button type="button" onClick={() => setShowPaste((v) => !v)}>

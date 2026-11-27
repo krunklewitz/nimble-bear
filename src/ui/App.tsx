@@ -3,6 +3,9 @@ import { isUnsaved, type ImportPlan } from "../app/library";
 import { About } from "./About";
 import { CharacterList } from "./CharacterList";
 import { CharacterSheet } from "./CharacterSheet";
+import { CreationWizard } from "./CreationWizard";
+import { LevelUpWizard } from "./LevelUpWizard";
+import { RollProvider } from "./RollContext";
 import { ImportReview } from "./ImportReview";
 import { useLibrary } from "./LibraryContext";
 import { usePlatform } from "./PlatformContext";
@@ -14,6 +17,8 @@ type Screen =
   | { name: "welcome" }
   | { name: "list" }
   | { name: "sheet"; id: string }
+  | { name: "create" }
+  | { name: "levelup"; id: string }
   | { name: "import"; plan: ImportPlan }
   | { name: "snapshots"; characterId?: string; back: Screen }
   | { name: "about" }
@@ -63,6 +68,7 @@ export function App({ version }: { version: string }) {
   };
 
   return (
+    <RollProvider>
     <div className="app">
       {memoryOnly && (
         <p className="banner error" role="alert">
@@ -81,12 +87,22 @@ export function App({ version }: { version: string }) {
         {screen.name === "list" && (
           <CharacterList
             onOpen={openSheet}
+            onCreate={() => setScreen({ name: "create" })}
             onImportText={(t) => void importText(t)}
             onRecover={() => setScreen({ name: "snapshots", back: { name: "list" } })}
           />
         )}
         {screen.name === "sheet" && (
-          <CharacterSheet id={screen.id} onBack={toList} onSnapshots={(id) => setScreen({ name: "snapshots", characterId: id, back: screen })} />
+          <CharacterSheet
+            id={screen.id}
+            onBack={toList}
+            onSnapshots={(id) => setScreen({ name: "snapshots", characterId: id, back: screen })}
+            onLevelUp={(id) => setScreen({ name: "levelup", id })}
+          />
+        )}
+        {screen.name === "create" && <CreationWizard onDone={openSheet} onCancel={() => setScreen({ name: "list" })} />}
+        {screen.name === "levelup" && (
+          <LevelUpWizard id={screen.id} onDone={() => setScreen({ name: "sheet", id: screen.id })} />
         )}
         {screen.name === "import" && (
           <ImportReview plan={screen.plan} onDone={(id) => (id ? openSheet(id) : setScreen({ name: "list" }))} onCancel={() => setScreen({ name: "list" })} />
@@ -110,5 +126,6 @@ export function App({ version }: { version: string }) {
         </footer>
       )}
     </div>
+    </RollProvider>
   );
 }

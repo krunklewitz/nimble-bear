@@ -156,7 +156,7 @@ export interface UseCheck {
 }
 
 /** Checks whether an action can be paid for: actions (in combat), mana, resource, limited uses. */
-export function checkUse(draft: Character, sheet: Sheet, action: Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind">, opts: { mana?: number; creature?: string } = {}): UseCheck {
+export function checkUse(draft: Character, sheet: Sheet, action: Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind">, opts: { mana?: number | undefined; creature?: string | undefined } = {}): UseCheck {
   const problems: string[] = [];
   const c = draft.play.combat;
   if (c.active && (action.actions ?? 0) > c.actions) problems.push(`Needs ${action.actions} action${action.actions === 1 ? "" : "s"}, you have ${c.actions}.`);
@@ -177,7 +177,7 @@ export function checkUse(draft: Character, sheet: Sheet, action: Pick<SheetActio
 }
 
 /** Pays for an action. Spending more than you have floors at 0; the player was warned. */
-export function payUse(draft: Character, sheet: Sheet, action: Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind">, opts: { mana?: number; creature?: string } = {}) {
+export function payUse(draft: Character, sheet: Sheet, action: Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind">, opts: { mana?: number | undefined; creature?: string | undefined } = {}) {
   const c = draft.play.combat;
   if (c.active) c.actions = Math.max(0, c.actions - (action.actions ?? 0));
   const mana = opts.mana ?? action.manaCost ?? 0;
