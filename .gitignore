@@ -1,0 +1,19 @@
+# Rulebooks: never commit, upload or deploy
+reference/
+
+# Local-only GM content extracted from the books (monsters etc.)
+private/
+
+# Build and tooling
+node_modules/
+dist/
+coverage/
+.vite/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local settings
+.claude/settings.local.json
+.env
+.env.*
