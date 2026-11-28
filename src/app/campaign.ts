@@ -23,7 +23,7 @@ export interface CampaignDeps {
 export type CampaignImport =
   | { kind: "invalid"; error: string }
   | { kind: "campaign"; campaign: Campaign; checksum: string; checksumMatches: boolean; savedAt: string | null; localUnsaved: boolean }
-  | { kind: "monsters"; monsters: Monster[]; added: number; replaced: number };
+  | { kind: "monsters"; monsters: Monster[]; added: number; replaced: number; skipped: { name: string; reason: string }[] };
 
 export class CampaignBook {
   private campaign: Campaign;
@@ -142,7 +142,7 @@ export class CampaignBook {
     if (parsed.kind === "monsters") {
       const ids = new Set(this.campaign.monsters.map((m) => m.id));
       const replaced = parsed.monsters.filter((m) => ids.has(m.id)).length;
-      return { kind: "monsters", monsters: parsed.monsters, added: parsed.monsters.length - replaced, replaced };
+      return { kind: "monsters", monsters: parsed.monsters, added: parsed.monsters.length - replaced, replaced, skipped: parsed.skipped };
     }
     return { kind: "campaign", campaign: parsed.campaign, checksum: parsed.checksum, checksumMatches: parsed.checksumMatches, savedAt: parsed.savedAt, localUnsaved: this.isUnsaved() };
   }

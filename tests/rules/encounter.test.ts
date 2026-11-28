@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { difficultyOf, encounterCost, encounterWarnings, monsterBudget, parseLevel, suggestedMinionDice } from "../../src/rules/encounter";
+import { difficultyOf, encounterCost, encounterWarnings, legendaryCheck, monsterBudget, parseLevel, suggestedMinionDice } from "../../src/rules/encounter";
 
 describe("encounter budget (GMG p.22–23)", () => {
   it("the budget is the heroes' total level (3 level 2 heroes → 6)", () => {
@@ -47,5 +47,20 @@ describe("encounter budget (GMG p.22–23)", () => {
     expect(suggestedMinionDice(2)).toEqual(["d4", "d6"]);
     expect(suggestedMinionDice(10)).toEqual(["d8", "d10"]);
     expect(suggestedMinionDice(20)).toEqual(["d20"]);
+  });
+});
+
+describe("legendary encounters (GMG p.40)", () => {
+  it("a legendary monster is judged by level against the party, not counted in the budget", () => {
+    const entries = [
+      { level: "5", minion: false, count: 1, legendary: true },
+      { level: "1", minion: false, count: 2 },
+    ];
+    expect(encounterCost(entries, [5, 5, 5, 5])).toBe(2);
+    expect(legendaryCheck("5", [5, 5, 5, 5])?.verdict).toBe("a standard legendary fight");
+    expect(legendaryCheck("4", [5, 5, 5])?.verdict).toBe("easier");
+    expect(legendaryCheck("7", [5, 5])?.verdict).toBe("more challenging");
+    expect(legendaryCheck("9", [5, 5])?.difference).toBe(4);
+    expect(legendaryCheck("5", [])).toBeNull();
   });
 });

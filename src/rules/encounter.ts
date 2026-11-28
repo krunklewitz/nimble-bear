@@ -41,13 +41,19 @@ export interface EncounterEntry {
   level: string;
   minion: boolean;
   count: number;
+  /** Legendary or Solo: judged against the party's level, not the budget. */
+  legendary?: boolean;
 }
 
-/** Monster levels the encounter spends. Minions cost half the party's average level each (RQ-030). */
+/**
+ * Monster levels the encounter spends. Minions cost half the party's average level each (RQ-030).
+ * Legendary monsters aren't counted: they're judged by level instead (legendaryCheck).
+ */
 export function encounterCost(entries: EncounterEntry[], heroLevels: number[]): number {
   const minionCost = averageLevel(heroLevels) / 2;
   let cost = 0;
   for (const e of entries) {
+    if (e.legendary) continue;
     const each = e.minion ? minionCost : parseLevel(e.level);
     if (Number.isFinite(each)) cost += each * Math.max(0, e.count);
   }
@@ -69,6 +75,8 @@ export function difficultyOf(cost: number, budget: number): { difficulty: Diffic
 export function encounterWarnings(entries: EncounterEntry[], heroCount: number): string[] {
   const warnings: string[] = [];
   if (heroCount <= 0) return ["Add the heroes' levels to see the budget."];
+  // A legendary fight is one monster against the whole party: the head-count guidelines don't apply.
+  if (entries.some((e) => e.legendary)) return [];
   const monsters = entries.filter((e) => !e.minion).reduce((n, e) => n + Math.max(0, e.count), 0);
   const minions = entries.filter((e) => e.minion).reduce((n, e) => n + Math.max(0, e.count), 0);
   if (monsters > 3 * heroCount) warnings.push(`${monsters} monsters for ${heroCount} heroes: more than 3 per hero can be far deadlier than the budget suggests (GMG p.22).`);
@@ -90,4 +98,29 @@ const MINION_DICE: { from: number; to: number; die: string }[] = [
 export function suggestedMinionDice(partyLevel: number): string[] {
   const level = Math.max(1, Math.min(20, Math.round(partyLevel)));
   return MINION_DICE.filter((r) => level >= r.from && level <= r.to).map((r) => r.die);
+}
+
+/**
+ * Legendary encounters (GMG PDF 21, printed 40): "a legendary encounter should be equal to a
+ * single hero's level regardless of the number of heroes" ("A level 10 party should face a
+ * level 10 legendary monster"); "for an easier encounter, use the stats 1 or 2 levels lower;
+ * more challenging, 1 or 2 levels higher". Monsters & More Solo monsters are treated the same
+ * (RQ-033), and other monsters alongside one aren't covered by the guideline (RQ-032).
+ */
+export function legendaryCheck(level: string, heroLevels: number[]): { partyLevel: number; difference: number; verdict: string } | null {
+  const lvl = parseLevel(level);
+  if (!heroLevels.length || !Number.isFinite(lvl)) return null;
+  const partyLevel = Math.round(averageLevel(heroLevels));
+  const difference = Math.round(lvl - partyLevel);
+  const verdict =
+    difference === 0
+      ? "a standard legendary fight"
+      : difference < 0
+        ? difference >= -2
+          ? "easier"
+          : "much easier than the book suggests (more than 2 levels lower)"
+        : difference <= 2
+          ? "more challenging"
+          : "much harder than the book suggests (more than 2 levels higher)";
+  return { partyLevel, difference, verdict };
 }

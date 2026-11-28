@@ -106,6 +106,18 @@ GMG PDF 12 (printed 23), checked against the page image: "2 minions/hero: Counts
 ### RQ-031 · Encounter difficulty between the printed percentages
 GMG p.22 names Easy 50%, Medium 75%, Hard 100%, Deadly 125%, Very Deadly 150%, and says "less than [all of the budget]: Medium or Easy; greater than that: Deadly, or Very Deadly". Planned: an encounter gets the highest band whose percentage it reaches (below 50% is still Easy). Status: unverified.
 
+### RQ-032 · Other monsters fighting alongside a Legendary monster
+GMG PDF 21 (printed 40–41): a legendary encounter "should be equal to a single hero's level regardless of the number of heroes", and "'Solo' encounters need not be strictly solo! Legendary creatures may have pets, summon minions, or even come in groups." No cost is given for the extra creatures. Planned: the builder judges the legendary monster by level and shows the normal budget for the others only, with a warning that the book doesn't cover the mix. Status: unverified.
+
+### RQ-033 · Monsters & More "Solo" monsters
+Monsters & More v0.1 prints Solo monsters (e.g. "lvl 2 Solo …", PDF 4, printed 7) with fixed HP rather than HP per hero, and with Bloodied and Last Stand lines, but doesn't say how to budget them. Planned: treated like GMG Legendary monsters (matched to the party's level, act after each hero's turn), using the printed HP as is. Status: unverified.
+
+### RQ-034 · Misprints found while extracting monsters
+- Monsters & More: Oathsworn and Zephyr each have a stat block printed "lvl 64" (PDF 20, printed 38; PDF 21, printed 40), between the lvl 2/6 and lvl 10 versions. Probably 4 or 8. Left as printed; the GM should fix it in the Monsters tab.
+- Monsters & More: Hallway Mimic is "lvl x" (PDF 36, printed 71): its level scales; set to 0 in the monster file with the printed level in its notes.
+- GMG: Druid (PDF 18, printed 35), Doomsayer, Stenchling and Spiny Fiend (PDF 19, printed 36) have no HP number on the page (checked against the page images for Druid). Left blank.
+Status: unverified (needs the GM's call).
+
 ## Resolved
 
 ### RQ-R1 · Which die is the Primary Die after advantage/disadvantage?

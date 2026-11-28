@@ -59,6 +59,12 @@ export function CampaignTab() {
           <p>
             This is a monster file: {plan.monsters.length} monsters ({plan.added} new, {plan.replaced} replacing ones with the same id).
           </p>
+          {plan.skipped.length > 0 && (
+            <p className="small">
+              ⚠ {plan.skipped.length} couldn't be read and will be left out: {plan.skipped.slice(0, 5).map((x) => x.name).join(", ")}
+              {plan.skipped.length > 5 ? "…" : ""}
+            </p>
+          )}
           <button
             type="button"
             className="primary"

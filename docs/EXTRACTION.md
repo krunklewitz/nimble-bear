@@ -86,3 +86,11 @@ List: files written, entry count, every `unverified` entry and why, every effect
 - **Class spell lists** (Hexbinder): spells go in `spells/hexbinder.json` with `school: "hexbinder"`; tier unlock features use `{ type: "spells", list: "hexbinder", maxTier: N }`.
 - **Choosing a spell school** (Hexbinder Coven): `choice` `{ kind: "school" }` (optionally `schools: [...]`).
 - **Upgraded Cantrips / scaling text** stays `text`; the cantrip's own `highLevels` line describes it.
+
+## GM monster files (private, never committed)
+Monsters are never part of the app's data. The GM makes a private monster file from their own PDFs:
+```
+node scripts/extract-monsters.mjs gmg   # reference/NimbleGMG3.0.pdf
+node scripts/extract-monsters.mjs mm    # reference/MonstersAndMore-v0.1.pdf
+```
+Needs Poppler's `pdftohtml` on PATH. Writes `private/monsters/<book>.nimble-monsters.json` (load it in GM tools → Monsters → Load monster file) and `<book>.report.txt`: every block, with `!!` on ones to check against the page. Hand corrections go in `private/monsters/<book>.fixes.json` (`{ "<monster id>": { "name": "…", "removeAbilities": ["…"], "delete": true } }`) and are applied on the next run. `npx vitest run tests/private-monsters.test.ts` checks the files load cleanly (skipped where private/ doesn't exist).

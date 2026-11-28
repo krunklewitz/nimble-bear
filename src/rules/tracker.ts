@@ -3,6 +3,8 @@
 // likes; monsters typically act last, and a monster (or group) acts at the same time each round.
 // Monster armor (Core p.15, PDF 8): Medium −10 damage, Heavy −20; crits ignore armor.
 // Minions (Core p.15; GMG p.4–5): no HP, any damage kills them.
+// Legendary monsters (GMG PDF 20, printed 38–39): HP per hero; Bloodied at half HP; at 0 HP
+// they are Dying and start their Last Stand, regaining the printed HP per hero.
 import type { Campaign, Combatant, Encounter, Monster } from "./persistence/campaign";
 
 export const ARMOR_REDUCTION = { none: 0, medium: 10, heavy: 20 } as const;
@@ -15,10 +17,10 @@ export function damageAfterArmor(amount: number, armor: Combatant["armor"], crit
 
 /** Combatants for an encounter: heroes first (in the order given), then each monster, numbered. */
 export function combatantsFor(encounter: Encounter, monsters: Monster[], heroNames: string[], newId: () => string): Combatant[] {
-  const out: Combatant[] = heroNames
-    .map((n) => n.trim())
-    .filter(Boolean)
-    .map((name) => ({ id: newId(), kind: "hero", name, armor: "none", minion: false, done: false, defeated: false, conditions: [] }));
+  const names = heroNames.map((n) => n.trim()).filter(Boolean);
+  const out: Combatant[] = names.map((name) => ({ id: newId(), kind: "hero", name, armor: "none", minion: false, done: false, defeated: false, conditions: [] }));
+  // Legendary HP is per hero: the heroes named for the fight, else the encounter's hero levels.
+  const heroCount = Math.max(1, names.length || encounter.heroLevels.length);
   for (const entry of encounter.monsters) {
     const m = monsters.find((x) => x.id === entry.monsterId);
     if (!m) continue;
@@ -28,7 +30,7 @@ export function combatantsFor(encounter: Encounter, monsters: Monster[], heroNam
         kind: "monster",
         name: entry.count > 1 ? `${m.name} ${i}` : m.name,
         monsterId: m.id,
-        ...(m.minion || m.hp === undefined ? {} : { hp: m.hp, hpMax: m.hp }),
+        ...hpFor(m, heroCount),
         armor: m.armor,
         minion: m.minion,
         done: false,
@@ -38,6 +40,31 @@ export function combatantsFor(encounter: Encounter, monsters: Monster[], heroNam
     }
   }
   return out;
+}
+
+function hpFor(m: Monster, heroCount: number): Partial<Combatant> {
+  if (m.minion) return {};
+  const hp = m.hpPerHero !== undefined ? m.hpPerHero * heroCount : m.hp;
+  return {
+    ...(hp === undefined ? {} : { hp, hpMax: hp }),
+    ...(m.legendary ? { legendary: true } : {}),
+    ...(m.lastStandHpPerHero !== undefined ? { lastStandHp: m.lastStandHpPerHero * heroCount } : {}),
+  };
+}
+
+/** A Legendary monster at half HP or less, before its Last Stand. */
+export function isBloodied(c: Combatant): boolean {
+  return Boolean(c.legendary) && !c.lastStand && c.hp !== undefined && c.hpMax !== undefined && c.hp > 0 && c.hp <= c.hpMax / 2;
+}
+
+/** Starts a Legendary monster's Last Stand: it regains its Last Stand HP and is Dying until that is gone. */
+export function startLastStand(draft: Campaign, id: string): void {
+  const c = find(draft, id);
+  if (!c || c.lastStand || c.lastStandHp === undefined) return;
+  c.lastStand = true;
+  c.hp = c.lastStandHp;
+  c.hpMax = c.lastStandHp;
+  c.defeated = false;
 }
 
 export function startEncounter(draft: Campaign, encounterId: string, heroNames: string[], newId: () => string): void {
@@ -64,7 +91,12 @@ export function damageCombatant(draft: Campaign, id: string, amount: number, cri
   }
   if (c.hp !== undefined) {
     c.hp = Math.max(0, c.hp - taken);
-    if (c.hp === 0) c.defeated = true;
+    if (c.hp === 0) {
+      // Reduced to 0: a Legendary monster with Last Stand HP starts its Last Stand instead of
+      // dying (damage past 0 isn't carried over: the book doesn't say it is).
+      if (c.lastStandHp !== undefined && !c.lastStand) startLastStand(draft, c.id);
+      else c.defeated = true;
+    }
   }
   return taken;
 }

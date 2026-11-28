@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { getContent } from "../../data/content";
 import type { Combatant } from "../../rules/persistence/campaign";
-import { addCombatant, addCondition, damageAfterArmor, damageCombatant, endEncounter, healCombatant, moveCombatant, nextRound, removeCombatant, removeCondition, setDefeated, toggleDone } from "../../rules/tracker";
+import { addCombatant, addCondition, damageAfterArmor, damageCombatant, endEncounter, healCombatant, isBloodied, moveCombatant, nextRound, removeCombatant, removeCondition, setDefeated, startLastStand, toggleDone } from "../../rules/tracker";
 import { useCampaign } from "./CampaignContext";
-import { ARMOR_LABEL } from "./MonstersTab";
+import { ARMOR_LABEL, MonsterDetails } from "./MonstersTab";
 
 function CombatantRow({ c, first, last }: { c: Combatant; first: boolean; last: boolean }) {
   const book = useCampaign();
@@ -25,7 +25,7 @@ function CombatantRow({ c, first, last }: { c: Combatant; first: boolean; last: 
             {c.defeated ? " ✝" : ""}
           </span>
           <span className="row-meta">
-            {[c.kind === "hero" ? "hero" : c.minion ? "minion" : c.hp !== undefined ? `${c.hp}/${c.hpMax ?? c.hp} HP` : "", ARMOR_LABEL[c.armor], c.conditions.join(", ")].filter(Boolean).join(" · ")}
+            {[c.kind === "hero" ? "hero" : c.minion ? "minion" : c.hp !== undefined ? `${c.hp}/${c.hpMax ?? c.hp} HP` : "", c.lastStand ? "LAST STAND" : isBloodied(c) ? "BLOODIED" : "", ARMOR_LABEL[c.armor], c.conditions.join(", ")].filter(Boolean).join(" · ")}
           </span>
         </summary>
         {c.kind === "monster" && (
@@ -67,6 +67,21 @@ function CombatantRow({ c, first, last }: { c: Combatant; first: boolean; last: 
               </p>
             )}
             {c.minion && <p className="small">Minion: any damage kills it; its attacks can't crit and ignore advantage (Core p.15).</p>}
+            {c.legendary && (
+              <p className="small">
+                {c.lastStand
+                  ? "Last Stand: it is Dying, and dies when these HP are gone (GMG p.39)."
+                  : isBloodied(c)
+                    ? "Bloodied: its Bloodied ability is now active (GMG p.39)."
+                    : "Legendary: acts after each hero's turn; Bloodied at half HP (GMG p.39)."}
+                {!c.lastStand && c.lastStandHp !== undefined && ` At 0 HP its Last Stand starts by itself (regains ${c.lastStandHp} HP).`}
+              </p>
+            )}
+            {c.legendary && !c.lastStand && c.lastStandHp !== undefined && (
+              <button type="button" className="mini" onClick={() => act("Last Stand", (d) => startLastStand(d, c.id))}>
+                Start Last Stand now
+              </button>
+            )}
           </>
         )}
         {c.kind === "hero" && <p className="small">Heroes track their own HP on their sheets.</p>}
@@ -100,16 +115,7 @@ function CombatantRow({ c, first, last }: { c: Combatant; first: boolean; last: 
             Add
           </button>
         </div>
-        {monster && (
-          <div className="small">
-            {monster.abilities.map((a, i) => (
-              <p key={i}>
-                {a.name && <strong>{a.name}. </strong>}
-                {a.text}
-              </p>
-            ))}
-          </div>
-        )}
+        {monster && <MonsterDetails m={monster} />}
         <div className="row">
           <button type="button" className="mini" disabled={first} aria-label={`Move ${c.name} up`} onClick={() => act("Move up", (d) => moveCombatant(d, c.id, -1))}>
             ↑

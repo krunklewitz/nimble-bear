@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 5 in progress (v0.5.0: GM tools part 1). Phase 4 Owlbear check left: panel close and reopen with a hero open
+## Current: Phase 5 in progress (v0.5.1: GM tools part 2, monster import). Phase 4 Owlbear check left: panel close and reopen with a hero open
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -82,7 +82,12 @@ In Owlbear (user, 2026-11-28): deleting a character, saving the character file a
 ### Phase 5 (2026-11-28), part 1 built (v0.5.0)
 Sources read: GMG PDF 12 (encounter guidelines; minion table from the page image), GMG PDF 3 and 15 (stat block format, Bestiary), Core PDF 7 (turn order), Core PDF 8 (monster armor, minions). Owlbear docs checked for part 2 (context menu, scene items, scene ready, player).
 Done: rules/encounter.ts (budget, bands, fractional levels, minion cost RQ-030, warnings, minion die); campaign format v1 (rules/persistence/campaign.ts: monsters, encounters, tracker; campaign file nimble-bear/campaign and monster file nimble-bear/monsters; no monster data in the app); app/campaign.ts (autosave to the device store, undo, file save/load keeping a backup of the replaced copy); rules/tracker.ts (heroes first then numbered monsters, armor −10/−20 unless crit, minions die to any damage, rounds, turn ticks, conditions, reorder); GM tools UI (Tracker / Encounters / Monsters / Campaign), shown to the GM in Owlbear and to everyone in a normal browser tab. New RQ-030, RQ-031.
-Part 2 (next): token links (context menu from a background page, token metadata {combatantId}), party summaries (player metadata: name, level, HP, Wounds), the GM's private monster file from the Bestiary (extracted into private/, never deployed).
+Scope change (user, 2026-11-28): part 2 is importing the GMG and Monsters & More monsters. Token links and party summaries wait until the character sheet and the encounter builder/tracker are fully working.
+
+### Phase 5 (2026-11-28), part 2 built (v0.5.1): monster import
+Sources read: GMG PDF 14–29 and 44–57 (Bestiary, Legendary monsters and builder, adventure monsters), Monsters & More PDF 2–101, both as text with positions and fonts (pdftohtml -xml) and spot-checked against page images (Kobolds, Goblins, oozes and mimics, Druid, Ul'vek, Bandits, Mimics, Polar Bear/Mammoth/Avalanche, Bugbears, Vampires).
+Done: scripts/extract-monsters.mjs (reads the GM's PDFs from reference/, writes private/monsters/<book>.nimble-monsters.json plus a report of blocks to check; hand fixes go in private/monsters/<book>.fixes.json; nothing from the books is committed). Results: GMG 112 monsters, Monsters & More 446. Monster format gained group, type, legendary (Legendary/Solo), hpPerHero, lastStandHpPerHero (all optional: v1 campaign files still read). Monster files load monster by monster (bad entries are listed and skipped). Monsters tab: search by name/group/type, book filter, notes and tactics, legendary fields in the editor, paging. Encounters: monster search picker; legendary fights judged by level against the party (GMG p.40), not the budget. Tracker: legendary HP per hero, Bloodied at half, Last Stand starts at 0 HP with the per-hero HP. New RQ-032, RQ-033, RQ-034. Monsters & More page numbers: PDF 2–38 are 2n−2, PDF 39 on 2n−6 (CLAUDE.md and SOURCE_INDEX corrected).
+Known limits of the extraction: family-wide abilities printed once above a group (e.g. an elemental family's shared traits) aren't copied into each monster; a few special layouts (some Solo monsters, monster teams) come out partly or not at all and are listed in the report; book misprints are kept (RQ-034).
 
 ## Deferred until stable
 - Update check: drop the 5-minute repeat in src/ui/UpdateBanner.tsx (CHECK_EVERY_MS) and check only when the panel opens. User decision 2026-11-27; do it in Phase 6 polish or when the user calls a version stable.

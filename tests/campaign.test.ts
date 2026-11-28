@@ -4,7 +4,7 @@ import { CampaignBook } from "../src/app/campaign";
 import { createMemoryStore } from "../src/platform/storage/memory";
 import { sha256Hex } from "../src/platform/files";
 import { MONSTER_FILE_FORMAT, type Monster } from "../src/rules/persistence/campaign";
-import { damageAfterArmor, damageCombatant, healCombatant, nextRound, startEncounter, toggleDone } from "../src/rules/tracker";
+import { damageAfterArmor, damageCombatant, healCombatant, isBloodied, nextRound, startEncounter, toggleDone } from "../src/rules/tracker";
 
 let n = 0;
 const deps = (store = createMemoryStore()) => ({ store, hash: sha256Hex, now: () => new Date("2026-11-28T12:00:00Z"), newId: () => `id${++n}`, appVersion: "test", dateStamp: () => "2026-11-28" });
@@ -121,5 +121,47 @@ describe("combat tracker", () => {
     await book.update("Next round", (d) => nextRound(d));
     expect(book.get().tracker.round).toBe(2);
     expect(book.get().tracker.combatants.every((c) => !c.done)).toBe(true);
+  });
+});
+
+describe("legendary monsters in the tracker (GMG p.38–41)", () => {
+  // A made-up legendary monster (no book data in tests).
+  const boss: Monster = { id: "m.boss", name: "Test Boss", level: "3", minion: false, armor: "none", legendary: "Legendary", hpPerHero: 20, lastStandHpPerHero: 5, abilities: [{ name: "LAST STAND", text: "Regains 5/hero HP." }] };
+
+  async function bossFight(heroes: string[]) {
+    const book = await CampaignBook.open(deps());
+    await book.update("Add", (d) => void d.monsters.push(boss));
+    await book.update("Enc", (d) => void d.encounters.push({ id: "e2", name: "Boss", heroLevels: [3, 3, 3], monsters: [{ monsterId: "m.boss", count: 1 }] }));
+    await book.update("Start", (d) => startEncounter(d, "e2", heroes, () => `c${++n}`));
+    return book;
+  }
+
+  it("HP is per hero: the heroes in the fight, else the encounter's hero levels", async () => {
+    expect((await bossFight(["A", "B", "C", "D"])).get().tracker.combatants.find((c) => c.kind === "monster")).toMatchObject({ hp: 80, hpMax: 80, legendary: true, lastStandHp: 20 });
+    expect((await bossFight([])).get().tracker.combatants[0]).toMatchObject({ hp: 60, lastStandHp: 15 });
+  });
+
+  it("Bloodied at half HP; at 0 HP the Last Stand starts; then it can die", async () => {
+    const book = await bossFight(["A", "B"]);
+    const id = book.get().tracker.combatants.find((c) => c.kind === "monster")?.id ?? "";
+    const boss1 = () => {
+      const c = book.get().tracker.combatants.find((x) => x.id === id);
+      if (!c) throw new Error("boss missing");
+      return c;
+    };
+    await book.update("Hit", (d) => void damageCombatant(d, id, 20, false));
+    expect(isBloodied(boss1())).toBe(true);
+    await book.update("Hit", (d) => void damageCombatant(d, id, 30, false));
+    expect(boss1()).toMatchObject({ hp: 10, hpMax: 10, lastStand: true, defeated: false });
+    expect(isBloodied(boss1())).toBe(false);
+    await book.update("Hit", (d) => void damageCombatant(d, id, 10, false));
+    expect(boss1()).toMatchObject({ hp: 0, defeated: true });
+  });
+
+  it("a monster file with one bad monster loads the rest and lists the bad one", async () => {
+    const book = await CampaignBook.open(deps());
+    const text = JSON.stringify({ format: MONSTER_FILE_FORMAT, monsters: [goblin, { ...guard, level: "x" }, boss] });
+    const plan = await book.prepareImport(text);
+    expect(plan).toMatchObject({ kind: "monsters", added: 2, skipped: [{ name: "Guard" }] });
   });
 });

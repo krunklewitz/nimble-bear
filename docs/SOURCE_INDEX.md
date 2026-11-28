@@ -10,7 +10,7 @@ Maps rules topics to files in `reference/` (never committed). Cite **PDF page** 
 | `Hexbinder3.0.pdf` | "Nimble Heroes: Hexbinder" (no version inside) | 9 | same rule |
 | `Shepherd3.0.pdf` | no version inside | 9 | same rule |
 | `Zephyr3.1.pdf` | no version inside | 9 | same rule |
-| `MonstersAndMore-v0.1.pdf` | "Monsters & More v0.1 — This is DRAFT content!" | 124 | printed = 2n−6 and 2n−5 (checked at PDF 49, 71, 88, 98); PDF 102–124 are blank |
+| `MonstersAndMore-v0.1.pdf` | "Monsters & More v0.1 — This is DRAFT content!" | 124 | printed = 2n−2 and 2n−1 for PDF 2–38, then 2n−6 and 2n−5 from PDF 39 (every footer checked 2026-11-28; earlier checked at PDF 49, 71, 88, 98); PDF 102–124 are blank |
 
 Status key: ✅ read and checked · 📖 read, text only · 🗂 located from table of contents, not yet read.
 

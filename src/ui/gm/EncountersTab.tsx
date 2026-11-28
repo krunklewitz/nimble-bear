@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { averageLevel, DIFFICULTIES, difficultyOf, encounterCost, encounterWarnings, monsterBudget, suggestedMinionDice } from "../../rules/encounter";
-import type { Encounter } from "../../rules/persistence/campaign";
+import { averageLevel, DIFFICULTIES, difficultyOf, encounterCost, encounterWarnings, legendaryCheck, monsterBudget, suggestedMinionDice } from "../../rules/encounter";
+import type { Encounter, Monster } from "../../rules/persistence/campaign";
 import { startEncounter } from "../../rules/tracker";
 import { useCampaign } from "./CampaignContext";
-import { monsterLine } from "./MonstersTab";
+import { monsterLine, searchMonsters } from "./MonstersTab";
 
 /** "3, 3, 4" → [3, 3, 4] (levels 1–20 only). */
 export function parseHeroLevels(text: string): number[] {
@@ -21,22 +21,39 @@ function BudgetSummary({ encounter }: { encounter: Encounter }) {
   const monsters = book.get().monsters;
   const entries = encounter.monsters.flatMap((e) => {
     const m = monsters.find((x) => x.id === e.monsterId);
-    return m ? [{ level: m.level, minion: m.minion, count: e.count }] : [];
+    return m ? [{ level: m.level, minion: m.minion, count: e.count, legendary: m.legendary !== undefined, monster: m }] : [];
   });
+  const legendaries = entries.filter((e) => e.legendary);
   const budget = monsterBudget(encounter.heroLevels);
   const cost = encounterCost(entries, encounter.heroLevels);
   const { difficulty, percent } = difficultyOf(cost, budget);
   const warnings = encounterWarnings(entries, encounter.heroLevels.length);
   const hasMinions = entries.some((e) => e.minion);
+  const others = entries.length - legendaries.length;
+  const showBudget = legendaries.length === 0 || others > 0;
   return (
     <div className="note small">
-      <p>
-        <strong>
-          {budget > 0 ? `${difficulty.label} · ${percent}%` : "No heroes yet"}
-        </strong>{" "}
-        of a budget of {budget} (monsters: {fmt(cost)} levels).
-      </p>
-      <p className="small">{DIFFICULTIES.map((d) => `${d.label} ${fmt((budget * d.percent) / 100)}`).join(" · ")}</p>
+      {legendaries.map((e) => {
+        const check = legendaryCheck(e.level, encounter.heroLevels);
+        return (
+          <p key={e.monster.id}>
+            <strong>
+              {e.monster.name} ({e.monster.legendary} lvl {e.level})
+            </strong>
+            {check ? `: party level ${check.partyLevel}, so ${check.verdict}.` : ": add the heroes' levels to compare."} A legendary fight is matched to one hero's level, whatever the party size (GMG p.40).
+            {e.monster.hpPerHero !== undefined && encounter.heroLevels.length > 0 ? ` HP: ${e.monster.hpPerHero} × ${encounter.heroLevels.length} heroes = ${e.monster.hpPerHero * encounter.heroLevels.length}.` : ""}
+          </p>
+        );
+      })}
+      {legendaries.length > 0 && others > 0 && <p className="small">⚠ The book doesn't give a budget for other monsters fighting alongside a legendary one; the line below counts only the others.</p>}
+      {showBudget && (
+        <>
+          <p>
+            <strong>{budget > 0 ? `${difficulty.label} · ${percent}%` : "No heroes yet"}</strong> of a budget of {budget} (monsters: {fmt(cost)} levels).
+          </p>
+          <p className="small">{DIFFICULTIES.map((d) => `${d.label} ${fmt((budget * d.percent) / 100)}`).join(" · ")}</p>
+        </>
+      )}
       {hasMinions && (
         <p className="small">
           Minions count as half the heroes' average level each. Suggested minion die: {suggestedMinionDice(averageLevel(encounter.heroLevels)).join(" or ")}.
@@ -47,7 +64,31 @@ function BudgetSummary({ encounter }: { encounter: Encounter }) {
           ⚠ {w}
         </p>
       ))}
-      <p className="small source">GMG p.22–23</p>
+      <p className="small source">{showBudget ? "GMG p.22–23" : "GMG p.40"}</p>
+    </div>
+  );
+}
+
+/** Search box over the monster list (hundreds of monsters once a book's file is loaded). */
+function MonsterPicker({ monsters, onAdd }: { monsters: Monster[]; onAdd: (id: string) => void }) {
+  const [query, setQuery] = useState("");
+  const found = query.trim() ? searchMonsters(monsters, query).slice(0, 12) : [];
+  return (
+    <div>
+      <input aria-label="Find a monster to add" placeholder="Add a monster: type a name, group or type…" value={query} onChange={(e) => setQuery(e.target.value)} />
+      {query.trim() && found.length === 0 && <p className="small">No monster matches.</p>}
+      <ul className="rows">
+        {found.map((m) => (
+          <li key={m.id} className="row-item">
+            <span style={{ flex: 1 }}>
+              <strong>{m.name}</strong> <span className="small">{monsterLine(m)}{m.source ? ` · ${m.source}` : ""}</span>
+            </span>
+            <button type="button" className="mini" aria-label={`Add ${m.name}`} onClick={() => onAdd(m.id)}>
+              Add
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -58,7 +99,6 @@ export function EncountersTab({ onStarted, onMonsters }: { onStarted: () => void
   const [openId, setOpenId] = useState<string | null>(null);
   const [levelsText, setLevelsText] = useState("");
   const [heroNames, setHeroNames] = useState("");
-  const [addMonster, setAddMonster] = useState("");
 
   const open = campaign.encounters.find((e) => e.id === openId) ?? null;
   const change = (label: string, fn: (e: Encounter) => void) =>
@@ -129,31 +169,16 @@ export function EncountersTab({ onStarted, onMonsters }: { onStarted: () => void
             first.
           </p>
         ) : (
-          <div className="row">
-            <select aria-label="Monster to add" value={addMonster} onChange={(e) => setAddMonster(e.target.value)}>
-              <option value="">Add a monster…</option>
-              {campaign.monsters.map((m) => (
-                <option key={m.id} value={m.id}>
-                  {m.name} ({m.minion ? "minion" : `lvl ${m.level}`})
-                </option>
-              ))}
-            </select>
-            <button
-              type="button"
-              disabled={!addMonster}
-              onClick={() => {
-                const id = addMonster;
-                change("Add monster", (x) => {
-                  const y = x.monsters.find((z) => z.monsterId === id);
-                  if (y) y.count = Math.min(99, y.count + 1);
-                  else x.monsters.push({ monsterId: id, count: 1 });
-                });
-                setAddMonster("");
-              }}
-            >
-              Add
-            </button>
-          </div>
+          <MonsterPicker
+            monsters={campaign.monsters}
+            onAdd={(id) =>
+              change("Add monster", (x) => {
+                const y = x.monsters.find((z) => z.monsterId === id);
+                if (y) y.count = Math.min(99, y.count + 1);
+                else x.monsters.push({ monsterId: id, count: 1 });
+              })
+            }
+          />
         )}
 
         <h2>Run it</h2>
@@ -199,10 +224,11 @@ export function EncountersTab({ onStarted, onMonsters }: { onStarted: () => void
         {campaign.encounters.map((e) => {
           const entries = e.monsters.flatMap((x) => {
             const m = campaign.monsters.find((y) => y.id === x.monsterId);
-            return m ? [{ level: m.level, minion: m.minion, count: x.count }] : [];
+            return m ? [{ level: m.level, minion: m.minion, count: x.count, legendary: m.legendary !== undefined }] : [];
           });
           const budget = monsterBudget(e.heroLevels);
           const d = difficultyOf(encounterCost(entries, e.heroLevels), budget);
+          const legendary = entries.some((x) => x.legendary);
           return (
             <li key={e.id} className="row-item">
               <button
@@ -215,7 +241,7 @@ export function EncountersTab({ onStarted, onMonsters }: { onStarted: () => void
               >
                 <span className="char-name">{e.name}</span>
                 <span className="small">{entries.reduce((n, x) => n + x.count, 0)} monsters</span>
-                <span className="badge pending">{budget > 0 ? `${d.difficulty.label} ${d.percent}%` : "no heroes"}</span>
+                <span className="badge pending">{legendary ? "Legendary" : budget > 0 ? `${d.difficulty.label} ${d.percent}%` : "no heroes"}</span>
               </button>
             </li>
           );
