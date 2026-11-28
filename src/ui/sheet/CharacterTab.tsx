@@ -5,10 +5,10 @@ import type { TabProps } from "./shared";
 export function CharacterTab({ sheet, character, update, onRoll }: TabProps) {
   const unanswered = sheet.choices.filter((c) => c.selected.length < c.choice.count && c.choice.from.kind !== "save" && typeof c.where === "number");
   const groups = [
-    { src: "class" as const, title: sheet.cls?.name },
-    { src: "subclass" as const, title: sheet.subclass?.name },
-    { src: "ancestry" as const, title: sheet.ancestry?.name },
-    { src: "background" as const, title: sheet.background?.name },
+    { src: "class" as const, title: `Class Features (${sheet.cls?.name ?? ""})` },
+    { src: "subclass" as const, title: `Subclass Features (${sheet.subclass?.name ?? ""})` },
+    { src: "ancestry" as const, title: `Ancestry (${sheet.ancestry?.name ?? ""})` },
+    { src: "background" as const, title: `Background (${sheet.background?.name ?? ""})` },
   ];
   return (
     <div>
@@ -65,12 +65,18 @@ export function CharacterTab({ sheet, character, update, onRoll }: TabProps) {
         ))}
       </div>
 
+      <h2>Features</h2>
       {groups.map(({ src, title }) => {
         const list = sheet.features.filter((f) => f.source === src);
         if (!list.length) return null;
         return (
-          <section key={src}>
-            <h2>{title}</h2>
+          <details key={src} className="spell-group" open={src === "class"}>
+            <summary>
+              <span>{title}</span>
+              <span className="row-meta">
+                {list.length} feature{list.length === 1 ? "" : "s"}
+              </span>
+            </summary>
             <ul className="rows">
               {list.map((f) => (
                 <li key={f.def.id} className={`row-item ${f.replacedBy ? "replaced" : ""}`}>
@@ -90,7 +96,7 @@ export function CharacterTab({ sheet, character, update, onRoll }: TabProps) {
                 </li>
               ))}
             </ul>
-          </section>
+          </details>
         );
       })}
 

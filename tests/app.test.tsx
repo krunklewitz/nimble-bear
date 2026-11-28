@@ -121,6 +121,16 @@ describe("App", () => {
     expect(screen.getByRole("button", { name: "Wounds 1 of 6. Change Wounds" })).toBeTruthy();
   });
 
+  it("labels feature groups by where they come from", async () => {
+    await createGrace();
+    await screen.findByRole("heading", { name: /^Grace/ });
+    fireEvent.click(screen.getByRole("tab", { name: "Character" }));
+    expect(screen.getByText("Class Features (Shepherd)")).toBeTruthy();
+    expect(screen.getByText("Ancestry (Human)")).toBeTruthy();
+    expect(screen.getByText("Background (Wild One)")).toBeTruthy();
+    expect(screen.queryByText(/^Subclass Features/)).toBeNull(); // no subclass before level 3
+  });
+
   it("reopens on the last open hero", async () => {
     const store = await createGrace();
     await screen.findByRole("heading", { name: /^Grace/ });
