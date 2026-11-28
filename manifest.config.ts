@@ -30,7 +30,8 @@ export function buildManifest(siteUrl: string, version: string): OwlbearManifest
     action: {
       title: "Nimble Bear",
       icon: `${base}icon.svg`,
-      popover: `${base}index.html`,
+      // Versioned so a manifest refresh bypasses the browser cache (GitHub Pages: max-age=600).
+      popover: `${base}index.html?v=${version}`,
       width: 400,
       height: 600,
     },

@@ -11,6 +11,7 @@ import { useLibrary } from "./LibraryContext";
 import { usePlatform } from "./PlatformContext";
 import { Snapshots } from "./Snapshots";
 import { StorageCheck } from "./StorageCheck";
+import { UpdateBanner } from "./UpdateBanner";
 import { Welcome } from "./Welcome";
 
 type Screen =
@@ -70,6 +71,7 @@ export function App({ version }: { version: string }) {
   return (
     <RollProvider>
     <div className="app">
+      <UpdateBanner version={version} />
       {memoryOnly && (
         <p className="banner error" role="alert">
           This browser won't let Nimble Bear store data ({memoryOnly}). Changes last only until you close it. Save your character file often.

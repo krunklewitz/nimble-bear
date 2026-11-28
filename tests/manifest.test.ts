@@ -22,7 +22,7 @@ describe("Owlbear manifest", () => {
   });
 
   it("adds a trailing slash when the site URL lacks one", () => {
-    expect(buildManifest("http://localhost:5173", "1").action.popover).toBe(`${DEV_SITE_URL}index.html`);
+    expect(buildManifest("http://localhost:5173", "1").action.popover).toBe(`${DEV_SITE_URL}index.html?v=1`);
   });
 
   it("only requests permissions the docs allow", () => {
