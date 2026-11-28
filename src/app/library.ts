@@ -74,6 +74,11 @@ export class CharacterLibrary {
 
   private constructor(private readonly deps: LibraryDeps) {}
 
+  /** The device store (shared with the GM campaign). */
+  get store(): CharacterStore {
+    return this.deps.store;
+  }
+
   static async open(deps: LibraryDeps): Promise<CharacterLibrary> {
     const lib = new CharacterLibrary(deps);
     await lib.loadAll();

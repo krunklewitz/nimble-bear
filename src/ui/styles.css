@@ -239,3 +239,10 @@ p.warn { color: var(--pending); }
 .muted { opacity: 0.75; }
 .reaction-upgrades { margin: 4px 0; }
 .reaction-upgrades > summary { cursor: pointer; }
+
+/* GM tools */
+.gm-entry { margin: 4px 0 10px; border-style: dashed; }
+.combatant > input[type="checkbox"] { flex: 0 0 auto; width: auto; margin-top: 8px; }
+.combatant.done .row-name { opacity: 0.6; }
+.combatant.defeated .row-name { text-decoration: line-through; opacity: 0.55; }
+.source { opacity: 0.7; font-style: italic; }

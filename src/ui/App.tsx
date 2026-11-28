@@ -13,6 +13,7 @@ import { Snapshots } from "./Snapshots";
 import { StorageCheck } from "./StorageCheck";
 import { UpdateBanner } from "./UpdateBanner";
 import { Welcome } from "./Welcome";
+import { GmHome } from "./gm/GmHome";
 
 type Screen =
   | { name: "welcome" }
@@ -23,7 +24,8 @@ type Screen =
   | { name: "import"; plan: ImportPlan }
   | { name: "snapshots"; characterId?: string; back: Screen }
   | { name: "about" }
-  | { name: "check" };
+  | { name: "check" }
+  | { name: "gm" };
 
 const WELCOME_KEY = "nimble-bear:welcome-seen";
 
@@ -44,7 +46,7 @@ function markWelcomeSeen() {
 }
 
 export function App({ version }: { version: string }) {
-  const { ready, platform } = usePlatform();
+  const { ready, platform, role } = usePlatform();
   const { library, memoryOnly } = useLibrary();
   const home = (): Screen => (library.activeId ? { name: "sheet", id: library.activeId } : { name: "list" });
   const [screen, setScreen] = useState<Screen>(() => (welcomeSeen() ? home() : { name: "welcome" }));
@@ -92,6 +94,7 @@ export function App({ version }: { version: string }) {
             onCreate={() => setScreen({ name: "create" })}
             onImportText={(t) => void importText(t)}
             onRecover={() => setScreen({ name: "snapshots", back: { name: "list" } })}
+            onGm={role === "GM" || platform.host === "standalone" ? () => setScreen({ name: "gm" }) : undefined}
           />
         )}
         {screen.name === "sheet" && (
@@ -118,6 +121,7 @@ export function App({ version }: { version: string }) {
         )}
         {screen.name === "about" && <About version={version} onBack={() => setScreen(home())} onCheck={() => setScreen({ name: "check" })} />}
         {screen.name === "check" && <StorageCheck onBack={() => setScreen({ name: "about" })} />}
+        {screen.name === "gm" && <GmHome version={version} onBack={() => setScreen({ name: "list" })} />}
       </main>
       {screen.name !== "welcome" && (
         <footer>

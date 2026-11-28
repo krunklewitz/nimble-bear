@@ -100,6 +100,12 @@ Arc Lightning's header says "TIER 1, 1+ TARGET" (no field for it; shown in text)
 ### RQ-029 · Natural Talent boon: does "any cantrip" include utility cantrips?
 GMG p.75: "Natural Talent. Learn any cantrip." Utility spells are printed as "… UTILITY CANTRIP" (Core p.52), but Unnatural Talent separately grants a Utility Spell. Planned: school cantrips only. Status: unverified.
 
+### RQ-030 · How much of the Monster Budget does a minion use?
+GMG PDF 12 (printed 23), checked against the page image: "2 minions/hero: Counts as 1 monster of equal level to a hero" and "3–4 minions/hero: MUCH more challenging. 2 monsters of equal level to a hero." No per-minion cost is given. Planned: each minion costs half the party's average level (so 2 per hero = one hero-level monster; 4 per hero = two). Status: unverified.
+
+### RQ-031 · Encounter difficulty between the printed percentages
+GMG p.22 names Easy 50%, Medium 75%, Hard 100%, Deadly 125%, Very Deadly 150%, and says "less than [all of the budget]: Medium or Easy; greater than that: Deadly, or Very Deadly". Planned: an encounter gets the highest band whose percentage it reaches (below 50% is still Easy). Status: unverified.
+
 ## Resolved
 
 ### RQ-R1 · Which die is the Primary Die after advantage/disadvantage?

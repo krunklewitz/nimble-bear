@@ -10,6 +10,8 @@ interface Props {
   onCreate: () => void;
   onImportText: (text: string) => void;
   onRecover: () => void;
+  /** Shown to the GM (and in a normal browser tab, for testing). */
+  onGm?: (() => void) | undefined;
 }
 
 function Status({ entry }: { entry: Entry }) {
@@ -18,7 +20,7 @@ function Status({ entry }: { entry: Entry }) {
   return <span className="badge pass">Saved {timeAgo(entry.meta.lastSavedAt)}</span>;
 }
 
-export function CharacterList({ onOpen, onCreate, onImportText, onRecover }: Props) {
+export function CharacterList({ onOpen, onCreate, onImportText, onRecover, onGm }: Props) {
   const { library } = useLibrary();
   const fileInput = useRef<HTMLInputElement>(null);
   const [showPaste, setShowPaste] = useState(false);
@@ -29,6 +31,11 @@ export function CharacterList({ onOpen, onCreate, onImportText, onRecover }: Pro
   return (
     <section className="screen" aria-labelledby="list-title">
       <h1 id="list-title">Characters</h1>
+      {onGm && (
+        <button type="button" className="wide gm-entry" onClick={onGm}>
+          GM tools: encounters and combat tracker
+        </button>
+      )}
 
       {entries.length === 0 ? (
         <p className="small">No characters on this computer yet. Make a new hero, or load a character file.</p>
