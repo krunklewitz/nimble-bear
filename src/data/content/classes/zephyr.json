@@ -1,0 +1,1343 @@
+{
+  "id": "class.zephyr",
+  "name": "Zephyr",
+  "keyStats": [
+    "DEX",
+    "STR"
+  ],
+  "secondaryStats": [
+    "INT",
+    "WIL"
+  ],
+  "hitDie": "d8",
+  "startingHp": 13,
+  "saves": {
+    "advantaged": "DEX",
+    "disadvantaged": "INT"
+  },
+  "armorText": "None",
+  "weaponsText": "Melee, Unarmed Strikes",
+  "startingGearText": "Staff, Traveling Robes & Sandals",
+  "startingGear": [
+    {
+      "id": "weapon.staff",
+      "qty": 1
+    }
+  ],
+  "proficiency": {
+    "armor": [],
+    "shields": false,
+    "weapons": [
+      "melee"
+    ]
+  },
+  "vars": {
+    "galeforce": "1d12",
+    "burstBonus": "0"
+  },
+  "levels": {
+    "1": [
+      "feature.zephyr.iron-defense",
+      "feature.zephyr.momentum"
+    ],
+    "2": [
+      "feature.zephyr.burst-of-speed"
+    ],
+    "3": [
+      "feature.zephyr.subclass",
+      "feature.zephyr.piercing-blows"
+    ],
+    "4": [
+      "feature.zephyr.reactive-force",
+      "feature.zephyr.martial-master",
+      "feature.zephyr.key-stat-increase-4"
+    ],
+    "5": [
+      "feature.zephyr.supernatural-speed",
+      "feature.zephyr.iron-defense-2",
+      "feature.zephyr.secondary-stat-increase-5"
+    ],
+    "6": [
+      "feature.zephyr.martial-master-2",
+      "feature.zephyr.swift-fists",
+      "feature.zephyr.infuse-strength"
+    ],
+    "7": [
+      "feature.zephyr.subclass-7",
+      "feature.zephyr.galeforce-strike-2"
+    ],
+    "8": [
+      "feature.zephyr.martial-master-3",
+      "feature.zephyr.key-stat-increase-8"
+    ],
+    "9": [
+      "feature.zephyr.swift-feet",
+      "feature.zephyr.secondary-stat-increase-9"
+    ],
+    "10": [
+      "feature.zephyr.martial-master-4",
+      "feature.zephyr.unyielding-resolve"
+    ],
+    "11": [
+      "feature.zephyr.subclass-11"
+    ],
+    "12": [
+      "feature.zephyr.kinetic-marvel",
+      "feature.zephyr.key-stat-increase-12"
+    ],
+    "13": [
+      "feature.zephyr.unyielding-resolve-2",
+      "feature.zephyr.secondary-stat-increase-13"
+    ],
+    "14": [
+      "feature.zephyr.blur"
+    ],
+    "15": [
+      "feature.zephyr.subclass-15"
+    ],
+    "16": [
+      "feature.zephyr.swift-feet-2",
+      "feature.zephyr.key-stat-increase-16"
+    ],
+    "17": [
+      "feature.zephyr.unyielding-resolve-3",
+      "feature.zephyr.secondary-stat-increase-17"
+    ],
+    "18": [
+      "feature.zephyr.martial-master-5"
+    ],
+    "19": [
+      "feature.zephyr.epic-boon"
+    ],
+    "20": [
+      "feature.zephyr.windborne"
+    ]
+  },
+  "subclassLevels": [
+    3,
+    7,
+    11,
+    15
+  ],
+  "features": [
+    {
+      "id": "feature.zephyr.iron-defense",
+      "name": "Iron Defense",
+      "text": "Your Defense is DEX+STR as long as you are unarmored.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "defense",
+          "op": "set",
+          "value": "DEX+STR",
+          "when": "self.unarmored"
+        },
+        {
+          "type": "proficiency",
+          "unarmedCrit": true
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified",
+        "note": "The proficiency effect (unarmedCrit) is not part of Iron Defense’s text: the stat block lists “Weapons: Melee, Unarmed Strikes”, and it is attached to the first level-1 feature so the engine sees it."
+      }
+    },
+    {
+      "id": "feature.zephyr.momentum",
+      "name": "Momentum",
+      "text": "Gain 1 Momentum for every space you move. You may expend 1 Momentum to add 1 damage to any melee attack. All Momentum is lost if you take damage, or at the end of combat.",
+      "effects": [
+        {
+          "type": "resource",
+          "resource": {
+            "id": "resource.zephyr.momentum",
+            "name": "Momentum",
+            "max": "99",
+            "recover": [],
+            "lose": [
+              "damageTaken",
+              "combatEnd"
+            ]
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Add 1 Momentum for every space you move. When you spend Momentum on a melee attack, add that much damage to the attack by hand.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified",
+        "note": "The book gives no maximum for Momentum; max \"99\" is a placeholder meaning “no limit”. FAQ (PDF 8, printed 14): movement while Riding and forced movement also count toward Momentum."
+      }
+    },
+    {
+      "id": "feature.zephyr.burst-of-speed",
+      "name": "Burst of Speed",
+      "text": "When you roll Initiative, gain DEX Bursts of Speed for this encounter. You may spend 1 Burst of Speed to use one of the following maneuvers:\n• Slipstream. Whenever you Defend: Apply your Defense to every attack against you this round OR you may first move 1 space.\n• Galeforce Strike. Roll 1d12 for an unarmed attack instead of 1d4.\n• Windstep. Move for free, ignoring enemy spaces this turn.",
+      "effects": [
+        {
+          "type": "resource",
+          "resource": {
+            "id": "resource.zephyr.burst-of-speed",
+            "name": "Bursts of Speed",
+            "max": "DEX+var.burstBonus",
+            "recover": [
+              {
+                "on": "initiative",
+                "amount": "all"
+              }
+            ],
+            "lose": [
+              "combatEnd"
+            ]
+          }
+        },
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.zephyr.slipstream",
+            "name": "Slipstream",
+            "kind": "free",
+            "actions": 0,
+            "cost": {
+              "resource": {
+                "id": "resource.zephyr.burst-of-speed",
+                "amount": "1"
+              }
+            },
+            "text": "Slipstream. Whenever you Defend: Apply your Defense to every attack against you this round OR you may first move 1 space."
+          }
+        },
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.zephyr.galeforce-strike",
+            "name": "Galeforce Strike",
+            "kind": "attack",
+            "actions": 1,
+            "cost": {
+              "resource": {
+                "id": "resource.zephyr.burst-of-speed",
+                "amount": "1"
+              }
+            },
+            "roll": {
+              "kind": "damage",
+              "dice": "var.galeforce+STR",
+              "damageType": "unarmed"
+            },
+            "text": "Galeforce Strike. Roll 1d12 for an unarmed attack instead of 1d4."
+          }
+        },
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.zephyr.windstep",
+            "name": "Windstep",
+            "kind": "free",
+            "actions": 0,
+            "cost": {
+              "resource": {
+                "id": "resource.zephyr.burst-of-speed",
+                "amount": "1"
+              }
+            },
+            "text": "Windstep. Move for free, ignoring enemy spaces this turn."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Slipstream: when you Defend, apply your Defense to every attack against you this round, or move 1 space first. Windstep: move, ignoring enemy spaces this turn.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified",
+        "note": "“For this encounter” is modelled as gaining all Bursts on Initiative and losing them at combat end. Galeforce Strike is modelled as an Unarmed Strike (Core Rules 1d4+STR) with the die replaced by var.galeforce. FAQ (PDF 8, printed 14): Slipstream’s 1-space move makes the attack miss if it takes you out of Reach/Range or into Full Cover; Cover gives disadvantage as normal."
+      }
+    },
+    {
+      "id": "feature.zephyr.subclass",
+      "name": "Subclass",
+      "text": "Choose a Zephyr subclass.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.subclass",
+            "prompt": "Choose a Zephyr subclass.",
+            "count": 1,
+            "from": {
+              "kind": "subclass"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.piercing-blows",
+      "name": "Piercing Blows",
+      "text": "You may spend Momentum before you make an Unarmed Strike to gain advantage for every 2 spent.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Before an Unarmed Strike, spend Momentum by hand; roll with 1 advantage for every 2 Momentum spent.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.reactive-force",
+      "name": "Reactive Force",
+      "text": "Whenever you gain a Wound, gain a Burst of Speed.",
+      "effects": [
+        {
+          "type": "hook",
+          "on": "woundGained",
+          "text": "Reactive Force: gain a Burst of Speed."
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "When you gain a Wound, add 1 Burst of Speed by hand.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.martial-master",
+      "name": "Martial Master",
+      "text": "Choose a Martial Arts Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.martial-master",
+            "prompt": "Choose a Martial Arts Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "zephyr.martial-arts"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.key-stat-increase-4",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.key-stat-4",
+            "prompt": "+1 DEX or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.supernatural-speed",
+      "name": "Supernatural Speed",
+      "text": "While unarmored, you may use Momentum to treat a Primary Die rolled against you as if it rolled 1 lower for every 2 Momentum spent.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "When a Primary Die is rolled against you while unarmored, spend Momentum by hand; it counts as 1 lower for every 2 Momentum spent.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.iron-defense-2",
+      "name": "Iron Defense (2)",
+      "text": "Your Defense is (3×STR)+DEX as long as you are unarmored.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "defense",
+          "op": "set",
+          "value": "(3*STR)+DEX",
+          "when": "self.unarmored"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "Iron Defense (1) stays active; the engine uses the higher of the two “set” values."
+      }
+    },
+    {
+      "id": "feature.zephyr.secondary-stat-increase-5",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.secondary-stat-5",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.martial-master-2",
+      "name": "Martial Master (2)",
+      "text": "Choose a 2nd Martial Arts Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.martial-master-2",
+            "prompt": "Choose a 2nd Martial Arts Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "zephyr.martial-arts"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.swift-fists",
+      "name": "Swift Fists",
+      "text": "If you have no actions and haven’t attacked this turn, your Galeforce Strike costs 0 actions.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "If you have no actions left and haven’t attacked this turn, use Galeforce Strike without spending an action.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.infuse-strength",
+      "name": "Infuse Strength",
+      "text": "Whenever you make an Unarmed Strike, you may expend 1 or more Hit Dice and add them to the strike’s total. Instead of dealing damage, heal the target for that amount (you can use Momentum or other abilities as normal).",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Spend Hit Dice by hand, roll them and add them to the Unarmed Strike’s total; heal the target for the total instead of dealing damage.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "FAQ (PDF 8, printed 14): Infuse Strength can be used as an Opportunity Attack or Coordinated Strike."
+      }
+    },
+    {
+      "id": "feature.zephyr.subclass-7",
+      "name": "Subclass",
+      "text": "Gain your Zephyr subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.galeforce-strike-2",
+      "name": "Galeforce Strike (2)",
+      "text": "Your Galeforce Strike increases to 1d20.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "galeforce",
+          "value": "1d20"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.martial-master-3",
+      "name": "Martial Master (3)",
+      "text": "Choose a 3rd Martial Arts Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.martial-master-3",
+            "prompt": "Choose a 3rd Martial Arts Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "zephyr.martial-arts"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.key-stat-increase-8",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.key-stat-8",
+            "prompt": "+1 DEX or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.swift-feet",
+      "name": "Swift Feet",
+      "text": "Gain +2 to your Speed and Initiative as long as you are unarmored.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "speed",
+          "op": "add",
+          "value": "2",
+          "when": "self.unarmored"
+        },
+        {
+          "type": "modifier",
+          "target": "initiative",
+          "op": "add",
+          "value": "2",
+          "when": "self.unarmored"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.secondary-stat-increase-9",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.secondary-stat-9",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.martial-master-4",
+      "name": "Martial Master (4)",
+      "text": "Choose a 4th Martial Arts Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.martial-master-4",
+            "prompt": "Choose a 4th Martial Arts Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "zephyr.martial-arts"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.unyielding-resolve",
+      "name": "Unyielding Resolve",
+      "text": "Ignore the first Wound you would suffer each encounter (when-Wounded abilities, such as Reactive Force, still trigger).",
+      "effects": [
+        {
+          "type": "hook",
+          "on": "woundGained",
+          "text": "Unyielding Resolve: ignore the first Wound you would suffer this encounter (when-Wounded abilities still trigger)."
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "The first time you would suffer a Wound each encounter, don’t mark it (when-Wounded abilities still trigger).",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.subclass-11",
+      "name": "Subclass",
+      "text": "Gain your Zephyr subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.kinetic-marvel",
+      "name": "Kinetic Marvel",
+      "text": "Double the damage granted by Momentum.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Each Momentum spent on a melee attack adds 2 damage instead of 1.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.key-stat-increase-12",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.key-stat-12",
+            "prompt": "+1 DEX or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.unyielding-resolve-2",
+      "name": "Unyielding Resolve (2)",
+      "text": "Ignore the first 2 Wounds you would suffer each encounter.",
+      "effects": [
+        {
+          "type": "hook",
+          "on": "woundGained",
+          "text": "Unyielding Resolve (2): ignore the first 2 Wounds you would suffer this encounter."
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Don’t mark the first 2 Wounds you would suffer each encounter.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.secondary-stat-increase-13",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.secondary-stat-13",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.blur",
+      "name": "Blur",
+      "text": "Gain 10 Momentum when you roll Initiative.",
+      "effects": [
+        {
+          "type": "hook",
+          "on": "initiative",
+          "text": "Blur: gain 10 Momentum."
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "When you roll Initiative, add 10 Momentum by hand.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.subclass-15",
+      "name": "Subclass",
+      "text": "Gain your Zephyr subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.swift-feet-2",
+      "name": "Swift Feet (2)",
+      "text": "Gain another +2 to your Speed and Initiative as long as you are unarmored.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "speed",
+          "op": "add",
+          "value": "2",
+          "when": "self.unarmored"
+        },
+        {
+          "type": "modifier",
+          "target": "initiative",
+          "op": "add",
+          "value": "2",
+          "when": "self.unarmored"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.key-stat-increase-16",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.key-stat-16",
+            "prompt": "+1 DEX or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.unyielding-resolve-3",
+      "name": "Unyielding Resolve (3)",
+      "text": "Ignore the first 3 Wounds you would suffer each encounter. You have advantage on STR saves while Dying.",
+      "effects": [
+        {
+          "type": "hook",
+          "on": "woundGained",
+          "text": "Unyielding Resolve (3): ignore the first 3 Wounds you would suffer this encounter."
+        },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.zephyr.unyielding-resolve-3",
+            "label": "Unyielding Resolve: advantage on STR saves while Dying",
+            "on": "save",
+            "change": "advantage",
+            "scope": "STR",
+            "mode": "auto",
+            "when": "self.dying"
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Don’t mark the first 3 Wounds you would suffer each encounter.",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.secondary-stat-increase-17",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.secondary-stat-17",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.martial-master-5",
+      "name": "Martial Master (5)",
+      "text": "Choose a 5th Martial Arts Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.martial-master-5",
+            "prompt": "Choose a 5th Martial Arts Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "zephyr.martial-arts"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.epic-boon",
+      "name": "Epic Boon",
+      "text": "Choose an Epic Boon (see pg. 75 of the GM’s Guide).",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.epic-boon",
+            "prompt": "Choose an Epic Boon.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "boons.epic"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.zephyr.windborne",
+      "name": "Windborne",
+      "text": "+1 to any 2 of your stats. +1 additional Burst of Speed when you roll Initiative. Permanently gain 1 action (while Dying, you have a max of 2 actions).",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.zephyr.capstone-stats",
+            "prompt": "+1 to any 2 of your stats.",
+            "count": 2,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX",
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        },
+        {
+          "type": "setVar",
+          "var": "burstBonus",
+          "value": "1"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Take 1 extra action every turn (while Dying, you have a max of 2 actions).",
+      "source": {
+        "file": "Zephyr3.1.pdf",
+        "version": "3.1",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "The extra Burst of Speed raises the Burst of Speed maximum (DEX+var.burstBonus) so it is gained on Initiative. The extra action has no sheet field yet."
+      }
+    }
+  ],
+  "optionPools": {
+    "zephyr.martial-arts": [
+      {
+        "id": "feature.zephyr.martial-arts.airshift",
+        "name": "Airshift",
+        "text": "If you move through the space of a willing creature while using Windstep, they can move with you and choose any space adjacent to or along your path of movement to end in.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Move the willing creature by hand to a space adjacent to or along your Windstep path.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.bodily-discipline",
+        "name": "Bodily Discipline",
+        "text": "End any single condition on yourself (ending Dying grants 1 HP, ending Dazed grants 1 action, etc.).",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.zephyr.martial-arts.bodily-discipline",
+              "name": "Bodily Discipline",
+              "kind": "ability",
+              "actions": 1,
+              "text": "End any single condition on yourself (ending Dying grants 1 HP, ending Dazed grants 1 action, etc.)."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Remove the condition by hand (and gain 1 HP if it was Dying, 1 action if it was Dazed, etc.).",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.cyclonic-pull",
+        "name": "Cyclonic Pull",
+        "text": "Whenever you avoid all of the damage of a melee attack (whether it misses or you Defend), you may swap places with the attacker.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Swap your token with the attacker’s when you avoid all of a melee attack’s damage.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.enduring-soul",
+        "name": "Enduring Soul",
+        "text": "Whenever you roll Initiative, gain Hit Dice equal to the actions you get on your first turn (they expire at the end of combat if unused).",
+        "effects": [
+          {
+            "type": "hook",
+            "on": "initiative",
+            "text": "Enduring Soul: gain Hit Dice equal to the actions you get on your first turn (they expire at the end of combat if unused)."
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Add the Hit Dice by hand when you roll Initiative and remove unused ones at the end of combat.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.i-jump-on-his-back",
+        "name": "I Jump on His Back!",
+        "text": "You can Ride creatures your size. While Riding, gain advantage vs your Ride, ANY damage you avoid is dealt to them. If you move into the space of a creature your size or larger with Windstep or Skystrider, gain Riding for free.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.zephyr.martial-arts.i-jump-on-his-back",
+              "label": "I Jump on His Back!: advantage vs your Ride",
+              "on": "attack",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Attacking the creature you are Riding"
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "While Riding, any damage you avoid is dealt to your Ride (apply by hand).",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Advantage “vs your Ride” is modelled as a toggle on attacks against it; it may also apply to other rolls against your Ride."
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.kinetic-barrage",
+        "name": "Kinetic Barrage",
+        "text": "(1/turn) Whenever you make a melee attack and spend no Momentum, gain DEX Momentum.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per turn, after a melee attack where you spent no Momentum, add DEX Momentum by hand.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.mighty-soul",
+        "name": "Mighty Soul",
+        "text": "You cannot be moved against your will. Whenever you would fail a roll, you may gain a Wound in order to add STR to the result you rolled. Repeat this any number of times.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you would fail a roll, mark a Wound and add STR to the result; repeat as often as you like.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.quickstrike",
+        "name": "Quickstrike",
+        "text": "Whenever you Interpose, you may first make an Unarmed Strike against the enemy for free.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you Interpose, roll a free Unarmed Strike against the enemy first.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.twisting-deflection",
+        "name": "Twisting Deflection",
+        "text": "Reaction (when you avoid all of the damage of a melee attack—whether it misses or you Defend): Force another logical target within Reach to be hit instead.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.zephyr.martial-arts.twisting-deflection",
+              "name": "Twisting Deflection",
+              "kind": "reaction",
+              "actions": 1,
+              "text": "Reaction (when you avoid all of the damage of a melee attack—whether it misses or you Defend): Force another logical target within Reach to be hit instead."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "The GM applies the attack to the new target.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "The image shows a dash after “attack” at a line break; pdftotext gives an em dash (—), used here."
+        }
+      },
+      {
+        "id": "feature.zephyr.martial-arts.skystrider",
+        "name": "Skystrider",
+        "text": "You cannot be Grappled or Restrained while conscious. While moving, you may travel across ANY terrain ignoring all ill effects (e.g., Prone, enemies, ceilings, treetops, lava, spikes, clouds).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Ignore Grappled/Restrained while conscious and terrain effects while moving.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      }
+    ]
+  },
+  "retrainText": "Focus. Whenever you spend time meditating alone in a windy place during a Safe Rest, you may choose different Zephyr options available to you.",
+  "source": {
+    "file": "Zephyr3.1.pdf",
+    "version": "3.1",
+    "pdfPage": 3,
+    "printedPage": 4,
+    "status": "verified",
+    "note": "Stat block and level table on PDF 3 (levels 1–4 printed 4, levels 5–20 printed 5). Secondary stats INT, WIL taken from the “Secondary Stat Increase. +1 INT or WIL.” lines. Martial Arts Abilities on PDF 4 (printed 6–7); retrainText (Focus) printed on both PDF 3 (printed 4) and PDF 4 (printed 7). Starting gear “Traveling Robes & Sandals” has no matching item in core armor/gear data, so only the Staff is in startingGear."
+  }
+}

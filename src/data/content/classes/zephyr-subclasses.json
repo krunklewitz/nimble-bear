@@ -1,0 +1,531 @@
+[
+  {
+    "id": "subclass.zephyr.pain",
+    "classId": "class.zephyr",
+    "name": "Way of Pain",
+    "tagline": "Welcome the strikes of your enemies, and let them shape you. Your capacity for suffering is bottomless.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.zephyr.pain.bring-the-pain"
+      ],
+      "7": [
+        "feature.zephyr.pain.share-my-pain"
+      ],
+      "11": [
+        "feature.zephyr.pain.pain-sharpens-the-mind"
+      ],
+      "15": [
+        "feature.zephyr.pain.echoed-agony"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.zephyr.pain.bring-the-pain",
+        "name": "Bring the Pain",
+        "text": "Damage no longer causes you to lose Momentum. (1/round) You may take 1 Wound to gain 10 Momentum for free.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.zephyr.pain.bring-the-pain",
+              "name": "Bring the Pain",
+              "kind": "free",
+              "actions": 0,
+              "limit": {
+                "uses": "1",
+                "per": "round"
+              },
+              "text": "(1/round) You may take 1 Wound to gain 10 Momentum for free."
+            }
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Momentum is no longer lost when you take damage: don’t clear it when you are hit (the sheet still clears it on damage). To use the free option, mark 1 Wound and add 10 Momentum by hand.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "verified",
+          "note": "The Momentum resource lists damageTaken in “lose”; there is no effect type to remove that trigger, so the player must restore Momentum by hand until the engine supports it."
+        }
+      },
+      {
+        "id": "feature.zephyr.pain.share-my-pain",
+        "name": "Share My Pain",
+        "text": "(1/round) Whenever you take damage, you can take half as much, and deal that much to another creature within Reach.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per round when you take damage, halve it and tell the GM to deal that amount to another creature within Reach.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "verified",
+          "note": "FAQ (PDF 8, printed 14): the damage from Share My Pain can be Defended or otherwise reduced, which also reduces the damage you deal in return."
+        }
+      },
+      {
+        "id": "feature.zephyr.pain.pain-sharpens-the-mind",
+        "name": "Pain Sharpens the Mind",
+        "text": "While you are Bloodied, gain advantage.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "While Bloodied, roll with advantage.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "unverified",
+          "note": "The text does not say which rolls gain advantage (all rolls? attacks only?), so it is not automated. Asked in the report."
+        }
+      },
+      {
+        "id": "feature.zephyr.pain.echoed-agony",
+        "name": "Echoed Agony",
+        "text": "Your Share My Pain can also target a 2nd creature within Reach 4.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Share My Pain can also deal its damage to a 2nd creature within Reach 4.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Zephyr3.1.pdf",
+      "version": "3.1",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "subclass.zephyr.iron",
+    "classId": "class.zephyr",
+    "name": "Way of Iron",
+    "tagline": "Train your body to be hard as iron. Concentrate to strengthen your defenses, then release the energy for devastating blows.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.zephyr.iron.steel-yourself"
+      ],
+      "7": [
+        "feature.zephyr.iron.iron-fists",
+        "feature.zephyr.iron.iron-body"
+      ],
+      "11": [
+        "feature.zephyr.iron.infuse-with-iron"
+      ],
+      "15": [
+        "feature.zephyr.iron.perfect-alloy"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.zephyr.iron.steel-yourself",
+        "name": "Steel Yourself",
+        "text": "When you roll Initiative gain Tempered: (1/round) reduce an attack’s damage by 10 for free. When you hit, you may end Tempered to add 1d20 damage.",
+        "effects": [
+          {
+            "type": "resource",
+            "resource": {
+              "id": "resource.zephyr.iron.tempered",
+              "name": "Tempered",
+              "max": "1",
+              "recover": [
+                {
+                  "on": "initiative",
+                  "amount": "all"
+                }
+              ]
+            }
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.zephyr.iron.end-tempered",
+              "label": "End Tempered: +1d20 damage",
+              "on": "damage",
+              "change": "addDice",
+              "value": "1d20",
+              "mode": "toggle",
+              "when": {
+                "situation": "You hit and end Tempered"
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Once per round, reduce an attack’s damage against you by 10 by hand. When you end Tempered for +1d20 damage, spend the Tempered resource.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified",
+          "note": "Tempered is tracked as a 1-point resource (have it or not) gained on Initiative. The book doesn’t say Tempered ends at the end of combat, so no “lose” trigger is set."
+        }
+      },
+      {
+        "id": "feature.zephyr.iron.iron-fists",
+        "name": "Iron Fists",
+        "text": "When you end Tempered, roll its d20 with advantage.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you end Tempered, roll the 1d20 twice and keep the higher.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.iron.iron-body",
+        "name": "Iron Body",
+        "text": "You can double the Tempered damage reduction each round or use it 2/round. Gain Tempered the first time you would gain a Wound each encounter.",
+        "effects": [
+          {
+            "type": "hook",
+            "on": "woundGained",
+            "text": "Iron Body: the first time you would gain a Wound this encounter, gain Tempered."
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Each round choose: Tempered reduces damage by 20 once, or by 10 twice. The first time you would gain a Wound each encounter, set Tempered back to 1.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.iron.infuse-with-iron",
+        "name": "Infuse with Iron",
+        "text": "When you use Infuse Strength, your target gains Tempered.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Tell the target of your Infuse Strength that they gain Tempered.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.iron.perfect-alloy",
+        "name": "Perfect Alloy",
+        "text": "Gain Tempered whenever you use a Burst of Speed.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you spend a Burst of Speed, set Tempered to 1.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Zephyr3.1.pdf",
+      "version": "3.1",
+      "pdfPage": 5,
+      "printedPage": 9,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "subclass.zephyr.hurricanes",
+    "classId": "class.zephyr",
+    "name": "Way of Hurricanes",
+    "tagline": "Your fist is as the howling wind, unceasing and everflowing. Those who face you are battered and bruised by a whirlwind of deadly strikes.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.zephyr.hurricanes.cyclone",
+        "feature.zephyr.hurricanes.cleaving-gale"
+      ],
+      "7": [
+        "feature.zephyr.hurricanes.hurricane-strike",
+        "feature.zephyr.hurricanes.sidestep"
+      ],
+      "11": [
+        "feature.zephyr.hurricanes.forceful-gust"
+      ],
+      "15": [
+        "feature.zephyr.hurricanes.tempests-fury"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.zephyr.hurricanes.cyclone",
+        "name": "Cyclone",
+        "text": "(Reach 4) You may spend 1 Momentum to move a creature 1 space.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Spend 1 Momentum by hand to move a creature within Reach 4 by 1 space.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.hurricanes.cleaving-gale",
+        "name": "Cleaving Gale",
+        "text": "Whenever you crit, you may deal that much damage to a 2nd creature within Reach 1 of your target. (1/turn) When you HIT, you may gain a Wound to change it into a crit.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "On a crit, deal the same damage to a 2nd creature within Reach 1 of your target. Once per turn on a hit, mark a Wound to make it a crit.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.hurricanes.hurricane-strike",
+        "name": "Hurricane Strike",
+        "text": "Your Galeforce Strike may gain: AoE, Reach 1.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Galeforce Strike can be made as an AoE with Reach 1.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.hurricanes.sidestep",
+        "name": "Sidestep",
+        "text": "After you are attacked, you may move 2 spaces (after damage resolves).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "After an attack against you resolves, you may move 2 spaces.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.hurricanes.forceful-gust",
+        "name": "Forceful Gust",
+        "text": "Your Unarmed Strikes can Knockback STR spaces; you may suffer 1 Wound to double the distance.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Push the target of an Unarmed Strike STR spaces; mark 1 Wound to double it.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.hurricanes.tempests-fury",
+        "name": "Tempest’s Fury",
+        "text": "Whenever you would roll any extra dice for a crit, instead roll 1d20.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Replace the extra crit dice with a single 1d20.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Zephyr3.1.pdf",
+      "version": "3.1",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "subclass.zephyr.flame",
+    "classId": "class.zephyr",
+    "name": "Way of Flame",
+    "tagline": "Burn fiercely with the heat of battle, fight fast and reckless, and counter enemies with burning strikes.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.zephyr.flame.exploding-soul"
+      ],
+      "7": [
+        "feature.zephyr.flame.burning-palm"
+      ],
+      "11": [
+        "feature.zephyr.flame.chain-reaction"
+      ],
+      "15": [
+        "feature.zephyr.flame.encompassing-flames"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.zephyr.flame.exploding-soul",
+        "name": "Exploding Soul",
+        "text": "Whenever you gain one or more Wounds, make an Unarmed Strike, dealing the damage to ALL others within Reach 1. (1/round) On your turn, you may suffer a Wound.",
+        "effects": [
+          {
+            "type": "hook",
+            "on": "woundGained",
+            "text": "Exploding Soul: make an Unarmed Strike, dealing the damage to ALL others within Reach 1."
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "When you gain Wounds, roll an Unarmed Strike and apply it to all others within Reach 1. Once per round on your turn, you may mark a Wound.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified",
+          "note": "FAQ (PDF 8, printed 14): Exploding Soul can cause more Wounds while Dying if you fail the STR save on attacks while Dying."
+        }
+      },
+      {
+        "id": "feature.zephyr.flame.burning-palm",
+        "name": "Burning Palm",
+        "text": "Your Unarmed Strikes gain: On crit: Smoldering. You may double the effects of Momentum vs Smoldering creatures (ending the condition).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "On an Unarmed Strike crit, the target becomes Smoldering. Against a Smoldering creature you may double Momentum’s effects, which ends Smoldering.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.flame.chain-reaction",
+        "name": "Chain Reaction",
+        "text": "(1/turn) When you crit with an Unarmed Strike, deal fire damage equal to your STR+Momentum spent to creatures of your choice adjacent to your target. Repeat any number of times, targeting creatures not yet damaged by this effect this turn.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per turn on an Unarmed Strike crit, deal STR + Momentum spent as fire damage to chosen creatures adjacent to the target, chaining to creatures not yet damaged this turn.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.zephyr.flame.encompassing-flames",
+        "name": "Encompassing Flames",
+        "text": "You may double the Reach of Chain Reaction and Exploding Soul.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Chain Reaction and Exploding Soul may use double Reach.",
+        "source": {
+          "file": "Zephyr3.1.pdf",
+          "version": "3.1",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Zephyr3.1.pdf",
+      "version": "3.1",
+      "pdfPage": 7,
+      "printedPage": 12,
+      "status": "verified"
+    }
+  }
+]

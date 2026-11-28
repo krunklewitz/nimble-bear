@@ -14,6 +14,8 @@ import cheat from "./content/classes/cheat.json";
 import cheatSubclasses from "./content/classes/cheat-subclasses.json";
 import shepherd from "./content/classes/shepherd.json";
 import shepherdSubclasses from "./content/classes/shepherd-subclasses.json";
+import zephyr from "./content/classes/zephyr.json";
+import zephyrSubclasses from "./content/classes/zephyr-subclasses.json";
 import fireSpells from "./content/spells/fire.json";
 import iceSpells from "./content/spells/ice.json";
 import lightningSpells from "./content/spells/lightning.json";
@@ -130,8 +132,8 @@ export function getContent(): Content {
     gear,
     equipmentRules,
     boons,
-    classes: [cheat, shepherd],
-    subclasses: [cheatSubclasses, shepherdSubclasses],
+    classes: [cheat, shepherd, zephyr],
+    subclasses: [cheatSubclasses, shepherdSubclasses, zephyrSubclasses],
     spells: [radiantSpells, necroticSpells, fireSpells, iceSpells, lightningSpells, windSpells, shepherdSpells],
   });
   return cached;
