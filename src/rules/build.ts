@@ -87,7 +87,7 @@ export function createCharacter(content: Content, input: CreationInput, id: stri
   }
   const sheet = derive(content, c);
   c.play.hp = sheet.hp.max;
-  for (const r of sheet.resources) c.play.resources[r.def.id] = { current: r.max };
+  for (const r of sheet.resources) c.play.resources[r.def.id] = { current: r.def.startsEmpty ? 0 : r.max };
   return c;
 }
 
@@ -211,7 +211,7 @@ export function applyLevelUp(content: Content, draft: Character, plan: LevelUpPl
   draft.build.levels.push(record);
   const after = derive(content, draft);
   draft.play.hp = after.hp.max;
-  for (const r of after.resources) if (draft.play.resources[r.def.id] === undefined) draft.play.resources[r.def.id] = { current: r.max };
+  for (const r of after.resources) if (draft.play.resources[r.def.id] === undefined) draft.play.resources[r.def.id] = { current: r.def.startsEmpty ? 0 : r.max };
 }
 
 /** Removes the latest level (Undo last level-up). Never removes level 1. */

@@ -460,7 +460,7 @@ export function derive(content: Content, c: Character): Sheet {
       if (e.type !== "resource") continue;
       const baseMax = Math.max(0, evalIn(e.resource.max));
       const max = e.resource.id === "resource.mana" ? Math.max(0, apply("maxMana", baseMax)) : baseMax;
-      const stored = c.play.resources[e.resource.id]?.current ?? max;
+      const stored = c.play.resources[e.resource.id]?.current ?? (e.resource.startsEmpty ? 0 : max);
       const current = e.resource.uncapped ? Math.max(0, stored) : Math.min(max, stored);
       // Other features may change this resource (e.g. stop it being lost on damage).
       const dropped = new Set(features.flatMap((g) => effectsOf(g)).flatMap((x) => (x.type === "resourceChange" && x.resource === e.resource.id ? (x.removeLose ?? []) : [])));

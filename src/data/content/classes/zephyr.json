@@ -161,12 +161,13 @@
           "resource": {
             "id": "resource.zephyr.momentum",
             "name": "Momentum",
-            "max": "99",
+            "max": "30",
             "recover": [],
             "lose": [
               "damageTaken",
               "combatEnd"
-            ]
+            ],
+            "startsEmpty": true
           }
         }
       ],
@@ -178,7 +179,7 @@
         "pdfPage": 3,
         "printedPage": 4,
         "status": "verified",
-        "note": "The book gives no maximum for Momentum; max \"99\" is a placeholder meaning “no limit”. FAQ (PDF 8, printed 14): movement while Riding and forced movement also count toward Momentum."
+        "note": "The book gives no maximum for Momentum. Table rule (user decision 2026-11-27): Momentum is capped at 30. FAQ (PDF 8, printed 14): movement while Riding and forced movement also count toward Momentum."
       }
     },
     {
@@ -201,7 +202,8 @@
             "lose": [
               "combatEnd"
             ],
-            "uncapped": true
+            "uncapped": true,
+            "startsEmpty": true
           }
         },
         {

@@ -448,7 +448,8 @@
             "dice": {
               "die": "1d4",
               "rolled": "gained"
-            }
+            },
+            "startsEmpty": true
           }
         }
       ],

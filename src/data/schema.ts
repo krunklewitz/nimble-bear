@@ -108,6 +108,8 @@ export const ResourceDef = z
     lose: z.array(Trigger).optional(),
     /** `max` is what you gain, not a cap: extra gains can go above it (Zephyr Bursts of Speed + Reactive Force). */
     uncapped: z.boolean().optional(),
+    /** Starts at 0 until gained (combat-only resources such as Momentum), instead of starting full. */
+    startsEmpty: z.boolean().optional(),
     /** Dice-pool resources: the die, and whether it's rolled when gained or when spent. */
     dice: z.object({ die: Formula, rolled: z.enum(["gained", "spent"]) }).strict().optional(),
   })

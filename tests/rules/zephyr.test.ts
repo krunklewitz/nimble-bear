@@ -61,3 +61,25 @@ describe("Zephyr review fixes", () => {
     expect(s.actions.find((a) => a.id === "attack.weapon.unarmed-strike")?.roll?.canCrit).toBe(true);
   });
 });
+
+describe("Momentum starts empty, capped at 30 (table rule)", () => {
+  it("a new Zephyr has 0 Momentum (and 0 Bursts after levelling up) before combat", () => {
+    const s = derive(content, zephyr(2));
+    const m = s.resources.find((r) => r.def.id === "resource.zephyr.momentum");
+    expect(m?.current).toBe(0);
+    expect(m?.max).toBe(30);
+    expect(s.resources.find((r) => r.def.id === "resource.zephyr.burst-of-speed")?.current).toBe(0);
+  });
+
+  it("Momentum can't go above 30", () => {
+    const c = zephyr(1);
+    setResource(c, derive(content, c), "resource.zephyr.momentum", 45);
+    expect(derive(content, c).resources.find((r) => r.def.id === "resource.zephyr.momentum")?.current).toBe(30);
+  });
+
+  it("an old save holding 99 shows 30", () => {
+    const c = zephyr(1);
+    c.play.resources["resource.zephyr.momentum"] = { current: 99 };
+    expect(derive(content, c).resources.find((r) => r.def.id === "resource.zephyr.momentum")?.current).toBe(30);
+  });
+});
