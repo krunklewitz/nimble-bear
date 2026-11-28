@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 4 built (v0.4.6, incl. Combat tab sections, feature upgrades, combat-only resources start empty); Owlbear gate test in progress
+## Current: Phase 4 gate passed in the browser (v0.4.7); Phase 5 starting. Owlbear-only checks still owed by the user (panel, popover reopen, file save)
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -74,8 +74,10 @@ Open rules questions added: RQ-007 to RQ-014 (docs/RULES_QUESTIONS.md).
 Done: schema for pools/pool swaps/school choice/grantOptions/boons; engine (pool picks, swaps, granted options hidden from picks, Coven tiered-only, class spell lists, maxMana, +5 stat cap, levelChoices follows picks); data via subagents: Cheat and Shepherd 4-20, Hexbinder and Zephyr full, Ice/Lightning/Wind + Hexbinder spells, Boons (GMG p.75). All 4 classes x 17 subclasses build to level 20 (tests/rules/fullbuild.test.ts); docs/COVERAGE.md and AUTOMATION.md regenerated. Reviews: Hexbinder (1 error fixed: Pestilential Reign grants Pestilent), Cheat/Shepherd 4-20 (0 errors; Supreme Underdog keeps stats, RQ-022). New RQ-020..025.
 Zephyr/spells/Boons review: no transcription errors; fixed behaviour: Bursts of Speed can exceed DEX (uncapped resources), Iron Defense (2) and Unyielding Resolve supersede earlier levels, Way of Pain keeps Momentum on damage (resourceChange effect), Sniper partial, Traveling Robes & Sandals added. New RQ-026..029.
 
-### Phase 4 gate (needs the user)
-In Owlbear: create a Hexbinder and a Zephyr, level them (incl. pool picks, Coven school, Epic Boon at 19 if testing high levels), cast Hexbinder spells, use Momentum/Bursts; confirm The Cheat and Shepherd still work.
+### Phase 4 gate, browser run 2026-11-28 (v0.4.6 → v0.4.7)
+Run by Claude on the live site in the built-in browser (outside Owlbear, user request). Passed: Elf Hexbinder 1→19 (Coven of the Sight; Afflictions, Mystic Marks incl. Coven → Fire school, stat picks, Epic Boon list of 12, Epic Mind gives mana 31 = WIL 4 + 19 + 8), Tier 1 cast spends mana, Futuresight Dice 0 before combat / fill on Initiative / empty after; Dwarf Zephyr 1→3 (Way of Iron): Momentum 0/30, lost on damage, Bursts 0 → DEX on Initiative → spent by Windstep → reset at combat end, Tempered starts 0; ✦ upgrades show (Hex, Doomed, Soothsayer, Momentum, Unarmed Strike); autosave survives reload. Cheat/Shepherd regression checked earlier the same day in the preview.
+Fixed (v0.4.7): no-roll abilities rolled a meaningless d20 (now a Use window with cost); roll window shows costs; Hex listed twice; stray "·" in row summaries; lowercase school/language names; "Highest tier 0".
+Still owed by the user in Owlbear: open the panel, close and reopen it with a hero open, save a character file.
 
 ## Deferred until stable
 - Update check: drop the 5-minute repeat in src/ui/UpdateBanner.tsx (CHECK_EVERY_MS) and check only when the panel opens. User decision 2026-11-27; do it in Phase 6 polish or when the user calls a version stable.
