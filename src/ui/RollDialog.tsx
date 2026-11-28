@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { changePrimary, describe, optionsFor, performRoll, toMessage, type RollKind, type RollOutcome, type RollRequest } from "../app/rolls";
 import type { Character } from "../rules/persistence/character";
 import type { Sheet, SheetAction } from "../rules/derive";
-import { checkUse, payUse, startCombat } from "../rules/play";
+import { checkUse, isOffTurn, payUse, startCombat } from "../rules/play";
 import { getContent } from "../data/content";
 import { cryptoRng } from "../platform/random";
 import type { RollMessage } from "../platform/types";
@@ -47,10 +47,12 @@ export function RollDialog({ target, character, sheet, onClose }: { target: Roll
   const [request, setRequest] = useState<RollRequest | null>(null);
   const [confirming, setConfirming] = useState(false);
   const [primaryValue, setPrimaryValue] = useState(1);
+  const [adjacent, setAdjacent] = useState(false);
+  const offTurn = isOffTurn(character);
 
   const options = useMemo(
-    () => optionsFor(sheet, target.kind, { skill: target.skill, stat: target.stat, group: target.group }, character.play.uses),
-    [sheet, target, character.play.uses],
+    () => optionsFor(sheet, target.kind, { skill: target.skill, stat: target.stat, group: target.group }, character.play.uses, offTurn),
+    [sheet, target, character.play.uses, offTurn],
   );
   const costed = target.action && (target.action.actions !== undefined || target.manaCost !== undefined || target.action.manaCost !== undefined || target.action.resourceCost || target.action.limit);
   const check = target.action ? checkUse(character, sheet, target.action, { mana: target.manaCost, creature: target.creature }) : { ok: true, problems: [], rushed: 0 };
@@ -67,7 +69,7 @@ export function RollDialog({ target, character, sheet, onClose }: { target: Roll
       setConfirming(true);
       return;
     }
-    const req: RollRequest = { kind: target.kind, label: target.label, action: target.action, modifier: target.modifier, skill: target.skill, stat: target.stat, advantage, rushed, toggles, options };
+    const req: RollRequest = { kind: target.kind, label: target.label, action: target.action, modifier: target.modifier, skill: target.skill, stat: target.stat, advantage: advantage - (adjacent ? 1 : 0), rushed, toggles, options };
     const out = performRoll(sheet, req, cryptoRng);
     setRequest(req);
     setOutcome(out);
@@ -84,7 +86,8 @@ export function RollDialog({ target, character, sheet, onClose }: { target: Roll
         if (target.action && costed) payUse(d, sheet, target.action, { mana: target.manaCost, creature: target.creature });
         for (const v of options) {
           const used = v.how === "auto" ? (!v.onCrit || crit) : toggles.includes(v.option.id);
-          if (used && v.max !== null && v.option.change !== "setPrimary") d.play.uses[v.option.id] = (d.play.uses[v.option.id] ?? 0) + 1;
+          const freeOffTurn = offTurn && v.option.limit?.per === "turn";
+          if (used && !freeOffTurn && v.max !== null && v.option.change !== "setPrimary") d.play.uses[v.option.id] = (d.play.uses[v.option.id] ?? 0) + 1;
         }
         if (target.kind === "initiative" && out.kind === "d20") startCombat(d, sheet, getContent().core, out.floorTo ?? out.result.total, out.result.natural);
       },
@@ -125,6 +128,13 @@ export function RollDialog({ target, character, sheet, onClose }: { target: Roll
               </button>
             </div>
             {rushed > 0 && <p className="small">Rushed Attack: disadvantage {rushed} (Core Rules p.14).</p>}
+            {target.group === "ranged" && (
+              <label className="option compact">
+                <input type="checkbox" checked={adjacent} onChange={(e) => setAdjacent(e.target.checked)} />
+                <span>An enemy is adjacent to me (ranged attacks have disadvantage, Core Rules p.10)</span>
+              </label>
+            )}
+            {offTurn && <p className="small">On another creature's turn: 1/turn abilities can be used again (Core Rules p.13).</p>}
             {sheet.dying && target.kind === "attack" && <p className="banner error">While Dying, attacking causes 1 Wound unless you succeed on a DC 10 STR save (Core Rules p.9).</p>}
             {options.length > 0 && (
               <fieldset className="choice">

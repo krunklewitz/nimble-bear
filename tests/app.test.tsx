@@ -8,7 +8,7 @@ import { LibraryProvider } from "../src/ui/LibraryContext";
 import { FREE_APP_NOTICE } from "../src/ui/legalText";
 import { PlatformProvider } from "../src/ui/PlatformContext";
 
-const hpLine = (hp: number, max: number) => screen.getByText((_, el) => el?.tagName === "P" && new RegExp(`^${hp} / ${max} HP`).test(el.textContent ?? ""));
+const hpButton = (hp: number, max: number) => screen.getByRole("button", { name: `HP ${hp} of ${max}. Change HP` });
 
 function renderApp(store: CharacterStore = createMemoryStore()) {
   return render(
@@ -79,9 +79,9 @@ describe("App", () => {
 
   it("creates the book's quick-build Shepherd through the wizard", async () => {
     const store = await createGrace();
-    expect(await screen.findByRole("heading", { name: "Grace" })).toBeTruthy();
-    expect(screen.getByText(/Level 1 Human Shepherd/)).toBeTruthy();
-    expect(hpLine(17, 17)).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: /^Grace/ })).toBeTruthy();
+    expect(screen.getByRole("heading", { name: /Grace Shepherd 1/ })).toBeTruthy();
+    expect(hpButton(17, 17)).toBeTruthy();
     const defense = screen.getByText("Defense").parentElement;
     expect(defense?.textContent).toContain("8");
     await vi.waitFor(async () => expect((await store.listCharacters()).length).toBe(1));
@@ -89,26 +89,33 @@ describe("App", () => {
 
   it("autosaves damage and marks the hero saved after saving a file", async () => {
     const store = await createGrace();
-    await screen.findByRole("heading", { name: "Grace" });
+    await screen.findByRole("heading", { name: /^Grace/ });
+    fireEvent.click(hpButton(17, 17));
     fireEvent.change(screen.getByLabelText("Amount"), { target: { value: "5" } });
     fireEvent.click(screen.getByRole("button", { name: "Damage" }));
-    expect(hpLine(12, 17)).toBeTruthy();
+    expect(screen.getByText("Lost 5 HP.")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Close" }));
+    expect(hpButton(12, 17)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Lose 1 HP" }));
+    expect(hpButton(11, 17)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Undo: Take 1 damage" }));
     await vi.waitFor(async () => {
       const [record] = await store.listCharacters();
       expect((record?.character as { play: { hp: number } }).play.hp).toBe(12);
     });
     fireEvent.click(screen.getByRole("button", { name: /Undo: Take 5 damage/ }));
-    expect(hpLine(17, 17)).toBeTruthy();
+    expect(hpButton(17, 17)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "● Unsaved" }));
     fireEvent.click(screen.getByRole("button", { name: "Save character file" }));
-    expect(await screen.findByText(/Saved to file just now/)).toBeTruthy();
+    expect(await screen.findByRole("button", { name: "✓ Saved" })).toBeTruthy();
   });
 
   it("reopens on the last open hero", async () => {
     const store = await createGrace();
-    await screen.findByRole("heading", { name: "Grace" });
+    await screen.findByRole("heading", { name: /^Grace/ });
     cleanup();
     renderApp(store);
-    expect(await screen.findByRole("heading", { name: "Grace" })).toBeTruthy();
+    expect(await screen.findByRole("heading", { name: /^Grace/ })).toBeTruthy();
   });
 
   it("explains an invalid pasted file and changes nothing", async () => {

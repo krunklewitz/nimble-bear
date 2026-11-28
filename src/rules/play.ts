@@ -178,7 +178,7 @@ export function checkReaction(draft: Character, sheet: Sheet, name: Reaction): s
   return problems;
 }
 
-export function useReaction(draft: Character, sheet: Sheet, name: Reaction) {
+export function spendReaction(draft: Character, sheet: Sheet, name: Reaction) {
   const c = draft.play.combat;
   if (c.active) c.actions = Math.max(0, c.actions - reactionCost(sheet, name));
   if (!c.reactionsUsed.includes(name)) c.reactionsUsed.push(name);

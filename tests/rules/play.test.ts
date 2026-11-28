@@ -3,7 +3,7 @@ import { getContent } from "../../src/data/content";
 import { scriptedRng } from "../../src/rules/dice";
 import { applyLevelUp, checkStats, createCharacter, levelUpPlan, undoLastLevel, validateCreation, validateLevelUp, type CreationInput } from "../../src/rules/build";
 import { derive } from "../../src/rules/derive";
-import { applyDamage, checkReaction, checkUse, endCombat, endTurn, heal, isOffTurn, payUse, safeRest, spendHitDice, startCombat, startTurn, useReaction } from "../../src/rules/play";
+import { applyDamage, checkReaction, checkUse, endCombat, endTurn, heal, isOffTurn, payUse, safeRest, spendHitDice, startCombat, startTurn, spendReaction } from "../../src/rules/play";
 import type { Character } from "../../src/rules/persistence/character";
 
 const content = getContent();
@@ -224,7 +224,7 @@ describe("audit fixes (second rules check)", () => {
     startCombat(c, s, content.core, 15, 12);
     endTurn(c, s);
     expect(checkReaction(c, s, "Defend")).toEqual([]);
-    useReaction(c, s, "Defend");
+    spendReaction(c, s, "Defend");
     expect(c.play.combat.actions).toBe(2);
     expect(checkReaction(c, s, "Defend")[0]).toMatch("1/round");
     endTurn(c, s);
@@ -236,7 +236,7 @@ describe("audit fixes (second rules check)", () => {
     c.play.inventory = c.play.inventory.map((i) => (i.itemId === "armor.rusty-mail" ? { ...i, itemId: "armor.cheap-hides", name: "Cheap Hides" } : i));
     const s = derive(content, c);
     startCombat(c, s, content.core, 15, 12);
-    useReaction(c, s, "Defend");
+    spendReaction(c, s, "Defend");
     expect(c.play.combat.actions).toBe(0);
   });
 
