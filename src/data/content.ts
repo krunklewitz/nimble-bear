@@ -15,6 +15,9 @@ import cheatSubclasses from "./content/classes/cheat-subclasses.json";
 import shepherd from "./content/classes/shepherd.json";
 import shepherdSubclasses from "./content/classes/shepherd-subclasses.json";
 import fireSpells from "./content/spells/fire.json";
+import iceSpells from "./content/spells/ice.json";
+import lightningSpells from "./content/spells/lightning.json";
+import windSpells from "./content/spells/wind.json";
 import necroticSpells from "./content/spells/necrotic.json";
 import radiantSpells from "./content/spells/radiant.json";
 import shepherdSpells from "./content/spells/shepherd.json";
@@ -129,7 +132,7 @@ export function getContent(): Content {
     boons,
     classes: [cheat, shepherd],
     subclasses: [cheatSubclasses, shepherdSubclasses],
-    spells: [radiantSpells, necroticSpells, fireSpells, shepherdSpells],
+    spells: [radiantSpells, necroticSpells, fireSpells, iceSpells, lightningSpells, windSpells, shepherdSpells],
   });
   return cached;
 }
