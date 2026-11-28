@@ -2,7 +2,8 @@ import { useState } from "react";
 import { getContent } from "../../data/content";
 import type { SheetAction } from "../../rules/derive";
 import { diceText, toDice } from "../../rules/formula";
-import { checkReaction, endCombat, endTurn, isOffTurn, REACTIONS, reactionCost, startTurn, spendReaction, type Reaction } from "../../rules/play";
+import { combatFeatures, type CombatFeature } from "../../rules/combat";
+import { checkReaction, endCombat, endTurn, isAttack, isOffTurn, REACTIONS, reactionCost, startTurn, spendReaction, type Reaction } from "../../rules/play";
 import { SourceTag, signed } from "../common";
 import type { RollTarget } from "../RollDialog";
 import type { TabProps } from "./shared";
@@ -35,12 +36,60 @@ export function rollTargetFor(a: SheetAction): RollTarget {
   };
 }
 
+/** Combat-relevant features: what each does, how the sheet handles it, and Use buttons for its actions. */
+function AbilityRows({ items, onRoll }: { items: CombatFeature[]; onRoll: (t: RollTarget) => void }) {
+  return (
+    <ul className="rows">
+      {items.map((x) => {
+        const uses = [...x.actions, ...x.attacks].find((a) => a.limit)?.limit;
+        const tag = x.how.some((h) => /automatically/.test(h)) ? "auto" : x.how.some((h) => /roll window/.test(h)) ? "toggle" : x.feature.def.automation === "manual" ? "by hand" : "";
+        return (
+          <li key={x.feature.def.id} className="row-item ability">
+            <details>
+              <summary>
+                <span className="row-name">{x.feature.def.name}</span>
+                <span className="row-meta">
+                  {tag}
+                  {uses ? " · " + Math.max(0, uses.max - uses.used) + "/" + uses.max : ""}
+                  {x.resources.map((r) => " · " + r.def.name + " " + (r.max >= 99 ? String(r.current) : r.current + "/" + r.max)).join("")}
+                </span>
+              </summary>
+              {x.how.length > 0 && (
+                <ul className="small how">
+                  {x.how.map((h) => (
+                    <li key={h}>{h}</li>
+                  ))}
+                </ul>
+              )}
+              <p className="small feature-text">{x.feature.def.text}</p>
+              {x.feature.def.manualNote && <p className="small">✋ {x.feature.def.manualNote}</p>}
+              {x.attacks.length > 0 && <p className="small">Its attacks are under Attacks: {x.attacks.map((a) => a.name).join(", ")}.</p>}
+              <SourceTag source={x.feature.def.source} />
+            </details>
+            {x.actions.length > 0 && (
+              <span className="ability-actions">
+                {x.actions.map((a) => (
+                  <button key={a.id} type="button" className="roll-btn" title={a.text} onClick={() => onRoll(rollTargetFor(a))}>
+                    {x.actions.length > 1 ? a.name : a.roll ? "Roll" : "Use"}
+                  </button>
+                ))}
+              </span>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
   const content = getContent();
   const combat = character.play.combat;
   const offTurn = isOffTurn(character);
   const [addCondition, setAddCondition] = useState("");
   const [upcast, setUpcast] = useState<Record<string, number>>({});
+  const classAbilities = combatFeatures(sheet);
+  const attacks = sheet.actions.filter((a) => a.kind !== "passive" && isAttack(a));
 
   const react = (name: Reaction) => {
     const problems = checkReaction(character, sheet, name);
@@ -122,12 +171,30 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
         )}
       </section>
 
-      {/* Attacks and abilities */}
-      <h2>Attacks &amp; abilities</h2>
+      {/* Class Abilities */}
+      <details className="combat-section" open>
+        <summary>
+          <span>Class Abilities</span>
+          <span className="row-meta">{classAbilities.length}</span>
+        </summary>
+        {classAbilities.length === 0 && <p className="small">No combat abilities yet.</p>}
+        <AbilityRows items={classAbilities.filter((x) => x.feature.source !== "ancestry" && x.feature.source !== "background")} onRoll={onRoll} />
+        {classAbilities.some((x) => x.feature.source === "ancestry" || x.feature.source === "background") && (
+          <>
+            <p className="small subhead">From ancestry &amp; background</p>
+            <AbilityRows items={classAbilities.filter((x) => x.feature.source === "ancestry" || x.feature.source === "background")} onRoll={onRoll} />
+          </>
+        )}
+      </details>
+
+      {/* Attacks */}
+      <details className="combat-section" open>
+        <summary>
+          <span>Attacks</span>
+          <span className="row-meta">{attacks.length}</span>
+        </summary>
       <ul className="rows">
-        {sheet.actions
-          .filter((a) => a.kind !== "passive")
-          .map((a) => (
+        {attacks.map((a) => (
             <li key={a.id} className="row-item">
               <details>
                 <summary>
@@ -150,9 +217,14 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
             </li>
           ))}
       </ul>
+      </details>
 
       {/* Reactions */}
-      <h2>Reactions</h2>
+      <details className="combat-section" open>
+        <summary>
+          <span>Reactions</span>
+          <span className="row-meta">{combat.reactionsUsed.length ? `${combat.reactionsUsed.length} used` : ""}</span>
+        </summary>
       <p className="small">
         Each costs 1 action and is 1/round (Core Rules p.15). Defense {sheet.defense.value}
         {!sheet.defense.armorProficient ? " · Defend costs 2 actions in this armor" : ""}.
@@ -173,11 +245,15 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
           );
         })}
       </div>
+      </details>
 
       {/* Spells */}
       {sheet.spells.known.length > 0 && (
-        <>
-          <h2>Spells</h2>
+        <details className="combat-section" open>
+          <summary>
+            <span>Spells</span>
+            <span className="row-meta">{sheet.spells.known.length}</span>
+          </summary>
           <p className="small">
             {sheet.mana ? `Mana ${sheet.mana.current}/${sheet.mana.max} · ` : ""}Highest tier {Math.max(0, sheet.spells.maxTier)} · {sheet.spells.schools.join(", ")}
           </p>
@@ -235,11 +311,15 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
           </ul>
             </details>
           ))}
-        </>
+        </details>
       )}
 
       {/* Conditions and situations */}
-      <h2>Conditions</h2>
+      <details className="combat-section" open>
+        <summary>
+          <span>Conditions</span>
+          <span className="row-meta">{character.play.conditions.length || ""}</span>
+        </summary>
       <div className="chips">
         {character.play.conditions.length === 0 && <span className="small">None</span>}
         {character.play.conditions.map((c, i) => {
@@ -289,7 +369,7 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
       )}
       {sheet.toggles.length > 0 && (
         <>
-          <h2>Situations</h2>
+          <p className="small subhead">Situations</p>
           {sheet.toggles.map((t) => (
             <label key={t.id} className="option compact">
               <input type="checkbox" checked={t.on} onChange={() => update(`${t.on ? "Clear" : "Set"}: ${t.label}`, (d) => void (d.play.flags[t.id] = !t.on))} />
@@ -303,6 +383,7 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
           {sheet.hooks.map((h) => `${h.on === "woundGained" ? "When you gain a Wound: " : ""}${h.text}`).join(" ")}
         </p>
       )}
+      </details>
     </div>
   );
 }

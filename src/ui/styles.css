@@ -224,3 +224,10 @@ p.warn { color: var(--pending); }
 
 .update-banner { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: var(--primary); color: var(--primary-contrast); padding: 6px 12px; font-size: 0.85rem; }
 .update-banner button.primary { background: var(--primary-contrast); color: var(--primary); border-color: var(--primary-contrast); }
+
+.combat-section { border: 1px solid var(--paper); border-radius: 8px; margin: 8px 0; padding: 0 8px 4px; }
+.combat-section > summary { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-weight: 800; font-size: 1.02rem; cursor: pointer; }
+.combat-section[open] > summary { border-bottom: 1px solid var(--paper); margin-bottom: 4px; }
+.subhead { margin: 8px 0 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+.how { margin: 2px 0 4px; padding-left: 1.1rem; }
+.ability-actions { display: grid; gap: 4px; }
