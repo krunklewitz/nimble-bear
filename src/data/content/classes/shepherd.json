@@ -58,6 +58,72 @@
     "3": [
       "feature.shepherd.subclass",
       "feature.shepherd.master-of-twilight"
+    ],
+    "4": [
+      "feature.shepherd.sacred-grace",
+      "feature.shepherd.tier-2-spells",
+      "feature.shepherd.key-stat-increase-4"
+    ],
+    "5": [
+      "feature.shepherd.assist-me-my-friend",
+      "feature.shepherd.secondary-stat-increase-5",
+      "feature.shepherd.upgraded-cantrips-5"
+    ],
+    "6": [
+      "feature.shepherd.tier-3-spells",
+      "feature.shepherd.master-of-twilight-2"
+    ],
+    "7": [
+      "feature.shepherd.subclass-7"
+    ],
+    "8": [
+      "feature.shepherd.tier-4-spells",
+      "feature.shepherd.key-stat-increase-8"
+    ],
+    "9": [
+      "feature.shepherd.sacred-grace-2",
+      "feature.shepherd.secondary-stat-increase-9"
+    ],
+    "10": [
+      "feature.shepherd.tier-5-spells",
+      "feature.shepherd.upgraded-cantrips-10"
+    ],
+    "11": [
+      "feature.shepherd.subclass-11",
+      "feature.shepherd.master-of-twilight-3"
+    ],
+    "12": [
+      "feature.shepherd.tier-6-spells",
+      "feature.shepherd.key-stat-increase-12"
+    ],
+    "13": [
+      "feature.shepherd.sacred-grace-3",
+      "feature.shepherd.secondary-stat-increase-13"
+    ],
+    "14": [
+      "feature.shepherd.tier-7-spells"
+    ],
+    "15": [
+      "feature.shepherd.subclass-15",
+      "feature.shepherd.upgraded-cantrips-15"
+    ],
+    "16": [
+      "feature.shepherd.tier-8-spells",
+      "feature.shepherd.key-stat-increase-16"
+    ],
+    "17": [
+      "feature.shepherd.revitalizing-blessing",
+      "feature.shepherd.secondary-stat-increase-17"
+    ],
+    "18": [
+      "feature.shepherd.tier-9-spells"
+    ],
+    "19": [
+      "feature.shepherd.epic-boon"
+    ],
+    "20": [
+      "feature.shepherd.twilight-sage",
+      "feature.shepherd.upgraded-cantrips-20"
     ]
   },
   "subclassLevels": [
@@ -271,9 +337,997 @@
         "printedPage": 4,
         "status": "verified"
       }
+    },
+    {
+      "id": "feature.shepherd.sacred-grace",
+      "name": "Sacred Grace",
+      "text": "Choose 1 Sacred Grace.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.sacred-grace",
+            "prompt": "Choose 1 Sacred Grace.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "shepherd.sacred-graces"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-2-spells",
+      "name": "Tier 2 Spells",
+      "text": "You may now cast spells up to tier 2.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 2
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.key-stat-increase-4",
+      "name": "Key Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.key-stat-4",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.assist-me-my-friend",
+      "name": "Assist Me, My Friend!",
+      "text": "Instead of your spirit attacking this round, you may add its damage to one of your melee weapon attacks.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Instead of attacking with your Lifebinding Spirit this round, roll its Harm damage and add it to one of your melee weapon attacks by hand.",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.secondary-stat-increase-5",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.secondary-stat-5",
+            "prompt": "+1 INT or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.upgraded-cantrips-5",
+      "name": "Upgraded Cantrips",
+      "text": "Your cantrips grow stronger.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand.",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-3-spells",
+      "name": "Tier 3 Spells",
+      "text": "You may now cast spells up to tier 3.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 3
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.master-of-twilight-2",
+      "name": "Master of Twilight (2)",
+      "text": "Choose a 2nd Necrotic and a 2nd Radiant Utility Spell.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.master-of-twilight-2-necrotic",
+            "prompt": "Choose a 2nd Necrotic Utility Spell.",
+            "count": 1,
+            "from": {
+              "kind": "spell",
+              "school": "necrotic",
+              "tier": "utility"
+            }
+          }
+        },
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.master-of-twilight-2-radiant",
+            "prompt": "Choose a 2nd Radiant Utility Spell.",
+            "count": 1,
+            "from": {
+              "kind": "spell",
+              "school": "radiant",
+              "tier": "utility"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.subclass-7",
+      "name": "Subclass",
+      "text": "Gain your Shepherd subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-4-spells",
+      "name": "Tier 4 Spells",
+      "text": "You may now cast spells up to tier 4.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 4
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.key-stat-increase-8",
+      "name": "Key Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.key-stat-8",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.sacred-grace-2",
+      "name": "Sacred Grace (2)",
+      "text": "Choose a 2nd Sacred Grace.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.sacred-grace-2",
+            "prompt": "Choose a 2nd Sacred Grace.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "shepherd.sacred-graces"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.secondary-stat-increase-9",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.secondary-stat-9",
+            "prompt": "+1 INT or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-5-spells",
+      "name": "Tier 5 Spells",
+      "text": "You may now cast spells up to tier 5.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 5
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.upgraded-cantrips-10",
+      "name": "Upgraded Cantrips",
+      "text": "Your cantrips grow stronger.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand.",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.subclass-11",
+      "name": "Subclass",
+      "text": "Gain your Shepherd subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.master-of-twilight-3",
+      "name": "Master of Twilight (3)",
+      "text": "You know all Necrotic and Radiant Utility Spells.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "utility": "all"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "utility \"all\" is restricted to the listed schools (Necrotic and Radiant). With Luminary of the Forge’s Flameworker (Necrotic → Fire, RQ-011) the Necrotic half should follow the school swap; not confirmed by the page."
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-6-spells",
+      "name": "Tier 6 Spells",
+      "text": "You may now cast spells up to tier 6.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 6
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.key-stat-increase-12",
+      "name": "Key Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.key-stat-12",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.sacred-grace-3",
+      "name": "Sacred Grace (3)",
+      "text": "Choose a 3rd Sacred Grace.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.sacred-grace-3",
+            "prompt": "Choose a 3rd Sacred Grace.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "shepherd.sacred-graces"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.secondary-stat-increase-13",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.secondary-stat-13",
+            "prompt": "+1 INT or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-7-spells",
+      "name": "Tier 7 Spells",
+      "text": "You may now cast spells up to tier 7.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 7
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.subclass-15",
+      "name": "Subclass",
+      "text": "Gain your Shepherd subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.upgraded-cantrips-15",
+      "name": "Upgraded Cantrips",
+      "text": "Your cantrips grow stronger.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand.",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-8-spells",
+      "name": "Tier 8 Spells",
+      "text": "You may now cast spells up to tier 8.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 8
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.key-stat-increase-16",
+      "name": "Key Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.key-stat-16",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.revitalizing-blessing",
+      "name": "Revitalizing Blessing",
+      "text": "(1/round) Whenever you roll a 6+ on one or more healing dice, the target may recover one Wound.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Once per round, when any of your healing dice shows 6 or higher, the target may recover 1 Wound; adjust their Wounds by hand.",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.secondary-stat-increase-17",
+      "name": "Secondary Stat Increase",
+      "text": "+1 INT or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.secondary-stat-17",
+            "prompt": "+1 INT or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.tier-9-spells",
+      "name": "Tier 9 Spells",
+      "text": "You may now cast spells up to tier 9.",
+      "effects": [
+        {
+          "type": "spells",
+          "schools": [
+            "radiant",
+            "necrotic"
+          ],
+          "maxTier": 9
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.epic-boon",
+      "name": "Epic Boon",
+      "text": "Choose an Epic Boon (see pg. 75 of the GM’s Guide).",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.epic-boon",
+            "prompt": "Choose an Epic Boon.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "boons.epic"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.twilight-sage",
+      "name": "Twilight Sage",
+      "text": "+1 to any 2 of your stats. Your Lifebinding Spirit rolls twice as many dice.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.shepherd.capstone-stats",
+            "prompt": "+1 to any 2 of your stats.",
+            "count": 2,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX",
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        },
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Your Lifebinding Spirit rolls twice as many dice; double the dice of its Harm and Mend rolls by hand (the sheet doesn’t change them).",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.shepherd.upgraded-cantrips-20",
+      "name": "Upgraded Cantrips",
+      "text": "Your cantrips grow stronger.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand.",
+      "source": {
+        "file": "Shepherd3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
     }
   ],
-  "optionPools": {},
+  "optionPools": {
+    "shepherd.sacred-graces": [
+      {
+        "id": "feature.shepherd.sacred-graces.dark-benediction",
+        "name": "Dark Benediction",
+        "text": "Your Lifebinding Spirit can now cast Entice and Withering Touch.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Your Lifebinding Spirit can cast the Entice (spell.necrotic.entice) and Withering Touch (spell.necrotic.withering-touch) cantrips; cast them through the spirit by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive. Not encoded as a spells grant because the spirit, not the hero, gains the spells."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.empowered-companion",
+        "name": "Empowered Companion",
+        "text": "Your Lifebinding Spirit gains +STR damage vs Undead and +WIL healing.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Add +STR to your Lifebinding Spirit’s Harm damage against Undead, and +WIL to its healing (Mend), by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive. Spirit change left as text."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.guiding-spirit",
+        "name": "Guiding Spirit",
+        "text": "Whenever your Lifebinding Spirit rolls a 6+ on its damage die, the next attack against that target has advantage.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When your spirit’s damage die shows 6 or higher, the next attack against that target has advantage; apply it by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.hasty-companion",
+        "name": "Hasty Companion",
+        "text": "+4 Reach for your Lifebinding Spirit. It can also act for free when summoned.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Your spirit’s Reach becomes 8 (4 + 4); the Harm and Mend actions on the sheet still show Reach 4. When you summon it, it may act once without spending an action.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive. Spirit Reach change left as text."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.illuminate-soul",
+        "name": "Illuminate Soul",
+        "text": "Whenever you Mend a creature, make them glow with radiant light for 1 round. Attacks against them are disadvantaged and attacks they make are advantaged.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "After you Mend a creature, for 1 round attacks against it have disadvantage and its attacks have advantage; apply by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.light-bearer",
+        "name": "Light Bearer",
+        "text": "Your Lifebinding Spirit can cast Heal. Whenever you roll Initiative, regain 1 use of Mend (it expires when combat ends if unused).",
+        "effects": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "hook",
+            "on": "initiative",
+            "text": "Light Bearer: regain 1 use of Mend (it expires when combat ends if unused)."
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Your spirit can cast Heal (spell.radiant.heal); cast it through the spirit by hand. When you roll Initiative, add 1 Mend use; remove it at the end of combat if it wasn’t spent.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive. The Initiative Mend use is a reminder hook only: the sheet doesn’t add or expire it."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.not-beyond-my-reach",
+        "name": "Not Beyond MY Reach",
+        "text": "You may heal creatures that have been dead for less than 1 round. For every 10 HP a dead creature is healed this way, you may have them recover 1 Wound instead (you must heal at least 1 Wound to revive them).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "You may heal a creature dead for less than 1 round; every 10 HP of that healing may instead remove 1 Wound (at least 1 Wound to revive). Track by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Passive."
+        }
+      },
+      {
+        "id": "feature.shepherd.sacred-graces.vengeful-spirit",
+        "name": "Vengeful Spirit",
+        "text": "(AoE Reach 2) Your Lifebinding Spirit sacrifices itself to deal its Harm damage to all enemies within Reach.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.shepherd.vengeful-spirit",
+              "name": "Vengeful Spirit",
+              "kind": "ability",
+              "creature": "companion",
+              "actions": 1,
+              "reach": "2",
+              "aoe": true,
+              "text": "(AoE Reach 2) Your Lifebinding Spirit sacrifices itself to deal its Harm damage to all enemies within Reach."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Roll your spirit’s Harm damage (with any bonuses) once against all enemies within Reach 2; the spirit is gone until you summon it again.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Listed under SACRED GRACES with its own icon (checked on the page image); cost “1 Action”. No roll encoded because Harm damage can change (High Levels, Malice necrotic, Twilight Sage); Reach 2 is assumed to be measured from the spirit."
+        }
+      }
+    ]
+  },
   "retrainText": "Serve. After spending a day tending to a sacred place or serving others during a Safe Rest, you may choose different Shepherd options available to you.",
   "source": {
     "file": "Shepherd3.0.pdf",

@@ -9,6 +9,15 @@
       "3": [
         "feature.shepherd.malice.soul-reaper",
         "feature.shepherd.malice.harbinger-of-decay"
+      ],
+      "7": [
+        "feature.shepherd.malice.veilwalkers-blessing"
+      ],
+      "11": [
+        "feature.shepherd.malice.deathbringers-touch"
+      ],
+      "15": [
+        "feature.shepherd.malice.conduit-of-death"
       ]
     },
     "features": [
@@ -49,6 +58,93 @@
           "printedPage": 8,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.shepherd.malice.veilwalkers-blessing",
+        "name": "Veilwalker’s Blessing",
+        "text": "(1/Safe Rest) Reaction (when you would drop to 0 HP): Drop to 1 HP instead and your Lifebinding Spirit crits the attacker back.",
+        "effects": [
+          {
+            "type": "resource",
+            "resource": {
+              "id": "resource.shepherd.veilwalkers-blessing",
+              "name": "Veilwalker’s Blessing",
+              "max": "1",
+              "recover": [
+                {
+                  "on": "safeRest",
+                  "amount": "all"
+                }
+              ]
+            }
+          },
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.shepherd.malice.veilwalkers-blessing",
+              "name": "Veilwalker’s Blessing",
+              "kind": "reaction",
+              "actions": 0,
+              "cost": {
+                "resource": {
+                  "id": "resource.shepherd.veilwalkers-blessing",
+                  "amount": "1"
+                }
+              },
+              "text": "(1/Safe Rest) Reaction (when you would drop to 0 HP): Drop to 1 HP instead and your Lifebinding Spirit crits the attacker back."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "When you would drop to 0 HP, set your HP to 1 by hand and make your spirit’s Harm attack against the attacker as a crit.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "verified",
+          "note": "Use tracked as a resource (max 1, Safe Rest) so Conduit of Death (level 15) can recharge it."
+        }
+      },
+      {
+        "id": "feature.shepherd.malice.deathbringers-touch",
+        "name": "Deathbringer’s Touch",
+        "text": "Your Lifebinding Spirit and Withering Touch crit on 1 as well.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "A roll of 1 on your Lifebinding Spirit’s attacks or on Withering Touch also counts as a crit; apply by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.malice.conduit-of-death",
+        "name": "Conduit of Death",
+        "text": "Your Veilwalker’s Blessing ability recharges when you roll Initiative.",
+        "effects": [
+          {
+            "type": "hook",
+            "on": "initiative",
+            "text": "Conduit of Death: Veilwalker’s Blessing recharges."
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "When you roll Initiative, restore your Veilwalker’s Blessing use by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 5,
+          "printedPage": 8,
+          "status": "verified"
+        }
       }
     ],
     "source": {
@@ -69,6 +165,15 @@
       "3": [
         "feature.shepherd.mercy.merciful-healing",
         "feature.shepherd.mercy.life-is-beautiful"
+      ],
+      "7": [
+        "feature.shepherd.mercy.searing-light"
+      ],
+      "11": [
+        "feature.shepherd.mercy.powerful-healer"
+      ],
+      "15": [
+        "feature.shepherd.mercy.lifebinders-embrace"
       ]
     },
     "features": [
@@ -109,6 +214,94 @@
           "printedPage": 10,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.shepherd.mercy.searing-light",
+        "name": "Searing Light",
+        "text": "1 Action: (Reach 6) Whenever you heal HP, you may expend 1 use of Mend to damage another target for the amount of HP recovered.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.shepherd.mercy.searing-light",
+              "name": "Searing Light",
+              "kind": "ability",
+              "actions": 1,
+              "reach": "6",
+              "cost": {
+                "resource": {
+                  "id": "resource.shepherd.mend",
+                  "amount": "1"
+                }
+              },
+              "text": "1 Action: (Reach 6) Whenever you heal HP, you may expend 1 use of Mend to damage another target for the amount of HP recovered."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "After you heal HP, spend 1 Mend use and deal damage equal to the HP recovered to another target within Reach 6; enter the damage by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified",
+          "note": "The page gives both “1 Action” and a “Whenever you heal HP” trigger; encoded as a 1-action ability that costs 1 Mend use. Damage type not stated."
+        }
+      },
+      {
+        "id": "feature.shepherd.mercy.powerful-healer",
+        "name": "Powerful Healer",
+        "text": "(WIL/Safe Rest) Whenever you would heal HP, you may instead give that many temp HP, OR heal the max amount you could roll.",
+        "effects": [
+          {
+            "type": "resource",
+            "resource": {
+              "id": "resource.shepherd.powerful-healer",
+              "name": "Powerful Healer",
+              "max": "WIL",
+              "recover": [
+                {
+                  "on": "safeRest",
+                  "amount": "all"
+                }
+              ]
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "When you would heal HP, spend 1 use to give that many temp HP instead, or to heal the maximum the dice could roll; apply by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.mercy.lifebinders-embrace",
+        "name": "Lifebinder’s Embrace",
+        "text": "Your Mend may heal 1 additional creature. Regain 1 charge of Mend when you roll Initiative (this expires if unspent at the end of combat).",
+        "effects": [
+          {
+            "type": "text"
+          },
+          {
+            "type": "hook",
+            "on": "initiative",
+            "text": "Lifebinder’s Embrace: regain 1 charge of Mend (this expires if unspent at the end of combat)."
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Mend may heal 1 additional creature. When you roll Initiative, add 1 Mend use; remove it at the end of combat if it wasn’t spent.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified"
+        }
       }
     ],
     "source": {
@@ -128,6 +321,15 @@
     "levels": {
       "3": [
         "feature.shepherd.protection.guardian-spirit"
+      ],
+      "7": [
+        "feature.shepherd.protection.ready-for-danger"
+      ],
+      "11": [
+        "feature.shepherd.protection.shield-of-light"
+      ],
+      "15": [
+        "feature.shepherd.protection.ever-vigilant"
       ]
     },
     "features": [
@@ -142,6 +344,76 @@
         ],
         "automation": "manual",
         "manualNote": "When you Interpose, you may spend 1 Mend use to have your Lifebinding Spirit Interpose instead; spend the Mend use by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.protection.ready-for-danger",
+        "name": "Ready for Danger",
+        "text": "+WIL Initiative, you may give this bonus to 1 ally as well (after they roll).",
+        "effects": [
+          {
+            "type": "modifier",
+            "target": "initiative",
+            "op": "add",
+            "value": "WIL"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "You may also give +WIL to 1 ally’s Initiative after they roll; tell them by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.protection.shield-of-light",
+        "name": "Shield of Light",
+        "text": "You may have your healing spells grant temp HP instead. (1/encounter) You can use Mend without spending a charge.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Your healing spells may give temp HP instead of healing. Once per encounter, use Mend without spending a Mend use (don’t tick it off).",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.protection.ever-vigilant",
+        "name": "Ever Vigilant",
+        "text": "Gain advantage on Initiative. You and 1 ally gain +1 action at the start of each encounter.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.shepherd.protection.ever-vigilant",
+              "label": "Ever Vigilant",
+              "on": "initiative",
+              "change": "advantage",
+              "mode": "auto"
+            }
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "At the start of each encounter, you and 1 ally gain +1 action; add it by hand.",
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -169,6 +441,16 @@
       "3": [
         "feature.shepherd.forge.flameworker",
         "feature.shepherd.forge.seasoned-journeyman"
+      ],
+      "7": [
+        "feature.shepherd.forge.lightforged",
+        "feature.shepherd.forge.living-ember"
+      ],
+      "11": [
+        "feature.shepherd.forge.masterwork"
+      ],
+      "15": [
+        "feature.shepherd.forge.quench-the-blaze"
       ]
     },
     "features": [
@@ -217,6 +499,83 @@
           "printedPage": 12,
           "status": "unverified",
           "note": "Re-chosen at each Safe Rest; tracked by hand until RQ-012 (scope of each bonus) is answered."
+        }
+      },
+      {
+        "id": "feature.shepherd.forge.lightforged",
+        "name": "Lightforged",
+        "text": "Mend also grants WIL+STR temp HP and 1 action.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When your spirit Mends a creature, that creature also gains WIL+STR temp HP and 1 action; apply by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.forge.living-ember",
+        "name": "Living Ember",
+        "text": "Your Lifebinding Spirit deals 2× damage to Smoldering targets, ending the condition.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Double your spirit’s damage against a Smoldering target, then remove Smoldering from it, by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.shepherd.forge.masterwork",
+        "name": "Masterwork",
+        "text": "+WIL to Weaponsmith and Armorsmith; you may choose twice.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Seasoned Journeyman: Weaponsmith gives +STR+WIL damage and Armorsmith +STR+WIL Defense, and at each Safe Rest you may choose twice; apply by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "unverified",
+          "note": "“You may choose twice” could mean taking both options or the same option twice (and whether that stacks); unclear. Scope of the bonuses depends on RQ-012."
+        }
+      },
+      {
+        "id": "feature.shepherd.forge.quench-the-blaze",
+        "name": "Quench the Blaze",
+        "text": "(1/encounter) When a Smoldering enemy loses the condition, you may Restrain them until the end of their next turn.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per encounter, when a Smoldering enemy loses Smoldering, you may make it Restrained until the end of its next turn; apply by hand.",
+        "source": {
+          "file": "Shepherd3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
         }
       }
     ],
