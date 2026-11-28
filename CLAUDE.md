@@ -16,6 +16,9 @@ Read first: `nimble-sheet-prompt.md` (requirements, decides what gets built), `d
 - Classes: only The Cheat, Hexbinder, Shepherd, Zephyr (more later via data). No homebrew, no multiclassing.
 - Desktop Chrome only. No mobile work. GitHub Pages hosting.
 
+## Deploying
+- Bump package.json version for every user-visible deploy: the app compares it with the live manifest.json and shows an Update banner. GitHub Pages caches index.html for 10 minutes (max-age=600), so without a version bump users can keep seeing an old build.
+
 ## Environment (Windows)
 - Git, Node LTS, Poppler and qpdf are installed via winget. Refresh PATH in new shells: `$env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')`.
 - qpdf isn't on PATH: `& "C:\Program Files\qpdf 12.4.2\bin\qpdf.exe"`.
