@@ -22,7 +22,7 @@ import { STAT_IDS } from "../data/schema";
 import { evalNumber, parseFormula, toDice, type DiceSpec, type Scope } from "./formula";
 import type { Character } from "./persistence/character";
 
-export type FeatureSource = "class" | "subclass" | "ancestry" | "background";
+export type FeatureSource = "class" | "subclass" | "ancestry" | "background" | "option" | "boon";
 type Predicate = NonNullable<Extract<Effect, { type: "modifier" }>["when"]>;
 
 export interface ActiveFeature {
@@ -41,7 +41,7 @@ export interface PendingChoice {
   where: "ancestry" | "background" | number;
   selected: string[];
   /** Valid options right now (ids). Empty for free text. */
-  options: { id: string; label: string }[];
+  options: { id: string; label: string; detail?: string | undefined }[];
 }
 
 export interface SheetAction {
@@ -205,6 +205,38 @@ export function derive(content: Content, c: Character): Sheet {
   for (const def of background?.features ?? []) {
     features.push({ def, source: "background" });
     featureLevel.set(def.id, "background");
+  }
+
+  // ---- option pools (Underhanded Abilities, Sacred Graces, Epic Boons…) ----
+  // Pool swaps from active features: choices from `from` offer `to` instead (Honorseeker).
+  const poolSwaps: { from: string; to: string; except: Set<string> }[] = [];
+  for (const f of features) for (const e of f.def.effects) if (e.type === "replacePool") poolSwaps.push({ from: e.from, to: e.to, except: new Set(e.except ?? []) });
+  const resolvePool = (pool: string, choiceId: string): string => {
+    for (const s of poolSwaps) if (s.from === pool && !s.except.has(choiceId)) return s.to;
+    return pool;
+  };
+  const poolFeature = (pool: string, id: string): FeatureDefT | undefined => content.pools.get(pool)?.find((p) => p.id === id);
+  for (let pass = 0; pass < 3; pass++) {
+    let added = false;
+    for (const f of [...features]) {
+      for (const e of nestedEffects(f.def.effects, selections)) {
+        if (e.type !== "choice" || e.choice.from.kind !== "pool") continue;
+        const pool = resolvePool(e.choice.from.pool, e.choice.id);
+        for (const pid of selections(e.choice.id)) {
+          if (features.some((x) => x.def.id === pid)) continue;
+          const def = poolFeature(pool, pid);
+          if (!def) {
+            warnings.push(`Chosen option ${pid} isn't in ${pool}.`);
+            continue;
+          }
+          const where = featureLevel.get(f.def.id);
+          features.push({ def, source: pool.startsWith("boons.") ? "boon" : "option", ...(typeof where === "number" ? { level: where } : {}) });
+          featureLevel.set(def.id, where ?? "ancestry");
+          added = true;
+        }
+      }
+    }
+    if (!added) break;
   }
 
   // Replacements (e.g. Honorseeker gives up Sneak Attack).
@@ -425,7 +457,8 @@ export function derive(content: Content, c: Character): Sheet {
   for (const f of features) {
     for (const e of effectsOf(f)) {
       if (e.type !== "resource") continue;
-      const max = Math.max(0, evalIn(e.resource.max));
+      const baseMax = Math.max(0, evalIn(e.resource.max));
+      const max = e.resource.id === "resource.mana" ? Math.max(0, apply("maxMana", baseMax)) : baseMax;
       const current = Math.min(max, c.play.resources[e.resource.id]?.current ?? max);
       resources.push({ def: e.resource, max: ov(`resource.${e.resource.id}`, max), current });
     }
@@ -442,6 +475,7 @@ export function derive(content: Content, c: Character): Sheet {
     for (const e of effectsOf(f)) {
       if (e.type !== "spells") continue;
       for (const s of e.schools ?? []) schools.add(s);
+      if (e.list) schools.add(e.list);
       if (e.maxTier !== undefined) maxTier = Math.max(maxTier, e.maxTier);
       if (e.cantrips) maxTier = Math.max(maxTier, 0);
       for (const x of e.extra ?? []) extraSpells.add(x);
@@ -449,6 +483,7 @@ export function derive(content: Content, c: Character): Sheet {
       if (e.utility === "all") allUtility = true;
     }
   }
+  for (const pc of choices) if (pc.choice.from.kind === "school") for (const sc of pc.selected) schools.add(sc);
   for (const r of replaceSchools) if (schools.delete(r.from)) schools.add(r.to);
   schools = new Set([...schools].sort());
   const chosenUtility = new Set<string>();
@@ -481,6 +516,16 @@ export function derive(content: Content, c: Character): Sheet {
     if (from.kind === "options") pc.options = from.options.map((o) => ({ id: o.id, label: o.label }));
     if (from.kind === "subclass" && cls) pc.options = [...content.subclasses.values()].filter((s) => s.classId === cls.id).map((s) => ({ id: s.id, label: s.name }));
     if (from.kind === "size") pc.options = from.sizes.map((s) => ({ id: s, label: s }));
+    if (from.kind === "pool") {
+      const pool = resolvePool(from.pool, pc.choice.id);
+      // Options already taken by other choices from the same pool are hidden.
+      const taken = new Set(choices.filter((o) => o !== pc && o.choice.from.kind === "pool" && resolvePool(o.choice.from.pool, o.choice.id) === pool).flatMap((o) => o.selected));
+      pc.options = (content.pools.get(pool) ?? []).filter((p) => !taken.has(p.id)).map((p) => ({ id: p.id, label: p.name, detail: p.text }));
+    }
+    if (from.kind === "school") {
+      const coreSchools = [...new Set([...content.spells.values()].map((sp) => sp.school))].filter((sc) => !content.classes.has(`class.${sc}`));
+      pc.options = (from.schools ?? coreSchools).map((sc) => ({ id: sc, label: sc[0]?.toUpperCase() + sc.slice(1) }));
+    }
   }
 
   // ---- actions ----

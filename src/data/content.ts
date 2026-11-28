@@ -37,6 +37,8 @@ import {
   type ConditionDefT,
   type CoreRulesDefT,
   type EquipmentRuleDefT,
+  type FeatureDefT,
+  BoonsDef,
   type GearDefT,
   type ShieldDefT,
   type SpellDefT,
@@ -56,6 +58,8 @@ export interface Content {
   weapons: Map<string, WeaponDefT>;
   gear: Map<string, GearDefT>;
   equipmentRules: EquipmentRuleDefT[];
+  /** Every option pool by id: class/subclass optionPools plus boons.minor/major/epic. */
+  pools: Map<string, FeatureDefT[]>;
   spells: Map<string, SpellDefT>;
   /** Content versions, recorded in saved characters. */
   versions: Record<string, string>;
@@ -74,11 +78,21 @@ export function buildContent(raw: {
   weapons: unknown;
   gear: unknown;
   equipmentRules?: unknown;
+  boons?: unknown;
   classes: unknown[];
   subclasses: unknown[];
   spells: unknown[];
 }): Content {
   const classes = raw.classes.map((c) => ClassDef.parse(c));
+  const subclasses = raw.subclasses.flatMap((s) => SubclassDef.array().parse(s));
+  const pools = new Map<string, FeatureDefT[]>();
+  for (const holder of [...classes, ...subclasses]) for (const [k, v] of Object.entries(holder.optionPools ?? {})) pools.set(k, [...(pools.get(k) ?? []), ...v]);
+  if (raw.boons) {
+    const b = BoonsDef.parse(raw.boons);
+    pools.set("boons.minor", b.minor);
+    pools.set("boons.major", b.major);
+    pools.set("boons.epic", b.epic);
+  }
   return {
     core: CoreRulesDef.parse(raw.rules),
     ancestries: byId(AncestryDef.array().parse(raw.ancestries)),
@@ -90,7 +104,8 @@ export function buildContent(raw: {
     gear: byId(GearDef.array().parse(raw.gear)),
     equipmentRules: EquipmentRuleDef.array().parse(raw.equipmentRules ?? []),
     classes: byId(classes),
-    subclasses: byId(raw.subclasses.flatMap((s) => SubclassDef.array().parse(s))),
+    subclasses: byId(subclasses),
+    pools,
     spells: byId(raw.spells.flatMap((s) => SpellDef.array().parse(s))),
     versions: Object.fromEntries([["core", "3.2"], ...classes.map((c) => [c.id.replace(/^class\./, ""), c.source.version])]),
   };

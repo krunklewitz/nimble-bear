@@ -6,6 +6,9 @@ import { STAT_IDS } from "../data/schema";
 import { derive, type Sheet } from "./derive";
 import { newCharacter, type Character, type LevelRecord } from "./persistence/character";
 
+/** "The maximum a hero's stat can typically go is +5" (Core Rules p.6). */
+export const MAX_STAT = 5;
+
 /** The character classes a player may pick (decision: only classes whose books are in reference/). */
 export const availableClasses = (content: Content): ClassDefT[] => [...content.classes.values()].sort((a, b) => a.name.localeCompare(b.name));
 
@@ -164,8 +167,14 @@ export function validateLevelUp(content: Content, c: Character, plan: LevelUpPla
     const from = sheet.skills.find((s) => s.id === input.move?.from);
     if (from && from.total < 0) problems.push(`You can't move a point out of ${from.name}: it's already negative.`);
   }
+  // "The maximum a hero's stat can typically go is +5" (Core p.6).
+  const trial = structuredClone(c);
+  trial.build.levels.push({ level: plan.level, classId: trial.build.levels[0]?.classId ?? "", hp: { method: "average", value: 0 }, skillPoints: {}, choices: input.choices });
+  const after = derive(content, trial);
+  for (const s of STAT_IDS) if (after.stats[s] > MAX_STAT) problems.push(`${s} can't go above +${MAX_STAT} (Core Rules p.6).`);
   for (const { choice } of plan.choices) {
     const picked = input.choices[choice.id] ?? [];
+    if (choice.from.kind === "stat" && new Set(picked).size !== picked.length) problems.push(`Choose different stats for ${choice.prompt}`);
     if (picked.length !== choice.count) problems.push(`Answer: ${choice.prompt}`);
     if (choice.from.kind === "stat" && picked.some((p) => !(choice.from as { stats: string[] }).stats.includes(p))) problems.push(`Invalid choice for ${choice.prompt}`);
   }

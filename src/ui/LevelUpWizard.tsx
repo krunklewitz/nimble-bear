@@ -38,7 +38,7 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
     return (pc?.options ?? []).map((o) => ({
       id: o.id,
       label: o.label,
-      detail: sub(o.id) ? `${sub(o.id)?.tagline ?? ""}${sub(o.id)?.storyBased ? " (story-based)" : ""}` : content.spells.get(o.id)?.text,
+      detail: sub(o.id) ? `${sub(o.id)?.tagline ?? ""}${sub(o.id)?.storyBased ? " (story-based)" : ""}` : (o.detail ?? content.spells.get(o.id)?.text),
     }));
   };
 

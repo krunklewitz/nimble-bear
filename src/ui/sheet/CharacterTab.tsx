@@ -9,6 +9,8 @@ export function CharacterTab({ sheet, character, update, onRoll }: TabProps) {
     { src: "subclass" as const, title: `Subclass Features (${sheet.subclass?.name ?? ""})` },
     { src: "ancestry" as const, title: `Ancestry (${sheet.ancestry?.name ?? ""})` },
     { src: "background" as const, title: `Background (${sheet.background?.name ?? ""})` },
+    { src: "option" as const, title: "Chosen Abilities" },
+    { src: "boon" as const, title: "Boons" },
   ];
   return (
     <div>
