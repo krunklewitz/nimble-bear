@@ -171,11 +171,16 @@
       "text": "You know the Withered and Frenzied Afflictions.",
       "effects": [
         {
-          "type": "text"
+          "type": "grantOptions",
+          "pool": "hexbinder.afflictions",
+          "ids": [
+            "feature.hexbinder.afflictions.withered",
+            "feature.hexbinder.afflictions.frenzied"
+          ]
         }
       ],
       "automation": "manual",
-      "manualNote": "Known Afflictions: feature.hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit).",
+      "manualNote": "hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit).",
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -332,7 +337,6 @@
         }
       ],
       "automation": "full",
-      "manualNote": "You already know Withered and Frenzied (Afflictions, level 1); the sheet does not hide them from this list, so pick a different one.",
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -600,7 +604,6 @@
         }
       ],
       "automation": "full",
-      "manualNote": "You already know Withered and Frenzied (Afflictions, level 1); the sheet does not hide them from this list, so pick a different one.",
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -823,7 +826,6 @@
         }
       ],
       "automation": "full",
-      "manualNote": "You already know Withered and Frenzied (Afflictions, level 1); the sheet does not hide them from this list, so pick a different one.",
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",

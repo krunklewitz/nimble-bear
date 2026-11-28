@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { getContent } from "../data/content";
-import { applyLevelUp, levelUpPlan, rollLevelUpHp, validateLevelUp, type LevelUpInput } from "../rules/build";
+import { applyLevelUp, levelChoices, levelUpPlan, rollLevelUpHp, validateLevelUp, type LevelUpInput } from "../rules/build";
 import { derive } from "../rules/derive";
 import { downloadTextFile } from "../platform/files";
 import { cryptoRng } from "../platform/random";
@@ -26,6 +26,7 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
   if (!plan) return <p className="screen">This hero can't level up further yet.</p>;
 
   const average = plan.average;
+  const open = levelChoices(content, character, plan, choices);
   const input: LevelUpInput = { hp: hp ?? { method: "average", value: average ?? 0 }, addSkill, move: moveOn ? move : undefined, choices };
   const problems = hp ? validateLevelUp(content, character, plan, input, sheet) : ["Choose how to raise your max HP."];
 
@@ -160,10 +161,10 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
         )}
       </div>
 
-      {plan.choices.length > 0 && (
+      {open.length > 0 && (
         <div className="panel">
           <h2>Choices</h2>
-          {plan.choices.map(({ choice }) => (
+          {open.map(({ choice }) => (
             <ChoicePicker key={choice.id} choice={choice} options={optionsFor(choice.id)} value={choices[choice.id] ?? []} onChange={(v) => setChoices({ ...choices, [choice.id]: v })} />
           ))}
         </div>

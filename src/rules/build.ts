@@ -3,7 +3,7 @@
 import type { Content } from "../data/content";
 import type { ChoiceDefT, ClassDefT, FeatureDefT, StatId } from "../data/schema";
 import { STAT_IDS } from "../data/schema";
-import { derive, type Sheet } from "./derive";
+import { derive, type PendingChoice, type Sheet } from "./derive";
 import { newCharacter, type Character, type LevelRecord } from "./persistence/character";
 
 /** "The maximum a hero's stat can typically go is +5" (Core Rules p.6). */
@@ -145,6 +145,17 @@ export function levelUpPlan(content: Content, c: Character, sheet: Sheet = deriv
   return { level: next, features, choices: choicesIn(features), hitDie: die, average: content.core.levelUpHpAverage[die as "d4"] ?? null };
 }
 
+/**
+ * The choices still open at the level being gained, given the picks so far. Asked of the
+ * engine so it follows picks (a chosen option's own choice appears; a replaced feature's
+ * choice disappears).
+ */
+export function levelChoices(content: Content, c: Character, plan: LevelUpPlan, choices: Record<string, string[]>): PendingChoice[] {
+  const trial = structuredClone(c);
+  trial.build.levels.push({ level: plan.level, classId: trial.build.levels[0]?.classId ?? "", hp: { method: "average", value: 0 }, skillPoints: {}, choices });
+  return derive(content, trial).choices.filter((pc) => pc.where === plan.level && pc.choice.from.kind !== "save");
+}
+
 export interface LevelUpInput {
   hp: { method: "roll" | "average"; value: number };
   /** The new skill point. */
@@ -172,7 +183,7 @@ export function validateLevelUp(content: Content, c: Character, plan: LevelUpPla
   trial.build.levels.push({ level: plan.level, classId: trial.build.levels[0]?.classId ?? "", hp: { method: "average", value: 0 }, skillPoints: {}, choices: input.choices });
   const after = derive(content, trial);
   for (const s of STAT_IDS) if (after.stats[s] > MAX_STAT) problems.push(`${s} can't go above +${MAX_STAT} (Core Rules p.6).`);
-  for (const { choice } of plan.choices) {
+  for (const { choice } of levelChoices(content, c, plan, input.choices)) {
     const picked = input.choices[choice.id] ?? [];
     if (choice.from.kind === "stat" && new Set(picked).size !== picked.length) problems.push(`Choose different stats for ${choice.prompt}`);
     if (picked.length !== choice.count) problems.push(`Answer: ${choice.prompt}`);

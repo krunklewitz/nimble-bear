@@ -499,61 +499,8 @@
               "prompt": "Choose 1 Familiar Boon.",
               "count": 1,
               "from": {
-                "kind": "options",
-                "options": [
-                  {
-                    "id": "option.hexbinder.hunt.protective",
-                    "label": "Protective. Acts as a shield that grants +LVL Defense.",
-                    "effects": [
-                      {
-                        "type": "modifier",
-                        "target": "defense",
-                        "op": "add",
-                        "value": "LVL"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.resourceful",
-                    "label": "Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.",
-                    "effects": [
-                      {
-                        "type": "modifier",
-                        "target": "maxHitDice",
-                        "op": "add",
-                        "value": "WIL+INT"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.sly",
-                    "label": "Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
-                    "effects": [
-                      {
-                        "type": "rollOption",
-                        "option": {
-                          "id": "roll.hexbinder.hunt.sly",
-                          "label": "Sly (Familiar)",
-                          "on": "initiative",
-                          "change": "advantage",
-                          "mode": "auto"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.scavenger",
-                    "label": "Scavenger. When you roll Initiative, give an ally 2×LVL temp HP."
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.mystical",
-                    "label": "Mystical. You can cast spells from an ally’s position INT times/encounter."
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.swift",
-                    "label": "Swift. You may move WIL spaces for free on each of your turns."
-                  }
-                ]
+                "kind": "pool",
+                "pool": "hexbinder.familiar-boons"
               }
             }
           }
@@ -613,61 +560,8 @@
               "prompt": "Choose a 2nd Familiar Boon.",
               "count": 1,
               "from": {
-                "kind": "options",
-                "options": [
-                  {
-                    "id": "option.hexbinder.hunt.protective",
-                    "label": "Protective. Acts as a shield that grants +LVL Defense.",
-                    "effects": [
-                      {
-                        "type": "modifier",
-                        "target": "defense",
-                        "op": "add",
-                        "value": "LVL"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.resourceful",
-                    "label": "Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.",
-                    "effects": [
-                      {
-                        "type": "modifier",
-                        "target": "maxHitDice",
-                        "op": "add",
-                        "value": "WIL+INT"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.sly",
-                    "label": "Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
-                    "effects": [
-                      {
-                        "type": "rollOption",
-                        "option": {
-                          "id": "roll.hexbinder.hunt.sly",
-                          "label": "Sly (Familiar)",
-                          "on": "initiative",
-                          "change": "advantage",
-                          "mode": "auto"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.scavenger",
-                    "label": "Scavenger. When you roll Initiative, give an ally 2×LVL temp HP."
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.mystical",
-                    "label": "Mystical. You can cast spells from an ally’s position INT times/encounter."
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.swift",
-                    "label": "Swift. You may move WIL spaces for free on each of your turns."
-                  }
-                ]
+                "kind": "pool",
+                "pool": "hexbinder.familiar-boons"
               }
             }
           }
@@ -695,61 +589,8 @@
               "prompt": "Choose a 3rd Familiar Boon.",
               "count": 1,
               "from": {
-                "kind": "options",
-                "options": [
-                  {
-                    "id": "option.hexbinder.hunt.protective",
-                    "label": "Protective. Acts as a shield that grants +LVL Defense.",
-                    "effects": [
-                      {
-                        "type": "modifier",
-                        "target": "defense",
-                        "op": "add",
-                        "value": "LVL"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.resourceful",
-                    "label": "Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.",
-                    "effects": [
-                      {
-                        "type": "modifier",
-                        "target": "maxHitDice",
-                        "op": "add",
-                        "value": "WIL+INT"
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.sly",
-                    "label": "Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
-                    "effects": [
-                      {
-                        "type": "rollOption",
-                        "option": {
-                          "id": "roll.hexbinder.hunt.sly",
-                          "label": "Sly (Familiar)",
-                          "on": "initiative",
-                          "change": "advantage",
-                          "mode": "auto"
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.scavenger",
-                    "label": "Scavenger. When you roll Initiative, give an ally 2×LVL temp HP."
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.mystical",
-                    "label": "Mystical. You can cast spells from an ally’s position INT times/encounter."
-                  },
-                  {
-                    "id": "option.hexbinder.hunt.swift",
-                    "label": "Swift. You may move WIL spaces for free on each of your turns."
-                  }
-                ]
+                "kind": "pool",
+                "pool": "hexbinder.familiar-boons"
               }
             }
           }
@@ -772,6 +613,140 @@
       "pdfPage": 7,
       "printedPage": 13,
       "status": "verified"
+    },
+    "optionPools": {
+      "hexbinder.familiar-boons": [
+        {
+          "id": "feature.hexbinder.familiar-boons.protective",
+          "name": "Protective",
+          "text": "Acts as a shield that grants +LVL Defense.",
+          "effects": [
+            {
+              "type": "modifier",
+              "target": "defense",
+              "op": "add",
+              "value": "LVL"
+            }
+          ],
+          "automation": "full",
+          "source": {
+            "file": "Hexbinder3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 7,
+            "printedPage": 13,
+            "status": "verified",
+            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+          }
+        },
+        {
+          "id": "feature.hexbinder.familiar-boons.resourceful",
+          "name": "Resourceful",
+          "text": "Gain WIL+INT max Hit Dice, these can be given to any ally.",
+          "effects": [
+            {
+              "type": "modifier",
+              "target": "maxHitDice",
+              "op": "add",
+              "value": "WIL+INT"
+            }
+          ],
+          "automation": "full",
+          "source": {
+            "file": "Hexbinder3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 7,
+            "printedPage": 13,
+            "status": "verified",
+            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+          }
+        },
+        {
+          "id": "feature.hexbinder.familiar-boons.sly",
+          "name": "Sly",
+          "text": "Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
+          "effects": [
+            {
+              "type": "rollOption",
+              "option": {
+                "id": "roll.hexbinder.hunt.sly",
+                "label": "Sly (Familiar)",
+                "on": "initiative",
+                "change": "advantage",
+                "mode": "auto"
+              }
+            }
+          ],
+          "automation": "full",
+          "source": {
+            "file": "Hexbinder3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 7,
+            "printedPage": 13,
+            "status": "verified",
+            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+          }
+        },
+        {
+          "id": "feature.hexbinder.familiar-boons.scavenger",
+          "name": "Scavenger",
+          "text": "When you roll Initiative, give an ally 2×LVL temp HP.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "Apply this familiar boon by hand.",
+          "source": {
+            "file": "Hexbinder3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 7,
+            "printedPage": 13,
+            "status": "verified",
+            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+          }
+        },
+        {
+          "id": "feature.hexbinder.familiar-boons.mystical",
+          "name": "Mystical",
+          "text": "You can cast spells from an ally’s position INT times/encounter.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "Apply this familiar boon by hand.",
+          "source": {
+            "file": "Hexbinder3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 7,
+            "printedPage": 13,
+            "status": "verified",
+            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+          }
+        },
+        {
+          "id": "feature.hexbinder.familiar-boons.swift",
+          "name": "Swift",
+          "text": "You may move WIL spaces for free on each of your turns.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "Apply this familiar boon by hand.",
+          "source": {
+            "file": "Hexbinder3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 7,
+            "printedPage": 13,
+            "status": "verified",
+            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+          }
+        }
+      ]
     }
   }
 ]

@@ -220,9 +220,10 @@ export function derive(content: Content, c: Character): Sheet {
     let added = false;
     for (const f of [...features]) {
       for (const e of nestedEffects(f.def.effects, selections)) {
-        if (e.type !== "choice" || e.choice.from.kind !== "pool") continue;
-        const pool = resolvePool(e.choice.from.pool, e.choice.id);
-        for (const pid of selections(e.choice.id)) {
+        const granted = e.type === "grantOptions" ? { pool: e.pool, ids: e.ids } : null;
+        if (!granted && (e.type !== "choice" || e.choice.from.kind !== "pool")) continue;
+        const pool = granted ? granted.pool : e.type === "choice" && e.choice.from.kind === "pool" ? resolvePool(e.choice.from.pool, e.choice.id) : "";
+        for (const pid of granted ? granted.ids : e.type === "choice" ? selections(e.choice.id) : []) {
           if (features.some((x) => x.def.id === pid)) continue;
           const def = poolFeature(pool, pid);
           if (!def) {
@@ -520,7 +521,10 @@ export function derive(content: Content, c: Character): Sheet {
       const pool = resolvePool(from.pool, pc.choice.id);
       // Options already taken by other choices from the same pool are hidden.
       const taken = new Set(choices.filter((o) => o !== pc && o.choice.from.kind === "pool" && resolvePool(o.choice.from.pool, o.choice.id) === pool).flatMap((o) => o.selected));
-      pc.options = (content.pools.get(pool) ?? []).filter((p) => !taken.has(p.id)).map((p) => ({ id: p.id, label: p.name, detail: p.text }));
+      // Also hide options you already have from elsewhere (granted outright, e.g. known Afflictions).
+      const mine = new Set(pc.selected);
+      const have = new Set(features.map((f) => f.def.id));
+      pc.options = (content.pools.get(pool) ?? []).filter((p) => !taken.has(p.id) && (mine.has(p.id) || !have.has(p.id))).map((p) => ({ id: p.id, label: p.name, detail: p.text }));
     }
     if (from.kind === "school") {
       const coreSchools = [...new Set([...content.spells.values()].map((sp) => sp.school))].filter((sc) => !content.classes.has(`class.${sc}`));

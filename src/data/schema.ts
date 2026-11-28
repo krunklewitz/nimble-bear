@@ -158,6 +158,7 @@ type EffectT =
   | { type: "rollOption"; option: z.infer<typeof RollOptionDef> }
   | { type: "replace"; features: string[]; with?: string[] | undefined }
   | { type: "replacePool"; from: string; to: string; except?: string[] | undefined }
+  | { type: "grantOptions"; pool: string; ids: string[] }
   | { type: "proficiency"; armor?: string[] | undefined; shields?: boolean | undefined; weapons?: string[] | undefined; languages?: string[] | undefined; unarmedCrit?: boolean | undefined }
   | { type: "hook"; on: z.infer<typeof Trigger>; text: string; handler?: string | undefined }
   | { type: "handler"; name: string }
@@ -187,6 +188,8 @@ export const Effect: z.ZodType<EffectT> = z.lazy(() =>
     z.object({ type: z.literal("replace"), features: z.array(Id).min(1), with: z.array(Id).optional() }).strict(),
     /** Choices from pool `from` offer pool `to` instead (Honorseeker: Honorable Gambits for Underhanded Abilities); `except` lists choice ids left alone. */
     z.object({ type: z.literal("replacePool"), from: Id, to: Id, except: z.array(Id).optional() }).strict(),
+    /** Options a feature grants outright ("You know the Withered and Frenzied Afflictions"); they're then hidden from later picks. */
+    z.object({ type: z.literal("grantOptions"), pool: Id, ids: z.array(Id).min(1) }).strict(),
     z
       .object({
         type: z.literal("proficiency"),
