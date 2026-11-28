@@ -69,3 +69,6 @@ Done and committed (127 tests passing):
 In Owlbear (Chrome): create The Cheat and a Shepherd, roll attacks/checks/saves/Initiative (also seen by a second browser), take damage, rest, level up to 3, reload.
 
 Open rules questions added: RQ-007 to RQ-014 (docs/RULES_QUESTIONS.md).
+
+## Deferred until stable
+- Update check: drop the 5-minute repeat in src/ui/UpdateBanner.tsx (CHECK_EVERY_MS) and check only when the panel opens. User decision 2026-11-27; do it in Phase 6 polish or when the user calls a version stable.
