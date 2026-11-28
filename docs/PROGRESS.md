@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 3 rework (v0.3.1) live; waiting for the Owlbear retest
+## Current: Phase 4 nearly done (v0.4.0); one review pending
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -69,6 +69,10 @@ Done and committed (127 tests passing):
 In Owlbear (Chrome): create The Cheat and a Shepherd, roll attacks/checks/saves/Initiative (also seen by a second browser), take damage, rest, level up to 3, reload.
 
 Open rules questions added: RQ-007 to RQ-014 (docs/RULES_QUESTIONS.md).
+
+### Phase 4 (2026-11-28)
+Done: schema for pools/pool swaps/school choice/grantOptions/boons; engine (pool picks, swaps, granted options hidden from picks, Coven tiered-only, class spell lists, maxMana, +5 stat cap, levelChoices follows picks); data via subagents: Cheat and Shepherd 4-20, Hexbinder and Zephyr full, Ice/Lightning/Wind + Hexbinder spells, Boons (GMG p.75). All 4 classes x 17 subclasses build to level 20 (tests/rules/fullbuild.test.ts); docs/COVERAGE.md and AUTOMATION.md regenerated. Reviews: Hexbinder (1 error fixed: Pestilential Reign grants Pestilent), Cheat/Shepherd 4-20 (0 errors; Supreme Underdog keeps stats, RQ-022). New RQ-020..025.
+Remaining: (1) the Zephyr + Ice/Lightning/Wind + Boons review (was still running when the session hit its usage limit; rerun it if no report arrives), apply its fixes; (2) add gear.traveling-robes-sandals (Zephyr starting gear, from Zephyr PDF 3) to gear.json and zephyr startingGear; (3) gate: npm run check, deploy, Owlbear test of Hexbinder/Zephyr creation and level-ups.
 
 ## Deferred until stable
 - Update check: drop the 5-minute repeat in src/ui/UpdateBanner.tsx (CHECK_EVERY_MS) and check only when the panel opens. User decision 2026-11-27; do it in Phase 6 polish or when the user calls a version stable.
