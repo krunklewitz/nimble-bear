@@ -14,12 +14,15 @@ import cheat from "./content/classes/cheat.json";
 import cheatSubclasses from "./content/classes/cheat-subclasses.json";
 import shepherd from "./content/classes/shepherd.json";
 import shepherdSubclasses from "./content/classes/shepherd-subclasses.json";
+import hexbinder from "./content/classes/hexbinder.json";
+import hexbinderSubclasses from "./content/classes/hexbinder-subclasses.json";
 import zephyr from "./content/classes/zephyr.json";
 import zephyrSubclasses from "./content/classes/zephyr-subclasses.json";
 import fireSpells from "./content/spells/fire.json";
 import iceSpells from "./content/spells/ice.json";
 import lightningSpells from "./content/spells/lightning.json";
 import windSpells from "./content/spells/wind.json";
+import hexbinderSpells from "./content/spells/hexbinder.json";
 import necroticSpells from "./content/spells/necrotic.json";
 import radiantSpells from "./content/spells/radiant.json";
 import shepherdSpells from "./content/spells/shepherd.json";
@@ -132,9 +135,9 @@ export function getContent(): Content {
     gear,
     equipmentRules,
     boons,
-    classes: [cheat, shepherd, zephyr],
-    subclasses: [cheatSubclasses, shepherdSubclasses, zephyrSubclasses],
-    spells: [radiantSpells, necroticSpells, fireSpells, iceSpells, lightningSpells, windSpells, shepherdSpells],
+    classes: [cheat, hexbinder, shepherd, zephyr],
+    subclasses: [cheatSubclasses, hexbinderSubclasses, shepherdSubclasses, zephyrSubclasses],
+    spells: [radiantSpells, necroticSpells, fireSpells, iceSpells, lightningSpells, windSpells, hexbinderSpells, shepherdSpells],
   });
   return cached;
 }

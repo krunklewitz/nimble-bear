@@ -9,6 +9,15 @@
       "3": [
         "feature.cheat.silent-blade.amidst-all-this-commotion",
         "feature.cheat.silent-blade.leave-no-trace"
+      ],
+      "7": [
+        "feature.cheat.silent-blade.cunning-strike"
+      ],
+      "11": [
+        "feature.cheat.silent-blade.professional-skulker"
+      ],
+      "15": [
+        "feature.cheat.silent-blade.kill"
       ]
     },
     "features": [
@@ -57,6 +66,94 @@
           "printedPage": 9,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.cheat.silent-blade.cunning-strike",
+        "name": "Cunning Strike",
+        "text": "Deal +2×INT damage whenever you crit.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.silent-blade.cunning-strike",
+              "label": "Cunning Strike",
+              "on": "damage",
+              "change": "add",
+              "value": "2*INT",
+              "mode": "auto",
+              "when": {
+                "situation": "This attack crit"
+              }
+            }
+          }
+        ],
+        "automation": "full",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.silent-blade.professional-skulker",
+        "name": "Professional Skulker",
+        "text": "Gain a climbing Speed and advantage on Stealth checks (replaces Leave No Trace).",
+        "effects": [
+          {
+            "type": "replace",
+            "features": [
+              "feature.cheat.silent-blade.leave-no-trace"
+            ],
+            "with": [
+              "feature.cheat.silent-blade.professional-skulker"
+            ]
+          },
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.silent-blade.professional-skulker",
+              "label": "Professional Skulker",
+              "on": "check",
+              "change": "advantage",
+              "scope": "stealth",
+              "mode": "auto"
+            }
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "You have a climbing Speed (the page gives no number; the sheet does not track it).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "unverified",
+          "note": "The climbing Speed has no printed value (presumably equal to your Speed); kept as text. Open rules question."
+        }
+      },
+      {
+        "id": "feature.cheat.silent-blade.kill",
+        "name": "KILL",
+        "text": "When you Sneak Attack an enemy with fewer max HP than you, it dies.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you Sneak Attack an enemy whose max HP is lower than yours, it dies (GM confirms).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 5,
+          "printedPage": 9,
+          "status": "verified"
+        }
       }
     ],
     "source": {
@@ -77,6 +174,15 @@
       "3": [
         "feature.cheat.scoundrel.low-blow",
         "feature.cheat.scoundrel.sweet-talk"
+      ],
+      "7": [
+        "feature.cheat.scoundrel.pocket-sand"
+      ],
+      "11": [
+        "feature.cheat.scoundrel.escape-plan"
+      ],
+      "15": [
+        "feature.cheat.scoundrel.heads-i-win-tails-you-lose"
       ]
     },
     "features": [
@@ -139,6 +245,95 @@
           "printedPage": 11,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.cheat.scoundrel.pocket-sand",
+        "name": "Pocket Sand",
+        "text": "(2/encounter—you’ve got to collect more sand!) When you Defend against an adjacent creature, Blind the attacker until the start of their next turn and force them to reroll the attack (Blind creatures attack with disadvantage).",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.scoundrel.pocket-sand",
+              "name": "Pocket Sand",
+              "kind": "reaction",
+              "limit": {
+                "uses": "2",
+                "per": "encounter"
+              },
+              "text": "(2/encounter—you’ve got to collect more sand!) When you Defend against an adjacent creature, Blind the attacker until the start of their next turn and force them to reroll the attack (Blind creatures attack with disadvantage)."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Use when you Defend against an adjacent creature: mark the attacker Blinded until the start of its next turn and have the GM reroll the attack.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified",
+          "note": "Used as part of Defend; no extra action cost printed, so `actions` is omitted."
+        }
+      },
+      {
+        "id": "feature.cheat.scoundrel.escape-plan",
+        "name": "Escape Plan",
+        "text": "(1/Safe Rest) When you would drop to 0 HP or gain a Wound, you don’t. Instead, you turn Invisible for 1 minute or until you attack.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.scoundrel.escape-plan",
+              "name": "Escape Plan",
+              "kind": "reaction",
+              "limit": {
+                "uses": "1",
+                "per": "safeRest"
+              },
+              "text": "(1/Safe Rest) When you would drop to 0 HP or gain a Wound, you don’t. Instead, you turn Invisible for 1 minute or until you attack."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Undo the drop to 0 HP or the Wound by hand and mark yourself Invisible (1 minute or until you attack).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.scoundrel.heads-i-win-tails-you-lose",
+        "name": "Heads I Win, Tails You Lose",
+        "text": "(1/encounter) Attacks you make this round don’t miss, you crit on 1 less than normally needed, and you gain LVL temp HP.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.scoundrel.heads-i-win-tails-you-lose",
+              "name": "Heads I Win, Tails You Lose",
+              "kind": "ability",
+              "limit": {
+                "uses": "1",
+                "per": "encounter"
+              },
+              "text": "(1/encounter) Attacks you make this round don’t miss, you crit on 1 less than normally needed, and you gain LVL temp HP."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "For this round, treat misses as hits and crit on 1 less than normal; add LVL temp HP by hand.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified",
+          "note": "No action cost printed, so `actions` is omitted."
+        }
       }
     ],
     "source": {
@@ -159,6 +354,15 @@
       "3": [
         "feature.cheat.serpent.vipers-kiss",
         "feature.cheat.serpent.ive-tried-this-one-before"
+      ],
+      "7": [
+        "feature.cheat.serpent.noxious-cloud"
+      ],
+      "11": [
+        "feature.cheat.serpent.cruel-dose"
+      ],
+      "15": [
+        "feature.cheat.serpent.volatile-toxins"
       ]
     },
     "features": [
@@ -209,6 +413,81 @@
           "printedPage": 12,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.cheat.serpent.noxious-cloud",
+        "name": "Noxious Cloud",
+        "text": "(1/encounter, Reach 4) Action: Enemies in a 2×2 area take INT d6 damage (ignoring armor) and become Poisoned. Creatures already Poisoned are also Dazed.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.serpent.noxious-cloud",
+              "name": "Noxious Cloud",
+              "kind": "ability",
+              "actions": 1,
+              "reach": "4",
+              "aoe": true,
+              "limit": {
+                "uses": "1",
+                "per": "encounter"
+              },
+              "roll": {
+                "kind": "damage",
+                "dice": "INT d6",
+                "ignoresArmor": true
+              },
+              "text": "(1/encounter, Reach 4) Action: Enemies in a 2×2 area take INT d6 damage (ignoring armor) and become Poisoned. Creatures already Poisoned are also Dazed."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Mark enemies in the 2×2 area Poisoned (already Poisoned ones also Dazed) by hand.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.serpent.cruel-dose",
+        "name": "Cruel Dose",
+        "text": "Creatures Poisoned by you are also Slowed and their attack Range is halved.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Mark creatures you Poison as Slowed too; their attack Range is halved (GM applies).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.serpent.volatile-toxins",
+        "name": "Volatile Toxins",
+        "text": "Noxious Cloud can be used twice each encounter. Whenever a creature Poisoned by you dies, their body erupts into a Noxious Cloud.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Noxious Cloud's limit becomes 2/encounter: track the second use by hand. When a creature you Poisoned dies, resolve a Noxious Cloud centred on it.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
       }
     ],
     "source": {
@@ -230,6 +509,16 @@
         "feature.cheat.gambler.all-in",
         "feature.cheat.gambler.that-was-just-a-practice-roll",
         "feature.cheat.gambler.its-all-fun-and-games"
+      ],
+      "7": [
+        "feature.cheat.gambler.pocket-aces",
+        "feature.cheat.gambler.double-or-nothing"
+      ],
+      "11": [
+        "feature.cheat.gambler.play-the-odds"
+      ],
+      "15": [
+        "feature.cheat.gambler.odds-maker"
       ]
     },
     "features": [
@@ -311,6 +600,106 @@
           "printedPage": 13,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.cheat.gambler.pocket-aces",
+        "name": "Pocket Aces!",
+        "text": "(1/Safe Rest) You can set a friendly creature’s Initiative roll to 20.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.gambler.pocket-aces",
+              "name": "Pocket Aces!",
+              "kind": "ability",
+              "limit": {
+                "uses": "1",
+                "per": "safeRest"
+              },
+              "text": "(1/Safe Rest) You can set a friendly creature’s Initiative roll to 20."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Tell the friendly creature to set its Initiative roll to 20.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "No action cost printed, so `actions` is omitted."
+        }
+      },
+      {
+        "id": "feature.cheat.gambler.double-or-nothing",
+        "name": "Double or Nothing!",
+        "text": "When you lose your “All In” roll, you may try once more. If you succeed, add 1 additional maximized Sneak Attack die. If you fail, your attack misses entirely and your turn ends.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Reroll the All In die once. Success: add 1 extra maximized Sneak Attack die. Failure: the attack misses and your turn ends.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "Text verified. Depends on the All In die, whose size and “average” are an open rules question (see All In)."
+        }
+      },
+      {
+        "id": "feature.cheat.gambler.play-the-odds",
+        "name": "Play the Odds",
+        "text": "(1/round) When a creature hits you, you may force them to reroll their Primary Die. If the roll is lower, the attack misses; otherwise, it crits.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.gambler.play-the-odds",
+              "name": "Play the Odds",
+              "kind": "reaction",
+              "limit": {
+                "uses": "1",
+                "per": "round"
+              },
+              "text": "(1/round) When a creature hits you, you may force them to reroll their Primary Die. If the roll is lower, the attack misses; otherwise, it crits."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "The GM rerolls the attacker's Primary Die: lower misses, otherwise it crits.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "No action cost printed, so `actions` is omitted."
+        }
+      },
+      {
+        "id": "feature.cheat.gambler.odds-maker",
+        "name": "Odds Maker",
+        "text": "You may use That Was Just a Practice Roll 2/encounter and you may instead change the die to any other face.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "That Was Just a Practice Roll becomes 2/encounter (track the second use by hand) and may set the die to any other face instead of rerolling.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "“That Was Just a Practice Roll” is italic on the page; the sheet can't change that feature's limit, so this stays text."
+        }
       }
     ],
     "source": {
@@ -333,6 +722,21 @@
         "feature.cheat.honorseeker.worthy-underdog",
         "feature.cheat.honorseeker.tenacious-fighter",
         "feature.cheat.honorseeker.prove-your-worth"
+      ],
+      "5": [
+        "feature.cheat.honorseeker.even-the-odds"
+      ],
+      "7": [
+        "feature.cheat.honorseeker.old-habits"
+      ],
+      "11": [
+        "feature.cheat.honorseeker.right-where-i-want-you"
+      ],
+      "15": [
+        "feature.cheat.honorseeker.turn-the-tables"
+      ],
+      "20": [
+        "feature.cheat.honorseeker.supreme-underdog"
       ]
     },
     "features": [
@@ -346,16 +750,29 @@
             "features": [
               "feature.cheat.sneak-attack",
               "feature.cheat.sneak-attack-2",
-              "feature.cheat.vicious-opportunist"
+              "feature.cheat.vicious-opportunist",
+              "feature.cheat.sneak-attack-3",
+              "feature.cheat.sneak-attack-4",
+              "feature.cheat.sneak-attack-5",
+              "feature.cheat.sneak-attack-6",
+              "feature.cheat.sneak-attack-7"
             ],
             "with": [
               "feature.cheat.honorseeker.worthy-underdog",
               "feature.cheat.honorseeker.tenacious-fighter"
             ]
+          },
+          {
+            "type": "replacePool",
+            "from": "cheat.underhanded",
+            "to": "cheat.honorable-gambits",
+            "except": [
+              "choice.cheat.honorseeker.old-habits"
+            ]
           }
         ],
         "automation": "partial",
-        "manualNote": "Underhanded Abilities and Twist the Blade (level 4+) are also given up, and Honorable Gambits replace each Underhanded Ability (except Old Habits…); these are added in a later phase.",
+        "manualNote": "Twist the Blade is replaced by Even the Odds (level 5) and Supreme Execution by Supreme Underdog (level 20). Each Underhanded Ability choice offers Honorable Gambits instead (except Old Habits…).",
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -463,8 +880,369 @@
           "printedPage": 14,
           "status": "verified"
         }
+      },
+      {
+        "id": "feature.cheat.honorseeker.even-the-odds",
+        "name": "Even the Odds",
+        "text": "When attacking or being attacked by an enemy with The Upper Hand, you may spend an action to change a die up or down 1 face (replaces Twist the Blade and improves as it would).",
+        "effects": [
+          {
+            "type": "replace",
+            "features": [
+              "feature.cheat.twist-the-blade",
+              "feature.cheat.twist-the-blade-2"
+            ],
+            "with": [
+              "feature.cheat.honorseeker.even-the-odds"
+            ]
+          },
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.honorseeker.even-the-odds",
+              "name": "Even the Odds",
+              "kind": "ability",
+              "actions": 1,
+              "text": "When attacking or being attacked by an enemy with The Upper Hand, you may spend an action to change a die up or down 1 face (replaces Twist the Blade and improves as it would)."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Change the die by 1 face by hand. From level 13 (as Twist the Blade (2) would): (1/turn) you can use Even the Odds for free.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 8,
+          "printedPage": 14,
+          "status": "unverified",
+          "note": "Text verified. Interpretation: “improves as it would” means Twist the Blade (2) at level 13 also applies, so it is replaced too and its improvement ((1/turn) for free) is in the manualNote. Which dice count (any die in the attack?) is not stated. Open rules question."
+        }
+      },
+      {
+        "id": "feature.cheat.honorseeker.old-habits",
+        "name": "Old Habits…",
+        "text": "Choose 1 Underhanded Ability.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.cheat.honorseeker.old-habits",
+              "prompt": "Choose 1 Underhanded Ability.",
+              "count": 1,
+              "from": {
+                "kind": "pool",
+                "pool": "cheat.underhanded"
+              }
+            }
+          }
+        ],
+        "automation": "full",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 8,
+          "printedPage": 14,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.honorseeker.right-where-i-want-you",
+        "name": "Right Where I Want You",
+        "text": "You have advantage on attacks and +10 Defense as long as enemies have The Upper Hand.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.honorseeker.right-where-i-want-you",
+              "label": "Right Where I Want You",
+              "on": "attack",
+              "change": "advantage",
+              "mode": "toggle",
+              "when": {
+                "situation": "Enemies have The Upper Hand"
+              }
+            }
+          },
+          {
+            "type": "modifier",
+            "target": "defense",
+            "op": "add",
+            "value": "10",
+            "when": {
+              "situation": "Enemies have The Upper Hand"
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "The Upper Hand. Whenever there are more of them adjacent to you than allies. Turn on the toggles while it applies.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 8,
+          "printedPage": 14,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.honorseeker.turn-the-tables",
+        "name": "Turn the Tables",
+        "text": "When an enemy with The Upper Hand misses you in melee, you may spend an action attacking them in return.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.honorseeker.turn-the-tables",
+              "name": "Turn the Tables",
+              "kind": "reaction",
+              "actions": 1,
+              "text": "When an enemy with The Upper Hand misses you in melee, you may spend an action attacking them in return."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Make your attack against that enemy by hand.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 8,
+          "printedPage": 14,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.cheat.honorseeker.supreme-underdog",
+        "name": "Supreme Underdog",
+        "text": "(Replaces Supreme Execution…) You take 10 less damage from all attacks by creatures with The Upper Hand.",
+        "effects": [
+          {
+            "type": "replace",
+            "features": [
+              "feature.cheat.supreme-execution"
+            ],
+            "with": [
+              "feature.cheat.honorseeker.supreme-underdog"
+            ]
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Subtract 10 from damage dealt to you by attacks from creatures with The Upper Hand.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 8,
+          "printedPage": 14,
+          "status": "unverified",
+          "note": "Text verified. Replacing Supreme Execution also removes its “+1 to any 2 of your stats” choice; the page doesn't say whether the stat increase is kept (the “…” may mean only the Vicious Opportunist part). Open rules question."
+        }
       }
     ],
+    "optionPools": {
+      "cheat.honorable-gambits": [
+        {
+          "id": "feature.cheat.honorable-gambits.deft-parry",
+          "name": "Deft Parry",
+          "text": "You take –INT damage from enemies while they have The Upper Hand.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "Subtract INT from damage enemies deal to you while they have The Upper Hand.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.down-not-out",
+          "name": "Down, Not Out!",
+          "text": "While Dying, reduce all Primary Dice rolled against you by 1, and you gain advantage on saves.",
+          "effects": [
+            {
+              "type": "rollOption",
+              "option": {
+                "id": "roll.cheat.honorable-gambits.down-not-out",
+                "label": "Down, Not Out!",
+                "on": "save",
+                "change": "advantage",
+                "mode": "auto",
+                "when": "self.dying"
+              }
+            }
+          ],
+          "automation": "partial",
+          "manualNote": "While Dying, the GM reduces Primary Dice rolled against you by 1.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.frightful-confidence",
+          "name": "Frightful Confidence",
+          "text": "While Bloodied, when you are attacked with advantage their lowest die is Primary.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "While Bloodied, remind the GM: attacks with advantage against you use their lowest die as Primary.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.mark-of-deflection",
+          "name": "Mark of Deflection",
+          "text": "If you’ve already Defended this round, attacks against you are rolled with disadvantage.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "After you Defend, remind the GM that attacks against you this round are rolled with disadvantage.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.nowhere-to-flee",
+          "name": "Nowhere to Flee!",
+          "text": "Gain +INT Speed when moving toward enemies Taunted by you. Your Opportunity Attacks also Slow Medium or smaller targets on hit.",
+          "effects": [
+            {
+              "type": "modifier",
+              "target": "speed",
+              "op": "add",
+              "value": "INT",
+              "when": {
+                "situation": "Moving toward enemies Taunted by you"
+              }
+            }
+          ],
+          "automation": "partial",
+          "manualNote": "Mark Medium or smaller targets hit by your Opportunity Attacks as Slowed.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.redemption-arc",
+          "name": "Redemption Arc",
+          "text": "Reaction (when an enemy with The Upper Hand attacks an ally): You may first Taunt them (the attack is rolled again, choose either result), this lasts until the end of their next turn.",
+          "effects": [
+            {
+              "type": "grant",
+              "action": {
+                "id": "action.cheat.honorable-gambits.redemption-arc",
+                "name": "Redemption Arc",
+                "kind": "reaction",
+                "text": "Reaction (when an enemy with The Upper Hand attacks an ally): You may first Taunt them (the attack is rolled again, choose either result), this lasts until the end of their next turn."
+              }
+            }
+          ],
+          "automation": "partial",
+          "manualNote": "Mark the enemy Taunted until the end of its next turn; the GM rolls the attack again and you choose either result.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified",
+            "note": "No action cost printed for this Reaction, so `actions` is omitted."
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.riposte",
+          "name": "Riposte",
+          "text": "When you Defend against a melee attacker, you may immediately make an Opportunity Attack against them.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "After you Defend against a melee attacker, roll an Opportunity Attack against them.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.say-that-to-my-face",
+          "name": "Say That to My Face!",
+          "text": "Action: (Reach 12) “Teleport” adjacent to a Taunted enemy.",
+          "effects": [
+            {
+              "type": "grant",
+              "action": {
+                "id": "action.cheat.honorable-gambits.say-that-to-my-face",
+                "name": "Say That to My Face!",
+                "kind": "ability",
+                "actions": 1,
+                "reach": "12",
+                "text": "Action: (Reach 12) “Teleport” adjacent to a Taunted enemy."
+              }
+            }
+          ],
+          "automation": "partial",
+          "manualNote": "Move your token adjacent to the Taunted enemy.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        },
+        {
+          "id": "feature.cheat.honorable-gambits.victors-confidence",
+          "name": "Victor’s Confidence",
+          "text": "When you kill a Taunted enemy, give an ally advantage on their next attack.",
+          "effects": [
+            {
+              "type": "text"
+            }
+          ],
+          "automation": "manual",
+          "manualNote": "When you kill a Taunted enemy, tell an ally they have advantage on their next attack.",
+          "source": {
+            "file": "TheCheat3.0.pdf",
+            "version": "3.0",
+            "pdfPage": 8,
+            "printedPage": 15,
+            "status": "verified"
+          }
+        }
+      ]
+    },
     "source": {
       "file": "TheCheat3.0.pdf",
       "version": "3.0",

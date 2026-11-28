@@ -60,6 +60,70 @@
       "feature.cheat.subclass",
       "feature.cheat.sneak-attack-2",
       "feature.cheat.thieves-cant"
+    ],
+    "4": [
+      "feature.cheat.key-stat-increase-4",
+      "feature.cheat.underhanded-ability"
+    ],
+    "5": [
+      "feature.cheat.twist-the-blade",
+      "feature.cheat.quick-read",
+      "feature.cheat.secondary-stat-increase-5"
+    ],
+    "6": [
+      "feature.cheat.underhanded-ability-2",
+      "feature.cheat.thats-not-what-happened"
+    ],
+    "7": [
+      "feature.cheat.subclass-7",
+      "feature.cheat.sneak-attack-3"
+    ],
+    "8": [
+      "feature.cheat.underhanded-ability-3",
+      "feature.cheat.key-stat-increase-8"
+    ],
+    "9": [
+      "feature.cheat.sneak-attack-4",
+      "feature.cheat.secondary-stat-increase-9"
+    ],
+    "10": [
+      "feature.cheat.underhanded-ability-4"
+    ],
+    "11": [
+      "feature.cheat.subclass-11",
+      "feature.cheat.sneak-attack-5"
+    ],
+    "12": [
+      "feature.cheat.underhanded-ability-5",
+      "feature.cheat.key-stat-increase-12"
+    ],
+    "13": [
+      "feature.cheat.twist-the-blade-2",
+      "feature.cheat.secondary-stat-increase-13"
+    ],
+    "14": [
+      "feature.cheat.underhanded-ability-6"
+    ],
+    "15": [
+      "feature.cheat.subclass-15",
+      "feature.cheat.sneak-attack-6"
+    ],
+    "16": [
+      "feature.cheat.underhanded-ability-7",
+      "feature.cheat.key-stat-increase-16"
+    ],
+    "17": [
+      "feature.cheat.sneak-attack-7",
+      "feature.cheat.secondary-stat-increase-17"
+    ],
+    "18": [
+      "feature.cheat.underhanded-ability-8"
+    ],
+    "19": [
+      "feature.cheat.epic-boon"
+    ],
+    "20": [
+      "feature.cheat.supreme-execution"
     ]
   },
   "subclassLevels": [
@@ -277,9 +341,1071 @@
         "printedPage": 4,
         "status": "verified"
       }
+    },
+    {
+      "id": "feature.cheat.key-stat-increase-4",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or INT.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.key-stat-4",
+            "prompt": "+1 DEX or INT.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "INT"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability",
+      "name": "Underhanded Ability",
+      "text": "Choose an Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability",
+            "prompt": "Choose an Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.twist-the-blade",
+      "name": "Twist the Blade",
+      "text": "Action: Change a Sneak Attack die to whatever you like.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.cheat.twist-the-blade",
+            "name": "Twist the Blade",
+            "kind": "ability",
+            "actions": 1,
+            "text": "Action: Change a Sneak Attack die to whatever you like."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "After rolling Sneak Attack, spend the action and change one Sneak Attack die to the face you want by hand.",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.quick-read",
+      "name": "Quick Read",
+      "text": "(1/encounter) Gain advantage on an Assess check.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.cheat.quick-read",
+            "label": "Quick Read",
+            "on": "check",
+            "change": "advantage",
+            "mode": "toggle",
+            "when": {
+              "situation": "Assess check"
+            },
+            "limit": {
+              "uses": "1",
+              "per": "encounter"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.secondary-stat-increase-5",
+      "name": "Secondary Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.secondary-stat-5",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-2",
+      "name": "Underhanded Ability (2)",
+      "text": "Choose a 2nd Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-2",
+            "prompt": "Choose a 2nd Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.thats-not-what-happened",
+      "name": "THAT’S Not What Happened!",
+      "text": "(1/Safe Rest) Reaction (when a Distracted enemy attacks you): You may change the Primary Die roll to whatever you like (changing the die to the minimum value counts as a miss).",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.cheat.thats-not-what-happened",
+            "name": "THAT’S Not What Happened!",
+            "kind": "reaction",
+            "limit": {
+              "uses": "1",
+              "per": "safeRest"
+            },
+            "text": "(1/Safe Rest) Reaction (when a Distracted enemy attacks you): You may change the Primary Die roll to whatever you like (changing the die to the minimum value counts as a miss)."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "The enemy's attack roll is not on your sheet: tell the GM the new Primary Die face (the minimum counts as a miss) and spend the use here.",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "No action cost is printed for this Reaction, so `actions` is omitted (as for Epic Resistance)."
+      }
+    },
+    {
+      "id": "feature.cheat.subclass-7",
+      "name": "Subclass",
+      "text": "Gain your Cheat subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.sneak-attack-3",
+      "name": "Sneak Attack (3)",
+      "text": "Your Sneak Attack becomes 2d8.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "sneakAttack",
+          "value": "2d8"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-3",
+      "name": "Underhanded Ability (3)",
+      "text": "Choose a 3rd Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-3",
+            "prompt": "Choose a 3rd Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.key-stat-increase-8",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or INT.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.key-stat-8",
+            "prompt": "+1 DEX or INT.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "INT"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.sneak-attack-4",
+      "name": "Sneak Attack (4)",
+      "text": "Your Sneak Attack becomes 2d10.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "sneakAttack",
+          "value": "2d10"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.secondary-stat-increase-9",
+      "name": "Secondary Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.secondary-stat-9",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-4",
+      "name": "Underhanded Ability (4)",
+      "text": "Choose a 4th Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-4",
+            "prompt": "Choose a 4th Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.subclass-11",
+      "name": "Subclass",
+      "text": "Gain your Cheat subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.sneak-attack-5",
+      "name": "Sneak Attack (5)",
+      "text": "Your Sneak Attack becomes 2d12.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "sneakAttack",
+          "value": "2d12"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-5",
+      "name": "Underhanded Ability (5)",
+      "text": "Choose a 5th Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-5",
+            "prompt": "Choose a 5th Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.key-stat-increase-12",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or INT.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.key-stat-12",
+            "prompt": "+1 DEX or INT.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "INT"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.twist-the-blade-2",
+      "name": "Twist the Blade (2)",
+      "text": "(1/turn) You can Twist the Blade for free.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.cheat.twist-the-blade-free",
+            "name": "Twist the Blade (free)",
+            "kind": "free",
+            "actions": 0,
+            "limit": {
+              "uses": "1",
+              "per": "turn"
+            },
+            "text": "(1/turn) You can Twist the Blade for free."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Change one Sneak Attack die to the face you want by hand.",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.secondary-stat-increase-13",
+      "name": "Secondary Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.secondary-stat-13",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-6",
+      "name": "Underhanded Ability (6)",
+      "text": "Choose a 6th Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-6",
+            "prompt": "Choose a 6th Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.subclass-15",
+      "name": "Subclass",
+      "text": "Gain your Cheat subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.sneak-attack-6",
+      "name": "Sneak Attack (6)",
+      "text": "Your Sneak Attack becomes 2d20.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "sneakAttack",
+          "value": "2d20"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-7",
+      "name": "Underhanded Ability (7)",
+      "text": "Choose a 7th Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-7",
+            "prompt": "Choose a 7th Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.key-stat-increase-16",
+      "name": "Key Stat Increase",
+      "text": "+1 DEX or INT.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.key-stat-16",
+            "prompt": "+1 DEX or INT.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "DEX",
+                "INT"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.sneak-attack-7",
+      "name": "Sneak Attack (7)",
+      "text": "Your Sneak Attack becomes 3d20.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "sneakAttack",
+          "value": "3d20"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.secondary-stat-increase-17",
+      "name": "Secondary Stat Increase",
+      "text": "+1 WIL or STR.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.secondary-stat-17",
+            "prompt": "+1 WIL or STR.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "WIL",
+                "STR"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.underhanded-ability-8",
+      "name": "Underhanded Ability (8)",
+      "text": "Choose an 8th Underhanded Ability.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.underhanded-ability-8",
+            "prompt": "Choose an 8th Underhanded Ability.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "cheat.underhanded"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.epic-boon",
+      "name": "Epic Boon",
+      "text": "Choose an Epic Boon (see pg. 75 of the GM’s Guide).",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.epic-boon",
+            "prompt": "Choose an Epic Boon (see pg. 75 of the GM’s Guide).",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "boons.epic"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.cheat.supreme-execution",
+      "name": "Supreme Execution",
+      "text": "+1 to any 2 of your stats. When you attack with a blade, you do not require targets to be Distracted to trigger Vicious Opportunist.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.cheat.capstone-stats",
+            "prompt": "+1 to any 2 of your stats.",
+            "count": 2,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX",
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        },
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "When you attack with a blade, use Vicious Opportunist even if the target is not Distracted (turn on its toggle by hand).",
+      "source": {
+        "file": "TheCheat3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "unverified",
+        "note": "Text verified. Which weapons count as a “blade” is not defined in the Core Rules (RQ-008), so the Vicious Opportunist part stays text. Assumed the 2 stats must be different."
+      }
     }
   ],
-  "optionPools": {},
+  "optionPools": {
+    "cheat.underhanded": [
+      {
+        "id": "feature.cheat.underhanded.creative-accounting",
+        "name": "“Creative” Accounting",
+        "text": "Steal up to INT actions from your next turn (Gain up to INT actions now. The next time you would gain actions, subtract the number stolen). You cannot use this 2 turns in a row.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Add up to INT actions now and subtract the same number the next time you gain actions; you can't use it 2 turns in a row.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.exploit-weakness",
+        "name": "Exploit Weakness",
+        "text": "Whenever you successfully Assess: Create an Opening against a creature, you can use Vicious Opportunist against them, even if they are not Distracted. This lasts for 1 minute or until you use it against another target.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "After a successful Assess: Create an Opening, turn on Vicious Opportunist against that creature by hand (1 minute or until you use it on another target).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.feinting-attack",
+        "name": "Feinting Attack",
+        "text": "If you miss for the 2nd time in a single round, you may change the Primary Die roll to any result instead.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.cheat.underhanded.feinting-attack",
+              "label": "Feinting Attack",
+              "on": "attack",
+              "change": "setPrimary",
+              "mode": "toggle",
+              "when": {
+                "situation": "You missed for the 2nd time this round"
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Pick the new Primary Die result.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.howd-you-get-here",
+        "name": "How’d YOU get here?!",
+        "text": "(Reach 12) “Teleport” adjacent to a Distracted target, and make a melee attack against them. If you crit, you may “teleport” again.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.underhanded.howd-you-get-here",
+              "name": "How’d YOU get here?!",
+              "kind": "attack",
+              "actions": 2,
+              "reach": "12",
+              "text": "(Reach 12) “Teleport” adjacent to a Distracted target, and make a melee attack against them. If you crit, you may “teleport” again."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Move your token adjacent to the Distracted target and roll your melee attack; on a crit you may “teleport” again.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: 2 Actions (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.im-outta-here",
+        "name": "I’m Outta Here!",
+        "text": "When an ally within Reach 4 is crit, you may turn Invisible until the end of your next turn and then move up to half your Speed for free.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When an ally within Reach 4 is crit, mark yourself Invisible until the end of your next turn and move up to half your Speed.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.misdirection",
+        "name": "Misdirection",
+        "text": "Gain INT Defense. Whenever you Defend, you may halve the damage instead.",
+        "effects": [
+          {
+            "type": "modifier",
+            "target": "defense",
+            "op": "add",
+            "value": "INT"
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "When you Defend, you may halve the damage instead (apply by hand).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.steal-tempo",
+        "name": "Steal Tempo",
+        "text": "When you crit for the second time in a round, your target is Dazed and you give an ally 1 action.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "On your second crit in a round, mark the target Dazed and give an ally 1 action.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.sunder-armor",
+        "name": "Sunder Armor",
+        "text": "After you crit an armored creature, sunder their armor: give the next non-crit Primary Die rolled against them +2.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.underhanded.sunder-armor",
+              "name": "Sunder Armor",
+              "kind": "ability",
+              "actions": 1,
+              "text": "After you crit an armored creature, sunder their armor: give the next non-crit Primary Die rolled against them +2."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Use after you crit an armored creature; the next non-crit Primary Die rolled against it gets +2 (apply by hand).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: 1 Action (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.tangling-wire",
+        "name": "Tangling Wire",
+        "text": "Whenever you Grapple, you may Restrain instead.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you Grapple, you may apply Restrained instead.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.the-setup",
+        "name": "The Setup",
+        "text": "Reaction (when an ally misses a creature adjacent to you): You can make an Opportunity Attack against them, treating them as Distracted.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.cheat.underhanded.the-setup",
+              "name": "The Setup",
+              "kind": "reaction",
+              "actions": 1,
+              "text": "Reaction (when an ally misses a creature adjacent to you): You can make an Opportunity Attack against them, treating them as Distracted."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Roll the Opportunity Attack and treat the target as Distracted (turn on the Vicious Opportunist toggle if it applies).",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: 1 Action (a header beside the name, not part of the rules text)."
+        }
+      },
+      {
+        "id": "feature.cheat.underhanded.trickshot",
+        "name": "Trickshot",
+        "text": "You can use Vicious Opportunist on thrown weapon attacks (but you can’t use Twist the Blade on them). Whenever you throw a weapon, you may spend an additional action to have it hit another creature within Reach 2 of it, dealing half as much damage to them.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Vicious Opportunist works on thrown weapon attacks (turn on its toggle by hand; Twist the Blade can't be used on them). For the extra action, roll the second hit's damage and halve it.",
+        "source": {
+          "file": "TheCheat3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "Printed cost label: Passive (a header beside the name, not part of the rules text)."
+        }
+      }
+    ]
+  },
   "retrainText": "Trade Secrets. Whenever you spend a night talking shop with other roguish types during a Safe Rest, you may choose different Cheat options available to you.",
   "source": {
     "file": "TheCheat3.0.pdf",

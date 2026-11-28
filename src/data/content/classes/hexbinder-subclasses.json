@@ -1,0 +1,777 @@
+[
+  {
+    "id": "subclass.hexbinder.hex",
+    "classId": "class.hexbinder",
+    "name": "Coven of the Hex",
+    "tagline": "Bristle with power, torns of the rose. Bane of the aggressor, thy curse impose.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.hexbinder.hex.haunted"
+      ],
+      "7": [
+        "feature.hexbinder.hex.spitecurse"
+      ],
+      "11": [
+        "feature.hexbinder.hex.pestilential-reign"
+      ],
+      "15": [
+        "feature.hexbinder.hex.hexcaster"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.hexbinder.hex.haunted",
+        "name": "Haunted",
+        "text": "When an Afflicted creature dies, apply all of their Afflictions to another enemy within Reach 8 of them.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When an Afflicted creature dies, move all its Afflictions to another enemy within Reach 8 of it by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.hex.spitecurse",
+        "name": "Spitecurse",
+        "text": "(1/encounter, Reach 8) Reaction (whenever an enemy crits): They take the damage as well.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.hexbinder.hex.spitecurse",
+              "name": "Spitecurse",
+              "kind": "reaction",
+              "actions": 0,
+              "reach": "8",
+              "limit": {
+                "uses": "1",
+                "per": "encounter"
+              },
+              "text": "(1/encounter, Reach 8) Reaction (whenever an enemy crits): They take the damage as well."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Apply the same damage to the critting enemy by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified",
+          "note": "Reaction cost not stated beyond “Reaction”; actions set to 0 as with other on-trigger reactions."
+        }
+      },
+      {
+        "id": "feature.hexbinder.hex.pestilential-reign",
+        "name": "Pestilential Reign",
+        "text": "Learn the Pestilent Affliction. Whenever it triggers you may double or halve its Reach.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "You know feature.hexbinder.afflictions.pestilent (Pestilent). When it triggers, you may use Reach 4 or Reach 1 instead of Reach 2.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Pestilential Reign. If you already know Pestilent, choose a different Affliction.” Choosing the replacement Affliction is done by hand."
+        }
+      },
+      {
+        "id": "feature.hexbinder.hex.hexcaster",
+        "name": "Hexcaster",
+        "text": "Your Enfeebled Affliction also Dazes the target when applied. You can inflict Doomed 2/encounter.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you apply Enfeebled, also Daze the target. Doomed can be used twice per encounter.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 10,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 6,
+      "printedPage": 10,
+      "status": "verified",
+      "note": "Tagline printed “torns of the rose” (sic), kept verbatim. Two-line tagline joined with a space."
+    }
+  },
+  {
+    "id": "subclass.hexbinder.sight",
+    "classId": "class.hexbinder",
+    "name": "Coven of the Sight",
+    "tagline": "Weave thy way through temporal roads. Threads of fate, the pattern exposed.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.hexbinder.sight.soothsayer-savant"
+      ],
+      "7": [
+        "feature.hexbinder.sight.a-different-path",
+        "feature.hexbinder.sight.cursed-fate"
+      ],
+      "11": [
+        "feature.hexbinder.sight.hand-of-fate",
+        "feature.hexbinder.sight.masterful-seer"
+      ],
+      "15": [
+        "feature.hexbinder.sight.renewed-vision"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.hexbinder.sight.soothsayer-savant",
+        "name": "Soothsayer Savant",
+        "text": "Whenever combat begins, roll a Futuresight Die (1d4). (Reach 4) Expend it to increase or decrease any die by that much. It expires at the end of combat if unused.",
+        "effects": [
+          {
+            "type": "resource",
+            "resource": {
+              "id": "resource.hexbinder.futuresight",
+              "name": "Futuresight Dice",
+              "max": "var.futuresightDice",
+              "recover": [
+                {
+                  "on": "initiative",
+                  "amount": "all"
+                }
+              ],
+              "lose": [
+                "combatEnd"
+              ],
+              "dice": {
+                "die": "1d4",
+                "rolled": "gained"
+              }
+            }
+          },
+          {
+            "type": "replace",
+            "features": [
+              "feature.hexbinder.soothsayer"
+            ]
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Spend a Futuresight Die on any die within Reach 4 and add or subtract its value by hand. Changing Dice. A die can’t be changed above its max value. As usual, if a Primary Die is reduced to 1, it misses; if increased to its max value, it crits.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "unverified",
+          "note": "Same text as the class’s level 5 Soothsayer. Modelled as replacing it (so the Futuresight Dice resource isn’t granted twice); the book doesn’t say whether the Sight gains anything extra at level 5. Changing Dice sidebar (printed 5) copied into manualNote."
+        }
+      },
+      {
+        "id": "feature.hexbinder.sight.a-different-path",
+        "name": "A Different Path",
+        "text": "(1/encounter) You may expend 1 mana to gain a Futuresight Die.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.hexbinder.sight.a-different-path",
+              "name": "A Different Path",
+              "kind": "free",
+              "cost": {
+                "mana": "1"
+              },
+              "limit": {
+                "uses": "1",
+                "per": "encounter"
+              },
+              "text": "(1/encounter) You may expend 1 mana to gain a Futuresight Die."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Add the gained Futuresight Die (roll it) to your Futuresight Dice by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified",
+          "note": "No action cost is printed; granted as a free use."
+        }
+      },
+      {
+        "id": "feature.hexbinder.sight.cursed-fate",
+        "name": "Cursed Fate",
+        "text": "Double the value of a Futuresight Die when used with Hex.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When you spend a Futuresight Die on a Hex roll, double its value by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.sight.hand-of-fate",
+        "name": "Hand of Fate",
+        "text": "Gain 1 additional Futuresight Die each encounter, and increment your Futuresight Dice one step. You may use multiple Futuresight Dice to modify the same roll.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Add 1 more Futuresight Die each encounter and use one die size larger (d4 → d6); the sheet still shows the base number and size.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.sight.masterful-seer",
+        "name": "Masterful Seer",
+        "text": "When you Consult the BONES, roll with advantage.",
+        "effects": [
+          {
+            "type": "rollOption",
+            "option": {
+              "id": "roll.hexbinder.sight.masterful-seer",
+              "label": "Masterful Seer",
+              "on": "check",
+              "change": "advantage",
+              "scope": "insight",
+              "mode": "toggle",
+              "when": {
+                "situation": "Consulting the BONES"
+              }
+            }
+          }
+        ],
+        "automation": "full",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified",
+          "note": "Consult the BONES is rolled with disadvantage; this advantage applies on top of it."
+        }
+      },
+      {
+        "id": "feature.hexbinder.sight.renewed-vision",
+        "name": "Renewed Vision",
+        "text": "(1/encounter) When you make an attack into a crit or a miss, roll one Futuresight Die.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per encounter, after you turn an attack into a crit or a miss, roll and gain one Futuresight Die by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 6,
+          "printedPage": 11,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 6,
+      "printedPage": 11,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "subclass.hexbinder.blooms",
+    "classId": "class.hexbinder",
+    "name": "Coven of Blooms",
+    "tagline": "Give thy care to all that grows. Seek new life in deathly throes.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.hexbinder.blooms.siphon-essence"
+      ],
+      "7": [
+        "feature.hexbinder.blooms.potent-bloom",
+        "feature.hexbinder.blooms.parsley-sage"
+      ],
+      "11": [
+        "feature.hexbinder.blooms.soothing-cleanse"
+      ],
+      "15": [
+        "feature.hexbinder.blooms.rampant-blooms",
+        "feature.hexbinder.blooms.rosemary-and-thyme"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.hexbinder.blooms.siphon-essence",
+        "name": "Siphon Essence",
+        "text": "Whenever you apply an Affliction, gain 10 temp HP for 1 min. (1/encounter) When you cast Life Bloom, damage an enemy equal to how much your target is healed (ignoring armor).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Add 10 temp HP when you apply an Affliction. Once per encounter, when you cast Life Bloom, deal damage equal to the target’s healing to an enemy (ignoring armor).",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.blooms.potent-bloom",
+        "name": "Potent Bloom",
+        "text": "Gain +KEY Hit Dice.",
+        "effects": [
+          {
+            "type": "modifier",
+            "target": "maxHitDice",
+            "op": "add",
+            "value": "KEY"
+          }
+        ],
+        "automation": "full",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified",
+          "note": "Read as +KEY max Hit Dice."
+        }
+      },
+      {
+        "id": "feature.hexbinder.blooms.parsley-sage",
+        "name": "Parsley, Sage…",
+        "text": "During a Safe Rest, you may brew a single-use Herbal Elixir. Action: drink to heal 2 Wounds (it expires when you Safe Rest if unused).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Track the Herbal Elixir by hand; drinking it (1 action) removes 2 Wounds.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.blooms.soothing-cleanse",
+        "name": "Soothing Cleanse",
+        "text": "You may grant the temp HP from Siphon Essence to an ally within Reach 8 instead. Whenever you heal HP, you may spend additional mana to grant an additional 10 temp HP for 1 min and remove a harmful condition from your target for each mana spent.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Spend the extra mana, give the temp HP and remove conditions by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.blooms.rampant-blooms",
+        "name": "Rampant Blooms",
+        "text": "Double the healing of Life Bloom.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Life Bloom heals 20 HP instead of 10 (and Rite of Mending’s per-pair healing is doubled); apply by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "unverified",
+          "note": "Whether Rite of Mending’s 10 HP per pair is also doubled is an interpretation (it is Life Bloom healing)."
+        }
+      },
+      {
+        "id": "feature.hexbinder.blooms.rosemary-and-thyme",
+        "name": "…Rosemary, and Thyme",
+        "text": "Your Herbal Elixir heals KEY Wounds instead.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Your Herbal Elixir removes KEY Wounds instead of 2.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 12,
+          "status": "verified"
+        }
+      }
+    ],
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 7,
+      "printedPage": 12,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "subclass.hexbinder.hunt",
+    "classId": "class.hexbinder",
+    "name": "Coven of the Hunt",
+    "tagline": "Bound together, the family you chose. Wanderers of realms, the chorus goes.",
+    "storyBased": false,
+    "levels": {
+      "3": [
+        "feature.hexbinder.hunt.hexbinders-familiar"
+      ],
+      "7": [
+        "feature.hexbinder.hunt.bind-malady"
+      ],
+      "11": [
+        "feature.hexbinder.hunt.empowered-familiar"
+      ],
+      "15": [
+        "feature.hexbinder.hunt.mighty-familiar"
+      ]
+    },
+    "features": [
+      {
+        "id": "feature.hexbinder.hunt.hexbinders-familiar",
+        "name": "Hexbinder’s Familiar",
+        "text": "Choose any small animal to become your familiar (owl, cat, rooster, fox, etc.). Your familiar retains any abilities the animal has, can speak to you, and will generally obey your commands (though it may refuse instructions that would put it in danger). Choose 1 Familiar Boon that it grants to you:\n• Protective. Acts as a shield that grants +LVL Defense.\n• Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.\n• Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).\n• Scavenger. When you roll Initiative, give an ally 2×LVL temp HP.\n• Mystical. You can cast spells from an ally’s position INT times/encounter.\n• Swift. You may move WIL spaces for free on each of your turns.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.hexbinder.hunt.familiar-boon",
+              "prompt": "Choose 1 Familiar Boon.",
+              "count": 1,
+              "from": {
+                "kind": "options",
+                "options": [
+                  {
+                    "id": "option.hexbinder.hunt.protective",
+                    "label": "Protective. Acts as a shield that grants +LVL Defense.",
+                    "effects": [
+                      {
+                        "type": "modifier",
+                        "target": "defense",
+                        "op": "add",
+                        "value": "LVL"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.resourceful",
+                    "label": "Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.",
+                    "effects": [
+                      {
+                        "type": "modifier",
+                        "target": "maxHitDice",
+                        "op": "add",
+                        "value": "WIL+INT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.sly",
+                    "label": "Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
+                    "effects": [
+                      {
+                        "type": "rollOption",
+                        "option": {
+                          "id": "roll.hexbinder.hunt.sly",
+                          "label": "Sly (Familiar)",
+                          "on": "initiative",
+                          "change": "advantage",
+                          "mode": "auto"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.scavenger",
+                    "label": "Scavenger. When you roll Initiative, give an ally 2×LVL temp HP."
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.mystical",
+                    "label": "Mystical. You can cast spells from an ally’s position INT times/encounter."
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.swift",
+                    "label": "Swift. You may move WIL spaces for free on each of your turns."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "Familiar Boons are a choice of kind options; the same option ids are offered at levels 3, 11 and 15. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
+        }
+      },
+      {
+        "id": "feature.hexbinder.hunt.bind-malady",
+        "name": "Bind Malady",
+        "text": "Free Reaction. (INT/Safe Rest, Reach 8). Command your familiar to remove any single harmful condition from a creature.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.hexbinder.hunt.bind-malady",
+              "name": "Bind Malady",
+              "kind": "reaction",
+              "actions": 0,
+              "reach": "8",
+              "limit": {
+                "uses": "INT",
+                "per": "safeRest"
+              },
+              "text": "Free Reaction. (INT/Safe Rest, Reach 8). Command your familiar to remove any single harmful condition from a creature."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Remove the condition by hand. Harmful Conditions. Ending “Dying” grants 1 HP, ending “Dazed” grants 1 action, etc.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "manualNote includes the “Harmful Conditions” sidebar printed under Bind Malady."
+        }
+      },
+      {
+        "id": "feature.hexbinder.hunt.empowered-familiar",
+        "name": "Empowered Familiar",
+        "text": "Choose a 2nd Familiar Boon.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.hexbinder.hunt.familiar-boon-2",
+              "prompt": "Choose a 2nd Familiar Boon.",
+              "count": 1,
+              "from": {
+                "kind": "options",
+                "options": [
+                  {
+                    "id": "option.hexbinder.hunt.protective",
+                    "label": "Protective. Acts as a shield that grants +LVL Defense.",
+                    "effects": [
+                      {
+                        "type": "modifier",
+                        "target": "defense",
+                        "op": "add",
+                        "value": "LVL"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.resourceful",
+                    "label": "Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.",
+                    "effects": [
+                      {
+                        "type": "modifier",
+                        "target": "maxHitDice",
+                        "op": "add",
+                        "value": "WIL+INT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.sly",
+                    "label": "Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
+                    "effects": [
+                      {
+                        "type": "rollOption",
+                        "option": {
+                          "id": "roll.hexbinder.hunt.sly",
+                          "label": "Sly (Familiar)",
+                          "on": "initiative",
+                          "change": "advantage",
+                          "mode": "auto"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.scavenger",
+                    "label": "Scavenger. When you roll Initiative, give an ally 2×LVL temp HP."
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.mystical",
+                    "label": "Mystical. You can cast spells from an ally’s position INT times/encounter."
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.swift",
+                    "label": "Swift. You may move WIL spaces for free on each of your turns."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "Familiar Boons are a choice of kind options; the same option ids are offered at levels 3, 11 and 15. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
+        }
+      },
+      {
+        "id": "feature.hexbinder.hunt.mighty-familiar",
+        "name": "Mighty Familiar",
+        "text": "Choose a 3rd Familiar Boon.",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.hexbinder.hunt.familiar-boon-3",
+              "prompt": "Choose a 3rd Familiar Boon.",
+              "count": 1,
+              "from": {
+                "kind": "options",
+                "options": [
+                  {
+                    "id": "option.hexbinder.hunt.protective",
+                    "label": "Protective. Acts as a shield that grants +LVL Defense.",
+                    "effects": [
+                      {
+                        "type": "modifier",
+                        "target": "defense",
+                        "op": "add",
+                        "value": "LVL"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.resourceful",
+                    "label": "Resourceful. Gain WIL+INT max Hit Dice, these can be given to any ally.",
+                    "effects": [
+                      {
+                        "type": "modifier",
+                        "target": "maxHitDice",
+                        "op": "add",
+                        "value": "WIL+INT"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.sly",
+                    "label": "Sly. Advantage on Initiative. When you roll Initiative, regain INT mana (this expires at the end of combat if unused).",
+                    "effects": [
+                      {
+                        "type": "rollOption",
+                        "option": {
+                          "id": "roll.hexbinder.hunt.sly",
+                          "label": "Sly (Familiar)",
+                          "on": "initiative",
+                          "change": "advantage",
+                          "mode": "auto"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.scavenger",
+                    "label": "Scavenger. When you roll Initiative, give an ally 2×LVL temp HP."
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.mystical",
+                    "label": "Mystical. You can cast spells from an ally’s position INT times/encounter."
+                  },
+                  {
+                    "id": "option.hexbinder.hunt.swift",
+                    "label": "Swift. You may move WIL spaces for free on each of your turns."
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 7,
+          "printedPage": 13,
+          "status": "verified",
+          "note": "Familiar Boons are a choice of kind options; the same option ids are offered at levels 3, 11 and 15. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
+        }
+      }
+    ],
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 7,
+      "printedPage": 13,
+      "status": "verified"
+    }
+  }
+]

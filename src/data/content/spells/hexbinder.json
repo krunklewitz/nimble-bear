@@ -1,0 +1,190 @@
+[
+  {
+    "id": "spell.hexbinder.misery",
+    "name": "Misery",
+    "school": "hexbinder",
+    "tier": 1,
+    "actions": 2,
+    "aoe": false,
+    "reach": "8",
+    "roll": {
+      "kind": "damage",
+      "dice": "1d8+LVL"
+    },
+    "text": "Reach: 8. Damage: 1d8+LVL. On hit: apply an Affliction. On crit: apply 2 instead.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "spell.hexbinder.life-bloom",
+    "name": "Life Bloom",
+    "school": "hexbinder",
+    "tier": 1,
+    "actions": 1,
+    "aoe": false,
+    "reach": "8",
+    "text": "Reach: 8. You and a willing target each spend 1 Hit Die. Your target and another creature within Reach each heal 10 HP.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "Flat 10 HP healing; no roll encoded."
+    }
+  },
+  {
+    "id": "spell.hexbinder.twitch-curse",
+    "name": "Twitch Curse",
+    "school": "hexbinder",
+    "tier": 2,
+    "actions": 0,
+    "aoe": false,
+    "restriction": "Castable only while Defending.",
+    "reach": "8",
+    "text": "Castable only while Defending. Reach: 8. First, move the attacker 1 space (+1 for each Affliction on it). Opportunity Attacks this triggers have advantage instead of disadvantage.\nNote. If you are no longer a valid target (e.g., the attacker is dead, you are out of line of sight/Reach/Range), the triggering attack misses.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "“Note.” is a box printed under the spell; appended to text."
+    }
+  },
+  {
+    "id": "spell.hexbinder.bloodcurse",
+    "name": "Bloodcurse",
+    "school": "hexbinder",
+    "tier": 2,
+    "actions": 2,
+    "aoe": false,
+    "reach": "8",
+    "roll": {
+      "kind": "damage",
+      "dice": "1d4+LVL"
+    },
+    "text": "Reach: 8. Damage: 1d4+LVL (increment the die size for each Affliction it has). On hit: the target becomes secretly Bloodcursed, suffering the same damage it deals next (ignoring armor).",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "Die size increase per Affliction is not encoded (roll shows 1d4). FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Bloodcurse. Its damage is calculated vs a single target, before any reductions from Defense or other sources. This spell is secret to the target, not the GM.”"
+    }
+  },
+  {
+    "id": "spell.hexbinder.wyrding-strands",
+    "name": "Wyrding Strands",
+    "school": "hexbinder",
+    "tier": 3,
+    "actions": 2,
+    "aoe": true,
+    "reach": "8",
+    "roll": {
+      "kind": "other",
+      "dice": "2d6"
+    },
+    "text": "Reach: 8. Move creatures within Reach a total of 2d6 spaces, divided among them as you choose.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "Header “TIER 3, AOE”. Roll is the 2d6 spaces of movement. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Wyrding Strands. You choose the direction, and can move allies or yourself.”"
+    }
+  },
+  {
+    "id": "spell.hexbinder.frogify",
+    "name": "Frogify",
+    "school": "hexbinder",
+    "tier": 3,
+    "actions": 1,
+    "aoe": false,
+    "restriction": "(1/encounter)",
+    "reach": "8",
+    "limit": {
+      "uses": "1",
+      "per": "encounter"
+    },
+    "text": "Reach: 8. (1/encounter) Turn a Medium or smaller creature into a harmless frog until the end of its next turn. Make it hop immediately up to KEY spaces, and again on its turn instead of acting. The first attack against it crits and ends the effect.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "spell.hexbinder.malediction",
+    "name": "Malediction",
+    "school": "hexbinder",
+    "tier": 4,
+    "actions": 2,
+    "aoe": true,
+    "reach": "4",
+    "roll": {
+      "kind": "aoe",
+      "dice": "1d8+LVL",
+      "ignoresArmor": true
+    },
+    "text": "Reach: 4. Up to KEY creatures of your choice take 1d8+LVL damage (ignoring armor).",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "Header “TIER 4, AOE”."
+    }
+  },
+  {
+    "id": "spell.hexbinder.circle-of-thorns",
+    "name": "Circle of Thorns",
+    "school": "hexbinder",
+    "tier": 4,
+    "actions": 2,
+    "aoe": false,
+    "reach": "8",
+    "text": "Reach: 8. Ward every space adjacent to a creature with magical thorns. Enemies that enter a warded space take LVL damage and are Weakened 10 until the end of their next turn. Lasts 1 min or until it has triggered KEY times.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "Header “TIER 4” (no AOE). Trigger damage (LVL) not encoded as a roll. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Circle of Thorns. An enemy already adjacent when it’s cast hasn’t entered; being pushed in counts.”"
+    }
+  },
+  {
+    "id": "spell.hexbinder.terror",
+    "name": "Terror",
+    "school": "hexbinder",
+    "tier": 5,
+    "actions": 2,
+    "aoe": false,
+    "reach": "8",
+    "roll": {
+      "kind": "damage",
+      "dice": "1d6",
+      "ignoresArmor": true
+    },
+    "text": "Reach: 8. Damage: 1d6 (ignoring armor); roll with advantage for each Affliction on the target; multiply the result by LVL.\nExample. If a target has 1 Affliction, roll 2d6 and keep the highest, then if you are level 10 multiply the highest die by 10.",
+    "source": {
+      "file": "Hexbinder3.0.pdf",
+      "version": "3.0",
+      "pdfPage": 5,
+      "printedPage": 8,
+      "status": "verified",
+      "note": "“Example.” is a box printed under the spell; appended to text. The advantage per Affliction and the ×LVL multiplier are not encoded (roll shows 1d6)."
+    }
+  }
+]

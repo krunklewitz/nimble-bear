@@ -1,0 +1,1509 @@
+{
+  "id": "class.hexbinder",
+  "name": "Hexbinder",
+  "keyStats": [
+    "INT",
+    "WIL"
+  ],
+  "secondaryStats": [
+    "STR",
+    "DEX"
+  ],
+  "hitDie": "d8",
+  "startingHp": 13,
+  "saves": {
+    "advantaged": "WIL",
+    "disadvantaged": "DEX"
+  },
+  "armorText": "Cloth",
+  "weaponsText": "Blades, Wands",
+  "startingGearText": "Adventurer’s Garb, Dagger, Portable Cauldron (bucket)",
+  "startingGear": [
+    {
+      "id": "armor.adventurers-garb",
+      "qty": 1
+    },
+    {
+      "id": "weapon.dagger",
+      "qty": 1
+    },
+    {
+      "id": "gear.bucket",
+      "qty": 1
+    }
+  ],
+  "proficiency": {
+    "armor": [
+      "cloth"
+    ],
+    "shields": false,
+    "weapons": [
+      "blade",
+      "wand"
+    ]
+  },
+  "vars": {
+    "futuresightDice": "1"
+  },
+  "levels": {
+    "1": [
+      "feature.hexbinder.hex",
+      "feature.hexbinder.afflictions"
+    ],
+    "2": [
+      "feature.hexbinder.mana-and-tier-1-spells",
+      "feature.hexbinder.diminution"
+    ],
+    "3": [
+      "feature.hexbinder.subclass",
+      "feature.hexbinder.rite-of-mending",
+      "feature.hexbinder.consult-the-bones",
+      "feature.hexbinder.afflictions-3"
+    ],
+    "4": [
+      "feature.hexbinder.mystic-mark",
+      "feature.hexbinder.tier-2-spells",
+      "feature.hexbinder.key-stat-increase-4"
+    ],
+    "5": [
+      "feature.hexbinder.soothsayer",
+      "feature.hexbinder.blightwielders-touch",
+      "feature.hexbinder.secondary-stat-increase-5"
+    ],
+    "6": [
+      "feature.hexbinder.mystic-mark-2",
+      "feature.hexbinder.tier-3-spells"
+    ],
+    "7": [
+      "feature.hexbinder.subclass-7",
+      "feature.hexbinder.afflictions-4"
+    ],
+    "8": [
+      "feature.hexbinder.tier-4-spells",
+      "feature.hexbinder.key-stat-increase-8"
+    ],
+    "9": [
+      "feature.hexbinder.mystic-mark-3",
+      "feature.hexbinder.secondary-stat-increase-9"
+    ],
+    "10": [
+      "feature.hexbinder.soothsayer-2",
+      "feature.hexbinder.tier-5-spells"
+    ],
+    "11": [
+      "feature.hexbinder.subclass-11"
+    ],
+    "12": [
+      "feature.hexbinder.mystic-mark-4",
+      "feature.hexbinder.afflictions-5",
+      "feature.hexbinder.key-stat-increase-12"
+    ],
+    "13": [
+      "feature.hexbinder.misery-maker",
+      "feature.hexbinder.secondary-stat-increase-13"
+    ],
+    "14": [
+      "feature.hexbinder.soothsayer-3"
+    ],
+    "15": [
+      "feature.hexbinder.subclass-15"
+    ],
+    "16": [
+      "feature.hexbinder.mystic-mark-5",
+      "feature.hexbinder.key-stat-increase-16"
+    ],
+    "17": [
+      "feature.hexbinder.soothsayer-4",
+      "feature.hexbinder.secondary-stat-increase-17"
+    ],
+    "18": [
+      "feature.hexbinder.doombringer"
+    ],
+    "19": [
+      "feature.hexbinder.epic-boon"
+    ],
+    "20": [
+      "feature.hexbinder.sage-of-banes"
+    ]
+  },
+  "subclassLevels": [
+    3,
+    7,
+    11,
+    15
+  ],
+  "features": [
+    {
+      "id": "feature.hexbinder.hex",
+      "name": "Hex",
+      "text": "Reach 4, Action: 1d4 damage. On hit: +LVL damage, OR apply an Affliction. On crit: do both.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.hexbinder.hex",
+            "name": "Hex",
+            "kind": "attack",
+            "actions": 1,
+            "reach": "4",
+            "roll": {
+              "kind": "damage",
+              "dice": "1d4"
+            },
+            "text": "Reach 4, Action: 1d4 damage. On hit: +LVL damage, OR apply an Affliction. On crit: do both."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "On a hit, either add LVL to the damage by hand or apply one of your Afflictions to the target; on a crit, do both.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified",
+        "note": "No damage type is printed for Hex, so none is set."
+      }
+    },
+    {
+      "id": "feature.hexbinder.afflictions",
+      "name": "Afflictions",
+      "text": "You know the Withered and Frenzied Afflictions.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Known Afflictions: feature.hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit).",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified",
+        "note": "The Afflictions rule paragraph in manualNote is printed above the Afflictions list on PDF 4, printed 6."
+      }
+    },
+    {
+      "id": "feature.hexbinder.mana-and-tier-1-spells",
+      "name": "Mana and Tier 1 Spells",
+      "text": "You unlock tier 1 Hexbinder spells and a mana pool to cast them. Your max mana pool is always equal to WIL+LVL and recharges on a Safe Rest.",
+      "effects": [
+        {
+          "type": "resource",
+          "resource": {
+            "id": "resource.mana",
+            "name": "Mana",
+            "max": "WIL+LVL",
+            "recover": [
+              {
+                "on": "safeRest",
+                "amount": "all"
+              }
+            ]
+          }
+        },
+        {
+          "type": "spells",
+          "list": "hexbinder",
+          "maxTier": 1
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.diminution",
+      "name": "Diminution",
+      "text": "Reduce the mana cost of spells by 1 for each condition chosen.\n• Humble. The Range/Reach of the spell is halved.\n• Slow. Spend 1 additional action.\n• Weak. Roll with disadvantage.\nChoose each condition only once per spell. You can’t choose an effect that a spell does not have (e.g., Humble on a spell with no Range/Reach, Weak on a spell with no roll).",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "A casting option: when you cast a spell, pick any of Humble, Slow or Weak (each once) and pay 1 less mana per pick; halve the Range/Reach, spend the extra action or roll with disadvantage by hand.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified",
+        "note": "The last sentence is an italic note printed under the three conditions; kept in text. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Coven. Spells from your Coven school can be upcast (up to your highest tier) and Diminished.”"
+      }
+    },
+    {
+      "id": "feature.hexbinder.subclass",
+      "name": "Hexbinder Subclass",
+      "text": "Choose a Hexbinder subclass.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.subclass",
+            "prompt": "Choose a Hexbinder subclass.",
+            "count": 1,
+            "from": {
+              "kind": "subclass"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.rite-of-mending",
+      "name": "Rite of Mending",
+      "text": "During a Field Rest, you can cast Life Bloom for 0 mana. You and your target can each spend any equal number of Hit Dice, and each creature it heals regains 10 HP per pair.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "During a Field Rest, cast Life Bloom without spending mana; you and your target each spend the same number of Hit Dice by hand, and each healed creature regains 10 HP per pair.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.consult-the-bones",
+      "name": "Consult the BONES",
+      "text": "1/Safe Rest. Spend 10 min performing a ceremony to obtain information not otherwise available to you on a successful Insight check; rolled with disadvantage.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.hexbinder.consult-the-bones",
+            "name": "Consult the BONES",
+            "kind": "ability",
+            "limit": {
+              "uses": "1",
+              "per": "safeRest"
+            },
+            "text": "1/Safe Rest. Spend 10 min performing a ceremony to obtain information not otherwise available to you on a successful Insight check; rolled with disadvantage."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Roll the Insight check with disadvantage yourself; the GM decides what you learn.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.afflictions-3",
+      "name": "Afflictions (3)",
+      "text": "Choose a 3rd Affliction.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.afflictions-3",
+            "prompt": "Choose a 3rd Affliction.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.afflictions"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "manualNote": "You already know Withered and Frenzied (Afflictions, level 1); the sheet does not hide them from this list, so pick a different one.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 4,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.mystic-mark",
+      "name": "Mystic Mark",
+      "text": "Choose 1 Mystic Mark.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.mystic-mark",
+            "prompt": "Choose 1 Mystic Mark.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.mystic-marks"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.tier-2-spells",
+      "name": "Tier 2 Spells",
+      "text": "You may now cast tier 2 Hexbinder spells.",
+      "effects": [
+        {
+          "type": "spells",
+          "list": "hexbinder",
+          "maxTier": 2
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.key-stat-increase-4",
+      "name": "Key Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.key-stat-4",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.soothsayer",
+      "name": "Soothsayer",
+      "text": "Whenever combat begins, roll a Futuresight Die (1d4). (Reach 4) Expend it to increase or decrease any die by that much. It expires at the end of combat if unused.",
+      "effects": [
+        {
+          "type": "resource",
+          "resource": {
+            "id": "resource.hexbinder.futuresight",
+            "name": "Futuresight Dice",
+            "max": "var.futuresightDice",
+            "recover": [
+              {
+                "on": "initiative",
+                "amount": "all"
+              }
+            ],
+            "lose": [
+              "combatEnd"
+            ],
+            "dice": {
+              "die": "1d4",
+              "rolled": "gained"
+            }
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Spend a Futuresight Die on any die within Reach 4 (yours or another creature’s) and add or subtract its value by hand. Changing Dice. A die can’t be changed above its max value. As usual, if a Primary Die is reduced to 1, it misses; if increased to its max value, it crits.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "manualNote includes the “Changing Dice” sidebar printed under Soothsayer. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Futuresight Dice. They can change any die, including the tens die of a d44, d66, or d88.”"
+      }
+    },
+    {
+      "id": "feature.hexbinder.blightwielders-touch",
+      "name": "Blightwielder’s Touch",
+      "text": "Gain advantage with Hex at Reach 1.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.hexbinder.blightwielders-touch",
+            "label": "Blightwielder’s Touch",
+            "on": "attack",
+            "change": "advantage",
+            "mode": "toggle",
+            "when": {
+              "situation": "Attacking with Hex at Reach 1"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.secondary-stat-increase-5",
+      "name": "Secondary Stat Increase",
+      "text": "+1 STR or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.secondary-stat-5",
+            "prompt": "+1 STR or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.mystic-mark-2",
+      "name": "Mystic Mark (2)",
+      "text": "Choose a 2nd Mystic Mark.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.mystic-mark-2",
+            "prompt": "Choose a 2nd Mystic Mark.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.mystic-marks"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.tier-3-spells",
+      "name": "Tier 3 Spells",
+      "text": "You may now cast tier 3 Hexbinder spells.",
+      "effects": [
+        {
+          "type": "spells",
+          "list": "hexbinder",
+          "maxTier": 3
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.subclass-7",
+      "name": "Subclass",
+      "text": "Gain your Hexbinder subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.afflictions-4",
+      "name": "Afflictions (4)",
+      "text": "Choose a 4th Affliction.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.afflictions-4",
+            "prompt": "Choose a 4th Affliction.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.afflictions"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "manualNote": "You already know Withered and Frenzied (Afflictions, level 1); the sheet does not hide them from this list, so pick a different one.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.tier-4-spells",
+      "name": "Tier 4 Spells",
+      "text": "You may now cast tier 4 Hexbinder spells.",
+      "effects": [
+        {
+          "type": "spells",
+          "list": "hexbinder",
+          "maxTier": 4
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.key-stat-increase-8",
+      "name": "Key Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.key-stat-8",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.mystic-mark-3",
+      "name": "Mystic Mark (3)",
+      "text": "Choose a 3rd Mystic Mark.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.mystic-mark-3",
+            "prompt": "Choose a 3rd Mystic Mark.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.mystic-marks"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.secondary-stat-increase-9",
+      "name": "Secondary Stat Increase",
+      "text": "+1 STR or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.secondary-stat-9",
+            "prompt": "+1 STR or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.soothsayer-2",
+      "name": "Soothsayer (2)",
+      "text": "Roll 2 Futuresight Dice instead, they have Reach 8.",
+      "effects": [
+        {
+          "type": "setVar",
+          "var": "futuresightDice",
+          "value": "2"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Your Futuresight Dice now reach 8 spaces instead of 4.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.tier-5-spells",
+      "name": "Tier 5 Spells",
+      "text": "You may now cast tier 5 Hexbinder spells.",
+      "effects": [
+        {
+          "type": "spells",
+          "list": "hexbinder",
+          "maxTier": 5
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.subclass-11",
+      "name": "Subclass",
+      "text": "Gain your Hexbinder subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.mystic-mark-4",
+      "name": "Mystic Mark (4)",
+      "text": "Choose a 4th Mystic Mark.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.mystic-mark-4",
+            "prompt": "Choose a 4th Mystic Mark.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.mystic-marks"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.afflictions-5",
+      "name": "Afflictions (5)",
+      "text": "Choose a 5th Affliction.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.afflictions-5",
+            "prompt": "Choose a 5th Affliction.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.afflictions"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "manualNote": "You already know Withered and Frenzied (Afflictions, level 1); the sheet does not hide them from this list, so pick a different one.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.key-stat-increase-12",
+      "name": "Key Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.key-stat-12",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.misery-maker",
+      "name": "Misery Maker",
+      "text": "Increase the max number of Afflictions you can apply by 1.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Hex and Misery can apply 1 more Affliction than they normally would; track this by hand.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "unverified",
+        "note": "Read as: each application (Hex on hit/crit, Misery on hit/crit) applies 1 more Affliction. It could instead mean the INT cap on different Afflictions per creature; see report."
+      }
+    },
+    {
+      "id": "feature.hexbinder.secondary-stat-increase-13",
+      "name": "Secondary Stat Increase",
+      "text": "+1 STR or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.secondary-stat-13",
+            "prompt": "+1 STR or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.soothsayer-3",
+      "name": "Soothsayer (3)",
+      "text": "Roll your Futuresight Dice with advantage.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "When you roll Futuresight Dice, roll each with advantage (roll twice, keep the higher) by hand.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.subclass-15",
+      "name": "Subclass",
+      "text": "Gain your Hexbinder subclass feature.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.mystic-mark-5",
+      "name": "Mystic Mark (5)",
+      "text": "Choose a 5th Mystic Mark.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.mystic-mark-5",
+            "prompt": "Choose a 5th Mystic Mark.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "hexbinder.mystic-marks"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.key-stat-increase-16",
+      "name": "Key Stat Increase",
+      "text": "+1 INT or WIL.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.key-stat-16",
+            "prompt": "+1 INT or WIL.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.soothsayer-4",
+      "name": "Soothsayer (4)",
+      "text": "Increment your Futuresight Dice one step (e.g., d4 » d6).",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Your Futuresight Dice are one die size larger (d4 → d6, or one step above whatever size they are now). The sheet still shows the original die.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.secondary-stat-increase-17",
+      "name": "Secondary Stat Increase",
+      "text": "+1 STR or DEX.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.secondary-stat-17",
+            "prompt": "+1 STR or DEX.",
+            "count": 1,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.doombringer",
+      "name": "Doombringer",
+      "text": "You may spend 1 mana to ignore the Doomed Affliction’s encounter limit.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Spend 1 mana by hand to use Doomed again in the same encounter.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.hexbinder.epic-boon",
+      "name": "Epic Boon",
+      "text": "Choose an Epic Boon (see pg. 75 of the Game Master’s Guide).",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.epic-boon",
+            "prompt": "Choose an Epic Boon.",
+            "count": 1,
+            "from": {
+              "kind": "pool",
+              "pool": "boons.epic"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified",
+        "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “You can’t take the same boon twice.” (printed in the Familiar entry)."
+      }
+    },
+    {
+      "id": "feature.hexbinder.sage-of-banes",
+      "name": "Sage of Banes",
+      "text": "Increase any 2 stats by 1. Hex and Misery apply 1 additional Affliction.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.hexbinder.capstone-stats",
+            "prompt": "Increase any 2 stats by 1.",
+            "count": 2,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX",
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        },
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Hex and Misery apply 1 additional Affliction; track this by hand.",
+      "source": {
+        "file": "Hexbinder3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 3,
+        "printedPage": 5,
+        "status": "verified"
+      }
+    }
+  ],
+  "optionPools": {
+    "hexbinder.afflictions": [
+      {
+        "id": "feature.hexbinder.afflictions.brittle",
+        "name": "Brittle",
+        "text": "Target suffers 1 damage for each space it moves (or is moved). Level 10: 2 damage/space.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Apply the damage to the Afflicted creature by hand whenever it moves or is moved.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Brittle. Teleporting and swapping places don’t trigger it; moving, being moved, and falling do.”"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.dimmed",
+        "name": "Dimmed",
+        "text": "Target has disadvantage 2 when attacking beyond Range/Reach 1.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "The GM applies the disadvantage to the Afflicted creature’s attacks.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.doomed",
+        "name": "Doomed",
+        "text": "(1/encounter) Maximize the next roll against Afflicted target.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per encounter, the next roll against the Afflicted target is maximized; apply by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Doomed. Maximizes only dice rolled against the target (e.g., not Fury or Judgment Dice). It can crit, but the extra crit die is rolled normally. In an AoE, only the Doomed creature takes max damage.”"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.enfeebled",
+        "name": "Enfeebled",
+        "text": "Target falls Prone at the end of each of your turns.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Make the Afflicted creature Prone at the end of each of your turns.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.frenzied",
+        "name": "Frenzied",
+        "text": "Target’s first attack each round MUST be against the nearest random creature (acts first amongst monsters).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "The GM applies this to the Afflicted creature.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.pestilent",
+        "name": "Pestilent",
+        "text": "On death of target: creatures within Reach 2 of it suffer LVL damage (ignoring armor).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "When the Afflicted creature dies, deal LVL damage (ignoring armor) to creatures within Reach 2 of it by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Pestilential Reign. If you already know Pestilent, choose a different Affliction.”"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.sundered",
+        "name": "Sundered",
+        "text": "Attacks crit the target on 1 less than the max roll.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Attacks against the Afflicted creature crit on 1 below the die’s max; apply by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.afflictions.withered",
+        "name": "Withered",
+        "text": "Target’s first attack each round against a friendly creature is disadvantaged.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "The GM applies the disadvantage to the Afflicted creature’s attack.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 6,
+          "status": "verified"
+        }
+      }
+    ],
+    "hexbinder.mystic-marks": [
+      {
+        "id": "feature.hexbinder.mystic-marks.bramble-mark",
+        "name": "Bramble Mark",
+        "text": "Action: Touch an ally and grant them an aura of mystical thorns (max 1 ally at a time). Attackers take damage equal to the ally’s Defense whenever they Defend. The thorns last for WIL attacks or 1 min.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.hexbinder.bramble-mark",
+              "name": "Bramble Mark",
+              "kind": "ability",
+              "actions": 1,
+              "text": "Action: Touch an ally and grant them an aura of mystical thorns (max 1 ally at a time). Attackers take damage equal to the ally’s Defense whenever they Defend. The thorns last for WIL attacks or 1 min."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Track the thorned ally, the damage to attackers and the WIL-attack/1-minute duration by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.broom-flight",
+        "name": "Broom Flight",
+        "text": "Spend 1 mana to gain flying for 1 hour (or until you fall). When crit while flying, you fall, landing Prone.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.hexbinder.broom-flight",
+              "name": "Broom Flight",
+              "kind": "ability",
+              "cost": {
+                "mana": "1"
+              },
+              "text": "Spend 1 mana to gain flying for 1 hour (or until you fall). When crit while flying, you fall, landing Prone."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Track flying, the 1-hour duration and falling Prone when crit by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "No action cost is printed, so none is set."
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.coven",
+        "name": "Coven",
+        "text": "Choose 1 spell school a close ally knows, you can cast tiered spells from that school (Healer of the Old Ways: non-Hexbinder healing spells cannot be Diminished).",
+        "effects": [
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.hexbinder.coven",
+              "prompt": "Choose 1 spell school a close ally knows.",
+              "count": 1,
+              "from": {
+                "kind": "school"
+              }
+            }
+          },
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "You can cast tiered spells from the chosen school (up to your highest unlocked tier). Non-Hexbinder healing spells cannot be Diminished. Check that a close ally knows the school.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "The parenthetical is printed in italics. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Coven. Spells from your Coven school can be upcast (up to your highest tier) and Diminished.” Whether the sheet adds the chosen school’s spells to your list depends on the engine reading this choice."
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.mark-of-protection",
+        "name": "Mark of Protection",
+        "text": "Creatures you heal can ignore 1 negative condition they would receive within the next minute.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Creatures you heal may ignore 1 negative condition within the next minute; track by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Mark of Protection. A protected creature dropped to 0 HP can stay at 1 HP instead of Dying.”"
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.pact-of-enmity",
+        "name": "Pact of Enmity",
+        "text": "Whenever you would apply an Affliction, you may instead bind yourself to the creature with a pact of mutual destruction. Both of you deal MAX damage to each other (instead of rolling dice).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "While the pact holds, use max damage instead of rolling for attacks between you and that creature.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Pact of Enmity. No dice are rolled, so it never crits.”"
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.sigil-of-journey",
+        "name": "Sigil of Journey",
+        "text": "Action: You (or another willing creature you touch) exchange places with a Medium or smaller Afflicted creature within Reach 8.",
+        "effects": [
+          {
+            "type": "grant",
+            "action": {
+              "id": "action.hexbinder.sigil-of-journey",
+              "name": "Sigil of Journey",
+              "kind": "ability",
+              "actions": 1,
+              "reach": "8",
+              "text": "Action: You (or another willing creature you touch) exchange places with a Medium or smaller Afflicted creature within Reach 8."
+            }
+          }
+        ],
+        "automation": "partial",
+        "manualNote": "Swap the tokens by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified",
+          "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Brittle. Teleporting and swapping places don’t trigger it”"
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.sigil-of-root",
+        "name": "Sigil of Root",
+        "text": "(1/encounter) Your Enfeebled Affliction also Restrains for 1 round.",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Once per encounter, when you apply Enfeebled, the target is also Restrained for 1 round.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      },
+      {
+        "id": "feature.hexbinder.mystic-marks.word-of-decay",
+        "name": "Word of Decay",
+        "text": "Whenever you use a Futuresight Die against an Afflicted target, take the max value. When your Afflicted target dies, regain 1 spent Futuresight Die (roll it).",
+        "effects": [
+          {
+            "type": "text"
+          }
+        ],
+        "automation": "manual",
+        "manualNote": "Use the die’s max value against Afflicted targets; when your Afflicted target dies, regain and roll 1 spent Futuresight Die by hand.",
+        "source": {
+          "file": "Hexbinder3.0.pdf",
+          "version": "3.0",
+          "pdfPage": 4,
+          "printedPage": 7,
+          "status": "verified"
+        }
+      }
+    ]
+  },
+  "retrainText": "Bubble, Bubble! You may choose different Hexbinder options whenever you brew at your cauldron during a Safe Rest.",
+  "source": {
+    "file": "Hexbinder3.0.pdf",
+    "version": "3.0",
+    "pdfPage": 3,
+    "printedPage": 4,
+    "status": "verified",
+    "note": "Stat block and levels 1–3 on printed 4, levels 4–20 on printed 5 (PDF 3). Secondary stats STR, DEX from the Secondary Stat Increase lines. “Portable Cauldron (bucket)” mapped to Core Rules gear “Bucket” (gear.bucket); the book prints no separate cauldron item. Weapons “Blades”: blade is undefined in the Core Rules (RQ-008), so the blade proficiency matches nothing yet. Afflictions pool PDF 4, printed 6; Mystic Marks pool PDF 4, printed 7. retrainText (Bubble, Bubble!) is the sidebar on printed 4."
+  }
+}
