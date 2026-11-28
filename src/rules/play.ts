@@ -81,6 +81,17 @@ export function applyDamage(draft: Character, sheet: Sheet, amount: number, opts
   return result;
 }
 
+/**
+ * Adjusts Wounds by hand (e.g. an ability that causes or heals Wounds). Gaining Wounds
+ * still triggers "when you gain a Wound" effects. Clamped to 0..max Wounds.
+ */
+export function adjustWounds(draft: Character, sheet: Sheet, delta: number): { wounds: number; died: boolean } {
+  const before = draft.play.wounds;
+  draft.play.wounds = Math.max(0, Math.min(sheet.wounds.max, before + Math.trunc(delta)));
+  if (draft.play.wounds > before) recover(draft, sheet, "woundGained");
+  return { wounds: draft.play.wounds, died: draft.play.wounds >= sheet.wounds.max };
+}
+
 export function heal(draft: Character, sheet: Sheet, amount: number): { healed: number; revived: boolean } {
   const before = draft.play.hp;
   draft.play.hp = Math.min(sheet.hp.max, Math.max(0, before) + Math.max(0, Math.floor(amount)));

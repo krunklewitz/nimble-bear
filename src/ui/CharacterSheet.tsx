@@ -16,6 +16,7 @@ import { CombatTab } from "./sheet/CombatTab";
 import { GearTab } from "./sheet/GearTab";
 import { HpPanel } from "./sheet/HpPanel";
 import { MoreTab } from "./sheet/MoreTab";
+import { WoundsPanel } from "./sheet/WoundsPanel";
 
 type Tab = "combat" | "character" | "gear" | "more";
 const TABS: { id: Tab; label: string }[] = [
@@ -47,7 +48,7 @@ export function CharacterSheet({ id, onBack, onSnapshots, onLevelUp }: Props) {
   const content = getContent();
   const [tab, setTabState] = useState<Tab>(loadTab);
   const [roll, setRoll] = useState<RollTarget | null>(null);
-  const [panel, setPanel] = useState<"none" | "hp" | "save" | "ended" | "delete">("none");
+  const [panel, setPanel] = useState<"none" | "hp" | "wounds" | "save" | "ended" | "delete">("none");
   const [message, setMessage] = useState("");
   const entry = library.get(id);
   const character = entry?.status === "ok" ? entry.character : null;
@@ -154,12 +155,12 @@ export function CharacterSheet({ id, onBack, onSnapshots, onLevelUp }: Props) {
           <button type="button" className="mini" aria-label="Heal 1 HP" onClick={() => update("Heal 1", (d) => void heal(d, sheet, 1))}>
             +1
           </button>
-          <span className="vital" title="Wounds">
+          <button type="button" className="vital vital-btn" onClick={() => setPanel("wounds")} aria-label={`Wounds ${sheet.wounds.current} of ${sheet.wounds.max}. Change Wounds`}>
             <span className="vital-label">Wounds</span>
             <span className={sheet.wounds.current > 0 ? "warn" : ""}>
               {sheet.wounds.current}/{sheet.wounds.max}
             </span>
-          </span>
+          </button>
           <span className="vital" title={sheet.defense.parts.map((p) => `${p.label} ${p.value}`).join(", ")}>
             <span className="vital-label">Defense</span>
             <span>{sheet.defense.value}</span>
@@ -253,6 +254,7 @@ export function CharacterSheet({ id, onBack, onSnapshots, onLevelUp }: Props) {
         )}
       </div>
 
+      {panel === "wounds" && <WoundsPanel sheet={sheet} update={update} onClose={() => setPanel("none")} />}
       {panel === "hp" && <HpPanel sheet={sheet} character={character} update={update} onClose={() => setPanel("none")} />}
       {deleteDialog}
       {roll && <RollDialog target={roll} character={character} sheet={sheet} onClose={() => setRoll(null)} />}

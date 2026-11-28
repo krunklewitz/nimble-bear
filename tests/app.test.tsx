@@ -110,6 +110,17 @@ describe("App", () => {
     expect(await screen.findByRole("button", { name: "✓ Saved" })).toBeTruthy();
   });
 
+  it("adjusts Wounds by hand from the top bar", async () => {
+    await createGrace();
+    await screen.findByRole("heading", { name: /^Grace/ });
+    fireEvent.click(screen.getByRole("button", { name: "Wounds 0 of 6. Change Wounds" }));
+    fireEvent.click(screen.getByRole("button", { name: "Gain a Wound" }));
+    fireEvent.click(screen.getByRole("button", { name: "Gain a Wound" }));
+    fireEvent.click(screen.getByRole("button", { name: "Remove a Wound" }));
+    fireEvent.click(screen.getByRole("button", { name: "Close" }));
+    expect(screen.getByRole("button", { name: "Wounds 1 of 6. Change Wounds" })).toBeTruthy();
+  });
+
   it("reopens on the last open hero", async () => {
     const store = await createGrace();
     await screen.findByRole("heading", { name: /^Grace/ });

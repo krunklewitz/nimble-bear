@@ -3,7 +3,7 @@ import { getContent } from "../../src/data/content";
 import { scriptedRng } from "../../src/rules/dice";
 import { applyLevelUp, checkStats, createCharacter, levelUpPlan, undoLastLevel, validateCreation, validateLevelUp, type CreationInput } from "../../src/rules/build";
 import { derive } from "../../src/rules/derive";
-import { applyDamage, checkReaction, checkUse, endCombat, endTurn, heal, isOffTurn, payUse, safeRest, spendHitDice, startCombat, startTurn, spendReaction } from "../../src/rules/play";
+import { adjustWounds, applyDamage, checkReaction, checkUse, endCombat, endTurn, heal, isOffTurn, payUse, safeRest, spendHitDice, startCombat, startTurn, spendReaction } from "../../src/rules/play";
 import type { Character } from "../../src/rules/persistence/character";
 
 const content = getContent();
@@ -262,5 +262,22 @@ describe("audit fixes (second rules check)", () => {
     const c = make();
     const plan = levelUpPlan(content, c);
     expect(plan?.average).toBe(7);
+  });
+});
+
+describe("manual Wounds", () => {
+  it("adds and removes Wounds within 0..max and reports death", () => {
+    const c = make();
+    const s = derive(content, c);
+    expect(adjustWounds(c, s, 2)).toEqual({ wounds: 2, died: false });
+    expect(adjustWounds(c, s, -5)).toEqual({ wounds: 0, died: false });
+    expect(adjustWounds(c, s, 10)).toEqual({ wounds: 6, died: true });
+  });
+
+  it("triggers 'when you gain a Wound' recharges (Dragonborn)", () => {
+    const c = make({ ancestryId: "ancestry.dragonborn" });
+    c.play.resources["resource.ancestry.dragonborn.draconic-heritage"] = { current: 0 };
+    adjustWounds(c, derive(content, c), 1);
+    expect(c.play.resources["resource.ancestry.dragonborn.draconic-heritage"]?.current).toBe(1);
   });
 });
