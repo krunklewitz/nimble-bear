@@ -440,5 +440,18 @@
       "printedPage": 37,
       "status": "verified"
     }
+  },
+  {
+    "id": "gear.traveling-robes-sandals",
+    "name": "Traveling Robes & Sandals",
+    "text": "",
+    "source": {
+      "file": "Zephyr3.1.pdf",
+      "version": "3.1",
+      "pdfPage": 3,
+      "printedPage": 4,
+      "status": "verified",
+      "note": "Only named in Zephyr starting gear; no stats given."
+    }
   }
 ]

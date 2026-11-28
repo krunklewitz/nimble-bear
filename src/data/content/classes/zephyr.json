@@ -22,6 +22,10 @@
     {
       "id": "weapon.staff",
       "qty": 1
+    },
+    {
+      "id": "gear.traveling-robes-sandals",
+      "qty": 1
     }
   ],
   "proficiency": {
@@ -196,7 +200,8 @@
             ],
             "lose": [
               "combatEnd"
-            ]
+            ],
+            "uncapped": true
           }
         },
         {
@@ -418,6 +423,16 @@
           "op": "set",
           "value": "(3*STR)+DEX",
           "when": "self.unarmored"
+        },
+        {
+          "type": "replace",
+          "features": [
+            "feature.zephyr.iron-defense"
+          ]
+        },
+        {
+          "type": "proficiency",
+          "unarmedCrit": true
         }
       ],
       "automation": "full",
@@ -808,6 +823,12 @@
           "type": "hook",
           "on": "woundGained",
           "text": "Unyielding Resolve (2): ignore the first 2 Wounds you would suffer this encounter."
+        },
+        {
+          "type": "replace",
+          "features": [
+            "feature.zephyr.unyielding-resolve"
+          ]
         }
       ],
       "automation": "manual",
@@ -971,6 +992,12 @@
             "mode": "auto",
             "when": "self.dying"
           }
+        },
+        {
+          "type": "replace",
+          "features": [
+            "feature.zephyr.unyielding-resolve-2"
+          ]
         }
       ],
       "automation": "partial",

@@ -24,14 +24,16 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Coven of Blooms | Soothing Cleanse | By hand | Spend the extra mana, give the temp HP and remove conditions by hand. | Hexbinder3.0 p.12 |
 | Coven of the Hex | Haunted | By hand | When an Afflicted creature dies, move all its Afflictions to another enemy within Reach 8 of it by hand. | Hexbinder3.0 p.10 |
 | Coven of the Hex | Hexcaster | By hand | When you apply Enfeebled, also Daze the target. Doomed can be used twice per encounter. | Hexbinder3.0 p.10 |
-| Coven of the Hex | Pestilential Reign | By hand | You know feature.hexbinder.afflictions.pestilent (Pestilent). When it triggers, you may use Reach 4 or Reach 1 instead of Reach 2. | Hexbinder3.0 p.10 |
+| Coven of the Hex | Pestilential Reign | Partly | Pestilent is added to your known Afflictions. If you already knew Pestilent, choose a different Affliction (Hexbinder FAQ). Doubling or halving its Reach is by hand. | Hexbinder3.0 p.10 |
 | Coven of the Hex | Spitecurse | Partly | Apply the same damage to the critting enemy by hand. | Hexbinder3.0 p.10 |
 | Coven of the Hunt | Bind Malady | Partly | Remove the condition by hand. Harmful Conditions. Ending “Dying” grants 1 HP, ending “Dazed” grants 1 action, etc. | Hexbinder3.0 p.13 |
 | Coven of the Hunt | Empowered Familiar | Partly | Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have. | Hexbinder3.0 p.13 |
 | Coven of the Hunt | Hexbinder’s Familiar | Partly | Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have. | Hexbinder3.0 p.13 |
 | Coven of the Hunt | Mighty Familiar | Partly | Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have. | Hexbinder3.0 p.13 |
 | Coven of the Hunt | Mystical | By hand | Apply this familiar boon by hand. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Resourceful | Partly | Giving these Hit Dice to allies is by hand. | Hexbinder3.0 p.13 |
 | Coven of the Hunt | Scavenger | By hand | Apply this familiar boon by hand. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Sly | Partly | When you roll Initiative, regain INT mana by hand (it expires at the end of combat if unused). | Hexbinder3.0 p.13 |
 | Coven of the Hunt | Swift | By hand | Apply this familiar boon by hand. | Hexbinder3.0 p.13 |
 | Coven of the Sight | A Different Path | Partly | Add the gained Futuresight Die (roll it) to your Futuresight Dice by hand. | Hexbinder3.0 p.11 |
 | Coven of the Sight | Cursed Fate | By hand | When you spend a Futuresight Die on a Hex roll, double its value by hand. | Hexbinder3.0 p.11 |
@@ -53,7 +55,7 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Half-Giant | Strength of Stone | Partly | Tell the GM to reroll the crit when you use it. Dwarvish (Giant) is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative. | NimbleCoreRules3.2 p.26 |
 | Halfling | Elusive | Partly | When you fail a save and use this, spend the use and treat the save as a success by hand. | NimbleCoreRules3.2 p.23 |
 | Haunted Past | Haunted Past | Partly | Roll with advantage against fear. | NimbleCoreRules3.2 p.28 |
-| Hexbinder | Afflictions | By hand | hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit). | Hexbinder3.0 p.4 |
+| Hexbinder | Afflictions | By hand | feature.hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit). | Hexbinder3.0 p.4 |
 | Hexbinder | Bramble Mark | Partly | Track the thorned ally, the damage to attackers and the WIL-attack/1-minute duration by hand. | Hexbinder3.0 p.7 |
 | Hexbinder | Brittle | By hand | Apply the damage to the Afflicted creature by hand whenever it moves or is moved. | Hexbinder3.0 p.6 |
 | Hexbinder | Broom Flight | Partly | Track flying, the 1-hour duration and falling Prone when crit by hand. | Hexbinder3.0 p.7 |
@@ -67,7 +69,7 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Hexbinder | Frenzied | By hand | The GM applies this to the Afflicted creature. | Hexbinder3.0 p.6 |
 | Hexbinder | Hex | Partly | On a hit, either add LVL to the damage by hand or apply one of your Afflictions to the target; on a crit, do both. | Hexbinder3.0 p.4 |
 | Hexbinder | Mark of Protection | By hand | Creatures you heal may ignore 1 negative condition within the next minute; track by hand. | Hexbinder3.0 p.7 |
-| Hexbinder | Misery Maker | By hand | Hex and Misery can apply 1 more Affliction than they normally would; track this by hand. | Hexbinder3.0 p.5 |
+| Hexbinder | Misery Maker | By hand | Raise the Affliction limit by 1 by hand. Whether this raises the INT cap on different Afflictions or adds an Affliction per Hex/Misery is RQ-020. | Hexbinder3.0 p.5 |
 | Hexbinder | Pact of Enmity | By hand | While the pact holds, use max damage instead of rolling for attacks between you and that creature. | Hexbinder3.0 p.7 |
 | Hexbinder | Pestilent | By hand | When the Afflicted creature dies, deal LVL damage (ignoring armor) to creatures within Reach 2 of it by hand. | Hexbinder3.0 p.6 |
 | Hexbinder | Rite of Mending | By hand | During a Field Rest, cast Life Bloom without spending mana; you and your target each spend the same number of Hit Dice by hand, and each healed creature regains 10 HP per pair. | Hexbinder3.0 p.4 |
@@ -230,4 +232,4 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Zephyr | Unyielding Resolve (3) | Partly | Don’t mark the first 3 Wounds you would suffer each encounter. | Zephyr3.1 p.5 |
 | Zephyr | Windborne | Partly | Take 1 extra action every turn (while Dying, you have a max of 2 actions). | Zephyr3.1 p.5 |
 
-223 features listed.
+225 features listed.

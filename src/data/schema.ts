@@ -106,6 +106,8 @@ export const ResourceDef = z
     recover: z.array(z.object({ on: Trigger, amount: z.union([Formula, z.literal("all")]) }).strict()),
     /** Triggers that empty it (e.g. Momentum: damageTaken, combatEnd). */
     lose: z.array(Trigger).optional(),
+    /** `max` is what you gain, not a cap: extra gains can go above it (Zephyr Bursts of Speed + Reactive Force). */
+    uncapped: z.boolean().optional(),
     /** Dice-pool resources: the die, and whether it's rolled when gained or when spent. */
     dice: z.object({ die: Formula, rolled: z.enum(["gained", "spent"]) }).strict().optional(),
   })
@@ -159,6 +161,7 @@ type EffectT =
   | { type: "replace"; features: string[]; with?: string[] | undefined }
   | { type: "replacePool"; from: string; to: string; except?: string[] | undefined }
   | { type: "grantOptions"; pool: string; ids: string[] }
+  | { type: "resourceChange"; resource: string; removeLose?: z.infer<typeof Trigger>[] | undefined }
   | { type: "proficiency"; armor?: string[] | undefined; shields?: boolean | undefined; weapons?: string[] | undefined; languages?: string[] | undefined; unarmedCrit?: boolean | undefined }
   | { type: "hook"; on: z.infer<typeof Trigger>; text: string; handler?: string | undefined }
   | { type: "handler"; name: string }
@@ -190,6 +193,8 @@ export const Effect: z.ZodType<EffectT> = z.lazy(() =>
     z.object({ type: z.literal("replacePool"), from: Id, to: Id, except: z.array(Id).optional() }).strict(),
     /** Options a feature grants outright ("You know the Withered and Frenzied Afflictions"); they're then hidden from later picks. */
     z.object({ type: z.literal("grantOptions"), pool: Id, ids: z.array(Id).min(1) }).strict(),
+    /** Changes another feature's resource, e.g. Way of Pain: "Damage no longer causes you to lose Momentum". */
+    z.object({ type: z.literal("resourceChange"), resource: Id, removeLose: z.array(Trigger).optional() }).strict(),
     z
       .object({
         type: z.literal("proficiency"),

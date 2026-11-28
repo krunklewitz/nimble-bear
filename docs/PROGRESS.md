@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 4 nearly done (v0.4.0); one review pending
+## Current: Phase 4 built (v0.4.1); waiting for the Owlbear gate test
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -72,7 +72,10 @@ Open rules questions added: RQ-007 to RQ-014 (docs/RULES_QUESTIONS.md).
 
 ### Phase 4 (2026-11-28)
 Done: schema for pools/pool swaps/school choice/grantOptions/boons; engine (pool picks, swaps, granted options hidden from picks, Coven tiered-only, class spell lists, maxMana, +5 stat cap, levelChoices follows picks); data via subagents: Cheat and Shepherd 4-20, Hexbinder and Zephyr full, Ice/Lightning/Wind + Hexbinder spells, Boons (GMG p.75). All 4 classes x 17 subclasses build to level 20 (tests/rules/fullbuild.test.ts); docs/COVERAGE.md and AUTOMATION.md regenerated. Reviews: Hexbinder (1 error fixed: Pestilential Reign grants Pestilent), Cheat/Shepherd 4-20 (0 errors; Supreme Underdog keeps stats, RQ-022). New RQ-020..025.
-Remaining: (1) the Zephyr + Ice/Lightning/Wind + Boons review (was still running when the session hit its usage limit; rerun it if no report arrives), apply its fixes; (2) add gear.traveling-robes-sandals (Zephyr starting gear, from Zephyr PDF 3) to gear.json and zephyr startingGear; (3) gate: npm run check, deploy, Owlbear test of Hexbinder/Zephyr creation and level-ups.
+Zephyr/spells/Boons review: no transcription errors; fixed behaviour: Bursts of Speed can exceed DEX (uncapped resources), Iron Defense (2) and Unyielding Resolve supersede earlier levels, Way of Pain keeps Momentum on damage (resourceChange effect), Sniper partial, Traveling Robes & Sandals added. New RQ-026..029.
+
+### Phase 4 gate (needs the user)
+In Owlbear: create a Hexbinder and a Zephyr, level them (incl. pool picks, Coven school, Epic Boon at 19 if testing high levels), cast Hexbinder spells, use Momentum/Bursts; confirm The Cheat and Shepherd still work.
 
 ## Deferred until stable
 - Update check: drop the 5-minute repeat in src/ui/UpdateBanner.tsx (CHECK_EVERY_MS) and check only when the panel opens. User decision 2026-11-27; do it in Phase 6 polish or when the user calls a version stable.

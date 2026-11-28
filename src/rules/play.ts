@@ -25,7 +25,9 @@ function recover(draft: Character, sheet: Sheet, on: Trigger) {
       if (rule.on !== on) continue;
       const cur = draft.play.resources[r.def.id]?.current ?? r.max;
       const add = rule.amount === "all" ? r.max : Number(rule.amount);
-      draft.play.resources[r.def.id] = { current: Math.min(r.max, cur + (Number.isFinite(add) ? add : 0)) };
+      const gained = cur + (Number.isFinite(add) ? add : 0);
+      // "all" refills to max; uncapped resources keep extra gains above it.
+      draft.play.resources[r.def.id] = { current: r.def.uncapped ? (rule.amount === "all" ? Math.max(cur, r.max) : gained) : Math.min(r.max, gained) };
     }
   }
 }
@@ -260,5 +262,5 @@ export function payUse(draft: Character, sheet: Sheet, action: Usable, opts: { m
 export function setResource(draft: Character, sheet: Sheet, id: string, value: number) {
   const r = sheet.resources.find((x) => x.def.id === id);
   if (!r) return;
-  draft.play.resources[id] = { current: Math.max(0, Math.min(r.max, Math.floor(value))) };
+  draft.play.resources[id] = { current: Math.max(0, r.def.uncapped ? Math.floor(value) : Math.min(r.max, Math.floor(value))) };
 }

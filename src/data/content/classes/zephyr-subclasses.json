@@ -38,6 +38,13 @@
               },
               "text": "(1/round) You may take 1 Wound to gain 10 Momentum for free."
             }
+          },
+          {
+            "type": "resourceChange",
+            "resource": "resource.zephyr.momentum",
+            "removeLose": [
+              "damageTaken"
+            ]
           }
         ],
         "automation": "manual",

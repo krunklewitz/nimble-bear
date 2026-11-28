@@ -460,8 +460,12 @@ export function derive(content: Content, c: Character): Sheet {
       if (e.type !== "resource") continue;
       const baseMax = Math.max(0, evalIn(e.resource.max));
       const max = e.resource.id === "resource.mana" ? Math.max(0, apply("maxMana", baseMax)) : baseMax;
-      const current = Math.min(max, c.play.resources[e.resource.id]?.current ?? max);
-      resources.push({ def: e.resource, max: ov(`resource.${e.resource.id}`, max), current });
+      const stored = c.play.resources[e.resource.id]?.current ?? max;
+      const current = e.resource.uncapped ? Math.max(0, stored) : Math.min(max, stored);
+      // Other features may change this resource (e.g. stop it being lost on damage).
+      const dropped = new Set(features.flatMap((g) => effectsOf(g)).flatMap((x) => (x.type === "resourceChange" && x.resource === e.resource.id ? (x.removeLose ?? []) : [])));
+      const def = dropped.size ? { ...e.resource, lose: (e.resource.lose ?? []).filter((t) => !dropped.has(t)) } : e.resource;
+      resources.push({ def, max: ov(`resource.${e.resource.id}`, max), current });
     }
   }
   const mana = resources.find((r) => r.def.id === "resource.mana");

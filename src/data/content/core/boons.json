@@ -528,14 +528,15 @@
           }
         }
       ],
-      "automation": "full",
+      "automation": "partial",
       "source": {
         "file": "NimbleGMG3.0.pdf",
         "version": "3.0",
         "pdfPage": 38,
         "printedPage": 75,
         "status": "verified"
-      }
+      },
+      "manualNote": "Switch on the disadvantage toggle whenever an enemy is adjacent (it isn't optional)."
     },
     {
       "id": "feature.boon.major.stalwart",

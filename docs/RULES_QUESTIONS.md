@@ -65,7 +65,7 @@ Core p.32: "Defending while wearing armor without proficiency costs 1 additional
 The weapon and armor tables use them (Core p.33, p.35) but no rule text defines Light (only used by Dual Wielding), Stack, the STR requirement (what happens if you don't meet it), or "+DEX (max 2)" (read as DEX counts up to +2). Planned: Light = can be dual wielded; Stack = items per slot; STR requirement shown as a warning only; max 2 caps DEX. Status: unverified.
 
 ### RQ-018 · Spells with an unusual cost or limit
-Heart's Fire has "(1/round)" inside its effect text (not encoded as a casting limit, unlike Entice's title-line "(1/round)"); Dragonform costs 5 actions (shown as its casting time); Gravecraft has two modes with different costs (only in its text). Planned: shown as text; the player applies them. Status: unverified.
+Heart's Fire has "(1/round)" and Alacrity has "(1/turn)" inside their effect text (not encoded as casting limits, unlike Entice's title-line "(1/round)"); Dragonform costs 5 actions (shown as its casting time); Gravecraft has two modes with different costs (only in its text). Planned: shown as text; the player applies them. Status: unverified.
 
 ### RQ-019 · The Cheat: "If you roll less than 10 on Initiative, you may change it to 10"
 Cheat PDF 3: "roll" could mean the d20 or the total; "may" is optional. Planned: the total is raised to 10 automatically (never worse for the player). Status: unverified.
@@ -87,6 +87,18 @@ Cheat PDF 8: Tenacious Fighter's +1d6 "increases as your Sneak Attack dice would
 
 ### RQ-025 · Luminary of the Forge Masterwork: "you may choose twice"
 Shepherd PDF 7: both Seasoned Journeyman options, or the same one twice (stacking)? Planned: by hand. Status: unverified.
+
+### RQ-026 · Zephyr Way of Pain "Pain Sharpens the Mind": advantage on which rolls?
+Zephyr PDF 5 (printed 8): "While you are Bloodied, gain advantage" — no roll type given. Planned: text only (by hand). Status: unverified.
+
+### RQ-027 · Zephyr Way of Iron "Tempered": does it end after combat?
+Zephyr PDF 5 (printed 9): gained when you roll Initiative; nothing says it ends. Planned: it stays until spent. Status: unverified.
+
+### RQ-028 · Spell layout oddities (Lightning, Core p.48)
+Arc Lightning's header says "TIER 1, 1+ TARGET" (no field for it; shown in text); Stormlash uses "Line: 12, AoE." (stored as its reach); Seething Storm's grey line "+2 Reach and +2 lightning bolts each round" has no "Upcast:" label (kept in text). Planned: as described. Status: unverified.
+
+### RQ-029 · Natural Talent boon: does "any cantrip" include utility cantrips?
+GMG p.75: "Natural Talent. Learn any cantrip." Utility spells are printed as "… UTILITY CANTRIP" (Core p.52), but Unnatural Talent separately grants a Utility Spell. Planned: school cantrips only. Status: unverified.
 
 ## Resolved
 
