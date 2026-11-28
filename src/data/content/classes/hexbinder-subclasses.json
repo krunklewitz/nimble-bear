@@ -309,6 +309,7 @@
         "modifies": [
           "action.hexbinder.consult-the-bones"
         ],
+        "combat": false,
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",

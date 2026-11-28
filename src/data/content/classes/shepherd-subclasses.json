@@ -54,9 +54,7 @@
         ],
         "automation": "manual",
         "manualNote": "Optional: if you choose the deathly form, treat your Lifebinding Spirit’s Harm damage as necrotic instead of radiant (the sheet still shows radiant).",
-        "modifies": [
-          "action.shepherd.spirit-harm"
-        ],
+        "combat": false,
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -224,6 +222,7 @@
         ],
         "automation": "manual",
         "manualNote": "Roleplay flavor; nothing to track.",
+        "combat": false,
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",

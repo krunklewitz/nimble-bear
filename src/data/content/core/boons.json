@@ -343,6 +343,7 @@
       ],
       "automation": "manual",
       "manualNote": "When you increase your max HP (e.g. leveling up), roll the Hit Die with advantage 2 by hand.",
+      "combat": false,
       "source": {
         "file": "NimbleGMG3.0.pdf",
         "version": "3.0",
@@ -810,6 +811,7 @@
       ],
       "automation": "partial",
       "manualNote": "Spend the use; the GM gives the knowledge.",
+      "combat": false,
       "source": {
         "file": "NimbleGMG3.0.pdf",
         "version": "3.0",
@@ -944,6 +946,7 @@
       ],
       "automation": "manual",
       "manualNote": "During a Field Rest, remove 1 Wound by hand for each Hit Die that rolls 4 or higher.",
+      "combat": false,
       "source": {
         "file": "NimbleGMG3.0.pdf",
         "version": "3.0",

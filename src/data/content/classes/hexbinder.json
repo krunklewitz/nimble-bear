@@ -281,9 +281,7 @@
       ],
       "automation": "manual",
       "manualNote": "During a Field Rest, cast Life Bloom without spending mana; you and your target each spend the same number of Hit Dice by hand, and each healed creature regains 10 HP per pair.",
-      "modifies": [
-        "spell.hexbinder.life-bloom"
-      ],
+      "combat": false,
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -313,6 +311,7 @@
       ],
       "automation": "partial",
       "manualNote": "Roll the Insight check with disadvantage yourself; the GM decides what you learn.",
+      "combat": false,
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -1378,6 +1377,7 @@
         ],
         "automation": "partial",
         "manualNote": "Track flying, the 1-hour duration and falling Prone when crit by hand.",
+        "combat": false,
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",

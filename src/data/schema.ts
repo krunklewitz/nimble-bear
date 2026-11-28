@@ -230,6 +230,11 @@ export const FeatureDef = z
      * Taken only from targets the feature's rules text names.
      */
     modifies: z.array(Id).optional(),
+    /**
+     * false: never shown on the Combat tab (story, exploration, rest or skill-check features).
+     * Left out, the Combat tab decides from the feature's effects and text (rules/combat.ts).
+     */
+    combat: z.boolean().optional(),
     source: SourceRef,
   })
   .strict();

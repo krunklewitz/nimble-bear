@@ -74,3 +74,17 @@ describe("feature upgrades", () => {
     expect(names).not.toContain("Double or Nothing!");
   });
 });
+
+describe("non-combat features", () => {
+  it("story features like Harbinger of Decay stay off the Combat tab and don't change Harm", () => {
+    const s = withFeature(derive(content, shepherd()), "feature.shepherd.malice.harbinger-of-decay");
+    expect(combatFeatures(s).some((x) => x.feature.def.id === "feature.shepherd.malice.harbinger-of-decay")).toBe(false);
+    expect(upgradesFor(s, "action.shepherd.spirit-harm")).toEqual([]);
+  });
+
+  it("skill-check and exploration features are marked combat: false", () => {
+    for (const id of ["feature.cheat.silent-blade.leave-no-trace", "feature.hexbinder.consult-the-bones", "feature.background.history-buff.history-buff"]) {
+      expect(features.get(id)?.combat).toBe(false);
+    }
+  });
+});

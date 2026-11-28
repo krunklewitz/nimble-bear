@@ -62,6 +62,7 @@
           }
         ],
         "automation": "full",
+        "combat": false,
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -130,6 +131,7 @@
         ],
         "automation": "partial",
         "manualNote": "You have a climbing Speed (the page gives no number; the sheet does not track it).",
+        "combat": false,
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -247,6 +249,7 @@
         ],
         "automation": "partial",
         "manualNote": "Track per NPC when the advantage ends, and apply disadvantage on later Influence checks with that NPC by hand (until you get back on their good side).",
+        "combat": false,
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -608,6 +611,7 @@
           }
         ],
         "automation": "full",
+        "combat": false,
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",

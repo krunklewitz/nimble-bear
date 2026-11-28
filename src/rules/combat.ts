@@ -56,7 +56,8 @@ function isCombatEffect(e: Effect, sheet: Sheet): boolean {
   }
 }
 
-const activeFeatures = (sheet: Sheet) => sheet.features.filter((f) => !f.replacedBy);
+/** Active features that can appear on the Combat tab (not replaced, not marked combat: false). */
+const activeFeatures = (sheet: Sheet) => sheet.features.filter((f) => !f.replacedBy && f.def.combat !== false);
 
 /**
  * The hero's features that change the ability with this id (a feature, spell, action,
