@@ -181,7 +181,7 @@ export function CharacterSheet({ id, onBack, onSnapshots, onLevelUp }: Props) {
                   −
                 </button>
                 {r.def.name} {r.max >= 99 ? r.current : `${r.current}/${r.max}`}
-                <button type="button" aria-label={`Regain 1 ${r.def.name}`} onClick={() => update(`${r.def.name} +1`, (d) => setResource(d, sheet, r.def.id, r.current + 1))}>
+                <button type="button" aria-label={`Add 1 ${r.def.name}`} onClick={() => update(`${r.def.name} +1`, (d) => setResource(d, sheet, r.def.id, r.current + 1))}>
                   +
                 </button>
               </span>

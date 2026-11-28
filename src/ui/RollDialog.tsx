@@ -36,6 +36,20 @@ const loadPrivacy = (): RollMessage["privacy"] => {
   }
 };
 
+/** What using this costs, in words: "1 action · 2 mana · 1 Burst of Speed · 1 of 2 uses left". */
+export function costText(sheet: Sheet, a: SheetAction, mana?: number): string {
+  const parts: string[] = [];
+  if (a.actions) parts.push(`${a.actions} action${a.actions === 1 ? "" : "s"}`);
+  const m = mana ?? a.manaCost;
+  if (m) parts.push(`${m} mana`);
+  if (a.resourceCost) {
+    const r = sheet.resources.find((x) => x.def.id === a.resourceCost?.id);
+    parts.push(`${a.resourceCost.amount} ${r?.def.name ?? a.resourceCost.id}${r ? ` (${r.current} left)` : ""}`);
+  }
+  if (a.limit) parts.push(`${Math.max(0, a.limit.max - a.limit.used)} of ${a.limit.max} uses left (per ${a.limit.per})`);
+  return parts.join(" · ");
+}
+
 export function RollDialog({ target, character, sheet, onClose }: { target: RollTarget; character: Character; sheet: Sheet; onClose: () => void }) {
   const { library } = useLibrary();
   const { platform } = usePlatform();
@@ -57,6 +71,18 @@ export function RollDialog({ target, character, sheet, onClose }: { target: Roll
   const costed = target.action && (target.action.actions !== undefined || target.manaCost !== undefined || target.action.manaCost !== undefined || target.action.resourceCost || target.action.limit);
   const check = target.action ? checkUse(character, sheet, target.action, { mana: target.manaCost, creature: target.creature }) : { ok: true, problems: [], rushed: 0 };
   const rushed = check.rushed;
+  // Nothing to roll (Windstep, Twist the Blade…): just pay the cost.
+  const useOnly = target.kind === "plain" && !target.action?.roll;
+  const cost = target.action ? costText(sheet, target.action, target.manaCost) : "";
+
+  const use = () => {
+    if (!check.ok && !confirming) {
+      setConfirming(true);
+      return;
+    }
+    if (target.action && costed) library.update(character.id, (d) => payUse(d, sheet, target.action as SheetAction, { mana: target.manaCost, creature: target.creature }), target.label);
+    onClose();
+  };
 
   const share = async (req: RollRequest, out: RollOutcome) => {
     const m = toMessage(library.newId(), character.name, await platform.getPlayerName().catch(() => "Player"), req, out, privacy, new Date().toISOString());
@@ -114,8 +140,30 @@ export function RollDialog({ target, character, sheet, onClose }: { target: Roll
         <h2>{target.label}</h2>
         {target.action?.roll && <p className="small">{target.action.roll.formula}{target.action.roll.ignoresArmor ? " · ignores armor" : ""}{!target.action.roll.canCrit && target.action.roll.canMiss ? " · can't crit" : ""}</p>}
         {target.modifier !== undefined && <p className="small">d20 {signed(target.modifier)}</p>}
+        {cost && !shown && <p className="small"><strong>Costs:</strong> {cost}</p>}
+        {useOnly && target.action?.text && <p className="small">{target.action.text}</p>}
 
-        {!shown && (
+        {useOnly && (
+          <>
+            {confirming && (
+              <ul className="problems">
+                {check.problems.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            )}
+            <div className="row">
+              <button type="button" className="primary" onClick={use}>
+                {confirming ? "Use anyway" : "Use"}
+              </button>
+              <button type="button" onClick={onClose}>
+                Cancel
+              </button>
+            </div>
+          </>
+        )}
+
+        {!shown && !useOnly && (
           <>
             <div className="row">
               <span>Advantage</span>

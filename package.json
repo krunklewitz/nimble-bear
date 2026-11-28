@@ -1,7 +1,7 @@
 {
   "name": "nimble-bear",
   "private": true,
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Unofficial Nimble 2 character sheet extension for Owlbear Rodeo",
   "type": "module",
   "scripts": {

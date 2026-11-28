@@ -36,6 +36,12 @@ export function rollTargetFor(a: SheetAction): RollTarget {
   };
 }
 
+/** Joins the non-empty bits of a row's summary with " · ". */
+const metaLine = (parts: string[]) => parts.filter(Boolean).join(" · ");
+
+/** Spell school ids as names: "fire" → "Fire". */
+const schoolName = (id: string) => id.charAt(0).toUpperCase() + id.slice(1);
+
 /** Features that change an ability, gathered for several ids (an ability and its actions), without repeats. */
 function upgradesOf(sheet: Sheet, ids: string[]): ActiveFeature[] {
   const out = new Map<string, ActiveFeature>();
@@ -93,10 +99,7 @@ function AbilityRows({ sheet, items, onRoll }: { sheet: Sheet; items: CombatFeat
                     <UpgradedMark ups={ups} />
                   </span>
                   <span className="row-meta">
-                    {one.roll ? diceText(one.roll.dice) : ""}
-                    {one.actions !== undefined ? ` · ${one.actions}◆` : ""}
-                    {left ? " · " + left : ""}
-                    {x.resources.map((r) => " · " + r.def.name + " " + (r.max >= 99 ? String(r.current) : r.current + "/" + r.max)).join("")}
+                    {metaLine([one.roll ? diceText(one.roll.dice) : "", one.actions !== undefined ? `${one.actions}◆` : "", left, ...x.resources.map((r) => r.def.name + " " + (r.max >= 99 ? String(r.current) : r.current + "/" + r.max))])}
                   </span>
                 </summary>
                 <p className="small">
@@ -123,9 +126,7 @@ function AbilityRows({ sheet, items, onRoll }: { sheet: Sheet; items: CombatFeat
                   <UpgradedMark ups={ups} />
                 </span>
                 <span className="row-meta">
-                  {tag}
-                  {uses ? " · " + Math.max(0, uses.max - uses.used) + "/" + uses.max : ""}
-                  {x.resources.map((r) => " · " + r.def.name + " " + (r.max >= 99 ? String(r.current) : r.current + "/" + r.max)).join("")}
+                  {metaLine([tag, uses ? Math.max(0, uses.max - uses.used) + "/" + uses.max : "", ...x.resources.map((r) => r.def.name + " " + (r.max >= 99 ? String(r.current) : r.current + "/" + r.max))])}
                 </span>
               </summary>
               {x.how.length > 0 && (
@@ -350,7 +351,7 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
             <span className="row-meta">{sheet.spells.known.length}</span>
           </summary>
           <p className="small">
-            {sheet.mana ? `Mana ${sheet.mana.current}/${sheet.mana.max} · ` : ""}Highest tier {Math.max(0, sheet.spells.maxTier)} · {sheet.spells.schools.join(", ")}
+            {metaLine([sheet.mana ? `Mana ${sheet.mana.current}/${sheet.mana.max}` : "", sheet.spells.maxTier > 0 ? `Highest tier ${sheet.spells.maxTier}` : "", sheet.spells.schools.map(schoolName).join(", ")])}
           </p>
           {spellGroups(sheet.spells.known).map((g) => (
             <details key={g.key} className="spell-group" open={g.key === "cantrip"}>

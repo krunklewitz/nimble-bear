@@ -44,7 +44,9 @@ describe("combat features (Class Abilities)", () => {
   it("leaves out stat increases and plain story features", () => {
     const s = derive(content, make("class.hexbinder", { INT: 2, WIL: 2, STR: 0, DEX: -1 }));
     const ids = combatFeatures(s).map((x) => x.feature.def.id);
-    expect(ids).toContain("feature.hexbinder.hex");
+    // Hex only grants the Hex attack, which is under Attacks, so it has no Class Abilities row.
+    expect(ids).not.toContain("feature.hexbinder.hex");
+    expect(s.actions.some((a) => a.id === "action.hexbinder.hex")).toBe(true);
     expect(ids.some((id) => /stat-increase/.test(id))).toBe(false);
   });
 });

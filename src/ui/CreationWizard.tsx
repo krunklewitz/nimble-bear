@@ -414,7 +414,7 @@ function LanguagesStep({ input, set }: StepProps) {
     <div>
       <p className="small">
         Everyone speaks Common. Each point of INT grants another language (Core Rules p.20). You can pick <strong>{slots}</strong>.
-        {fromAncestry.size > 0 && ` Your ancestry already gives: ${[...fromAncestry].join(", ")} (if your INT isn't negative).`}
+        {fromAncestry.size > 0 && ` Your ancestry already gives: ${[...fromAncestry].map((l) => content.core.languages.find((x) => x.id === l)?.name ?? l).join(", ")} (if your INT isn't negative).`}
       </p>
       {content.core.languages
         .filter((l) => l.id !== "common")

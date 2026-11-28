@@ -103,7 +103,10 @@ export function combatFeatures(sheet: Sheet): CombatFeature[] {
     const item: CombatFeature = { feature: f, actions, attacks: granted.filter((a) => isAttack(a)), options, resources, how };
     const only = actions.length === 1 ? actions[0] : undefined;
     // Its resources must be what that ability spends (Mend's uses), or the feature is more than a wrapper.
-    if (only && effects.every((e) => WRAPPER_EFFECTS.has(e.type)) && resources.every((r) => only.resourceCost?.id === r.def.id)) item.single = only;
+    const wrapper = effects.every((e) => WRAPPER_EFFECTS.has(e.type));
+    if (only && wrapper && resources.every((r) => only.resourceCost?.id === r.def.id)) item.single = only;
+    // Only grants attacks (Hex): they're listed under Attacks, so the feature adds nothing here.
+    if (wrapper && actions.length === 0 && item.attacks.length > 0 && resources.length === 0) continue;
     out.push(item);
   }
 
