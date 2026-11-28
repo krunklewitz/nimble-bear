@@ -76,6 +76,18 @@ Hexbinder PDF 3 (printed 5), level 13: "Increase the max number of Afflictions y
 ### RQ-021 · Hexbinder Familiar "Protective": does it stack with a shield?
 Hexbinder PDF 7 (printed 13): "Protective. Acts as a shield that grants +LVL Defense." Hexbinders have no shield proficiency. Planned: +LVL Defense always (the sheet adds it). Status: unverified.
 
+### RQ-022 · Honorseeker Supreme Underdog: is the +1 to 2 stats lost?
+Cheat PDF 8 (printed 14): "Supreme Underdog. (Replaces Supreme Execution…)". Supreme Execution gives "+1 to any 2 of your stats" plus a Vicious Opportunist upgrade the Honorseeker no longer has. Planned: keep the stat increase. Status: unverified.
+
+### RQ-023 · Silent Blade Professional Skulker: climbing Speed value
+Cheat PDF 5: "Gain a climbing Speed" with no number. Planned: shown as text. Status: unverified.
+
+### RQ-024 · Honorseeker Tenacious Fighter and Even the Odds scaling
+Cheat PDF 8: Tenacious Fighter's +1d6 "increases as your Sneak Attack dice would" (planned: follows the Sneak Attack schedule, 1d8 at L3); does its damage share the 1/turn use? Even the Odds "improves as it would" (planned: the level-13 free 1/turn use applies). Status: unverified.
+
+### RQ-025 · Luminary of the Forge Masterwork: "you may choose twice"
+Shepherd PDF 7: both Seasoned Journeyman options, or the same one twice (stacking)? Planned: by hand. Status: unverified.
+
 ## Resolved
 
 ### RQ-R1 · Which die is the Primary Die after advantage/disadvantage?

@@ -1074,7 +1074,7 @@
           "type": "choice",
           "choice": {
             "id": "choice.shepherd.epic-boon",
-            "prompt": "Choose an Epic Boon.",
+            "prompt": "Choose an Epic Boon (see pg. 75 of the GM’s Guide).",
             "count": 1,
             "from": {
               "kind": "pool",

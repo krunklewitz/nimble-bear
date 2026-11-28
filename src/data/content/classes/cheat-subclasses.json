@@ -1025,6 +1025,24 @@
           },
           {
             "type": "text"
+          },
+          {
+            "type": "choice",
+            "choice": {
+              "id": "choice.cheat.honorseeker.capstone-stats",
+              "prompt": "+1 to any 2 of your stats (kept from Supreme Execution, RQ-022).",
+              "count": 2,
+              "from": {
+                "kind": "stat",
+                "stats": [
+                  "STR",
+                  "DEX",
+                  "INT",
+                  "WIL"
+                ],
+                "amount": 1
+              }
+            }
           }
         ],
         "automation": "manual",
@@ -1035,7 +1053,7 @@
           "pdfPage": 8,
           "printedPage": 14,
           "status": "unverified",
-          "note": "Text verified. Replacing Supreme Execution also removes its “+1 to any 2 of your stats” choice; the page doesn't say whether the stat increase is kept (the “…” may mean only the Vicious Opportunist part). Open rules question."
+          "note": "RQ-022: the book doesn't say whether replacing Supreme Execution also removes its “+1 to any 2 of your stats”; the sheet keeps the stat increase."
         }
       }
     ],
