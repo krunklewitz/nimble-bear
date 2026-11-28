@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 5 in progress (v0.5.0: GM tools part 1). Phase 4 Owlbear-only checks still owed by the user
+## Current: Phase 5 in progress (v0.5.0: GM tools part 1). Phase 4 Owlbear check left: panel close and reopen with a hero open
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
@@ -77,7 +77,7 @@ Zephyr/spells/Boons review: no transcription errors; fixed behaviour: Bursts of 
 ### Phase 4 gate, browser run 2026-11-28 (v0.4.6 → v0.4.7)
 Run by Claude on the live site in the built-in browser (outside Owlbear, user request). Passed: Elf Hexbinder 1→19 (Coven of the Sight; Afflictions, Mystic Marks incl. Coven → Fire school, stat picks, Epic Boon list of 12, Epic Mind gives mana 31 = WIL 4 + 19 + 8), Tier 1 cast spends mana, Futuresight Dice 0 before combat / fill on Initiative / empty after; Dwarf Zephyr 1→3 (Way of Iron): Momentum 0/30, lost on damage, Bursts 0 → DEX on Initiative → spent by Windstep → reset at combat end, Tempered starts 0; ✦ upgrades show (Hex, Doomed, Soothsayer, Momentum, Unarmed Strike); autosave survives reload. Cheat/Shepherd regression checked earlier the same day in the preview.
 Fixed (v0.4.7): no-roll abilities rolled a meaningless d20 (now a Use window with cost); roll window shows costs; Hex listed twice; stray "·" in row summaries; lowercase school/language names; "Highest tier 0".
-Still owed by the user in Owlbear: open the panel, close and reopen it with a hero open, save a character file.
+In Owlbear (user, 2026-11-28): deleting a character, saving the character file and loading it back all work. Still to check: close and reopen the panel with a hero open.
 
 ### Phase 5 (2026-11-28), part 1 built (v0.5.0)
 Sources read: GMG PDF 12 (encounter guidelines; minion table from the page image), GMG PDF 3 and 15 (stat block format, Bestiary), Core PDF 7 (turn order), Core PDF 8 (monster armor, minions). Owlbear docs checked for part 2 (context menu, scene items, scene ready, player).
