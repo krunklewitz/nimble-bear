@@ -216,7 +216,7 @@
           "pdfPage": 7,
           "printedPage": 12,
           "status": "unverified",
-          "note": "Text checked against the image. Interpreted: Armorsmith encoded as an unconditional +STR Defense modifier, but the text says “your armor gains”, so it arguably shouldn’t apply when unarmored (no ‘wearing armor’ predicate exists). Weaponsmith left as text because there is no weapon-only damage target (damage.all would also hit spells/spirit). The per-Safe-Rest re-choice isn’t modeled by the choice schema."
+          "note": "Re-chosen at each Safe Rest; tracked by hand until RQ-012 (scope of each bonus) is answered."
         }
       }
     ],

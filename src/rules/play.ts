@@ -9,6 +9,16 @@ import type { Character } from "./persistence/character";
 
 type Trigger = ResourceDefT["recover"][number]["on"];
 
+/** Flag set between the end of your turn and the start of your next one (Core p.13). */
+export const OFF_TURN = "combat:offTurn";
+export const isOffTurn = (c: Character): boolean => c.play.combat.active && c.play.flags[OFF_TURN] === true;
+
+type Usable = Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind" | "roll">;
+
+/** Any ability or spell that can harm an enemy is an attack (Core p.14; Glossary p.56). */
+export const isAttack = (a: Pick<SheetAction, "kind" | "roll">): boolean =>
+  a.kind === "weapon" || a.kind === "attack" || a.roll?.kind === "damage" || a.roll?.kind === "aoe";
+
 function recover(draft: Character, sheet: Sheet, on: Trigger) {
   for (const r of sheet.resources) {
     for (const rule of r.def.recover) {
@@ -63,6 +73,8 @@ export function applyDamage(draft: Character, sheet: Sheet, amount: number, opts
     }
   }
   draft.play.wounds += result.woundsGained;
+  // Dying: "your actions are limited to 1" (p.9).
+  if (draft.play.hp <= 0 && draft.play.combat.active) draft.play.combat.actions = Math.min(draft.play.combat.actions, 1);
   result.died = draft.play.wounds >= sheet.wounds.max;
   if (rest > 0) lose(draft, sheet, "damageTaken");
   if (result.woundsGained > 0) recover(draft, sheet, "woundGained");
@@ -123,6 +135,7 @@ export function safeRest(draft: Character, sheet: Sheet): { woundHealed: boolean
 export function startCombat(draft: Character, sheet: Sheet, core: CoreRulesDefT, total: number, natural: number): { actions: number } {
   const actions = initiativeActions(total, natural, core.initiativeActions);
   draft.play.combat = { active: true, round: 1, actions: sheet.dying ? Math.min(1, actions) : actions, attacks: {}, reactionsUsed: [] };
+  draft.play.flags[OFF_TURN] = false;
   resetUses(draft, sheet, ["encounter", "turn", "round"]);
   recover(draft, sheet, "initiative");
   return { actions };
@@ -135,13 +148,45 @@ export function endTurn(draft: Character, sheet: Sheet) {
   delete draft.play.uses["debt:actions"];
   draft.play.combat.attacks = {};
   draft.play.combat.reactionsUsed = [];
-  draft.play.combat.round += 1;
+  draft.play.flags[OFF_TURN] = true;
   resetUses(draft, sheet, ["turn", "round"]);
   recover(draft, sheet, "turnEnd");
 }
 
+/** Start of your next turn (heroes act whenever they're ready, p.12). */
+export function startTurn(draft: Character, sheet: Sheet) {
+  draft.play.flags[OFF_TURN] = false;
+  draft.play.combat.round += 1;
+  draft.play.combat.attacks = {};
+  resetUses(draft, sheet, ["turn"]);
+}
+
+export const REACTIONS = ["Defend", "Interpose", "Opportunity Attack", "Help"] as const;
+export type Reaction = (typeof REACTIONS)[number];
+
+/** Reactions cost 1 action, each 1/round (p.15); Defending in armor you aren't proficient with costs 1 more (p.32). */
+export function reactionCost(sheet: Sheet, name: Reaction): number {
+  return name === "Defend" && !sheet.defense.armorProficient ? 2 : 1;
+}
+
+export function checkReaction(draft: Character, sheet: Sheet, name: Reaction): string[] {
+  const c = draft.play.combat;
+  const problems: string[] = [];
+  if (c.reactionsUsed.includes(name)) problems.push(name + " is 1/round: already used since your last turn ended.");
+  const cost = reactionCost(sheet, name);
+  if (c.active && cost > c.actions) problems.push("Needs " + cost + " action" + (cost === 1 ? "" : "s") + ", you have " + c.actions + ".");
+  return problems;
+}
+
+export function useReaction(draft: Character, sheet: Sheet, name: Reaction) {
+  const c = draft.play.combat;
+  if (c.active) c.actions = Math.max(0, c.actions - reactionCost(sheet, name));
+  if (!c.reactionsUsed.includes(name)) c.reactionsUsed.push(name);
+}
+
 export function endCombat(draft: Character, sheet: Sheet) {
   draft.play.combat = { active: false, round: 0, actions: 3, attacks: {}, reactionsUsed: [] };
+  draft.play.flags[OFF_TURN] = false;
   lose(draft, sheet, "combatEnd");
   recover(draft, sheet, "combatEnd");
   resetUses(draft, sheet, ["encounter", "turn", "round"]);
@@ -156,7 +201,7 @@ export interface UseCheck {
 }
 
 /** Checks whether an action can be paid for: actions (in combat), mana, resource, limited uses. */
-export function checkUse(draft: Character, sheet: Sheet, action: Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind">, opts: { mana?: number | undefined; creature?: string | undefined } = {}): UseCheck {
+export function checkUse(draft: Character, sheet: Sheet, action: Usable, opts: { mana?: number | undefined; creature?: string | undefined } = {}): UseCheck {
   const problems: string[] = [];
   const c = draft.play.combat;
   if (c.active && (action.actions ?? 0) > c.actions) problems.push(`Needs ${action.actions} action${action.actions === 1 ? "" : "s"}, you have ${c.actions}.`);
@@ -170,14 +215,17 @@ export function checkUse(draft: Character, sheet: Sheet, action: Pick<SheetActio
     const have = res ? (draft.play.resources[res.def.id]?.current ?? res.max) : 0;
     if (action.resourceCost.amount > have) problems.push(`Needs ${action.resourceCost.amount} ${res?.def.name ?? action.resourceCost.id}, you have ${have}.`);
   }
-  if (action.limit && action.limit.used >= action.limit.max) problems.push(`Already used ${action.limit.max}× this ${action.limit.per}.`);
-  const isAttack = action.kind === "weapon" || action.kind === "attack";
-  const rushed = isAttack && c.active ? (c.attacks[opts.creature ?? "hero"] ?? 0) : 0;
+  const offTurn = isOffTurn(draft);
+  // 1/turn abilities can be used again on another creature's turn (p.13).
+  const limited = action.limit && !(offTurn && action.limit.per === "turn");
+  if (limited && action.limit && action.limit.used >= action.limit.max) problems.push("Already used " + action.limit.max + "× this " + action.limit.per + ".");
+  // Rushed Attacks: additional attacks on your own turn (p.14).
+  const rushed = isAttack(action) && c.active && !offTurn ? (c.attacks[opts.creature ?? "hero"] ?? 0) : 0;
   return { ok: problems.length === 0, problems, rushed };
 }
 
 /** Pays for an action. Spending more than you have floors at 0; the player was warned. */
-export function payUse(draft: Character, sheet: Sheet, action: Pick<SheetAction, "id" | "actions" | "manaCost" | "resourceCost" | "limit" | "kind">, opts: { mana?: number | undefined; creature?: string | undefined } = {}) {
+export function payUse(draft: Character, sheet: Sheet, action: Usable, opts: { mana?: number | undefined; creature?: string | undefined } = {}) {
   const c = draft.play.combat;
   if (c.active) c.actions = Math.max(0, c.actions - (action.actions ?? 0));
   const mana = opts.mana ?? action.manaCost ?? 0;
@@ -189,8 +237,9 @@ export function payUse(draft: Character, sheet: Sheet, action: Pick<SheetAction,
     const res = sheet.resources.find((r) => r.def.id === action.resourceCost?.id);
     if (res) draft.play.resources[res.def.id] = { current: Math.max(0, (draft.play.resources[res.def.id]?.current ?? res.max) - action.resourceCost.amount) };
   }
-  if (action.limit) draft.play.uses[action.id] = (draft.play.uses[action.id] ?? 0) + 1;
-  if ((action.kind === "weapon" || action.kind === "attack") && c.active) {
+  const offTurn = isOffTurn(draft);
+  if (action.limit && !(offTurn && action.limit.per === "turn")) draft.play.uses[action.id] = (draft.play.uses[action.id] ?? 0) + 1;
+  if (isAttack(action) && c.active && !offTurn) {
     const who = opts.creature ?? "hero";
     c.attacks[who] = (c.attacks[who] ?? 0) + 1;
   }

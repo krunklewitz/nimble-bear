@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { getContent } from "../data/content";
-import { applyLevelUp, levelUpPlan, validateLevelUp, type LevelUpInput } from "../rules/build";
+import { applyLevelUp, levelUpPlan, rollLevelUpHp, validateLevelUp, type LevelUpInput } from "../rules/build";
 import { derive } from "../rules/derive";
-import { dropIndexes } from "../rules/dice";
 import { downloadTextFile } from "../platform/files";
 import { cryptoRng } from "../platform/random";
 import { ChoicePicker, FeatureCard, signed, type ChoiceOption } from "./common";
@@ -26,14 +25,14 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
   const plan = levelUpPlan(content, character, sheet);
   if (!plan) return <p className="screen">This hero can't level up further yet.</p>;
 
-  const sides = Number(plan.hitDie.slice(1));
-  const input: LevelUpInput = { hp: hp ?? { method: "average", value: plan.average }, addSkill, move: moveOn ? move : undefined, choices };
+  const average = plan.average;
+  const input: LevelUpInput = { hp: hp ?? { method: "average", value: average ?? 0 }, addSkill, move: moveOn ? move : undefined, choices };
   const problems = hp ? validateLevelUp(content, character, plan, input, sheet) : ["Choose how to raise your max HP."];
 
   // Options for each choice, worked out against the hero as they'll be with the choices so far.
   const optionsFor = (choiceId: string): ChoiceOption[] => {
     const trial = structuredClone(character);
-    trial.build.levels.push({ level: plan.level, classId: trial.build.levels[0]?.classId ?? "", hp: { method: "average", value: plan.average }, skillPoints: {}, choices });
+    trial.build.levels.push({ level: plan.level, classId: trial.build.levels[0]?.classId ?? "", hp: { method: "average", value: average ?? 0 }, skillPoints: {}, choices });
     const pc = derive(content, trial).choices.find((c) => c.choice.id === choiceId);
     const sub = (oid: string) => content.subclasses.get(oid);
     return (pc?.options ?? []).map((o) => ({
@@ -44,13 +43,9 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
   };
 
   const rollHp = () => {
-    // "Roll your Hit Die with advantage" (p.21): 2 dice, keep the higher.
-    const a = cryptoRng(sides);
-    const b = cryptoRng(sides);
-    const drop = dropIndexes([a, b], 1, "lowest");
-    const kept = [a, b].filter((_, i) => !drop.has(i))[0] ?? a;
-    setRolled([a, b]);
-    setHp({ method: "roll", value: kept });
+    const r = rollLevelUpHp(plan.hitDie, cryptoRng);
+    setRolled(r.rolls);
+    setHp({ method: "roll", value: r.kept });
   };
 
   const confirm = async () => {
@@ -106,15 +101,17 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
       <div className="panel">
         <h2>More HP</h2>
         <p className="small">
-          Roll your Hit Die ({plan.hitDie}) with advantage, or take the average (+{plan.average}).
+          Roll your Hit Die ({plan.hitDie}) with advantage{average !== null ? `, or take the average (+${average})` : ""} (Core Rules p.21).
         </p>
         <div className="row">
           <button type="button" onClick={rollHp} disabled={hp?.method === "roll"}>
             Roll {plan.hitDie} with advantage
           </button>
-          <button type="button" onClick={() => setHp({ method: "average", value: plan.average })} disabled={hp?.method === "roll"}>
-            Take +{plan.average}
-          </button>
+          {average !== null && (
+            <button type="button" onClick={() => setHp({ method: "average", value: average })} disabled={hp?.method === "roll"}>
+              Take +{average}
+            </button>
+          )}
         </div>
         {rolled && <p className="small">Rolled {rolled.join(" and ")}: keep {hp?.value}.</p>}
         {hp && (

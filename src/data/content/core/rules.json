@@ -1,20 +1,87 @@
 {
   "skills": [
-    { "id": "arcana", "name": "Arcana", "stat": "INT" },
-    { "id": "examination", "name": "Examination", "stat": "INT" },
-    { "id": "finesse", "name": "Finesse", "stat": "DEX" },
-    { "id": "influence", "name": "Influence", "stat": "WIL" },
-    { "id": "insight", "name": "Insight", "stat": "WIL" },
-    { "id": "lore", "name": "Lore", "stat": "INT" },
-    { "id": "might", "name": "Might", "stat": "STR" },
-    { "id": "naturecraft", "name": "Naturecraft", "stat": "WIL" },
-    { "id": "perception", "name": "Perception", "stat": "WIL" },
-    { "id": "stealth", "name": "Stealth", "stat": "DEX" }
+    {
+      "id": "arcana",
+      "name": "Arcana",
+      "stat": "INT"
+    },
+    {
+      "id": "examination",
+      "name": "Examination",
+      "stat": "INT"
+    },
+    {
+      "id": "finesse",
+      "name": "Finesse",
+      "stat": "DEX"
+    },
+    {
+      "id": "influence",
+      "name": "Influence",
+      "stat": "WIL"
+    },
+    {
+      "id": "insight",
+      "name": "Insight",
+      "stat": "WIL"
+    },
+    {
+      "id": "lore",
+      "name": "Lore",
+      "stat": "INT"
+    },
+    {
+      "id": "might",
+      "name": "Might",
+      "stat": "STR"
+    },
+    {
+      "id": "naturecraft",
+      "name": "Naturecraft",
+      "stat": "WIL"
+    },
+    {
+      "id": "perception",
+      "name": "Perception",
+      "stat": "WIL"
+    },
+    {
+      "id": "stealth",
+      "name": "Stealth",
+      "stat": "DEX"
+    }
   ],
   "statArrays": [
-    { "id": "standard", "name": "Standard", "values": [2, 2, 0, -1] },
-    { "id": "balanced", "name": "Balanced", "values": [2, 1, 1, 0] },
-    { "id": "minmax", "name": "Min-Max", "values": [3, 1, -1, -1] }
+    {
+      "id": "standard",
+      "name": "Standard",
+      "values": [
+        2,
+        2,
+        0,
+        -1
+      ]
+    },
+    {
+      "id": "balanced",
+      "name": "Balanced",
+      "values": [
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "id": "minmax",
+      "name": "Min-Max",
+      "values": [
+        3,
+        1,
+        -1,
+        -1
+      ]
+    }
   ],
   "defaults": {
     "speed": 6,
@@ -29,32 +96,143 @@
     "startingGold": 50,
     "extraLanguagesPerInt": 1
   },
-  "levelUpHpAverage": { "d4": 3, "d6": 4, "d8": 5, "d10": 7, "d12": 8 },
-  "hitDieSteps": ["d4", "d6", "d8", "d10", "d12", "d20"],
+  "levelUpHpAverage": {
+    "d4": 3,
+    "d6": 4,
+    "d8": 5,
+    "d10": 7,
+    "d12": 8
+  },
+  "hitDieSteps": [
+    "d4",
+    "d6",
+    "d8",
+    "d10",
+    "d12",
+    "d20"
+  ],
   "initiativeActions": [
-    { "minTotal": null, "maxTotal": 9, "actions": 1 },
-    { "minTotal": 10, "maxTotal": 19, "actions": 2 },
-    { "minTotal": 20, "maxTotal": null, "actions": 3 }
+    {
+      "minTotal": null,
+      "maxTotal": 9,
+      "actions": 1
+    },
+    {
+      "minTotal": 10,
+      "maxTotal": 19,
+      "actions": 2
+    },
+    {
+      "minTotal": 20,
+      "maxTotal": null,
+      "actions": 3
+    }
   ],
   "languages": [
-    { "id": "common", "name": "Common", "spokenBy": "Most intelligent creatures." },
-    { "id": "dwarvish", "name": "Dwarvish", "spokenBy": "Dwarves, Gnomes, and Giants." },
-    { "id": "elvish", "name": "Elvish", "spokenBy": "Elves, Fey, and Sylvan." },
-    { "id": "goblin", "name": "Goblin", "spokenBy": "Goblins and Orcs." },
-    { "id": "infernal", "name": "Infernal", "spokenBy": "Various Fiends and cultists." },
-    { "id": "thieves-cant", "name": "Thieves’ Cant", "spokenBy": "Scoundrels and rogues." },
-    { "id": "celestial", "name": "Celestial", "spokenBy": "Celestials and priests." },
-    { "id": "draconic", "name": "Draconic", "spokenBy": "Dragons, Dragonborn, and Kobolds." },
-    { "id": "primordial", "name": "Primordial", "spokenBy": "Elementals and Ancient Beings." },
-    { "id": "deep-speak", "name": "Deep Speak", "spokenBy": "Underworld dwellers." }
+    {
+      "id": "common",
+      "name": "Common",
+      "spokenBy": "Most intelligent creatures."
+    },
+    {
+      "id": "dwarvish",
+      "name": "Dwarvish",
+      "spokenBy": "Dwarves, Gnomes, and Giants."
+    },
+    {
+      "id": "elvish",
+      "name": "Elvish",
+      "spokenBy": "Elves, Fey, and Sylvan."
+    },
+    {
+      "id": "goblin",
+      "name": "Goblin",
+      "spokenBy": "Goblins and Orcs."
+    },
+    {
+      "id": "infernal",
+      "name": "Infernal",
+      "spokenBy": "Various Fiends and cultists."
+    },
+    {
+      "id": "thieves-cant",
+      "name": "Thieves’ Cant",
+      "spokenBy": "Scoundrels and rogues."
+    },
+    {
+      "id": "celestial",
+      "name": "Celestial",
+      "spokenBy": "Celestials and priests."
+    },
+    {
+      "id": "draconic",
+      "name": "Draconic",
+      "spokenBy": "Dragons, Dragonborn, and Kobolds."
+    },
+    {
+      "id": "primordial",
+      "name": "Primordial",
+      "spokenBy": "Elementals and Ancient Beings."
+    },
+    {
+      "id": "deep-speak",
+      "name": "Deep Speak",
+      "spokenBy": "Underworld dwellers."
+    }
   ],
   "sources": {
-    "skills": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 4, "printedPage": 7, "status": "verified" },
-    "statArrays": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 11, "printedPage": 20, "status": "verified" },
-    "defaults": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 11, "printedPage": 20, "status": "verified", "note": "Speed/Wounds/slots/Initiative/Defense/HD defaults and 50 gp: p.20. Save DC 10+KEY: p.8 (PDF 5). 4 starting skill points: Glossary p.56 (PDF 29). 1 skill point per level: p.21." },
-    "levelUpHpAverage": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 11, "printedPage": 21, "status": "verified", "note": "Differs from rules 3.3 per RQ-001." },
-    "hitDieSteps": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 14, "printedPage": 27, "status": "verified", "note": "Oozeling/Construct: d6 » d8 » d10 » d12 » d20; d4 » d6 from Hexbinder L17 (Hexbinder3.0.pdf p.5)." },
-    "initiativeActions": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 7, "printedPage": 12, "status": "unverified", "note": "Single digit 1 action, 2 digits 2, 20+ or natural 20 gives 3. Totals below 0 not covered (RQ-005); treated as 1." },
-    "languages": { "file": "NimbleCoreRules3.2.pdf", "version": "3.2", "pdfPage": 11, "printedPage": 20, "status": "verified" }
+    "skills": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 4,
+      "printedPage": 7,
+      "status": "verified"
+    },
+    "statArrays": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    },
+    "defaults": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified",
+      "note": "Speed/Wounds/slots/Initiative/Defense/HD defaults and 50 gp: p.20. Save DC 10+KEY: p.8 (PDF 5). 4 starting skill points: Glossary p.56 (PDF 29). 1 skill point per level: p.21. Extra language per INT point: p.21."
+    },
+    "levelUpHpAverage": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 21,
+      "status": "verified",
+      "note": "Differs from rules 3.3 per RQ-001."
+    },
+    "hitDieSteps": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 29,
+      "printedPage": 56,
+      "status": "verified",
+      "note": "Glossary “Decrement/Increment”: d4 » d6 » d8 » d10 » d12 » d20."
+    },
+    "initiativeActions": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 7,
+      "printedPage": 13,
+      "status": "unverified",
+      "note": "Single digit 1 action, 2 digits 2, 20+ or natural 20 gives 3. Totals below 0 not covered (RQ-005); treated as 1."
+    },
+    "languages": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 21,
+      "status": "verified"
+    }
   }
 }

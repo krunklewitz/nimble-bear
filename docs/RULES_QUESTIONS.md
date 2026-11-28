@@ -26,7 +26,7 @@ The required free-app notice is identical in both.
 The license allows "any and all published Nimble text" in free apps. Monsters & More v0.1 is a backer-only draft, and the 3.x second-printing files are playtest files sent to backers. Whether a public app may include text from them is a question for Nimble Co. This affects any class text on the public site, so it matters before Phase 3 goes public. Monsters aren't bundled anyway (GM-only file).
 
 ### RQ-005 · Initiative with a total below 0
-Core p.12 (PDF 7): a single-digit total gives 1 action, 2 digits gives 2, and 20+ (or a natural 20) gives 3. A negative total isn't covered. Planned reading: anything under 10 gives 1 action. `unverified`.
+Core p.13 (PDF 7): a single-digit total gives 1 action, 2 digits gives 2, and 20+ (or a natural 20) gives 3. A negative total isn't covered. Planned reading: anything under 10 gives 1 action. `unverified`.
 
 ### RQ-006 · Monsters & More is incomplete
 v0.1 has placeholder text and blank pages from PDF 102. Plan: don't use it for data until a later version. Use the GMG Bestiary for the Phase 5 encounter builder. `unverified`.
@@ -55,6 +55,21 @@ Core p.34: "roll 1d4+STR"; no damage type or properties. Planned: bludgeoning is
 ### RQ-014 · Gnome "Optimistic" reset
 Core p.23: "Allow an ally to reroll any 1 die; resets when healed to max HP." Planned: one use, refilled when you're healed to max HP. Status: unverified.
 
+### RQ-015 · Hit Dice with negative STR: can a die heal less than 0?
+Core p.16: "A negative STR lowers each Hit Die you expend (e.g., a roll of 5 with −1 STR heals 4)." No minimum is given. Planned: each die heals at least 0. Status: unverified.
+
+### RQ-016 · Armor proficiency: does Mail cover lighter armor?
+Core p.32: "Defending while wearing armor without proficiency costs 1 additional action." Shepherd lists "Mail Armor, Shields"; The Cheat lists "Leather Armor". Nothing says Mail proficiency includes Leather or Cloth. Planned: only the listed category counts (a Shepherd in Cheap Hides pays 1 more action to Defend). Status: unverified.
+
+### RQ-017 · What do "Light", "Stack", "Req. N STR" and "(max 2)" mean for equipment?
+The weapon and armor tables use them (Core p.33, p.35) but no rule text defines Light (only used by Dual Wielding), Stack, the STR requirement (what happens if you don't meet it), or "+DEX (max 2)" (read as DEX counts up to +2). Planned: Light = can be dual wielded; Stack = items per slot; STR requirement shown as a warning only; max 2 caps DEX. Status: unverified.
+
+### RQ-018 · Spells with an unusual cost or limit
+Heart's Fire has "(1/round)" inside its effect text (not encoded as a casting limit, unlike Entice's title-line "(1/round)"); Dragonform costs 5 actions (shown as its casting time); Gravecraft has two modes with different costs (only in its text). Planned: shown as text; the player applies them. Status: unverified.
+
+### RQ-019 · The Cheat: "If you roll less than 10 on Initiative, you may change it to 10"
+Cheat PDF 3: "roll" could mean the d20 or the total; "may" is optional. Planned: the total is raised to 10 automatically (never worse for the player). Status: unverified.
+
 ## Resolved
 
 ### RQ-R1 · Which die is the Primary Die after advantage/disadvantage?
@@ -64,4 +79,4 @@ Core p.9 (PDF 5), checked against the page image: roll the extra dice, remove th
 Classes cite "pg. 75 of the Game Master's Guide". Confirmed at GMG PDF 38 (printed 75).
 
 ### RQ-R3 · Starting skill points
-The quick builds have 4 more skill points than "mark your stat values" (Core p.20) explains. Core Glossary p.56 (PDF 29): "Skill Points. Use them to increase your skills. Start with 4 at level 1 and gain 1 each level." Both quick builds (Cheat PDF 9, Shepherd PDF 9) match this. Moving a point may take a skill below its stat value (Shepherd quick build level 2: Naturecraft +3 → +2).
+The quick builds have 4 more skill points than "mark your stat values" (Core p.20) explains. Core Glossary p.56 (PDF 29): "Skill Points. Use them to increase your skills. Start with 4 at level 1 and gain 1 each level." Both quick builds (Cheat PDF 9, Shepherd PDF 9) match this. Moving a point may take a skill below its stat value (Shepherd quick build level 2: Naturecraft +3 → +2). Separately, p.20 "Heroic Skills" is an optional rule giving 1–4 skill points on top of these (not used at this table).

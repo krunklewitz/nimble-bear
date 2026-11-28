@@ -22,7 +22,13 @@ export interface OptionView {
 const CRIT_SITUATION = /\bcrit/i;
 
 /** Roll options relevant to a roll, and how each one is handled. */
-export function optionsFor(sheet: Sheet, kind: RollKind, scope: { skill?: string | undefined; stat?: string | undefined; group?: string | undefined }, uses: Record<string, number>): OptionView[] {
+export function optionsFor(
+  sheet: Sheet,
+  kind: RollKind,
+  scope: { skill?: string | undefined; stat?: string | undefined; group?: string | undefined },
+  uses: Record<string, number>,
+  offTurn = false,
+): OptionView[] {
   const on = kind === "attack" ? ["attack", "damage", "any"] : kind === "heal" ? ["heal", "any"] : kind === "plain" ? ["any"] : [kind, "any"];
   return sheet.rollOptions
     .filter((o) => on.includes(o.on))
@@ -32,7 +38,9 @@ export function optionsFor(sheet: Sheet, kind: RollKind, scope: { skill?: string
       const automatic = ["advantage", "disadvantage", "addDice", "add", "floor", "setPrimary"].includes(o.change);
       const how: OptionView["how"] = !automatic ? "reminder" : o.mode === "auto" && (!o.when || onCrit) ? "auto" : "toggle";
       const max = o.limit ? Number(o.limit.uses.match(/^\d+$/) ? o.limit.uses : sheet.scope[o.limit.uses] ?? 1) : null;
-      return { option: o, how, onCrit, used: uses[o.id] ?? 0, max };
+      // 1/turn options are usable again on another creature's turn (Core p.13).
+      const fresh = offTurn && o.limit?.per === "turn";
+      return { option: o, how, onCrit, used: fresh ? 0 : (uses[o.id] ?? 0), max };
     });
 }
 

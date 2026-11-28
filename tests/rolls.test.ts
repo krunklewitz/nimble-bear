@@ -87,3 +87,13 @@ describe("roll service", () => {
     expect(log.list().map((x) => x.id)).toEqual(["m3", "m2"]);
   });
 });
+
+describe("Initiative advantage (audit)", () => {
+  it("applies an Elf's Lithe advantage once", () => {
+    const elf = createCharacter(content, { name: "E", classId: "class.cheat", ancestryId: "ancestry.elf", ancestryChoices: {}, backgroundId: "background.acrobat", backgroundChoices: {}, statArrayId: "standard", assign: { STR: -1, DEX: 2, INT: 2, WIL: 0 }, skillPoints: { stealth: 4 }, languages: [], kit: "class" }, "e", "2026-11-27T00:00:00Z");
+    const s = derive(content, elf);
+    const options = optionsFor(s, "initiative", {}, {});
+    const r = performRoll(s, { kind: "initiative", label: "Initiative", modifier: s.initiative.mod, advantage: 0, rushed: 0, toggles: [], options }, scriptedRng([5, 14]));
+    expect(r.kind === "d20" && r.result.dice.length).toBe(2);
+  });
+});

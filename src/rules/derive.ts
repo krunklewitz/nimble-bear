@@ -408,10 +408,14 @@ export function derive(content: Content, c: Character): Sheet {
     const w = it.itemId ? content.weapons.get(it.itemId) : undefined;
     const a = it.itemId ? content.armor.get(it.itemId) : undefined;
     const sh = it.itemId ? content.shields.get(it.itemId) : undefined;
+    if (it.itemId === "weapon.unarmed-strike") continue;
+    // Core p.20: 1 slot holds a 1-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions;
+    // 2 slots hold a 2-handed weapon or unworn armor.
     const per = w ? (w.properties.twoHanded ? 2 : 1) : a ? (it.equipped ? 1 : 2) : sh ? 1 : 1;
-    slotsUsed += w?.properties.stack ? Math.ceil(it.qty / w.properties.stack) * per : per * it.qty;
+    const potion = !!it.itemId && it.itemId.startsWith("gear.") && /potion/i.test(it.itemId);
+    slotsUsed += w?.properties.stack ? Math.ceil(it.qty / w.properties.stack) * per : potion ? Math.ceil(it.qty / 2) : per * it.qty;
   }
-  slotsUsed += Math.floor(c.play.gold / 500);
+  slotsUsed += Math.ceil(c.play.gold / 500);
   const languages = new Set<string>(["common", ...c.build.languages]);
   for (const f of features) for (const e of effectsOf(f)) if (e.type === "proficiency") for (const l of e.languages ?? []) languages.add(l);
   const extraLanguageSlots = Math.max(0, stats.INT * content.core.defaults.extraLanguagesPerInt);
@@ -482,15 +486,20 @@ export function derive(content: Content, c: Character): Sheet {
   // ---- actions ----
   const actions: SheetAction[] = [];
   const profWeapons = new Set(cls?.proficiency.weapons ?? []);
-  const proficientWith = (tags: string[]) => tags.some((t) => profWeapons.has(t)) || (profWeapons.has("melee") && tags.includes("melee"));
-  const weaponItems = c.play.inventory.filter((i) => i.itemId && content.weapons.has(i.itemId));
-  const seen = new Set<string>();
-  for (const it of weaponItems) {
-    const w = content.weapons.get(it.itemId as string);
-    if (!w || seen.has(w.id)) continue;
-    seen.add(w.id);
+  let unarmedProficient = false;
+  for (const f of features) for (const e of effectsOf(f)) if (e.type === "proficiency" && e.unarmedCrit) unarmedProficient = true;
+  // "Heroes not proficient in Unarmed Strikes cannot crit" (Core p.34): only an explicit proficiency counts.
+  const proficientWith = (w: { id: string; tags: string[] }) =>
+    w.id === "weapon.unarmed-strike" ? unarmedProficient : w.tags.some((t) => profWeapons.has(t));
+  // Everyone can make an Unarmed Strike (Core p.34), carried or not.
+  const unarmed = content.weapons.get("weapon.unarmed-strike");
+  const weaponIds = new Set(c.play.inventory.filter((i) => i.itemId && content.weapons.has(i.itemId)).map((i) => i.itemId as string));
+  if (unarmed) weaponIds.add(unarmed.id);
+  for (const wid of weaponIds) {
+    const w = content.weapons.get(wid);
+    if (!w) continue;
     const best = w.damage.reduce((a, b) => (evalNumber(b.replace(/^\d*d\d+/, "0"), scope) > evalNumber(a.replace(/^\d*d\d+/, "0"), scope) ? b : a));
-    const prof = proficientWith(w.tags);
+    const prof = proficientWith(w);
     actions.push({
       id: `attack.${w.id}`,
       name: w.name,

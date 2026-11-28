@@ -126,7 +126,7 @@ export interface LevelUpPlan {
   features: FeatureDefT[];
   choices: { choice: ChoiceDefT; featureId: string }[];
   hitDie: string;
-  average: number;
+  average: number | null;
 }
 
 export function levelUpPlan(content: Content, c: Character, sheet: Sheet = derive(content, c)): LevelUpPlan | null {
@@ -138,7 +138,8 @@ export function levelUpPlan(content: Content, c: Character, sheet: Sheet = deriv
   const subFeatures = sub ? (sub.levels[String(next)] ?? []).map((id) => sub.features.find((f) => f.id === id)).filter((f): f is FeatureDefT => !!f) : [];
   const features = [...classFeatures, ...subFeatures];
   const die = sheet.hitDice.die;
-  return { level: next, features, choices: choicesIn(features), hitDie: die, average: content.core.levelUpHpAverage[die as "d4"] ?? Math.floor(Number(die.slice(1)) / 2) + 1 };
+  // Only the averages the book lists (p.21); other dice must be rolled.
+  return { level: next, features, choices: choicesIn(features), hitDie: die, average: content.core.levelUpHpAverage[die as "d4"] ?? null };
 }
 
 export interface LevelUpInput {
@@ -153,7 +154,8 @@ export interface LevelUpInput {
 export function validateLevelUp(content: Content, c: Character, plan: LevelUpPlan, input: LevelUpInput, sheet: Sheet = derive(content, c)): string[] {
   const problems: string[] = [];
   const sides = Number(plan.hitDie.slice(1));
-  if (input.hp.method === "average" && input.hp.value !== plan.average) problems.push(`The average for a ${plan.hitDie} is ${plan.average}.`);
+  if (input.hp.method === "average" && plan.average === null) problems.push(`The book gives no average for a ${plan.hitDie}: roll it.`);
+  else if (input.hp.method === "average" && input.hp.value !== plan.average) problems.push(`The average for a ${plan.hitDie} is ${plan.average}.`);
   if (input.hp.method === "roll" && (input.hp.value < 1 || input.hp.value > sides)) problems.push(`A ${plan.hitDie} roll is 1–${sides}.`);
   const skills = new Set(content.core.skills.map((s) => s.id));
   if (!skills.has(input.addSkill)) problems.push("Choose a skill for your new skill point.");
@@ -168,6 +170,13 @@ export function validateLevelUp(content: Content, c: Character, plan: LevelUpPla
     if (choice.from.kind === "stat" && picked.some((p) => !(choice.from as { stats: string[] }).stats.includes(p))) problems.push(`Invalid choice for ${choice.prompt}`);
   }
   return problems;
+}
+
+/** "Roll your Hit Die with advantage" (p.21): roll 2, keep the higher. */
+export function rollLevelUpHp(hitDie: string, rng: (sides: number) => number): { rolls: number[]; kept: number } {
+  const sides = Number(hitDie.slice(1));
+  const rolls = [rng(sides), rng(sides)];
+  return { rolls, kept: Math.max(...rolls) };
 }
 
 /** Applies a validated level-up. Leveling happens during a Safe Rest (p.21), so HP ends full. */

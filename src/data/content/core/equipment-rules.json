@@ -1,0 +1,604 @@
+[
+  {
+    "id": "rule.armor.defend",
+    "name": "Defend",
+    "appliesTo": {
+      "kind": "allArmor"
+    },
+    "text": "Reduce incoming damage from a single attack by your Defense. Crits ignore Defense (other effects, like psychic damage or some areas of effect, may likewise ignore Defense).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 8,
+      "printedPage": 15,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.shield.defend",
+    "name": "Defend",
+    "appliesTo": {
+      "kind": "allShields"
+    },
+    "text": "Reduce incoming damage from a single attack by your Defense. Crits ignore Defense (other effects, like psychic damage or some areas of effect, may likewise ignore Defense).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 8,
+      "printedPage": 15,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.inventory-slots",
+    "name": "Inventory Slots",
+    "appliesTo": {
+      "kind": "allGear"
+    },
+    "text": "Each hero has 10+STR inventory slots for carrying equipment and loot (held, worn, or in a pack).\n• 1 slot can hold a 1-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.\n• 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.\n• Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).\nAlternatively, your GM may allow you to carry whatever you want without the bookkeeping, so long as you’re reasonable!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.inventory-slots",
+    "name": "Inventory Slots",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "Each hero has 10+STR inventory slots for carrying equipment and loot (held, worn, or in a pack).\n• 1 slot can hold a 1-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.\n• 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.\n• Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).\nAlternatively, your GM may allow you to carry whatever you want without the bookkeeping, so long as you’re reasonable!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.armor.inventory-slots",
+    "name": "Inventory Slots",
+    "appliesTo": {
+      "kind": "allArmor"
+    },
+    "text": "Each hero has 10+STR inventory slots for carrying equipment and loot (held, worn, or in a pack).\n• 1 slot can hold a 1-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.\n• 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.\n• Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).\nAlternatively, your GM may allow you to carry whatever you want without the bookkeeping, so long as you’re reasonable!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.shield.inventory-slots",
+    "name": "Inventory Slots",
+    "appliesTo": {
+      "kind": "allShields"
+    },
+    "text": "Each hero has 10+STR inventory slots for carrying equipment and loot (held, worn, or in a pack).\n• 1 slot can hold a 1-handed weapon, shield, worn armor, stack of javelins, 500 gp, or 2 potions.\n• 2 slots can hold a 2-handed weapon, unworn armor, or similarly bulky items.\n• Small, related items can be grouped into one slot for simplicity (e.g., Camping Supplies: soap, blanket, brush, rations).\nAlternatively, your GM may allow you to carry whatever you want without the bookkeeping, so long as you’re reasonable!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.on-ammunition",
+    "name": "On Ammunition",
+    "appliesTo": {
+      "kind": "rangedWeapons"
+    },
+    "text": "On Ammunition. In most games, there’s no need to track ammo. If you have a quiver, you have enough arrows. Assume the hero collects fired arrows, crafts more, or buys them in town.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.on-ammunition",
+    "name": "On Ammunition",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.quiver-ammo"
+    },
+    "text": "On Ammunition. In most games, there’s no need to track ammo. If you have a quiver, you have enough arrows. Assume the hero collects fired arrows, crafts more, or buys them in town.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 11,
+      "printedPage": 20,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.equipment-proficiency",
+    "name": "Equipment Proficiency",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "Heroes can use any equipment they like; however, each class has a list of weapons and armor types they are most skilled with. Weapons used without proficiency cannot crit. Defending while wearing armor without proficiency costs 1 additional action.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.armor.equipment-proficiency",
+    "name": "Equipment Proficiency",
+    "appliesTo": {
+      "kind": "allArmor"
+    },
+    "text": "Heroes can use any equipment they like; however, each class has a list of weapons and armor types they are most skilled with. Weapons used without proficiency cannot crit. Defending while wearing armor without proficiency costs 1 additional action.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.swapping-equipment",
+    "name": "Swapping Equipment",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "A hero can sheathe weapons or shields they are proficient with and equip a different one for free 1/round.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.shield.swapping-equipment",
+    "name": "Swapping Equipment",
+    "appliesTo": {
+      "kind": "allShields"
+    },
+    "text": "A hero can sheathe weapons or shields they are proficient with and equip a different one for free 1/round.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.armor.defense",
+    "name": "Armor & Defense",
+    "appliesTo": {
+      "kind": "allArmor"
+    },
+    "text": "Defense represents your hero’s ability to dodge or block damage when you use the Defend reaction. While unarmored or wearing regular clothes, your Defense is equal to your DEX. Some items may grant additional Defense while equipped.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.shield.defense",
+    "name": "Armor & Defense",
+    "appliesTo": {
+      "kind": "allShields"
+    },
+    "text": "Defense represents your hero’s ability to dodge or block damage when you use the Defend reaction. While unarmored or wearing regular clothes, your Defense is equal to your DEX. Some items may grant additional Defense while equipped.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.armor.defend-yourself",
+    "name": "Defend Yourself!",
+    "appliesTo": {
+      "kind": "allArmor"
+    },
+    "text": "Defend Yourself! If you’re standing right next to a baddie with an axe and you’re not doing anything to defend yourself, chances are, you’re going to get axed (see Defend on pg. 15 for more)!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.shield.defend-yourself",
+    "name": "Defend Yourself!",
+    "appliesTo": {
+      "kind": "allShields"
+    },
+    "text": "Defend Yourself! If you’re standing right next to a baddie with an axe and you’re not doing anything to defend yourself, chances are, you’re going to get axed (see Defend on pg. 15 for more)!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.shield.deflect",
+    "name": "Deflect!",
+    "appliesTo": {
+      "kind": "allShields"
+    },
+    "text": "An optional rule for additional defensive flexibility: instead of adding your shield’s Defense to your total as normal, you may reduce the damage of an attack by your shield’s Defense value for free (1/round).",
+    "optional": true,
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 17,
+      "printedPage": 33,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.two-handed",
+    "name": "2-handed",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "twoHanded"
+    },
+    "text": "Can be held in a single hand, but must be wielded in 2 hands to attack with it.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.load",
+    "name": "Load",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "load"
+    },
+    "text": "Some weapons require extra actions to load before each shot.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.reach",
+    "name": "Reach",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "reach"
+    },
+    "text": "How close an enemy must be to be affected by this attack. If unspecified, Reach 1.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.range",
+    "name": "Range",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "range"
+    },
+    "text": "Attacks can be made from afar. If any enemy is adjacent to you, your Ranged attacks have disadvantage. Add 1 die of disadvantage to gain +2 Range (max +6 additional Range; disadvantage 3).",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.thrown",
+    "name": "Thrown",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "thrown"
+    },
+    "text": "Treat a melee weapon as if it had Range. Once thrown, you no longer have it!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.vicious",
+    "name": "Vicious",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "vicious"
+    },
+    "text": "Roll 1 additional die whenever you roll crit damage.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon-property.vicious-remember",
+    "name": "Remember!",
+    "appliesTo": {
+      "kind": "weaponProperty",
+      "property": "vicious"
+    },
+    "text": "Remember! Only the Primary Die (the leftmost one) determines whether an attack crits. Every time you roll crit damage, roll the additional Vicious die as well!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.dual-wielding",
+    "name": "Dual Wielding",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "Heroes may wield 2 Light weapons at the same time. While dual wielding, (1/round) you may gain advantage on an attack with those weapons. You may dual wield 1-handed weapons without the Light property if your STR is 3 or greater, or 1 weapon without the Light property if your STR is 2. If completely unarmed, fists/feet can be dual wielded if proficient in Unarmed Strikes.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.dual-wielding-different-weapons",
+    "name": "Dual wielding different weapons?",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "Dual wielding different weapons? Roll dice for both weapons and choose either result instead (the 1/round limit still applies). Attacking with advantage? Add an extra die for one of the weapons.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.unarmed-strikes",
+    "name": "Unarmed Strikes",
+    "appliesTo": {
+      "kind": "item",
+      "id": "weapon.unarmed-strike"
+    },
+    "text": "To attack with your bare hands or feet, roll 1d4+STR. Heroes not proficient in Unarmed Strikes cannot crit.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.improvised-weapons",
+    "name": "Improvised Weapons",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "Using an improvised weapon (e.g., a chair, a frying pan, a big rock), default to 1d4+STR or 1d6+STR. Your GM may allow you to use bigger dice or other properties if it makes sense. An improvised weapon may be likely to break after a few hits, though!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.weapon.customizing-weapons",
+    "name": "Customizing Weapons",
+    "appliesTo": {
+      "kind": "allWeapons"
+    },
+    "text": "Can you reflavor a staff as a greatclub? Sure! A sai instead of a dagger? Of course! Could you pay a blacksmith to make your 3d4 Greatmaul deal 2d6 or 1d12 damage instead? Since the dice all add up to 12, it won’t break the game; ask your GM! Can a blacksmith make your dagger deal that much damage? No, sorry!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 18,
+      "printedPage": 34,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.healing-potions.healing-potion",
+    "name": "Healing Potions",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.healing-potion"
+    },
+    "text": "Healing potions are deep, shimmering red elixirs with a refreshing, effervescent taste. These potions are crucial for quick recovery, though their availability is limited. Small towns may have only a few, while cities offer more (but they are not in unlimited supply). The wealthy often use them as a display of affluence, incorporating them into elaborate mixed drinks at social events to showcase their status. Potions require 1 action to drink or to administer to an adjacent willing creature.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.healing-potions.greater-healing-potion",
+    "name": "Healing Potions",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.greater-healing-potion"
+    },
+    "text": "Healing potions are deep, shimmering red elixirs with a refreshing, effervescent taste. These potions are crucial for quick recovery, though their availability is limited. Small towns may have only a few, while cities offer more (but they are not in unlimited supply). The wealthy often use them as a display of affluence, incorporating them into elaborate mixed drinks at social events to showcase their status. Potions require 1 action to drink or to administer to an adjacent willing creature.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.healing-potions.supreme-healing-potion",
+    "name": "Healing Potions",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.supreme-healing-potion"
+    },
+    "text": "Healing potions are deep, shimmering red elixirs with a refreshing, effervescent taste. These potions are crucial for quick recovery, though their availability is limited. Small towns may have only a few, while cities offer more (but they are not in unlimited supply). The wealthy often use them as a display of affluence, incorporating them into elaborate mixed drinks at social events to showcase their status. Potions require 1 action to drink or to administer to an adjacent willing creature.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.torches-lanterns.torch",
+    "name": "Torches & Lanterns",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.torch"
+    },
+    "text": "Heroes can’t see in the dark, so they are Blind while fighting with no light. Heroes can bring a lantern or torch to light their way as long as they have a hand free (or some other way) to hold it. A torch typically lasts for 1 dungeon (or 1 level of a very large one). An oil lamp can typically last for 1 entire outing, until your next Safe Rest. Both cast light up to 6 spaces away; beyond this is darkness.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.be-warned.torch",
+    "name": "Be Warned!",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.torch"
+    },
+    "text": "Be Warned! Denizens of the dark may not appreciate the light and may attack the light bearers first. Certain spells (e.g., Fire, Lightning, and Radiant) may cause flashes of light as well and draw unwanted attention!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.torches-lanterns.lantern-oil",
+    "name": "Torches & Lanterns",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.lantern-oil"
+    },
+    "text": "Heroes can’t see in the dark, so they are Blind while fighting with no light. Heroes can bring a lantern or torch to light their way as long as they have a hand free (or some other way) to hold it. A torch typically lasts for 1 dungeon (or 1 level of a very large one). An oil lamp can typically last for 1 entire outing, until your next Safe Rest. Both cast light up to 6 spaces away; beyond this is darkness.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.be-warned.lantern-oil",
+    "name": "Be Warned!",
+    "appliesTo": {
+      "kind": "item",
+      "id": "gear.lantern-oil"
+    },
+    "text": "Be Warned! Denizens of the dark may not appreciate the light and may attack the light bearers first. Certain spells (e.g., Fire, Lightning, and Radiant) may cause flashes of light as well and draw unwanted attention!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.equipment-availability",
+    "name": "Equipment Availability",
+    "appliesTo": {
+      "kind": "allGear"
+    },
+    "text": "Costs for mundane items typically range from a few silver pieces to a few gold pieces. If you can find an artisan, you can commission them to create something for you—basically anything you can think of that their level of technology could support. The more ornate, the higher the price. Commissioning a special item typically starts around 50 gp and only goes up from there. Smaller towns will have fewer items and artisans than larger cities.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 36,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.what-about",
+    "name": "What About…?",
+    "appliesTo": {
+      "kind": "allGear"
+    },
+    "text": "What About…? These are not ALL of the items available for purchase, merely a sampling. If you can think of it, you can likely buy it!",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "rule.gear.currency",
+    "name": "Currency",
+    "appliesTo": {
+      "kind": "allGear"
+    },
+    "text": "Currency is made up of silver (sp) and gold pieces (gp). 10 silver = 1 gold. 1 sp is roughly the cost of a humble meal; 1 gp, a sumptuous feast. Most small towns will have equipment and items worth 50 gp or less. You’ll need to adventure to larger towns or cities or find a traveling merchant to purchase more valuable pieces of equipment.",
+    "source": {
+      "file": "NimbleCoreRules3.2.pdf",
+      "version": "3.2",
+      "pdfPage": 19,
+      "printedPage": 37,
+      "status": "verified"
+    }
+  }
+]

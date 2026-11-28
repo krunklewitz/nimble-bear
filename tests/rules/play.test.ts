@@ -3,7 +3,7 @@ import { getContent } from "../../src/data/content";
 import { scriptedRng } from "../../src/rules/dice";
 import { applyLevelUp, checkStats, createCharacter, levelUpPlan, undoLastLevel, validateCreation, validateLevelUp, type CreationInput } from "../../src/rules/build";
 import { derive } from "../../src/rules/derive";
-import { applyDamage, checkUse, endCombat, endTurn, heal, payUse, safeRest, spendHitDice, startCombat } from "../../src/rules/play";
+import { applyDamage, checkReaction, checkUse, endCombat, endTurn, heal, isOffTurn, payUse, safeRest, spendHitDice, startCombat, startTurn, useReaction } from "../../src/rules/play";
 import type { Character } from "../../src/rules/persistence/character";
 
 const content = getContent();
@@ -165,7 +165,9 @@ describe("combat (Core p.12–15)", () => {
     payUse(c, s, mace);
     expect(checkUse(c, s, mace)).toMatchObject({ ok: false, rushed: 1 });
     endTurn(c, s);
-    expect([c.play.combat.actions, c.play.combat.round]).toEqual([3, 2]);
+    expect([c.play.combat.actions, c.play.combat.round, isOffTurn(c)]).toEqual([3, 1, true]);
+    startTurn(c, s);
+    expect([c.play.combat.round, isOffTurn(c)]).toEqual([2, false]);
     endCombat(c, s);
     expect(c.play.combat.active).toBe(false);
   });
@@ -177,5 +179,88 @@ describe("combat (Core p.12–15)", () => {
     const mend = s.actions.find((a) => a.id === "action.shepherd.spirit-mend");
     if (!mend) throw new Error("no mend");
     expect(checkUse(c, s, mend).problems[0]).toMatch(/Mend/);
+  });
+});
+
+describe("audit fixes (second rules check)", () => {
+  it("counts harmful spells as attacks for Rushed Attacks (Core p.14, Glossary p.56)", () => {
+    const c = make();
+    const s = derive(content, c);
+    startCombat(c, s, content.core, 15, 12);
+    const spell = { id: "spell.radiant.rebuke", kind: "spell" as const, actions: 1, manaCost: 0, roll: { kind: "damage", dice: { groups: [], flat: 0 }, formula: "1d8", canCrit: true, canMiss: true, vicious: false } };
+    payUse(c, s, spell);
+    const mace = s.actions.find((a) => a.id === "attack.weapon.club-mace");
+    if (!mace) throw new Error("no mace");
+    expect(checkUse(c, s, mace).rushed).toBe(1);
+  });
+
+  it("doesn't count attacks made on another creature's turn, and lets 1/turn abilities be used again then (Core p.13)", () => {
+    const c = make();
+    const s = derive(content, c);
+    startCombat(c, s, content.core, 15, 12);
+    endTurn(c, s);
+    const mace = s.actions.find((a) => a.id === "attack.weapon.club-mace");
+    if (!mace) throw new Error("no mace");
+    payUse(c, s, mace); // e.g. an Opportunity Attack
+    startTurn(c, s);
+    expect(checkUse(c, s, mace).rushed).toBe(0);
+    const oncePerTurn = { ...mace, id: "x", limit: { max: 1, per: "turn", used: 1 } };
+    expect(checkUse(c, s, oncePerTurn).ok).toBe(false);
+    endTurn(c, s);
+    expect(checkUse(c, s, oncePerTurn).problems).toEqual([]);
+  });
+
+  it("limits you to 1 action as soon as you drop to 0 HP (Core p.9)", () => {
+    const c = make();
+    const s = derive(content, c);
+    startCombat(c, s, content.core, 25, 20);
+    applyDamage(c, s, 100);
+    expect(c.play.combat.actions).toBe(1);
+  });
+
+  it("tracks reactions as 1/round, 1 action each", () => {
+    const c = make();
+    const s = derive(content, c);
+    startCombat(c, s, content.core, 15, 12);
+    endTurn(c, s);
+    expect(checkReaction(c, s, "Defend")).toEqual([]);
+    useReaction(c, s, "Defend");
+    expect(c.play.combat.actions).toBe(2);
+    expect(checkReaction(c, s, "Defend")[0]).toMatch("1/round");
+    endTurn(c, s);
+    expect(checkReaction(c, s, "Defend")).toEqual([]);
+  });
+
+  it("charges 1 more action to Defend in armor you aren't proficient with (Core p.32)", () => {
+    const c = make();
+    c.play.inventory = c.play.inventory.map((i) => (i.itemId === "armor.rusty-mail" ? { ...i, itemId: "armor.cheap-hides", name: "Cheap Hides" } : i));
+    const s = derive(content, c);
+    startCombat(c, s, content.core, 15, 12);
+    useReaction(c, s, "Defend");
+    expect(c.play.combat.actions).toBe(0);
+  });
+
+  it("lets everyone make an Unarmed Strike, but only the proficient can crit with it (Core p.34)", () => {
+    const s = derive(content, make());
+    const unarmed = s.actions.find((a) => a.id === "attack.weapon.unarmed-strike");
+    expect(unarmed?.roll?.formula).toBe("1d4+STR");
+    expect(unarmed?.roll?.canCrit).toBe(false);
+  });
+
+  it("counts any gold up to 500 gp as a slot and 2 potions per slot (Core p.20)", () => {
+    const c = make({ kit: "gold" });
+    c.play.gold = 120;
+    expect(derive(content, c).inventorySlots.used).toBe(1);
+    c.play.gold = 0;
+    const potion = [...content.gear.keys()].find((k) => /potion/.test(k));
+    if (!potion) throw new Error("no potion in gear data");
+    c.play.inventory = [{ itemId: potion, name: "Potion", qty: 3, equipped: false, notes: "" }];
+    expect(derive(content, c).inventorySlots.used).toBe(2);
+  });
+
+  it("has no made-up level-up average for dice the book doesn't list", () => {
+    const c = make();
+    const plan = levelUpPlan(content, c);
+    expect(plan?.average).toBe(7);
   });
 });
