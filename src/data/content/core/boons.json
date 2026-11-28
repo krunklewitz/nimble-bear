@@ -1,0 +1,988 @@
+{
+  "minor": [
+    {
+      "id": "feature.boon.minor.alert",
+      "name": "Alert",
+      "text": "+1 to Initiative.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "initiative",
+          "op": "add",
+          "value": "1"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.bright",
+      "name": "Bright",
+      "text": "+1 max mana.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxMana",
+          "op": "add",
+          "value": "1"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.experienced",
+      "name": "Experienced",
+      "text": "+4 HP.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxHp",
+          "op": "add",
+          "value": "4"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified",
+        "note": "Read “+4 HP” as +4 max HP."
+      }
+    },
+    {
+      "id": "feature.boon.minor.feisty",
+      "name": "Feisty",
+      "text": "+1 max Hit Die.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxHitDice",
+          "op": "add",
+          "value": "1"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.fiery",
+      "name": "Fiery",
+      "text": "+1 damage on crits.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.minor.fiery",
+            "label": "Fiery",
+            "on": "damage",
+            "change": "add",
+            "value": "1",
+            "mode": "auto",
+            "when": {
+              "situation": "This attack crit"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.intrepid",
+      "name": "Intrepid",
+      "text": "+1 Speed.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "speed",
+          "op": "add",
+          "value": "1"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.simple",
+      "name": "Simple",
+      "text": "+1 vs Charm effects.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.minor.simple",
+            "label": "Simple (vs Charm)",
+            "on": "any",
+            "change": "add",
+            "value": "1",
+            "mode": "toggle",
+            "when": {
+              "situation": "Against a Charm effect"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.skilled",
+      "name": "Skilled",
+      "text": "+1 skill point.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Spend the extra skill point by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.minor.stand-tall",
+      "name": "Stand Tall",
+      "text": "+Height (slightly).",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Narrative only: note your extra height by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    }
+  ],
+  "major": [
+    {
+      "id": "feature.boon.major.aggressive",
+      "name": "Aggressive",
+      "text": "On your first round of combat you can spend 1 Action from your next turn.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Track the borrowed action by hand on your first round of combat.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.ancestry-trait",
+      "name": "Ancestry Trait",
+      "text": "Select another Ancestry trait (provided it makes sense).",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Pick the extra Ancestry trait with your GM and apply it by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.battle-hardened",
+      "name": "Battle Hardened",
+      "text": "+2 Defense.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "defense",
+          "op": "add",
+          "value": "2"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.brave",
+      "name": "Brave",
+      "text": "+2 to damage while you have the most enemies adjacent to you.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.major.brave",
+            "label": "Brave",
+            "on": "damage",
+            "change": "add",
+            "value": "2",
+            "mode": "toggle",
+            "when": {
+              "situation": "You have the most enemies adjacent to you"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.expansive-mind",
+      "name": "Expansive Mind",
+      "text": "+4 max mana.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxMana",
+          "op": "add",
+          "value": "4"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.good-patient",
+      "name": "Good Patient",
+      "text": "Whenever you would receive healing, you heal an additional KEY HP.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Add KEY to any healing you receive by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.hardy",
+      "name": "Hardy",
+      "text": "Whenever you increase your max HP, roll with advantage 2 instead.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "When you increase your max HP (e.g. leveling up), roll the Hit Die with advantage 2 by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.honorable-protector",
+      "name": "Honorable Protector",
+      "text": "Gain LVL temp HP whenever you Interpose. Suffer LVL psychic damage whenever an ally within 2 spaces is attacked and you don’t Interpose.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Add the LVL temp HP or LVL psychic damage by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.lionhearted",
+      "name": "Lionhearted",
+      "text": "+2 Defense while you have the most enemies adjacent to you.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "defense",
+          "op": "add",
+          "value": "2",
+          "when": {
+            "situation": "You have the most enemies adjacent to you"
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.natural-talent",
+      "name": "Natural Talent",
+      "text": "Learn any cantrip.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.boon.natural-talent",
+            "prompt": "Learn any cantrip",
+            "count": 1,
+            "from": {
+              "kind": "spell",
+              "tier": "cantrip"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.resilient",
+      "name": "Resilient",
+      "text": "(1/Safe Rest) You are immune to Wounds this turn.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.boon.major.resilient",
+            "name": "Resilient",
+            "kind": "ability",
+            "limit": {
+              "uses": "1",
+              "per": "safeRest"
+            },
+            "text": "(1/Safe Rest) You are immune to Wounds this turn."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Spend the use; don’t mark Wounds for the rest of the turn by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.resolute",
+      "name": "Resolute",
+      "text": "When pushed, you are pushed 1 space less. Whenever you would be knocked Prone, you can instead be moved back 1 space. 1/turn.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Apply the shorter push, or move back 1 space instead of going Prone (1/turn), by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.smart-not-book-smart",
+      "name": "Smart, Not Book Smart",
+      "text": "–KEY max mana. Gain 1d4 mana whenever you roll Initiative; this expires if unused at the end of combat.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxMana",
+          "op": "add",
+          "value": "-KEY"
+        },
+        {
+          "type": "hook",
+          "on": "initiative",
+          "text": "Gain 1d4 mana; this expires if unused at the end of combat."
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "When you roll Initiative, roll 1d4 and add that much mana by hand; remove any unused at the end of combat.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.sniper",
+      "name": "Sniper",
+      "text": "Advantage on attacks when no enemy is adjacent to you; disadvantage otherwise.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.major.sniper-advantage",
+            "label": "Sniper (no enemy adjacent)",
+            "on": "attack",
+            "change": "advantage",
+            "mode": "toggle",
+            "when": {
+              "situation": "No enemy is adjacent to you"
+            }
+          }
+        },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.major.sniper-disadvantage",
+            "label": "Sniper (enemy adjacent)",
+            "on": "attack",
+            "change": "disadvantage",
+            "mode": "toggle",
+            "when": {
+              "situation": "An enemy is adjacent to you"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.stalwart",
+      "name": "Stalwart",
+      "text": "+1 max Hit Die, +2 Might.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxHitDice",
+          "op": "add",
+          "value": "1"
+        },
+        {
+          "type": "modifier",
+          "target": "skill.might",
+          "op": "add",
+          "value": "2"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.tough",
+      "name": "Tough",
+      "text": "Whenever you gain temp HP, gain 5 more.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Add 5 whenever you gain temp HP by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.unflinching",
+      "name": "Unflinching",
+      "text": "Your focus is unbroken even in the face of danger. Advantage on Concentration saves.",
+      "effects": [
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.major.unflinching",
+            "label": "Unflinching",
+            "on": "save",
+            "change": "advantage",
+            "mode": "toggle",
+            "when": {
+              "situation": "Concentration save"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.unnatural-talent",
+      "name": "Unnatural Talent",
+      "text": "Learn any 1 Utility Spell.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.boon.unnatural-talent",
+            "prompt": "Learn any 1 Utility Spell",
+            "count": 1,
+            "from": {
+              "kind": "spell",
+              "tier": "utility"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.unwavering",
+      "name": "Unwavering",
+      "text": "+2 max Hit Dice.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxHitDice",
+          "op": "add",
+          "value": "2"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.major.veteran",
+      "name": "Veteran",
+      "text": "+10 HP.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxHp",
+          "op": "add",
+          "value": "10"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified",
+        "note": "Read “+10 HP” as +10 max HP."
+      }
+    }
+  ],
+  "epic": [
+    {
+      "id": "feature.boon.epic.epic-agility",
+      "name": "Epic Agility",
+      "text": "(1/encounter) Gain 1 action.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.boon.epic.epic-agility",
+            "name": "Epic Agility",
+            "kind": "free",
+            "limit": {
+              "uses": "1",
+              "per": "encounter"
+            },
+            "text": "(1/encounter) Gain 1 action."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Spend the use and take the extra action by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-criticals",
+      "name": "Epic Criticals",
+      "text": "Whenever you roll for critical hit damage, you may replace one die with a d20.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "On crit damage rolls, swap one die for a d20 by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-defense",
+      "name": "Epic Defense",
+      "text": "Your shields gain +3 Defense.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Add +3 Defense by hand while you use a shield.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-foresight",
+      "name": "Epic Foresight",
+      "text": "Gain +5 to Initiative rolls and advantage on your first attack each encounter.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "initiative",
+          "op": "add",
+          "value": "5"
+        },
+        {
+          "type": "rollOption",
+          "option": {
+            "id": "roll.boon.epic.epic-foresight",
+            "label": "Epic Foresight (first attack)",
+            "on": "attack",
+            "change": "advantage",
+            "mode": "toggle",
+            "when": {
+              "situation": "Your first attack this encounter"
+            },
+            "limit": {
+              "uses": "1",
+              "per": "encounter"
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-knowledge",
+      "name": "Epic Knowledge",
+      "text": "(1/Safe Rest) You can call upon a moment of profound insight to gain hidden knowledge about a legendary being or object.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.boon.epic.epic-knowledge",
+            "name": "Epic Knowledge",
+            "kind": "ability",
+            "limit": {
+              "uses": "1",
+              "per": "safeRest"
+            },
+            "text": "(1/Safe Rest) You can call upon a moment of profound insight to gain hidden knowledge about a legendary being or object."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Spend the use; the GM gives the knowledge.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-mana",
+      "name": "Epic Mana",
+      "text": "Whenever you are healed, you may instead recover 1 mana for every 5 HP of healing.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Convert healing to mana (1 per 5 HP) by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-mind",
+      "name": "Epic Mind",
+      "text": "+8 max mana.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "maxMana",
+          "op": "add",
+          "value": "8"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-resistance",
+      "name": "Epic Resistance",
+      "text": "(1/encounter) Whenever you would take damage or fail a save, you don’t.",
+      "effects": [
+        {
+          "type": "grant",
+          "action": {
+            "id": "action.boon.epic.epic-resistance",
+            "name": "Epic Resistance",
+            "kind": "reaction",
+            "limit": {
+              "uses": "1",
+              "per": "encounter"
+            },
+            "text": "(1/encounter) Whenever you would take damage or fail a save, you don’t."
+          }
+        }
+      ],
+      "automation": "partial",
+      "manualNote": "Spend the use and ignore the damage or failed save by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-senses",
+      "name": "Epic Senses",
+      "text": "Gain Blindsight 6.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "Note Blindsight 6 by hand.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-speed",
+      "name": "Epic Speed",
+      "text": "+4 Speed, +4 Initiative.",
+      "effects": [
+        {
+          "type": "modifier",
+          "target": "speed",
+          "op": "add",
+          "value": "4"
+        },
+        {
+          "type": "modifier",
+          "target": "initiative",
+          "op": "add",
+          "value": "4"
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-stamina",
+      "name": "Epic Stamina",
+      "text": "Rolling 4 or higher on a Hit Die during a Field Rest heals 1 Wound.",
+      "effects": [
+        {
+          "type": "text"
+        }
+      ],
+      "automation": "manual",
+      "manualNote": "During a Field Rest, remove 1 Wound by hand for each Hit Die that rolls 4 or higher.",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    },
+    {
+      "id": "feature.boon.epic.epic-stats",
+      "name": "Epic Stats",
+      "text": "Increase 3 different stats by 1.",
+      "effects": [
+        {
+          "type": "choice",
+          "choice": {
+            "id": "choice.boon.epic-stats",
+            "prompt": "Increase 3 different stats by 1",
+            "count": 3,
+            "from": {
+              "kind": "stat",
+              "stats": [
+                "STR",
+                "DEX",
+                "INT",
+                "WIL"
+              ],
+              "amount": 1
+            }
+          }
+        }
+      ],
+      "automation": "full",
+      "source": {
+        "file": "NimbleGMG3.0.pdf",
+        "version": "3.0",
+        "pdfPage": 38,
+        "printedPage": 75,
+        "status": "verified"
+      }
+    }
+  ]
+}

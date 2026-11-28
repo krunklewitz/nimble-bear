@@ -3,6 +3,7 @@
 import ancestries from "./content/core/ancestries.json";
 import armor from "./content/core/armor.json";
 import backgrounds from "./content/core/backgrounds.json";
+import boons from "./content/core/boons.json";
 import conditions from "./content/core/conditions.json";
 import equipmentRules from "./content/core/equipment-rules.json";
 import gear from "./content/core/gear.json";
@@ -125,6 +126,7 @@ export function getContent(): Content {
     weapons,
     gear,
     equipmentRules,
+    boons,
     classes: [cheat, shepherd],
     subclasses: [cheatSubclasses, shepherdSubclasses],
     spells: [radiantSpells, necroticSpells, fireSpells, shepherdSpells],
