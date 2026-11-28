@@ -32,6 +32,9 @@
         ],
         "automation": "manual",
         "manualNote": "When a creature you Sneak Attack dies, mark yourself Invisible by hand; remove it when you attack again or at the beginning of your next turn.",
+        "modifies": [
+          "feature.cheat.sneak-attack"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -147,6 +150,9 @@
         ],
         "automation": "manual",
         "manualNote": "When you Sneak Attack an enemy whose max HP is lower than yours, it dies (GM confirms).",
+        "modifies": [
+          "feature.cheat.sneak-attack"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -208,6 +214,9 @@
         ],
         "automation": "partial",
         "manualNote": "Use only right after a Sneak Attack on a creature not already Taunted by you. Apply the rolled result (Taunted, Prone, Dazed or Incapacitated) to the target by hand.",
+        "modifies": [
+          "feature.cheat.sneak-attack"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -481,6 +490,9 @@
         ],
         "automation": "manual",
         "manualNote": "Noxious Cloud's limit becomes 2/encounter: track the second use by hand. When a creature you Poisoned dies, resolve a Noxious Cloud centred on it.",
+        "modifies": [
+          "action.cheat.serpent.noxious-cloud"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -534,6 +546,9 @@
         ],
         "automation": "partial",
         "manualNote": "The page does not name the All In die's size or define \"average\". Until confirmed, roll the die your GM agrees on and maximize or minimize your Sneak Attack dice by hand.",
+        "modifies": [
+          "feature.cheat.sneak-attack"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -642,6 +657,9 @@
         ],
         "automation": "manual",
         "manualNote": "Reroll the All In die once. Success: add 1 extra maximized Sneak Attack die. Failure: the attack misses and your turn ends.",
+        "modifies": [
+          "feature.cheat.gambler.all-in"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -692,6 +710,9 @@
         ],
         "automation": "manual",
         "manualNote": "That Was Just a Practice Roll becomes 2/encounter (track the second use by hand) and may set the die to any other face instead of rerolling.",
+        "modifies": [
+          "feature.cheat.gambler.that-was-just-a-practice-roll"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -1135,6 +1156,9 @@
           ],
           "automation": "manual",
           "manualNote": "After you Defend, remind the GM that attacks against you this round are rolled with disadvantage.",
+          "modifies": [
+            "reaction.defend"
+          ],
           "source": {
             "file": "TheCheat3.0.pdf",
             "version": "3.0",
@@ -1160,6 +1184,9 @@
           ],
           "automation": "partial",
           "manualNote": "Mark Medium or smaller targets hit by your Opportunity Attacks as Slowed.",
+          "modifies": [
+            "reaction.opportunity-attack"
+          ],
           "source": {
             "file": "TheCheat3.0.pdf",
             "version": "3.0",
@@ -1205,6 +1232,9 @@
           ],
           "automation": "manual",
           "manualNote": "After you Defend against a melee attacker, roll an Opportunity Attack against them.",
+          "modifies": [
+            "reaction.defend"
+          ],
           "source": {
             "file": "TheCheat3.0.pdf",
             "version": "3.0",

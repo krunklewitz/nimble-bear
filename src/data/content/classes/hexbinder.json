@@ -281,6 +281,9 @@
       ],
       "automation": "manual",
       "manualNote": "During a Field Rest, cast Life Bloom without spending mana; you and your target each spend the same number of Hit Dice by hand, and each healed creature regains 10 HP per pair.",
+      "modifies": [
+        "spell.hexbinder.life-bloom"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -481,6 +484,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "action.hexbinder.hex"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -734,6 +740,10 @@
       ],
       "automation": "partial",
       "manualNote": "Your Futuresight Dice now reach 8 spaces instead of 4.",
+      "modifies": [
+        "feature.hexbinder.soothsayer",
+        "feature.hexbinder.sight.soothsayer-savant"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -876,6 +886,9 @@
       ],
       "automation": "manual",
       "manualNote": "Raise the Affliction limit by 1 by hand. Whether this raises the INT cap on different Afflictions or adds an Affliction per Hex/Misery is RQ-020.",
+      "modifies": [
+        "feature.hexbinder.afflictions"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -927,6 +940,10 @@
       ],
       "automation": "manual",
       "manualNote": "When you roll Futuresight Dice, roll each with advantage (roll twice, keep the higher) by hand.",
+      "modifies": [
+        "feature.hexbinder.soothsayer",
+        "feature.hexbinder.sight.soothsayer-savant"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -1022,6 +1039,10 @@
       ],
       "automation": "manual",
       "manualNote": "Your Futuresight Dice are one die size larger (d4 → d6, or one step above whatever size they are now). The sheet still shows the original die.",
+      "modifies": [
+        "feature.hexbinder.soothsayer",
+        "feature.hexbinder.sight.soothsayer-savant"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -1072,6 +1093,9 @@
       ],
       "automation": "manual",
       "manualNote": "Spend 1 mana by hand to use Doomed again in the same encounter.",
+      "modifies": [
+        "feature.hexbinder.afflictions.doomed"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -1136,6 +1160,10 @@
       ],
       "automation": "partial",
       "manualNote": "Hex and Misery apply 1 additional Affliction; track this by hand.",
+      "modifies": [
+        "action.hexbinder.hex",
+        "spell.hexbinder.misery"
+      ],
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -1422,6 +1450,9 @@
         ],
         "automation": "manual",
         "manualNote": "While the pact holds, use max damage instead of rolling for attacks between you and that creature.",
+        "modifies": [
+          "feature.hexbinder.afflictions"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -1470,6 +1501,9 @@
         ],
         "automation": "manual",
         "manualNote": "Once per encounter, when you apply Enfeebled, the target is also Restrained for 1 round.",
+        "modifies": [
+          "feature.hexbinder.afflictions.enfeebled"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -1489,6 +1523,10 @@
         ],
         "automation": "manual",
         "manualNote": "Use the die’s max value against Afflicted targets; when your Afflicted target dies, regain and roll 1 spent Futuresight Die by hand.",
+        "modifies": [
+          "feature.hexbinder.soothsayer",
+          "feature.hexbinder.sight.soothsayer-savant"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",

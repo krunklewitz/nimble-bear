@@ -231,3 +231,11 @@ p.warn { color: var(--pending); }
 .subhead { margin: 8px 0 2px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
 .how { margin: 2px 0 4px; padding-left: 1.1rem; }
 .ability-actions { display: grid; gap: 4px; }
+
+.upgraded { color: var(--primary); font-weight: 800; }
+.upgrades { border-left: 3px solid var(--primary); padding: 2px 0 2px 8px; margin: 6px 0; }
+.upgrades ul { margin: 2px 0; padding-left: 1rem; }
+.upgrades .subhead { margin-top: 0; color: var(--primary); }
+.muted { opacity: 0.75; }
+.reaction-upgrades { margin: 4px 0; }
+.reaction-upgrades > summary { cursor: pointer; }

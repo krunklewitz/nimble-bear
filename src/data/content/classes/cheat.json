@@ -313,6 +313,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "feature.cheat.sneak-attack"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -576,6 +579,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "feature.cheat.sneak-attack"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -654,6 +660,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "feature.cheat.sneak-attack"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -750,6 +759,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "feature.cheat.sneak-attack"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -838,6 +850,9 @@
       ],
       "automation": "partial",
       "manualNote": "Change one Sneak Attack die to the face you want by hand.",
+      "modifies": [
+        "action.cheat.twist-the-blade"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -934,6 +949,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "feature.cheat.sneak-attack"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -1012,6 +1030,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "feature.cheat.sneak-attack"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -1134,6 +1155,9 @@
       ],
       "automation": "partial",
       "manualNote": "When you attack with a blade, use Vicious Opportunist even if the target is not Distracted (turn on its toggle by hand).",
+      "modifies": [
+        "feature.cheat.vicious-opportunist"
+      ],
       "source": {
         "file": "TheCheat3.0.pdf",
         "version": "3.0",
@@ -1177,6 +1201,9 @@
         ],
         "automation": "manual",
         "manualNote": "After a successful Assess: Create an Opening, turn on Vicious Opportunist against that creature by hand (1 minute or until you use it on another target).",
+        "modifies": [
+          "feature.cheat.vicious-opportunist"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -1281,6 +1308,9 @@
         ],
         "automation": "partial",
         "manualNote": "When you Defend, you may halve the damage instead (apply by hand).",
+        "modifies": [
+          "reaction.defend"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",
@@ -1395,6 +1425,10 @@
         ],
         "automation": "manual",
         "manualNote": "Vicious Opportunist works on thrown weapon attacks (turn on its toggle by hand; Twist the Blade can't be used on them). For the extra action, roll the second hit's damage and halve it.",
+        "modifies": [
+          "feature.cheat.vicious-opportunist",
+          "action.cheat.twist-the-blade"
+        ],
         "source": {
           "file": "TheCheat3.0.pdf",
           "version": "3.0",

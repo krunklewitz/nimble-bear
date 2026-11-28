@@ -49,6 +49,9 @@
         ],
         "automation": "manual",
         "manualNote": "Momentum is no longer lost when you take damage: don’t clear it when you are hit (the sheet still clears it on damage). To use the free option, mark 1 Wound and add 10 Momentum by hand.",
+        "modifies": [
+          "feature.zephyr.momentum"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -109,6 +112,9 @@
         ],
         "automation": "manual",
         "manualNote": "Share My Pain can also deal its damage to a 2nd creature within Reach 4.",
+        "modifies": [
+          "feature.zephyr.pain.share-my-pain"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -204,6 +210,9 @@
         ],
         "automation": "manual",
         "manualNote": "When you end Tempered, roll the 1d20 twice and keep the higher.",
+        "modifies": [
+          "feature.zephyr.iron.steel-yourself"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -225,6 +234,9 @@
         ],
         "automation": "manual",
         "manualNote": "Each round choose: Tempered reduces damage by 20 once, or by 10 twice. The first time you would gain a Wound each encounter, set Tempered back to 1.",
+        "modifies": [
+          "feature.zephyr.iron.steel-yourself"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -244,6 +256,9 @@
         ],
         "automation": "manual",
         "manualNote": "Tell the target of your Infuse Strength that they gain Tempered.",
+        "modifies": [
+          "feature.zephyr.infuse-strength"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -263,6 +278,10 @@
         ],
         "automation": "manual",
         "manualNote": "When you spend a Burst of Speed, set Tempered to 1.",
+        "modifies": [
+          "feature.zephyr.iron.steel-yourself",
+          "feature.zephyr.burst-of-speed"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -314,6 +333,9 @@
         ],
         "automation": "manual",
         "manualNote": "Spend 1 Momentum by hand to move a creature within Reach 4 by 1 space.",
+        "modifies": [
+          "feature.zephyr.momentum"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -352,6 +374,9 @@
         ],
         "automation": "manual",
         "manualNote": "Galeforce Strike can be made as an AoE with Reach 1.",
+        "modifies": [
+          "action.zephyr.galeforce-strike"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -390,6 +415,9 @@
         ],
         "automation": "manual",
         "manualNote": "Push the target of an Unarmed Strike STR spaces; mark 1 Wound to double it.",
+        "modifies": [
+          "attack.weapon.unarmed-strike"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -480,6 +508,10 @@
         ],
         "automation": "manual",
         "manualNote": "On an Unarmed Strike crit, the target becomes Smoldering. Against a Smoldering creature you may double Momentum’s effects, which ends Smoldering.",
+        "modifies": [
+          "attack.weapon.unarmed-strike",
+          "feature.zephyr.momentum"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -518,6 +550,10 @@
         ],
         "automation": "manual",
         "manualNote": "Chain Reaction and Exploding Soul may use double Reach.",
+        "modifies": [
+          "feature.zephyr.flame.chain-reaction",
+          "feature.zephyr.flame.exploding-soul"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",

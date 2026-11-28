@@ -32,6 +32,9 @@
         ],
         "automation": "manual",
         "manualNote": "Once per round, when your Lifebinding Spirit attacks, apply the attack to a 2nd adjacent enemy by hand.",
+        "modifies": [
+          "action.shepherd.spirit-harm"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -51,6 +54,9 @@
         ],
         "automation": "manual",
         "manualNote": "Optional: if you choose the deathly form, treat your Lifebinding Spirit’s Harm damage as necrotic instead of radiant (the sheet still shows radiant).",
+        "modifies": [
+          "action.shepherd.spirit-harm"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -117,6 +123,10 @@
         ],
         "automation": "manual",
         "manualNote": "A roll of 1 on your Lifebinding Spirit’s attacks or on Withering Touch also counts as a crit; apply by hand.",
+        "modifies": [
+          "action.shepherd.spirit-harm",
+          "spell.necrotic.withering-touch"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -138,6 +148,9 @@
         ],
         "automation": "partial",
         "manualNote": "When you roll Initiative, restore your Veilwalker’s Blessing use by hand.",
+        "modifies": [
+          "action.shepherd.malice.veilwalkers-blessing"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -188,6 +201,10 @@
         ],
         "automation": "manual",
         "manualNote": "Mend may target creatures that aren’t Dying. While you are Dying, your Lifebinding Spirit can act once per round without spending an action; track this by hand.",
+        "modifies": [
+          "action.shepherd.spirit-mend",
+          "action.shepherd.spirit-harm"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -295,6 +312,9 @@
         ],
         "automation": "partial",
         "manualNote": "Mend may heal 1 additional creature. When you roll Initiative, add 1 Mend use; remove it at the end of combat if it wasn’t spent.",
+        "modifies": [
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -344,6 +364,10 @@
         ],
         "automation": "manual",
         "manualNote": "When you Interpose, you may spend 1 Mend use to have your Lifebinding Spirit Interpose instead; spend the Mend use by hand.",
+        "modifies": [
+          "reaction.interpose",
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -385,6 +409,9 @@
         ],
         "automation": "manual",
         "manualNote": "Your healing spells may give temp HP instead of healing. Once per encounter, use Mend without spending a Mend use (don’t tick it off).",
+        "modifies": [
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -472,6 +499,9 @@
         ],
         "automation": "partial",
         "manualNote": "When your Lifebinding Spirit crits, apply Smoldering to the target by hand.",
+        "modifies": [
+          "action.shepherd.spirit-harm"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -512,6 +542,9 @@
         ],
         "automation": "manual",
         "manualNote": "When your spirit Mends a creature, that creature also gains WIL+STR temp HP and 1 action; apply by hand.",
+        "modifies": [
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -531,6 +564,9 @@
         ],
         "automation": "manual",
         "manualNote": "Double your spirit’s damage against a Smoldering target, then remove Smoldering from it, by hand.",
+        "modifies": [
+          "action.shepherd.spirit-harm"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -550,6 +586,9 @@
         ],
         "automation": "manual",
         "manualNote": "Seasoned Journeyman: Weaponsmith gives +STR+WIL damage and Armorsmith +STR+WIL Defense, and at each Safe Rest you may choose twice; apply by hand.",
+        "modifies": [
+          "feature.shepherd.forge.seasoned-journeyman"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",

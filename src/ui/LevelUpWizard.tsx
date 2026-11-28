@@ -19,7 +19,7 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
   const [moveOn, setMoveOn] = useState(false);
   const [move, setMove] = useState<{ from: string; to: string }>({ from: "", to: "" });
   const [choices, setChoices] = useState<Record<string, string[]>>({});
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState<number | null>(null);
   if (!character) return <p className="screen">Character not found.</p>;
   const sheet = derive(content, character);
   const plan = levelUpPlan(content, character, sheet);
@@ -52,13 +52,13 @@ export function LevelUpWizard({ id, onDone }: { id: string; onDone: () => void }
   const confirm = async () => {
     await library.snapshotBeforeLevelUp(id);
     library.update(id, (d) => applyLevelUp(content, d, plan, input), `Level up to ${plan.level}`);
-    setDone(true);
+    setDone(plan.level);
   };
 
-  if (done) {
+  if (done !== null) {
     return (
       <section className="screen">
-        <h1>Level {plan.level}!</h1>
+        <h1>Level {done}!</h1>
         <p>Save your character file now, so this level is safe on any computer.</p>
         <div className="row">
           <button

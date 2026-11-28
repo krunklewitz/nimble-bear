@@ -233,3 +233,6 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Zephyr | Windborne | Partly | Take 1 extra action every turn (while Dying, you have a max of 2 actions). | Zephyr3.1 p.5 |
 
 225 features listed.
+
+## Feature upgrades on the Combat tab (v0.4.3)
+A feature whose rules text names another ability lists it in `modifies` (feature, spell or action id, `attack.<weapon id>`, or `reaction.<name>`). The Combat tab shows its text under that ability with a ✦ marker, and drops it from Class Abilities unless it has its own buttons or trackers. Links follow what the text names: e.g. Soul Reaper changes the spirit's **Harm** attack (Lifebinding Spirit itself only lets you use Harm and Mend). `tests/rules/upgrades.test.ts` checks every link points at a real id.

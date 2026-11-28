@@ -223,6 +223,13 @@ export const FeatureDef = z
     automation: z.enum(["full", "partial", "manual"]),
     /** What the player does by hand when automation isn't full. */
     manualNote: z.string().optional(),
+    /**
+     * What this feature changes, so its text is shown with that entry on the Combat tab:
+     * feature, spell or action ids, `attack.<weapon id>` for weapon attacks, or `reaction.<name>`
+     * (reaction.defend, reaction.interpose, reaction.opportunity-attack, reaction.help).
+     * Taken only from targets the feature's rules text names.
+     */
+    modifies: z.array(Id).optional(),
     source: SourceRef,
   })
   .strict();

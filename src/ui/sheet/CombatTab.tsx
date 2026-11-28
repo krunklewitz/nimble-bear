@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { getContent } from "../../data/content";
-import type { SheetAction } from "../../rules/derive";
+import type { ActiveFeature, Sheet, SheetAction } from "../../rules/derive";
 import { diceText, toDice } from "../../rules/formula";
-import { combatFeatures, type CombatFeature } from "../../rules/combat";
+import { combatFeatures, reactionId, upgradesFor, type CombatFeature } from "../../rules/combat";
 import { checkReaction, endCombat, endTurn, isAttack, isOffTurn, REACTIONS, reactionCost, startTurn, spendReaction, type Reaction } from "../../rules/play";
 import { SourceTag, signed } from "../common";
 import type { RollTarget } from "../RollDialog";
@@ -36,18 +36,61 @@ export function rollTargetFor(a: SheetAction): RollTarget {
   };
 }
 
+/** Features that change an ability, gathered for several ids (an ability and its actions), without repeats. */
+function upgradesOf(sheet: Sheet, ids: string[]): ActiveFeature[] {
+  const out = new Map<string, ActiveFeature>();
+  for (const id of ids) for (const f of upgradesFor(sheet, id)) if (!ids.includes(f.def.id)) out.set(f.def.id, f);
+  return [...out.values()];
+}
+
+/** Marker after an ability's name when your features change it. */
+function UpgradedMark({ ups }: { ups: ActiveFeature[] }) {
+  if (ups.length === 0) return null;
+  return (
+    <span className="upgraded" title={"Changed by " + ups.map((f) => f.def.name).join(", ")}>
+      {" "}✦
+    </span>
+  );
+}
+
+/** The rules text of every feature that changes this ability, shown with it. */
+function Upgrades({ ups }: { ups: ActiveFeature[] }) {
+  if (ups.length === 0) return null;
+  return (
+    <div className="upgrades">
+      <p className="small subhead">✦ Changed by your features</p>
+      <ul className="small">
+        {ups.map((f) => (
+          <li key={f.def.id}>
+            <strong>
+              {f.def.name}
+              {f.level ? ` (level ${f.level})` : ""}.
+            </strong>{" "}
+            {f.def.text}
+            {f.def.automation !== "full" && f.def.manualNote ? <span className="muted"> ✋ {f.def.manualNote}</span> : null}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 /** Combat-relevant features: what each does, how the sheet handles it, and Use buttons for its actions. */
-function AbilityRows({ items, onRoll }: { items: CombatFeature[]; onRoll: (t: RollTarget) => void }) {
+function AbilityRows({ sheet, items, onRoll }: { sheet: Sheet; items: CombatFeature[]; onRoll: (t: RollTarget) => void }) {
   return (
     <ul className="rows">
       {items.map((x) => {
         const uses = [...x.actions, ...x.attacks].find((a) => a.limit)?.limit;
+        const ups = upgradesOf(sheet, [x.feature.def.id, ...x.actions.map((a) => a.id)]);
         const tag = x.how.some((h) => /automatically/.test(h)) ? "auto" : x.how.some((h) => /roll window/.test(h)) ? "toggle" : x.feature.def.automation === "manual" ? "by hand" : "";
         return (
           <li key={x.feature.def.id} className="row-item ability">
             <details>
               <summary>
-                <span className="row-name">{x.feature.def.name}</span>
+                <span className="row-name">
+                  {x.feature.def.name}
+                  <UpgradedMark ups={ups} />
+                </span>
                 <span className="row-meta">
                   {tag}
                   {uses ? " · " + Math.max(0, uses.max - uses.used) + "/" + uses.max : ""}
@@ -63,6 +106,7 @@ function AbilityRows({ items, onRoll }: { items: CombatFeature[]; onRoll: (t: Ro
               )}
               <p className="small feature-text">{x.feature.def.text}</p>
               {x.feature.def.manualNote && <p className="small">✋ {x.feature.def.manualNote}</p>}
+              <Upgrades ups={ups} />
               {x.attacks.length > 0 && <p className="small">Its attacks are under Attacks: {x.attacks.map((a) => a.name).join(", ")}.</p>}
               <SourceTag source={x.feature.def.source} />
             </details>
@@ -178,11 +222,11 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
           <span className="row-meta">{classAbilities.length}</span>
         </summary>
         {classAbilities.length === 0 && <p className="small">No combat abilities yet.</p>}
-        <AbilityRows items={classAbilities.filter((x) => x.feature.source !== "ancestry" && x.feature.source !== "background")} onRoll={onRoll} />
+        <AbilityRows sheet={sheet} items={classAbilities.filter((x) => x.feature.source !== "ancestry" && x.feature.source !== "background")} onRoll={onRoll} />
         {classAbilities.some((x) => x.feature.source === "ancestry" || x.feature.source === "background") && (
           <>
             <p className="small subhead">From ancestry &amp; background</p>
-            <AbilityRows items={classAbilities.filter((x) => x.feature.source === "ancestry" || x.feature.source === "background")} onRoll={onRoll} />
+            <AbilityRows sheet={sheet} items={classAbilities.filter((x) => x.feature.source === "ancestry" || x.feature.source === "background")} onRoll={onRoll} />
           </>
         )}
       </details>
@@ -194,11 +238,16 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
           <span className="row-meta">{attacks.length}</span>
         </summary>
       <ul className="rows">
-        {attacks.map((a) => (
+        {attacks.map((a) => {
+          const ups = upgradesOf(sheet, [a.id]);
+          return (
             <li key={a.id} className="row-item">
               <details>
                 <summary>
-                  <span className="row-name">{a.name}</span>
+                  <span className="row-name">
+                    {a.name}
+                    <UpgradedMark ups={ups} />
+                  </span>
                   <span className="row-meta">
                     {a.roll ? diceText(a.roll.dice) : ""}
                     {a.actions !== undefined ? ` · ${a.actions}◆` : ""}
@@ -210,12 +259,14 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
                   {a.range ? `Range ${a.range}. ` : ""}
                   {a.text}
                 </p>
+                <Upgrades ups={ups} />
               </details>
               <button type="button" className="roll-btn" onClick={() => onRoll(rollTargetFor(a))}>
                 {a.roll ? "Roll" : "Use"}
               </button>
             </li>
-          ))}
+          );
+        })}
       </ul>
       </details>
 
@@ -237,14 +288,27 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
       <div className="reaction-grid">
         {REACTIONS.map((r) => {
           const used = combat.reactionsUsed.includes(r);
+          const ups = upgradesOf(sheet, [reactionId(r)]);
           return (
             <button key={r} type="button" className={`reaction ${used ? "used" : ""}`} title={REACTION_TEXT[r]} onClick={() => react(r)}>
-              <strong>{r}</strong>
+              <strong>
+                {r}
+                <UpgradedMark ups={ups} />
+              </strong>
               <span className="small">{used ? "used this round" : `${reactionCost(sheet, r)}◆`}</span>
             </button>
           );
         })}
       </div>
+      {REACTIONS.map((r) => {
+        const ups = upgradesOf(sheet, [reactionId(r)]);
+        return ups.length > 0 ? (
+          <details key={r} className="reaction-upgrades">
+            <summary className="small">✦ {r}: changed by {ups.map((f) => f.def.name).join(", ")}</summary>
+            <Upgrades ups={ups} />
+          </details>
+        ) : null;
+      })}
       </details>
 
       {/* Spells */}
@@ -272,11 +336,15 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
               const action = spellAction(s.def.id);
               if (!action) return null;
               const extra = upcast[s.def.id] ?? 0;
+              const ups = upgradesOf(sheet, [s.def.id]);
               return (
                 <li key={s.def.id} className="row-item">
                   <details>
                     <summary>
-                      <span className="row-name">{s.def.name}</span>
+                      <span className="row-name">
+                        {s.def.name}
+                        <UpgradedMark ups={ups} />
+                      </span>
                       <span className="row-meta">
                         {s.def.tier === 0 ? "cantrip" : s.def.tier === "utility" ? "utility" : `T${s.def.tier} · ${s.cost + extra} mana`}
                         {s.def.actions !== undefined ? ` · ${s.def.actions}◆` : ` · ${s.def.castingTime ?? ""}`}
@@ -286,6 +354,7 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
                     <p className="small">{s.def.text}</p>
                     {s.def.upcast && <p className="small"><strong>Upcast:</strong> {s.def.upcast}</p>}
                     {s.def.highLevels && <p className="small"><strong>High Levels:</strong> {s.def.highLevels}</p>}
+                    <Upgrades ups={ups} />
                     {tierNum > 0 && s.def.upcast && sheet.spells.maxTier > tierNum && (
                       <label className="small">
                         Upcast with +

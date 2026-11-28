@@ -306,6 +306,10 @@
       ],
       "automation": "manual",
       "manualNote": "Before an Unarmed Strike, spend Momentum by hand; roll with 1 advantage for every 2 Momentum spent.",
+      "modifies": [
+        "feature.zephyr.momentum",
+        "attack.weapon.unarmed-strike"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -327,6 +331,9 @@
       ],
       "automation": "partial",
       "manualNote": "When you gain a Wound, add 1 Burst of Speed by hand.",
+      "modifies": [
+        "feature.zephyr.burst-of-speed"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -404,6 +411,9 @@
       ],
       "automation": "manual",
       "manualNote": "When a Primary Die is rolled against you while unarmored, spend Momentum by hand; it counts as 1 lower for every 2 Momentum spent.",
+      "modifies": [
+        "feature.zephyr.momentum"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -514,6 +524,9 @@
       ],
       "automation": "manual",
       "manualNote": "If you have no actions left and haven’t attacked this turn, use Galeforce Strike without spending an action.",
+      "modifies": [
+        "action.zephyr.galeforce-strike"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -533,6 +546,9 @@
       ],
       "automation": "manual",
       "manualNote": "Spend Hit Dice by hand, roll them and add them to the Unarmed Strike’s total; heal the target for the total instead of dealing damage.",
+      "modifies": [
+        "attack.weapon.unarmed-strike"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -572,6 +588,9 @@
         }
       ],
       "automation": "full",
+      "modifies": [
+        "action.zephyr.galeforce-strike"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -775,6 +794,9 @@
       ],
       "automation": "manual",
       "manualNote": "Each Momentum spent on a melee attack adds 2 damage instead of 1.",
+      "modifies": [
+        "feature.zephyr.momentum"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -885,6 +907,9 @@
       ],
       "automation": "partial",
       "manualNote": "When you roll Initiative, add 10 Momentum by hand.",
+      "modifies": [
+        "feature.zephyr.momentum"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -1126,6 +1151,9 @@
       ],
       "automation": "partial",
       "manualNote": "Take 1 extra action every turn (while Dying, you have a max of 2 actions).",
+      "modifies": [
+        "feature.zephyr.burst-of-speed"
+      ],
       "source": {
         "file": "Zephyr3.1.pdf",
         "version": "3.1",
@@ -1149,6 +1177,9 @@
         ],
         "automation": "manual",
         "manualNote": "Move the willing creature by hand to a space adjacent to or along your Windstep path.",
+        "modifies": [
+          "action.zephyr.windstep"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -1264,6 +1295,9 @@
         ],
         "automation": "manual",
         "manualNote": "Once per turn, after a melee attack where you spent no Momentum, add DEX Momentum by hand.",
+        "modifies": [
+          "feature.zephyr.momentum"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",
@@ -1302,6 +1336,10 @@
         ],
         "automation": "manual",
         "manualNote": "When you Interpose, roll a free Unarmed Strike against the enemy first.",
+        "modifies": [
+          "reaction.interpose",
+          "attack.weapon.unarmed-strike"
+        ],
         "source": {
           "file": "Zephyr3.1.pdf",
           "version": "3.1",

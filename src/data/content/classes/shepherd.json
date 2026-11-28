@@ -430,6 +430,9 @@
       ],
       "automation": "manual",
       "manualNote": "Instead of attacking with your Lifebinding Spirit this round, roll its Harm damage and add it to one of your melee weapon attacks by hand.",
+      "modifies": [
+        "action.shepherd.spirit-harm"
+      ],
       "source": {
         "file": "Shepherd3.0.pdf",
         "version": "3.0",
@@ -1121,6 +1124,10 @@
       ],
       "automation": "partial",
       "manualNote": "Your Lifebinding Spirit rolls twice as many dice; double the dice of its Harm and Mend rolls by hand (the sheet doesn’t change them).",
+      "modifies": [
+        "action.shepherd.spirit-harm",
+        "action.shepherd.spirit-mend"
+      ],
       "source": {
         "file": "Shepherd3.0.pdf",
         "version": "3.0",
@@ -1162,6 +1169,10 @@
         ],
         "automation": "manual",
         "manualNote": "Your Lifebinding Spirit can cast the Entice (spell.necrotic.entice) and Withering Touch (spell.necrotic.withering-touch) cantrips; cast them through the spirit by hand.",
+        "modifies": [
+          "spell.necrotic.entice",
+          "spell.necrotic.withering-touch"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -1182,6 +1193,10 @@
         ],
         "automation": "manual",
         "manualNote": "Add +STR to your Lifebinding Spirit’s Harm damage against Undead, and +WIL to its healing (Mend), by hand.",
+        "modifies": [
+          "action.shepherd.spirit-harm",
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -1202,6 +1217,9 @@
         ],
         "automation": "manual",
         "manualNote": "When your spirit’s damage die shows 6 or higher, the next attack against that target has advantage; apply it by hand.",
+        "modifies": [
+          "action.shepherd.spirit-harm"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -1222,6 +1240,10 @@
         ],
         "automation": "manual",
         "manualNote": "Your spirit’s Reach becomes 8 (4 + 4); the Harm and Mend actions on the sheet still show Reach 4. When you summon it, it may act once without spending an action.",
+        "modifies": [
+          "action.shepherd.spirit-harm",
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -1242,6 +1264,9 @@
         ],
         "automation": "manual",
         "manualNote": "After you Mend a creature, for 1 round attacks against it have disadvantage and its attacks have advantage; apply by hand.",
+        "modifies": [
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",
@@ -1267,6 +1292,10 @@
         ],
         "automation": "partial",
         "manualNote": "Your spirit can cast Heal (spell.radiant.heal); cast it through the spirit by hand. When you roll Initiative, add 1 Mend use; remove it at the end of combat if it wasn’t spent.",
+        "modifies": [
+          "spell.radiant.heal",
+          "action.shepherd.spirit-mend"
+        ],
         "source": {
           "file": "Shepherd3.0.pdf",
           "version": "3.0",

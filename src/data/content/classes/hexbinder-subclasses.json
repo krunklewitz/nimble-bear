@@ -89,6 +89,9 @@
         ],
         "automation": "partial",
         "manualNote": "Pestilent is added to your known Afflictions. If you already knew Pestilent, choose a different Affliction (Hexbinder FAQ). Doubling or halving its Reach is by hand.",
+        "modifies": [
+          "feature.hexbinder.afflictions.pestilent"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -109,6 +112,10 @@
         ],
         "automation": "manual",
         "manualNote": "When you apply Enfeebled, also Daze the target. Doomed can be used twice per encounter.",
+        "modifies": [
+          "feature.hexbinder.afflictions.enfeebled",
+          "feature.hexbinder.afflictions.doomed"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -218,6 +225,10 @@
         ],
         "automation": "partial",
         "manualNote": "Add the gained Futuresight Die (roll it) to your Futuresight Dice by hand.",
+        "modifies": [
+          "feature.hexbinder.soothsayer",
+          "feature.hexbinder.sight.soothsayer-savant"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -238,6 +249,11 @@
         ],
         "automation": "manual",
         "manualNote": "When you spend a Futuresight Die on a Hex roll, double its value by hand.",
+        "modifies": [
+          "feature.hexbinder.soothsayer",
+          "feature.hexbinder.sight.soothsayer-savant",
+          "action.hexbinder.hex"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -257,6 +273,10 @@
         ],
         "automation": "manual",
         "manualNote": "Add 1 more Futuresight Die each encounter and use one die size larger (d4 → d6); the sheet still shows the base number and size.",
+        "modifies": [
+          "feature.hexbinder.soothsayer",
+          "feature.hexbinder.sight.soothsayer-savant"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -286,6 +306,9 @@
           }
         ],
         "automation": "full",
+        "modifies": [
+          "action.hexbinder.consult-the-bones"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -306,6 +329,10 @@
         ],
         "automation": "manual",
         "manualNote": "Once per encounter, after you turn an attack into a crit or a miss, roll and gain one Futuresight Die by hand.",
+        "modifies": [
+          "feature.hexbinder.soothsayer",
+          "feature.hexbinder.sight.soothsayer-savant"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -357,6 +384,9 @@
         ],
         "automation": "manual",
         "manualNote": "Add 10 temp HP when you apply an Affliction. Once per encounter, when you cast Life Bloom, deal damage equal to the target’s healing to an enemy (ignoring armor).",
+        "modifies": [
+          "spell.hexbinder.life-bloom"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -417,6 +447,9 @@
         ],
         "automation": "manual",
         "manualNote": "Spend the extra mana, give the temp HP and remove conditions by hand.",
+        "modifies": [
+          "feature.hexbinder.blooms.siphon-essence"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -436,6 +469,9 @@
         ],
         "automation": "manual",
         "manualNote": "Life Bloom heals 20 HP instead of 10 (and Rite of Mending’s per-pair healing is doubled); apply by hand.",
+        "modifies": [
+          "spell.hexbinder.life-bloom"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -456,6 +492,9 @@
         ],
         "automation": "manual",
         "manualNote": "Your Herbal Elixir removes KEY Wounds instead of 2.",
+        "modifies": [
+          "feature.hexbinder.blooms.parsley-sage"
+        ],
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
