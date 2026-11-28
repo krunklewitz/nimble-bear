@@ -217,3 +217,7 @@ p.warn { color: var(--pending); }
 
 .vital-btn { padding: 2px 6px; border-radius: 6px; }
 .wound-pips { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+
+.spell-group { border: 1px solid var(--paper); border-radius: 8px; margin: 6px 0; padding: 0 8px; }
+.spell-group > summary { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-weight: 700; cursor: pointer; }
+.spell-group[open] > summary { border-bottom: 1px solid var(--paper); }

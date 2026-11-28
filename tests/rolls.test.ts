@@ -97,3 +97,18 @@ describe("Initiative advantage (audit)", () => {
     expect(r.kind === "d20" && r.result.dice.length).toBe(2);
   });
 });
+
+describe("spell groups", () => {
+  it("orders Cantrips, then each Tier, then Utility, skipping empty groups", async () => {
+    const { spellGroups } = await import("../src/ui/sheet/CombatTab");
+    const s = (tier: number | "utility") => ({ def: { tier } });
+    const groups = spellGroups([s(2), s(0), s("utility"), s(1), s(0)]);
+    expect(groups.map((g) => [g.label, g.spells.length])).toEqual([
+      ["Cantrips", 2],
+      ["Tier 1", 1],
+      ["Tier 2", 1],
+      ["Utility spells", 1],
+    ]);
+    expect(spellGroups([s(0)]).map((g) => g.label)).toEqual(["Cantrips"]);
+  });
+});

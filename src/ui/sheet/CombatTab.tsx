@@ -14,6 +14,17 @@ const REACTION_TEXT: Record<Reaction, string> = {
   Help: "Allow an ally to reroll if you can reasonably explain how you could help them.",
 };
 
+/** Known spells grouped as Cantrips, Tier 1, Tier 2, … and Utility spells (in that order). */
+export function spellGroups<T extends { def: { tier: number | "utility" } }>(spells: T[]): { key: string; label: string; cost: number; spells: T[] }[] {
+  const tiers = [...new Set(spells.map((s) => s.def.tier).filter((t): t is number => typeof t === "number" && t > 0))].sort((a, b) => a - b);
+  const groups = [
+    { key: "cantrip", label: "Cantrips", cost: 0, spells: spells.filter((s) => s.def.tier === 0) },
+    ...tiers.map((t) => ({ key: `tier-${t}`, label: `Tier ${t}`, cost: t, spells: spells.filter((s) => s.def.tier === t) })),
+    { key: "utility", label: "Utility spells", cost: 0, spells: spells.filter((s) => s.def.tier === "utility") },
+  ];
+  return groups.filter((g) => g.spells.length > 0);
+}
+
 export function rollTargetFor(a: SheetAction): RollTarget {
   return {
     kind: a.roll?.kind === "heal" ? "heal" : a.roll ? "attack" : "plain",
@@ -170,8 +181,17 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
           <p className="small">
             {sheet.mana ? `Mana ${sheet.mana.current}/${sheet.mana.max} · ` : ""}Highest tier {Math.max(0, sheet.spells.maxTier)} · {sheet.spells.schools.join(", ")}
           </p>
+          {spellGroups(sheet.spells.known).map((g) => (
+            <details key={g.key} className="spell-group" open={g.key === "cantrip"}>
+              <summary>
+                <span>{g.label}</span>
+                <span className="row-meta">
+                  {g.spells.length} spell{g.spells.length === 1 ? "" : "s"}
+                  {g.cost ? ` · ${g.cost} mana` : ""}
+                </span>
+              </summary>
           <ul className="rows">
-            {sheet.spells.known.map((s) => {
+            {g.spells.map((s) => {
               const tierNum = typeof s.def.tier === "number" ? s.def.tier : 0;
               const action = spellAction(s.def.id);
               if (!action) return null;
@@ -213,6 +233,8 @@ export function CombatTab({ sheet, character, update, onRoll }: TabProps) {
               );
             })}
           </ul>
+            </details>
+          ))}
         </>
       )}
 
