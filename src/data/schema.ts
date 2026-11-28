@@ -125,6 +125,8 @@ export const ChoiceDef = z
       z.object({ kind: z.literal("spell"), school: Id.optional(), tier: z.union([z.literal("utility"), z.literal("cantrip"), z.number().int().min(1).max(9)]) }).strict(),
       z.object({ kind: z.literal("size"), sizes: z.array(z.enum(["tiny", "small", "medium", "large", "huge", "gargantuan"])).min(1) }).strict(),
       z.object({ kind: z.literal("skillPoints"), amount: z.number().int() }).strict(),
+      /** Pick a spell school (e.g. Hexbinder Coven: "Choose 1 spell school a close ally knows"). */
+      z.object({ kind: z.literal("school"), schools: z.array(Id).optional() }).strict(),
       z.object({ kind: z.literal("text") }).strict(),
     ]),
   })
@@ -155,6 +157,7 @@ type EffectT =
   | { type: "spells"; schools?: string[] | undefined; list?: string | undefined; maxTier?: number | undefined; cantrips?: boolean | undefined; extra?: string[] | undefined; utility?: "all" | undefined; replaceSchool?: { from: string; to: string } | undefined }
   | { type: "rollOption"; option: z.infer<typeof RollOptionDef> }
   | { type: "replace"; features: string[]; with?: string[] | undefined }
+  | { type: "replacePool"; from: string; to: string; except?: string[] | undefined }
   | { type: "proficiency"; armor?: string[] | undefined; shields?: boolean | undefined; weapons?: string[] | undefined; languages?: string[] | undefined; unarmedCrit?: boolean | undefined }
   | { type: "hook"; on: z.infer<typeof Trigger>; text: string; handler?: string | undefined }
   | { type: "handler"; name: string }
@@ -182,6 +185,8 @@ export const Effect: z.ZodType<EffectT> = z.lazy(() =>
       .strict(),
     z.object({ type: z.literal("rollOption"), option: RollOptionDef }).strict(),
     z.object({ type: z.literal("replace"), features: z.array(Id).min(1), with: z.array(Id).optional() }).strict(),
+    /** Choices from pool `from` offer pool `to` instead (Honorseeker: Honorable Gambits for Underhanded Abilities); `except` lists choice ids left alone. */
+    z.object({ type: z.literal("replacePool"), from: Id, to: Id, except: z.array(Id).optional() }).strict(),
     z
       .object({
         type: z.literal("proficiency"),
@@ -426,6 +431,16 @@ export const CoreRulesDef = z
   })
   .strict();
 export type CoreRulesDefT = z.infer<typeof CoreRulesDef>;
+
+/** Boons (GMG p.75): Minor, Major and Epic. Every class gets an Epic Boon at level 19. Pool ids: boons.minor, boons.major, boons.epic. */
+export const BoonsDef = z
+  .object({
+    minor: z.array(FeatureDef),
+    major: z.array(FeatureDef),
+    epic: z.array(FeatureDef),
+  })
+  .strict();
+export type BoonsDefT = z.infer<typeof BoonsDef>;
 
 export type SourceRefT = z.infer<typeof SourceRef>;
 export type FeatureDefT = z.infer<typeof FeatureDef>;

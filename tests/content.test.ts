@@ -11,6 +11,7 @@ import {
   ClassDef,
   ConditionDef,
   EquipmentRuleDef,
+  BoonsDef,
   CoreRulesDef,
   GearDef,
   ShieldDef,
@@ -33,6 +34,7 @@ function schemaFor(rel: string): z.ZodType | null {
   if (p === "core/weapons.json") return WeaponDef.array();
   if (p === "core/gear.json") return GearDef.array();
   if (p === "core/equipment-rules.json") return EquipmentRuleDef.array();
+  if (p === "core/boons.json") return BoonsDef;
   if (/^spells\/[a-z-]+\.json$/.test(p)) return SpellDef.array();
   if (/^classes\/[a-z-]+-subclasses\.json$/.test(p)) return SubclassDef.array();
   if (/^classes\/[a-z-]+\.json$/.test(p)) return ClassDef;
@@ -111,7 +113,9 @@ describe("content cross-references", () => {
         const all = new Set([...own, ...(classFile?.features.map((x) => x.id) ?? [])]);
         for (const [lvl, ids] of Object.entries(entry.levels)) for (const id of ids) expect(own.has(id), `${f.rel}: level ${lvl} lists unknown feature ${id}`).toBe(true);
         for (const g of entry.startingGear ?? []) expect(itemIds.has(g.id), `${f.rel}: starting gear ${g.id} not in equipment data`).toBe(true);
-        const pools = new Set([...Object.keys(entry.optionPools ?? {}), ...Object.keys(classFile?.optionPools ?? {})]);
+        const pools = new Set([...Object.keys(entry.optionPools ?? {}), ...Object.keys(classFile?.optionPools ?? {}), "boons.minor", "boons.major", "boons.epic"]);
+        // Subclass pools are visible to class choices that a subclass redirects (replacePool).
+        for (const sub of files.filter((x) => x.rel === f.rel.replace(".json", "-subclasses.json"))) for (const sc of load(sub.rel) as { optionPools?: Record<string, unknown> }[]) for (const k of Object.keys(sc.optionPools ?? {})) pools.add(k);
         for (const feat of [...entry.features, ...Object.values(entry.optionPools ?? {}).flat()]) {
           for (const e of nestedEffects(feat.effects)) {
             if (e.type === "replace") for (const id of e.features) expect(all.has(id), `${feat.id}: replaces unknown ${id}`).toBe(true);

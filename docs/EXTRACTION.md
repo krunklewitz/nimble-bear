@@ -73,3 +73,16 @@ Spell layout: each spell has a header line (tier or CANTRIP, optional AOE), name
 
 ## Report back
 List: files written, entry count, every `unverified` entry and why, every effect you chose not to automate, and questions for the rules owner. Run `npx vitest run tests/content.test.ts` and include the result for your files.
+
+## Phase 4 conventions (levels 4–20, option pools, boons)
+- **Level tables 1–20:** `levels["4"]`…`levels["20"]` list every printed feature id in order. Repeats get a suffix: "Underhanded Ability (2)" → `feature.cheat.underhanded-ability-2`.
+- **Option pools** (Underhanded Abilities, Sacred Graces, Afflictions, Mystic Marks, Martial Arts Abilities, Honorable Gambits): each option is a FeatureDef inside `optionPools["<class>.<pool>"]` on the class (or subclass, for subclass-only pools like Honorable Gambits). Pool ids: `cheat.underhanded`, `cheat.honorable-gambits`, `shepherd.sacred-graces`, `hexbinder.afflictions`, `hexbinder.mystic-marks`, `zephyr.martial-arts`. Option ids: `feature.<class>.<pool-short>.<slug>`, e.g. `feature.cheat.underhanded.misdirection`.
+- **Picking from a pool:** the level feature ("Underhanded Ability. Choose an Underhanded Ability." / "(2). Choose a 2nd …") has a `choice` with `from: { kind: "pool", pool: "<pool id>" }`, `count: 1` (or the number printed). Choice id: `choice.<class>.<feature-slug>`, e.g. `choice.cheat.underhanded-ability-2`. Options already picked are hidden by the engine; don't repeat them.
+- **Options granted outright** ("You know the Withered and Frenzied Afflictions") → `choice` is NOT used; give the feature a `text` effect and list the granted option ids in `manualNote`, or, better, use a `spells`-style grant: put them as a `choice` of kind `options` only if the player chooses. If unsure, `text` + note.
+- **Stat increases:** "Key Stat Increase. +1 DEX or INT." → `choice` `{ kind: "stat", stats: ["DEX","INT"], amount: 1 }`, count 1, id `choice.<class>.key-stat-<level>`. "Secondary Stat Increase. +1 WIL or STR." → same with the secondary stats, id `choice.<class>.secondary-stat-<level>`. "+1 to any 2 of your stats" → `stats: ["STR","DEX","INT","WIL"]`, `count: 2`, id `choice.<class>.capstone-stats`.
+- **Epic Boon** (level 19): `choice` `{ kind: "pool", pool: "boons.epic" }`, count 1, id `choice.<class>.epic-boon`.
+- **Subclass features at 7/11/15:** `subclass.levels["7"]` etc. Class level-table "Subclass. Gain your … subclass feature." lines are class features with a `text` effect (the engine adds the subclass's own features at that level).
+- **Pool swaps** (Honorseeker: "For every Underhanded Ability you would have (except for your Old Habits…), choose an Honorable Gambit instead") → effect `{ type: "replacePool", from: "cheat.underhanded", to: "cheat.honorable-gambits", except: ["choice.cheat.honorseeker.old-habits"] }`.
+- **Class spell lists** (Hexbinder): spells go in `spells/hexbinder.json` with `school: "hexbinder"`; tier unlock features use `{ type: "spells", list: "hexbinder", maxTier: N }`.
+- **Choosing a spell school** (Hexbinder Coven): `choice` `{ kind: "school" }` (optionally `schools: [...]`).
+- **Upgraded Cantrips / scaling text** stays `text`; the cantrip's own `highLevels` line describes it.
