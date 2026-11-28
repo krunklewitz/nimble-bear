@@ -1,6 +1,6 @@
 # Progress
 
-## Current: Phase 4 built (v0.4.1); waiting for the Owlbear gate test
+## Current: Phase 4 built (v0.4.6, incl. Combat tab sections, feature upgrades, combat-only resources start empty); Owlbear gate test in progress
 
 ### Phase 0 (Plan), done 2026-11-26
 - Setup check: Windows 11 Home. Installed Git 2.56.1, Node 26.13.1 LTS / npm 11.20.0, Poppler 26.09.0, qpdf 12.4.2 (winget). Target browser: desktop Chrome 158.
