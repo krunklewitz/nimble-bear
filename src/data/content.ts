@@ -4,6 +4,7 @@ import ancestries from "./content/core/ancestries.json";
 import armor from "./content/core/armor.json";
 import backgrounds from "./content/core/backgrounds.json";
 import conditions from "./content/core/conditions.json";
+import equipmentRules from "./content/core/equipment-rules.json";
 import gear from "./content/core/gear.json";
 import rules from "./content/core/rules.json";
 import shields from "./content/core/shields.json";
@@ -23,6 +24,7 @@ import {
   ClassDef,
   ConditionDef,
   CoreRulesDef,
+  EquipmentRuleDef,
   GearDef,
   ShieldDef,
   SpellDef,
@@ -34,6 +36,7 @@ import {
   type ClassDefT,
   type ConditionDefT,
   type CoreRulesDefT,
+  type EquipmentRuleDefT,
   type GearDefT,
   type ShieldDefT,
   type SpellDefT,
@@ -52,6 +55,7 @@ export interface Content {
   shields: Map<string, ShieldDefT>;
   weapons: Map<string, WeaponDefT>;
   gear: Map<string, GearDefT>;
+  equipmentRules: EquipmentRuleDefT[];
   spells: Map<string, SpellDefT>;
   /** Content versions, recorded in saved characters. */
   versions: Record<string, string>;
@@ -69,6 +73,7 @@ export function buildContent(raw: {
   shields: unknown;
   weapons: unknown;
   gear: unknown;
+  equipmentRules?: unknown;
   classes: unknown[];
   subclasses: unknown[];
   spells: unknown[];
@@ -83,6 +88,7 @@ export function buildContent(raw: {
     shields: byId(ShieldDef.array().parse(raw.shields)),
     weapons: byId(WeaponDef.array().parse(raw.weapons)),
     gear: byId(GearDef.array().parse(raw.gear)),
+    equipmentRules: EquipmentRuleDef.array().parse(raw.equipmentRules ?? []),
     classes: byId(classes),
     subclasses: byId(raw.subclasses.flatMap((s) => SubclassDef.array().parse(s))),
     spells: byId(raw.spells.flatMap((s) => SpellDef.array().parse(s))),
@@ -103,6 +109,7 @@ export function getContent(): Content {
     shields,
     weapons,
     gear,
+    equipmentRules,
     classes: [cheat, shepherd],
     subclasses: [cheatSubclasses, shepherdSubclasses],
     spells: [radiantSpells, necroticSpells, fireSpells, shepherdSpells],
