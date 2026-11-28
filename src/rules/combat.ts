@@ -19,7 +19,15 @@ export interface CombatFeature {
   resources: SheetResource[];
   /** One-line summary of how the sheet uses it. */
   how: string[];
+  /**
+   * Set when the feature only gives you this one ability (e.g. My Buddy! gives Mend; its Harm
+   * attack is under Attacks): the Combat tab shows the ability itself instead of the feature.
+   */
+  single?: SheetAction;
 }
+
+/** Effects that just hand over abilities (and the resource they spend), with no rule of their own. */
+const WRAPPER_EFFECTS = new Set<Effect["type"]>(["spells", "grant", "resource", "text"]);
 
 const COMBAT_TEXT = /\b(attacks?|attacking|damage|crits?|Initiative|Defend(ing)?|Interpose|actions?|reactions?|encounters?|combat|round|turn|Dying|Wounds?|Defense|advantage|disadvantage|Reach|Range|Momentum|Burst)\b/i;
 const COMBAT_TARGETS = /^(defense|initiative|speed|damage\.|var\.|maxWounds|saveDc)/;
@@ -90,7 +98,12 @@ export function combatFeatures(sheet: Sheet): CombatFeature[] {
       else how.push(`${o.label}: apply by hand`);
     }
     if (f.def.automation === "manual" && how.length === 0) how.push("Apply by hand");
-    out.push({ feature: f, actions: granted.filter((a) => !isAttack(a)), attacks: granted.filter((a) => isAttack(a)), options, resources, how });
+    const actions = granted.filter((a) => !isAttack(a));
+    const item: CombatFeature = { feature: f, actions, attacks: granted.filter((a) => isAttack(a)), options, resources, how };
+    const only = actions.length === 1 ? actions[0] : undefined;
+    // Its resources must be what that ability spends (Mend's uses), or the feature is more than a wrapper.
+    if (only && effects.every((e) => WRAPPER_EFFECTS.has(e.type)) && resources.every((r) => only.resourceCost?.id === r.def.id)) item.single = only;
+    out.push(item);
   }
 
   // A feature that only changes another ability moves under that ability when the Combat tab shows it.

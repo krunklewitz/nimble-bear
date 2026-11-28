@@ -67,7 +67,6 @@ function Upgrades({ ups }: { ups: ActiveFeature[] }) {
               {f.level ? ` (level ${f.level})` : ""}.
             </strong>{" "}
             {f.def.text}
-            {f.def.automation !== "full" && f.def.manualNote ? <span className="muted"> ✋ {f.def.manualNote}</span> : null}
           </li>
         ))}
       </ul>
@@ -82,6 +81,38 @@ function AbilityRows({ sheet, items, onRoll }: { sheet: Sheet; items: CombatFeat
       {items.map((x) => {
         const uses = [...x.actions, ...x.attacks].find((a) => a.limit)?.limit;
         const ups = upgradesOf(sheet, [x.feature.def.id, ...x.actions.map((a) => a.id)]);
+        const one = x.single;
+        if (one) {
+          const left = one.limit ? Math.max(0, one.limit.max - one.limit.used) + "/" + one.limit.max : "";
+          return (
+            <li key={x.feature.def.id} className="row-item ability">
+              <details>
+                <summary>
+                  <span className="row-name">
+                    {one.name}
+                    <UpgradedMark ups={ups} />
+                  </span>
+                  <span className="row-meta">
+                    {one.roll ? diceText(one.roll.dice) : ""}
+                    {one.actions !== undefined ? ` · ${one.actions}◆` : ""}
+                    {left ? " · " + left : ""}
+                    {x.resources.map((r) => " · " + r.def.name + " " + (r.max >= 99 ? String(r.current) : r.current + "/" + r.max)).join("")}
+                  </span>
+                </summary>
+                <p className="small">
+                  {one.reach ? `Reach ${one.reach}. ` : ""}
+                  {one.range ? `Range ${one.range}. ` : ""}
+                  {one.text}
+                </p>
+                <Upgrades ups={ups} />
+                <SourceTag source={x.feature.def.source} />
+              </details>
+              <button type="button" className="roll-btn" onClick={() => onRoll(rollTargetFor(one))}>
+                {one.roll ? "Roll" : "Use"}
+              </button>
+            </li>
+          );
+        }
         const tag = x.how.some((h) => /automatically/.test(h)) ? "auto" : x.how.some((h) => /roll window/.test(h)) ? "toggle" : x.feature.def.automation === "manual" ? "by hand" : "";
         return (
           <li key={x.feature.def.id} className="row-item ability">

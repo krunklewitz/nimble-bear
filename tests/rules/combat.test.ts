@@ -29,6 +29,8 @@ describe("combat features (Class Abilities)", () => {
     expect(buddy?.actions.map((a) => a.id)).toContain("action.shepherd.spirit-mend");
     expect(buddy?.attacks.map((a) => a.id)).toContain("action.shepherd.spirit-harm");
     expect(buddy?.resources.map((r) => r.def.id)).toContain("resource.shepherd.mend");
+    // My Buddy! only hands over Mend (Harm is under Attacks), so the tab shows Mend itself.
+    expect(buddy?.single?.id).toBe("action.shepherd.spirit-mend");
     // Spell access isn't a combat ability (spells have their own section).
     expect(combatFeatures(s).some((x) => x.feature.def.id === "feature.shepherd.keeper-of-life-death")).toBe(false);
   });
