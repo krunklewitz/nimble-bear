@@ -484,7 +484,15 @@ export function derive(content: Content, c: Character): Sheet {
       if (e.utility === "all") allUtility = true;
     }
   }
-  for (const pc of choices) if (pc.choice.from.kind === "school") for (const sc of pc.selected) schools.add(sc);
+  // Schools from choices; Coven-style choices give tiered spells only (no cantrips).
+  const tieredOnlySchools = new Set<string>();
+  for (const pc of choices) {
+    if (pc.choice.from.kind !== "school") continue;
+    for (const sc of pc.selected) {
+      if (pc.choice.from.tieredOnly && !schools.has(sc)) tieredOnlySchools.add(sc);
+      schools.add(sc);
+    }
+  }
   for (const r of replaceSchools) if (schools.delete(r.from)) schools.add(r.to);
   schools = new Set([...schools].sort());
   const chosenUtility = new Set<string>();
@@ -501,7 +509,7 @@ export function derive(content: Content, c: Character): Sheet {
   const known: SheetSpell[] = [];
   for (const s of content.spells.values()) {
     const inSchool = schools.has(s.school);
-    const tiered = typeof s.tier === "number" && s.tier <= maxTier && inSchool;
+    const tiered = typeof s.tier === "number" && s.tier <= maxTier && inSchool && !(s.tier === 0 && tieredOnlySchools.has(s.school));
     const utility = s.tier === "utility" && (chosenUtility.has(s.id) || (allUtility && inSchool));
     if (tiered || utility || extraSpells.has(s.id)) {
       const cost = typeof s.tier === "number" ? s.tier : 0;

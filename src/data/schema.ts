@@ -126,7 +126,7 @@ export const ChoiceDef = z
       z.object({ kind: z.literal("size"), sizes: z.array(z.enum(["tiny", "small", "medium", "large", "huge", "gargantuan"])).min(1) }).strict(),
       z.object({ kind: z.literal("skillPoints"), amount: z.number().int() }).strict(),
       /** Pick a spell school (e.g. Hexbinder Coven: "Choose 1 spell school a close ally knows"). */
-      z.object({ kind: z.literal("school"), schools: z.array(Id).optional() }).strict(),
+      z.object({ kind: z.literal("school"), schools: z.array(Id).optional(), /** Only tiered spells, not cantrips (Coven). */ tieredOnly: z.boolean().optional() }).strict(),
       z.object({ kind: z.literal("text") }).strict(),
     ]),
   })

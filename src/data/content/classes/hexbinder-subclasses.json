@@ -77,11 +77,18 @@
         "text": "Learn the Pestilent Affliction. Whenever it triggers you may double or halve its Reach.",
         "effects": [
           {
+            "type": "grantOptions",
+            "pool": "hexbinder.afflictions",
+            "ids": [
+              "feature.hexbinder.afflictions.pestilent"
+            ]
+          },
+          {
             "type": "text"
           }
         ],
-        "automation": "manual",
-        "manualNote": "You know feature.hexbinder.afflictions.pestilent (Pestilent). When it triggers, you may use Reach 4 or Reach 1 instead of Reach 2.",
+        "automation": "partial",
+        "manualNote": "Pestilent is added to your known Afflictions. If you already knew Pestilent, choose a different Affliction (Hexbinder FAQ). Doubling or halving its Reach is by hand.",
         "source": {
           "file": "Hexbinder3.0.pdf",
           "version": "3.0",
@@ -513,7 +520,7 @@
           "pdfPage": 7,
           "printedPage": 13,
           "status": "verified",
-          "note": "Familiar Boons are a choice of kind options; the same option ids are offered at levels 3, 11 and 15. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
+          "note": "Familiar Boons are a pool (hexbinder.familiar-boons), so a boon can't be taken twice. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
         }
       },
       {
@@ -574,7 +581,7 @@
           "pdfPage": 7,
           "printedPage": 13,
           "status": "verified",
-          "note": "Familiar Boons are a choice of kind options; the same option ids are offered at levels 3, 11 and 15. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
+          "note": "Familiar Boons are a pool (hexbinder.familiar-boons), so a boon can't be taken twice. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
         }
       },
       {
@@ -603,7 +610,7 @@
           "pdfPage": 7,
           "printedPage": 13,
           "status": "verified",
-          "note": "Familiar Boons are a choice of kind options; the same option ids are offered at levels 3, 11 and 15. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
+          "note": "Familiar Boons are a pool (hexbinder.familiar-boons), so a boon can't be taken twice. FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Familiar. It’s smart enough to take care of itself in combat—no need to track its HP, location, or commands; its boons cover what it does for you. Outside combat, you might bribe or cajole it into something moderately risky, but scouting a whole dungeon alone almost certainly won’t work (and won’t be fun for others!). You can’t take the same boon twice.” Protective: whether it stacks with a held shield is not stated."
         }
       }
     ],
@@ -634,8 +641,8 @@
             "version": "3.0",
             "pdfPage": 7,
             "printedPage": 13,
-            "status": "verified",
-            "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
+            "status": "unverified",
+            "note": "RQ-021: “Acts as a shield” — whether it stacks with a held shield isn't stated; the sheet adds +LVL Defense."
           }
         },
         {
@@ -650,7 +657,7 @@
               "value": "WIL+INT"
             }
           ],
-          "automation": "full",
+          "automation": "partial",
           "source": {
             "file": "Hexbinder3.0.pdf",
             "version": "3.0",
@@ -658,7 +665,8 @@
             "printedPage": 13,
             "status": "verified",
             "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
-          }
+          },
+          "manualNote": "Giving these Hit Dice to allies is by hand."
         },
         {
           "id": "feature.hexbinder.familiar-boons.sly",
@@ -676,7 +684,7 @@
               }
             }
           ],
-          "automation": "full",
+          "automation": "partial",
           "source": {
             "file": "Hexbinder3.0.pdf",
             "version": "3.0",
@@ -684,7 +692,8 @@
             "printedPage": 13,
             "status": "verified",
             "note": "Familiar Boon from Hexbinder’s Familiar; one pool so the same boon can't be taken twice (Hexbinder FAQ)."
-          }
+          },
+          "manualNote": "When you roll Initiative, regain INT mana by hand (it expires at the end of combat if unused)."
         },
         {
           "id": "feature.hexbinder.familiar-boons.scavenger",

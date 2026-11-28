@@ -180,7 +180,7 @@
         }
       ],
       "automation": "manual",
-      "manualNote": "hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit).",
+      "manualNote": "feature.hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit).",
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
@@ -875,14 +875,14 @@
         }
       ],
       "automation": "manual",
-      "manualNote": "Hex and Misery can apply 1 more Affliction than they normally would; track this by hand.",
+      "manualNote": "Raise the Affliction limit by 1 by hand. Whether this raises the INT cap on different Afflictions or adds an Affliction per Hex/Misery is RQ-020.",
       "source": {
         "file": "Hexbinder3.0.pdf",
         "version": "3.0",
         "pdfPage": 3,
         "printedPage": 5,
         "status": "unverified",
-        "note": "Read as: each application (Hex on hit/crit, Misery on hit/crit) applies 1 more Affliction. It could instead mean the INT cap on different Afflictions per creature; see report."
+        "note": "RQ-020: “Increase the max number of Afflictions you can apply by 1.” Two readings; see RULES_QUESTIONS.md."
       }
     },
     {
@@ -1104,8 +1104,7 @@
         "version": "3.0",
         "pdfPage": 3,
         "printedPage": 5,
-        "status": "verified",
-        "note": "FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “You can’t take the same boon twice.” (printed in the Familiar entry)."
+        "status": "verified"
       }
     },
     {
@@ -1372,7 +1371,8 @@
               "prompt": "Choose 1 spell school a close ally knows.",
               "count": 1,
               "from": {
-                "kind": "school"
+                "kind": "school",
+                "tieredOnly": true
               }
             }
           },

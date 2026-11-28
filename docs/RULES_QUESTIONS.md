@@ -70,6 +70,12 @@ Heart's Fire has "(1/round)" inside its effect text (not encoded as a casting li
 ### RQ-019 · The Cheat: "If you roll less than 10 on Initiative, you may change it to 10"
 Cheat PDF 3: "roll" could mean the d20 or the total; "may" is optional. Planned: the total is raised to 10 automatically (never worse for the player). Status: unverified.
 
+### RQ-020 · Hexbinder Misery Maker: which "max" goes up?
+Hexbinder PDF 3 (printed 5), level 13: "Increase the max number of Afflictions you can apply by 1." The Afflictions rule (printed 6) says "You can Afflict a max of 1 creature at a time with a max of INT different Afflictions", and level 20 Sage of Banes separately says "Hex and Misery apply 1 additional Affliction." Reviewer's reading: the cap becomes INT+1 different Afflictions (not an extra Affliction per Hex). Status: unverified; applied by hand.
+
+### RQ-021 · Hexbinder Familiar "Protective": does it stack with a shield?
+Hexbinder PDF 7 (printed 13): "Protective. Acts as a shield that grants +LVL Defense." Hexbinders have no shield proficiency. Planned: +LVL Defense always (the sheet adds it). Status: unverified.
+
 ## Resolved
 
 ### RQ-R1 · Which die is the Primary Die after advantage/disadvantage?

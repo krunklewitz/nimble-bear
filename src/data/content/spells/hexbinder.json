@@ -65,10 +65,6 @@
     "actions": 2,
     "aoe": false,
     "reach": "8",
-    "roll": {
-      "kind": "damage",
-      "dice": "1d4+LVL"
-    },
     "text": "Reach: 8. Damage: 1d4+LVL (increment the die size for each Affliction it has). On hit: the target becomes secretly Bloodcursed, suffering the same damage it deals next (ignoring armor).",
     "source": {
       "file": "Hexbinder3.0.pdf",
@@ -76,7 +72,7 @@
       "pdfPage": 5,
       "printedPage": 8,
       "status": "verified",
-      "note": "Die size increase per Affliction is not encoded (roll shows 1d4). FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Bloodcurse. Its damage is calculated vs a single target, before any reductions from Defense or other sources. This spell is secret to the target, not the GM.”"
+      "note": "Die size increase per Affliction is not encoded (roll shows 1d4). FAQ (Hexbinder3.0.pdf PDF 8, printed 14): “Bloodcurse. Its damage is calculated vs a single target, before any reductions from Defense or other sources. This spell is secret to the target, not the GM.” No roll button: the dice change with the target's Afflictions (review fix), so roll from the text."
     }
   },
   {
@@ -172,11 +168,6 @@
     "actions": 2,
     "aoe": false,
     "reach": "8",
-    "roll": {
-      "kind": "damage",
-      "dice": "1d6",
-      "ignoresArmor": true
-    },
     "text": "Reach: 8. Damage: 1d6 (ignoring armor); roll with advantage for each Affliction on the target; multiply the result by LVL.\nExample. If a target has 1 Affliction, roll 2d6 and keep the highest, then if you are level 10 multiply the highest die by 10.",
     "source": {
       "file": "Hexbinder3.0.pdf",
@@ -184,7 +175,7 @@
       "pdfPage": 5,
       "printedPage": 8,
       "status": "verified",
-      "note": "“Example.” is a box printed under the spell; appended to text. The advantage per Affliction and the ×LVL multiplier are not encoded (roll shows 1d6)."
+      "note": "“Example.” is a box printed under the spell; appended to text. The advantage per Affliction and the ×LVL multiplier are not encoded (roll shows 1d6). No roll button: the dice change with the target's Afflictions (review fix), so roll from the text."
     }
   }
 ]

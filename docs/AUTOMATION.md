@@ -17,6 +17,27 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Bunbun | Bunny Legs | Partly | Move your token by hand when you use it. | NimbleCoreRules3.2 p.24 |
 | Celestial | Highborn | Partly | Celestial is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative. | NimbleCoreRules3.2 p.26 |
 | Changeling | New Place, New Face | By hand | Track your 2 Shifting Skill Points by hand: put them in any 1 skill, and move them to any 1 skill when you transform (10 min). | NimbleCoreRules3.2 p.26 |
+| Coven of Blooms | …Rosemary, and Thyme | By hand | Your Herbal Elixir removes KEY Wounds instead of 2. | Hexbinder3.0 p.12 |
+| Coven of Blooms | Parsley, Sage… | By hand | Track the Herbal Elixir by hand; drinking it (1 action) removes 2 Wounds. | Hexbinder3.0 p.12 |
+| Coven of Blooms | Rampant Blooms | By hand | Life Bloom heals 20 HP instead of 10 (and Rite of Mending’s per-pair healing is doubled); apply by hand. | Hexbinder3.0 p.12 |
+| Coven of Blooms | Siphon Essence | By hand | Add 10 temp HP when you apply an Affliction. Once per encounter, when you cast Life Bloom, deal damage equal to the target’s healing to an enemy (ignoring armor). | Hexbinder3.0 p.12 |
+| Coven of Blooms | Soothing Cleanse | By hand | Spend the extra mana, give the temp HP and remove conditions by hand. | Hexbinder3.0 p.12 |
+| Coven of the Hex | Haunted | By hand | When an Afflicted creature dies, move all its Afflictions to another enemy within Reach 8 of it by hand. | Hexbinder3.0 p.10 |
+| Coven of the Hex | Hexcaster | By hand | When you apply Enfeebled, also Daze the target. Doomed can be used twice per encounter. | Hexbinder3.0 p.10 |
+| Coven of the Hex | Pestilential Reign | By hand | You know feature.hexbinder.afflictions.pestilent (Pestilent). When it triggers, you may use Reach 4 or Reach 1 instead of Reach 2. | Hexbinder3.0 p.10 |
+| Coven of the Hex | Spitecurse | Partly | Apply the same damage to the critting enemy by hand. | Hexbinder3.0 p.10 |
+| Coven of the Hunt | Bind Malady | Partly | Remove the condition by hand. Harmful Conditions. Ending “Dying” grants 1 HP, ending “Dazed” grants 1 action, etc. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Empowered Familiar | Partly | Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Hexbinder’s Familiar | Partly | Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Mighty Familiar | Partly | Protective (+LVL Defense), Resourceful (+WIL+INT max Hit Dice) and Sly (Initiative advantage) are applied by the sheet. By hand: giving Resourceful Hit Dice to allies, Sly’s INT mana on Initiative (lost at end of combat), Scavenger temp HP, Mystical casting (INT times/encounter) and Swift movement. Don’t pick a boon you already have. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Mystical | By hand | Apply this familiar boon by hand. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Scavenger | By hand | Apply this familiar boon by hand. | Hexbinder3.0 p.13 |
+| Coven of the Hunt | Swift | By hand | Apply this familiar boon by hand. | Hexbinder3.0 p.13 |
+| Coven of the Sight | A Different Path | Partly | Add the gained Futuresight Die (roll it) to your Futuresight Dice by hand. | Hexbinder3.0 p.11 |
+| Coven of the Sight | Cursed Fate | By hand | When you spend a Futuresight Die on a Hex roll, double its value by hand. | Hexbinder3.0 p.11 |
+| Coven of the Sight | Hand of Fate | By hand | Add 1 more Futuresight Die each encounter and use one die size larger (d4 → d6); the sheet still shows the base number and size. | Hexbinder3.0 p.11 |
+| Coven of the Sight | Renewed Vision | By hand | Once per encounter, after you turn an attack into a crit or a miss, roll and gain one Futuresight Die by hand. | Hexbinder3.0 p.11 |
+| Coven of the Sight | Soothsayer Savant | Partly | Spend a Futuresight Die on any die within Reach 4 and add or subtract its value by hand. Changing Dice. A die can’t be changed above its max value. As usual, if a Primary Die is reduced to 1, it misses; if increased to its max value, it crits. | Hexbinder3.0 p.11 |
 | Crystalborn | Reflective Aura | Partly | Add KEY to your Defense for that attack and deal KEY damage to the attacker by hand. | NimbleCoreRules3.2 p.26 |
 | Devoted Protector | Devoted Protector | Partly | Toggle when your chosen ally is nearby. Mark a Wound yourself whenever they take a Wound. | NimbleCoreRules3.2 p.28 |
 | Dragonborn | Draconic Heritage | Partly | Add the LVL+KEY damage and divide it among targets by hand; Draconic is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative. | NimbleCoreRules3.2 p.24 |
@@ -32,15 +53,56 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Half-Giant | Strength of Stone | Partly | Tell the GM to reroll the crit when you use it. Dwarvish (Giant) is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative. | NimbleCoreRules3.2 p.26 |
 | Halfling | Elusive | Partly | When you fail a save and use this, spend the use and treat the save as a success by hand. | NimbleCoreRules3.2 p.23 |
 | Haunted Past | Haunted Past | Partly | Roll with advantage against fear. | NimbleCoreRules3.2 p.28 |
+| Hexbinder | Afflictions | By hand | hexbinder.afflictions.withered (Withered) and feature.hexbinder.afflictions.frenzied (Frenzied). You can Afflict a max of 1 creature at a time with a max of INT different Afflictions. Afflictions last for as long as you maintain Concentration (DC 10 STR save when crit). | Hexbinder3.0 p.4 |
+| Hexbinder | Bramble Mark | Partly | Track the thorned ally, the damage to attackers and the WIL-attack/1-minute duration by hand. | Hexbinder3.0 p.7 |
+| Hexbinder | Brittle | By hand | Apply the damage to the Afflicted creature by hand whenever it moves or is moved. | Hexbinder3.0 p.6 |
+| Hexbinder | Broom Flight | Partly | Track flying, the 1-hour duration and falling Prone when crit by hand. | Hexbinder3.0 p.7 |
+| Hexbinder | Consult the BONES | Partly | Roll the Insight check with disadvantage yourself; the GM decides what you learn. | Hexbinder3.0 p.4 |
+| Hexbinder | Coven | Partly | You can cast tiered spells from the chosen school (up to your highest unlocked tier). Non-Hexbinder healing spells cannot be Diminished. Check that a close ally knows the school. | Hexbinder3.0 p.7 |
+| Hexbinder | Diminution | By hand | A casting option: when you cast a spell, pick any of Humble, Slow or Weak (each once) and pay 1 less mana per pick; halve the Range/Reach, spend the extra action or roll with disadvantage by hand. | Hexbinder3.0 p.4 |
+| Hexbinder | Dimmed | By hand | The GM applies the disadvantage to the Afflicted creature’s attacks. | Hexbinder3.0 p.6 |
+| Hexbinder | Doombringer | By hand | Spend 1 mana by hand to use Doomed again in the same encounter. | Hexbinder3.0 p.5 |
+| Hexbinder | Doomed | By hand | Once per encounter, the next roll against the Afflicted target is maximized; apply by hand. | Hexbinder3.0 p.6 |
+| Hexbinder | Enfeebled | By hand | Make the Afflicted creature Prone at the end of each of your turns. | Hexbinder3.0 p.6 |
+| Hexbinder | Frenzied | By hand | The GM applies this to the Afflicted creature. | Hexbinder3.0 p.6 |
+| Hexbinder | Hex | Partly | On a hit, either add LVL to the damage by hand or apply one of your Afflictions to the target; on a crit, do both. | Hexbinder3.0 p.4 |
+| Hexbinder | Mark of Protection | By hand | Creatures you heal may ignore 1 negative condition within the next minute; track by hand. | Hexbinder3.0 p.7 |
+| Hexbinder | Misery Maker | By hand | Hex and Misery can apply 1 more Affliction than they normally would; track this by hand. | Hexbinder3.0 p.5 |
+| Hexbinder | Pact of Enmity | By hand | While the pact holds, use max damage instead of rolling for attacks between you and that creature. | Hexbinder3.0 p.7 |
+| Hexbinder | Pestilent | By hand | When the Afflicted creature dies, deal LVL damage (ignoring armor) to creatures within Reach 2 of it by hand. | Hexbinder3.0 p.6 |
+| Hexbinder | Rite of Mending | By hand | During a Field Rest, cast Life Bloom without spending mana; you and your target each spend the same number of Hit Dice by hand, and each healed creature regains 10 HP per pair. | Hexbinder3.0 p.4 |
+| Hexbinder | Sage of Banes | Partly | Hex and Misery apply 1 additional Affliction; track this by hand. | Hexbinder3.0 p.5 |
+| Hexbinder | Sigil of Journey | Partly | Swap the tokens by hand. | Hexbinder3.0 p.7 |
+| Hexbinder | Sigil of Root | By hand | Once per encounter, when you apply Enfeebled, the target is also Restrained for 1 round. | Hexbinder3.0 p.7 |
+| Hexbinder | Soothsayer | Partly | Spend a Futuresight Die on any die within Reach 4 (yours or another creature’s) and add or subtract its value by hand. Changing Dice. A die can’t be changed above its max value. As usual, if a Primary Die is reduced to 1, it misses; if increased to its max value, it crits. | Hexbinder3.0 p.5 |
+| Hexbinder | Soothsayer (2) | Partly | Your Futuresight Dice now reach 8 spaces instead of 4. | Hexbinder3.0 p.5 |
+| Hexbinder | Soothsayer (3) | By hand | When you roll Futuresight Dice, roll each with advantage (roll twice, keep the higher) by hand. | Hexbinder3.0 p.5 |
+| Hexbinder | Soothsayer (4) | By hand | Your Futuresight Dice are one die size larger (d4 → d6, or one step above whatever size they are now). The sheet still shows the original die. | Hexbinder3.0 p.5 |
+| Hexbinder | Sundered | By hand | Attacks against the Afflicted creature crit on 1 below the die’s max; apply by hand. | Hexbinder3.0 p.6 |
+| Hexbinder | Withered | By hand | The GM applies the disadvantage to the Afflicted creature’s attack. | Hexbinder3.0 p.6 |
+| Hexbinder | Word of Decay | By hand | Use the die’s max value against Afflicted targets; when your Afflicted target dies, regain and roll 1 spent Futuresight Die by hand. | Hexbinder3.0 p.7 |
 | History Buff | History Buff | Partly | Roll Lore with advantage when the subject is more than 100 years old. | NimbleCoreRules3.2 p.29 |
 | Home at Sea | Home at Sea | Partly | Double Wounds and HP recovered when Resting on a ship or near water; advantage on water-related skill checks. | NimbleCoreRules3.2 p.28 |
 | Kobold | Wily | Partly | Turn on the Wily advantage toggles when they apply; tell the GM to reroll the attack when you use the reroll. Draconic is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative. | NimbleCoreRules3.2 p.24 |
+| Luminary of Malice | Conduit of Death | Partly | When you roll Initiative, restore your Veilwalker’s Blessing use by hand. | Shepherd3.0 p.8 |
+| Luminary of Malice | Deathbringer’s Touch | By hand | A roll of 1 on your Lifebinding Spirit’s attacks or on Withering Touch also counts as a crit; apply by hand. | Shepherd3.0 p.8 |
 | Luminary of Malice | Harbinger of Decay | By hand | Optional: if you choose the deathly form, treat your Lifebinding Spirit’s Harm damage as necrotic instead of radiant (the sheet still shows radiant). | Shepherd3.0 p.8 |
 | Luminary of Malice | Soul Reaper | By hand | Once per round, when your Lifebinding Spirit attacks, apply the attack to a 2nd adjacent enemy by hand. | Shepherd3.0 p.8 |
+| Luminary of Malice | Veilwalker’s Blessing | Partly | When you would drop to 0 HP, set your HP to 1 by hand and make your spirit’s Harm attack against the attacker as a crit. | Shepherd3.0 p.8 |
 | Luminary of Mercy | Life is Beautiful | By hand | Roleplay flavor; nothing to track. | Shepherd3.0 p.10 |
+| Luminary of Mercy | Lifebinder’s Embrace | Partly | Mend may heal 1 additional creature. When you roll Initiative, add 1 Mend use; remove it at the end of combat if it wasn’t spent. | Shepherd3.0 p.10 |
 | Luminary of Mercy | Merciful Healing | By hand | Mend may target creatures that aren’t Dying. While you are Dying, your Lifebinding Spirit can act once per round without spending an action; track this by hand. | Shepherd3.0 p.10 |
+| Luminary of Mercy | Powerful Healer | Partly | When you would heal HP, spend 1 use to give that many temp HP instead, or to heal the maximum the dice could roll; apply by hand. | Shepherd3.0 p.10 |
+| Luminary of Mercy | Searing Light | Partly | After you heal HP, spend 1 Mend use and deal damage equal to the HP recovered to another target within Reach 6; enter the damage by hand. | Shepherd3.0 p.10 |
+| Luminary of Protection | Ever Vigilant | Partly | At the start of each encounter, you and 1 ally gain +1 action; add it by hand. | Shepherd3.0 p.11 |
 | Luminary of Protection | Guardian Spirit | By hand | When you Interpose, you may spend 1 Mend use to have your Lifebinding Spirit Interpose instead; spend the Mend use by hand. | Shepherd3.0 p.11 |
+| Luminary of Protection | Ready for Danger | Partly | You may also give +WIL to 1 ally’s Initiative after they roll; tell them by hand. | Shepherd3.0 p.11 |
+| Luminary of Protection | Shield of Light | By hand | Your healing spells may give temp HP instead of healing. Once per encounter, use Mend without spending a Mend use (don’t tick it off). | Shepherd3.0 p.11 |
 | Luminary of the Forge | Flameworker | Partly | When your Lifebinding Spirit crits, apply Smoldering to the target by hand. | Shepherd3.0 p.12 |
+| Luminary of the Forge | Lightforged | By hand | When your spirit Mends a creature, that creature also gains WIL+STR temp HP and 1 action; apply by hand. | Shepherd3.0 p.12 |
+| Luminary of the Forge | Living Ember | By hand | Double your spirit’s damage against a Smoldering target, then remove Smoldering from it, by hand. | Shepherd3.0 p.12 |
+| Luminary of the Forge | Masterwork | By hand | Seasoned Journeyman: Weaponsmith gives +STR+WIL damage and Armorsmith +STR+WIL Defense, and at each Safe Rest you may choose twice; apply by hand. | Shepherd3.0 p.12 |
+| Luminary of the Forge | Quench the Blaze | By hand | Once per encounter, when a Smoldering enemy loses Smoldering, you may make it Restrained until the end of its next turn; apply by hand. | Shepherd3.0 p.12 |
 | Luminary of the Forge | Seasoned Journeyman | By hand | Choose Weaponsmith or Armorsmith at each Safe Rest and apply the bonus by hand (RQ-012: scope of each bonus is unclear). | Shepherd3.0 p.12 |
 | Made a BAD Choice | Made a BAD Choice | By hand | Agree the gold or item and the curse/enemy with your GM; add the gold or item by hand. A second background is at the GM’s discretion. | NimbleCoreRules3.2 p.28 |
 | Minotaur/Beastfolk | Charge | By hand | After moving at least 4 spaces, push a creature in your path 1 space by hand. | NimbleCoreRules3.2 p.26 |
@@ -48,27 +110,124 @@ Also by hand everywhere: anything about other creatures or the map (targets' con
 | Orc | Relentless | Partly | When you would drop to 0 HP, spend the use and set your HP to your level by hand. Goblin (Orcish) is added automatically, but applies only if your INT isn’t negative; remove it by hand if your INT is negative. | NimbleCoreRules3.2 p.24 |
 | Planarbeing | Planeshift | Partly | When you Defend and choose to phase out, add 1 Wound and ignore the attack by hand. | NimbleCoreRules3.2 p.27 |
 | Raised by Goblins | Raised by Goblins | Partly | Crude traps are noticed automatically; roll with advantage to notice and disarm sophisticated traps. | NimbleCoreRules3.2 p.28 |
+| Shepherd | Assist Me, My Friend! | By hand | Instead of attacking with your Lifebinding Spirit this round, roll its Harm damage and add it to one of your melee weapon attacks by hand. | Shepherd3.0 p.4 |
+| Shepherd | Dark Benediction | By hand | Your Lifebinding Spirit can cast the Entice (spell.necrotic.entice) and Withering Touch (spell.necrotic.withering-touch) cantrips; cast them through the spirit by hand. | Shepherd3.0 p.6 |
+| Shepherd | Empowered Companion | By hand | Add +STR to your Lifebinding Spirit’s Harm damage against Undead, and +WIL to its healing (Mend), by hand. | Shepherd3.0 p.6 |
+| Shepherd | Guiding Spirit | By hand | When your spirit’s damage die shows 6 or higher, the next attack against that target has advantage; apply it by hand. | Shepherd3.0 p.6 |
+| Shepherd | Hasty Companion | By hand | Your spirit’s Reach becomes 8 (4 + 4); the Harm and Mend actions on the sheet still show Reach 4. When you summon it, it may act once without spending an action. | Shepherd3.0 p.6 |
+| Shepherd | Illuminate Soul | By hand | After you Mend a creature, for 1 round attacks against it have disadvantage and its attacks have advantage; apply by hand. | Shepherd3.0 p.6 |
+| Shepherd | Light Bearer | Partly | Your spirit can cast Heal (spell.radiant.heal); cast it through the spirit by hand. When you roll Initiative, add 1 Mend use; remove it at the end of combat if it wasn’t spent. | Shepherd3.0 p.6 |
 | Shepherd | My Buddy! | Partly | Harm and Mend come from the Lifebinding Spirit cantrip (Shepherd3.0.pdf PDF 4, printed 7). Add the cantrip's High Levels bonus (+STR damage every 5 levels) to Harm by hand. Mend only targets a Dying creature. | Shepherd3.0 p.4 |
+| Shepherd | Not Beyond MY Reach | By hand | You may heal a creature dead for less than 1 round; every 10 HP of that healing may instead remove 1 Wound (at least 1 Wound to revive). Track by hand. | Shepherd3.0 p.6 |
+| Shepherd | Revitalizing Blessing | By hand | Once per round, when any of your healing dice shows 6 or higher, the target may recover 1 Wound; adjust their Wounds by hand. | Shepherd3.0 p.5 |
+| Shepherd | Twilight Sage | Partly | Your Lifebinding Spirit rolls twice as many dice; double the dice of its Harm and Mend rolls by hand (the sheet doesn’t change them). | Shepherd3.0 p.5 |
+| Shepherd | Upgraded Cantrips | Partly | Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand. | Shepherd3.0 p.4 |
+| Shepherd | Upgraded Cantrips | Partly | Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand. | Shepherd3.0 p.5 |
+| Shepherd | Upgraded Cantrips | Partly | Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand. | Shepherd3.0 p.5 |
+| Shepherd | Upgraded Cantrips | Partly | Each cantrip’s High Levels line says what improves (Lifebinding Spirit: +STR damage every 5 levels); apply it by hand. | Shepherd3.0 p.5 |
+| Shepherd | Vengeful Spirit | Partly | Roll your spirit’s Harm damage (with any bonuses) once against all enemies within Reach 2; the spirit is gone until you summon it again. | Shepherd3.0 p.6 |
 | So Dumb I’m Smart Sometimes | So Dumb I’m Smart Sometimes | Partly | Use after failing an INT-related skill check or save, then reroll it with advantage. | NimbleCoreRules3.2 p.29 |
 | Stoatling | Small But Ferocious | By hand | Add 1d6 per size category the target is larger than you to single-target attacks by hand; larger creatures do the same against you. | NimbleCoreRules3.2 p.27 |
 | Survivalist | Survivalist | Partly | Rations are never tracked. Roll poison saves with advantage. The action cost to end poison isn’t stated. | NimbleCoreRules3.2 p.28 |
 | Taste for the Finer Things | Taste for the Finer Things | Partly | Roll Influence with advantage when dealing with the upper class. | NimbleCoreRules3.2 p.29 |
+| The Cheat | “Creative” Accounting | By hand | Add up to INT actions now and subtract the same number the next time you gain actions; you can't use it 2 turns in a row. | TheCheat3.0 p.6 |
+| The Cheat | Exploit Weakness | By hand | After a successful Assess: Create an Opening, turn on Vicious Opportunist against that creature by hand (1 minute or until you use it on another target). | TheCheat3.0 p.6 |
+| The Cheat | Feinting Attack | Partly | Pick the new Primary Die result. | TheCheat3.0 p.6 |
+| The Cheat | How’d YOU get here?! | Partly | Move your token adjacent to the Distracted target and roll your melee attack; on a crit you may “teleport” again. | TheCheat3.0 p.7 |
+| The Cheat | I’m Outta Here! | By hand | When an ally within Reach 4 is crit, mark yourself Invisible until the end of your next turn and move up to half your Speed. | TheCheat3.0 p.7 |
+| The Cheat | Misdirection | Partly | When you Defend, you may halve the damage instead (apply by hand). | TheCheat3.0 p.7 |
+| The Cheat | Steal Tempo | By hand | On your second crit in a round, mark the target Dazed and give an ally 1 action. | TheCheat3.0 p.7 |
+| The Cheat | Sunder Armor | Partly | Use after you crit an armored creature; the next non-crit Primary Die rolled against it gets +2 (apply by hand). | TheCheat3.0 p.7 |
+| The Cheat | Supreme Execution | Partly | When you attack with a blade, use Vicious Opportunist even if the target is not Distracted (turn on its toggle by hand). | TheCheat3.0 p.5 |
+| The Cheat | Tangling Wire | By hand | When you Grapple, you may apply Restrained instead. | TheCheat3.0 p.7 |
+| The Cheat | THAT’S Not What Happened! | Partly | The enemy's attack roll is not on your sheet: tell the GM the new Primary Die face (the minimum counts as a miss) and spend the use here. | TheCheat3.0 p.5 |
+| The Cheat | The Setup | Partly | Roll the Opportunity Attack and treat the target as Distracted (turn on the Vicious Opportunist toggle if it applies). | TheCheat3.0 p.7 |
+| The Cheat | Trickshot | By hand | Vicious Opportunist works on thrown weapon attacks (turn on its toggle by hand; Twist the Blade can't be used on them). For the extra action, roll the second hit's damage and halve it. | TheCheat3.0 p.7 |
+| The Cheat | Twist the Blade | Partly | After rolling Sneak Attack, spend the action and change one Sneak Attack die to the face you want by hand. | TheCheat3.0 p.5 |
+| The Cheat | Twist the Blade (2) | Partly | Change one Sneak Attack die to the face you want by hand. | TheCheat3.0 p.5 |
 | The Cheat | Vicious Opportunist | Partly | Distracted. A target is Distracted if it is adjacent to (or Taunted by) an ally, or if it cannot see you. Yes! If you can figure out how to attack on someone else’s turn, you can use this again in the same round! | TheCheat3.0 p.4 |
-| The Honorseeker | Honorseeker | Partly | Underhanded Abilities and Twist the Blade (level 4+) are also given up, and Honorable Gambits replace each Underhanded Ability (except Old Habits…); these are added in a later phase. | TheCheat3.0 p.14 |
+| The Honorseeker | Deft Parry | By hand | Subtract INT from damage enemies deal to you while they have The Upper Hand. | TheCheat3.0 p.15 |
+| The Honorseeker | Down, Not Out! | Partly | While Dying, the GM reduces Primary Dice rolled against you by 1. | TheCheat3.0 p.15 |
+| The Honorseeker | Even the Odds | Partly | Change the die by 1 face by hand. From level 13 (as Twist the Blade (2) would): (1/turn) you can use Even the Odds for free. | TheCheat3.0 p.14 |
+| The Honorseeker | Frightful Confidence | By hand | While Bloodied, remind the GM: attacks with advantage against you use their lowest die as Primary. | TheCheat3.0 p.15 |
+| The Honorseeker | Honorseeker | Partly | Twist the Blade is replaced by Even the Odds (level 5) and Supreme Execution by Supreme Underdog (level 20). Each Underhanded Ability choice offers Honorable Gambits instead (except Old Habits…). | TheCheat3.0 p.14 |
+| The Honorseeker | Mark of Deflection | By hand | After you Defend, remind the GM that attacks against you this round are rolled with disadvantage. | TheCheat3.0 p.15 |
+| The Honorseeker | Nowhere to Flee! | Partly | Mark Medium or smaller targets hit by your Opportunity Attacks as Slowed. | TheCheat3.0 p.15 |
 | The Honorseeker | Prove Your Worth! | Partly | Track the Taunt by hand (it lasts until that enemy damages you) and subtract DEX from damage those Taunted enemies deal to you. | TheCheat3.0 p.14 |
+| The Honorseeker | Redemption Arc | Partly | Mark the enemy Taunted until the end of its next turn; the GM rolls the attack again and you choose either result. | TheCheat3.0 p.15 |
+| The Honorseeker | Right Where I Want You | Partly | The Upper Hand. Whenever there are more of them adjacent to you than allies. Turn on the toggles while it applies. | TheCheat3.0 p.14 |
+| The Honorseeker | Riposte | By hand | After you Defend against a melee attacker, roll an Opportunity Attack against them. | TheCheat3.0 p.15 |
+| The Honorseeker | Say That to My Face! | Partly | Move your token adjacent to the Taunted enemy. | TheCheat3.0 p.15 |
+| The Honorseeker | Supreme Underdog | By hand | Subtract 10 from damage dealt to you by attacks from creatures with The Upper Hand. | TheCheat3.0 p.14 |
 | The Honorseeker | Tenacious Fighter | Partly | The Upper Hand. Whenever there are more of them adjacent to you than allies. Pick the new Primary Die face; the extra damage die is +1d6, growing as Sneak Attack would (1d8 from level 3). | TheCheat3.0 p.14 |
+| The Honorseeker | Turn the Tables | Partly | Make your attack against that enemy by hand. | TheCheat3.0 p.14 |
+| The Honorseeker | Victor’s Confidence | By hand | When you kill a Taunted enemy, tell an ally they have advantage on their next attack. | TheCheat3.0 p.15 |
 | The Honorseeker | Worthy Underdog | By hand | The Upper Hand. Whenever there are more of them adjacent to you than allies. While enemies have it, their attacks against you miss on a Primary Die of 2 or less (GM applies). | TheCheat3.0 p.14 |
 | Tools of the Gambler | All In | Partly | The page does not name the All In die's size or define "average". Until confirmed, roll the die your GM agrees on and maximize or minimize your Sneak Attack dice by hand. | TheCheat3.0 p.13 |
+| Tools of the Gambler | Double or Nothing! | By hand | Reroll the All In die once. Success: add 1 extra maximized Sneak Attack die. Failure: the attack misses and your turn ends. | TheCheat3.0 p.13 |
+| Tools of the Gambler | Odds Maker | By hand | That Was Just a Practice Roll becomes 2/encounter (track the second use by hand) and may set the die to any other face instead of rerolling. | TheCheat3.0 p.13 |
+| Tools of the Gambler | Play the Odds | Partly | The GM rerolls the attacker's Primary Die: lower misses, otherwise it crits. | TheCheat3.0 p.13 |
+| Tools of the Gambler | Pocket Aces! | Partly | Tell the friendly creature to set its Initiative roll to 20. | TheCheat3.0 p.13 |
 | Tools of the Gambler | That Was Just a Practice Roll | Partly | Rerolling a die that isn't on your sheet (an ally's or the GM's) is done by hand; spend the use on the sheet. | TheCheat3.0 p.13 |
+| Tools of the Scoundrel | Escape Plan | Partly | Undo the drop to 0 HP or the Wound by hand and mark yourself Invisible (1 minute or until you attack). | TheCheat3.0 p.11 |
+| Tools of the Scoundrel | Heads I Win, Tails You Lose | Partly | For this round, treat misses as hits and crit on 1 less than normal; add LVL temp HP by hand. | TheCheat3.0 p.11 |
 | Tools of the Scoundrel | Low Blow | Partly | Use only right after a Sneak Attack on a creature not already Taunted by you. Apply the rolled result (Taunted, Prone, Dazed or Incapacitated) to the target by hand. | TheCheat3.0 p.11 |
+| Tools of the Scoundrel | Pocket Sand | Partly | Use when you Defend against an adjacent creature: mark the attacker Blinded until the start of its next turn and have the GM reroll the attack. | TheCheat3.0 p.11 |
 | Tools of the Scoundrel | Sweet Talk | Partly | Track per NPC when the advantage ends, and apply disadvantage on later Influence checks with that NPC by hand (until you get back on their good side). | TheCheat3.0 p.11 |
+| Tools of the Serpent | Cruel Dose | By hand | Mark creatures you Poison as Slowed too; their attack Range is halved (GM applies). | TheCheat3.0 p.12 |
 | Tools of the Serpent | I’ve Tried This One Before | Partly | Identifying poisons you inspect is handled with the GM. | TheCheat3.0 p.12 |
+| Tools of the Serpent | Noxious Cloud | Partly | Mark enemies in the 2×2 area Poisoned (already Poisoned ones also Dazed) by hand. | TheCheat3.0 p.12 |
 | Tools of the Serpent | Viper’s Kiss | By hand | Mark creatures you damage as Poisoned (and Distracted) until the end of their next turn by hand. | TheCheat3.0 p.12 |
+| Tools of the Serpent | Volatile Toxins | By hand | Noxious Cloud's limit becomes 2/encounter: track the second use by hand. When a creature you Poisoned dies, resolve a Noxious Cloud centred on it. | TheCheat3.0 p.12 |
 | Tools of the Silent Blade | Amidst All This Commotion… | By hand | When a creature you Sneak Attack dies, mark yourself Invisible by hand; remove it when you attack again or at the beginning of your next turn. | TheCheat3.0 p.9 |
+| Tools of the Silent Blade | KILL | By hand | When you Sneak Attack an enemy whose max HP is lower than yours, it dies (GM confirms). | TheCheat3.0 p.9 |
+| Tools of the Silent Blade | Professional Skulker | Partly | You have a climbing Speed (the page gives no number; the sheet does not track it). | TheCheat3.0 p.9 |
 | Tradesman/Artisan | Tradesman/Artisan | Partly | Roll checks related to your profession with advantage. | NimbleCoreRules3.2 p.29 |
+| Way of Flame | Burning Palm | By hand | On an Unarmed Strike crit, the target becomes Smoldering. Against a Smoldering creature you may double Momentum’s effects, which ends Smoldering. | Zephyr3.1 p.12 |
+| Way of Flame | Chain Reaction | By hand | Once per turn on an Unarmed Strike crit, deal STR + Momentum spent as fire damage to chosen creatures adjacent to the target, chaining to creatures not yet damaged this turn. | Zephyr3.1 p.12 |
+| Way of Flame | Encompassing Flames | By hand | Chain Reaction and Exploding Soul may use double Reach. | Zephyr3.1 p.12 |
+| Way of Flame | Exploding Soul | Partly | When you gain Wounds, roll an Unarmed Strike and apply it to all others within Reach 1. Once per round on your turn, you may mark a Wound. | Zephyr3.1 p.12 |
+| Way of Hurricanes | Cleaving Gale | By hand | On a crit, deal the same damage to a 2nd creature within Reach 1 of your target. Once per turn on a hit, mark a Wound to make it a crit. | Zephyr3.1 p.11 |
+| Way of Hurricanes | Cyclone | By hand | Spend 1 Momentum by hand to move a creature within Reach 4 by 1 space. | Zephyr3.1 p.11 |
+| Way of Hurricanes | Forceful Gust | By hand | Push the target of an Unarmed Strike STR spaces; mark 1 Wound to double it. | Zephyr3.1 p.11 |
+| Way of Hurricanes | Hurricane Strike | By hand | Galeforce Strike can be made as an AoE with Reach 1. | Zephyr3.1 p.11 |
+| Way of Hurricanes | Sidestep | By hand | After an attack against you resolves, you may move 2 spaces. | Zephyr3.1 p.11 |
+| Way of Hurricanes | Tempest’s Fury | By hand | Replace the extra crit dice with a single 1d20. | Zephyr3.1 p.11 |
+| Way of Iron | Infuse with Iron | By hand | Tell the target of your Infuse Strength that they gain Tempered. | Zephyr3.1 p.9 |
+| Way of Iron | Iron Body | By hand | Each round choose: Tempered reduces damage by 20 once, or by 10 twice. The first time you would gain a Wound each encounter, set Tempered back to 1. | Zephyr3.1 p.9 |
+| Way of Iron | Iron Fists | By hand | When you end Tempered, roll the 1d20 twice and keep the higher. | Zephyr3.1 p.9 |
+| Way of Iron | Perfect Alloy | By hand | When you spend a Burst of Speed, set Tempered to 1. | Zephyr3.1 p.9 |
+| Way of Iron | Steel Yourself | Partly | Once per round, reduce an attack’s damage against you by 10 by hand. When you end Tempered for +1d20 damage, spend the Tempered resource. | Zephyr3.1 p.9 |
+| Way of Pain | Bring the Pain | By hand | Momentum is no longer lost when you take damage: don’t clear it when you are hit (the sheet still clears it on damage). To use the free option, mark 1 Wound and add 10 Momentum by hand. | Zephyr3.1 p.8 |
+| Way of Pain | Echoed Agony | By hand | Share My Pain can also deal its damage to a 2nd creature within Reach 4. | Zephyr3.1 p.8 |
+| Way of Pain | Pain Sharpens the Mind | By hand | While Bloodied, roll with advantage. | Zephyr3.1 p.8 |
+| Way of Pain | Share My Pain | By hand | Once per round when you take damage, halve it and tell the GM to deal that amount to another creature within Reach. | Zephyr3.1 p.8 |
 | What? I’ve Been Around | What? I’ve Been Around | Partly | The 1/location limit has no tracker; track it by hand. The GM applies the result. | NimbleCoreRules3.2 p.28 |
 | Wild One | Wild One | Partly | When Field Resting in the wild, add KEY to the HP each Hit Die recovers. | NimbleCoreRules3.2 p.28 |
 | Wily Underdog | Wily Underdog | Partly | Use after failing a STR attack, STR save or Might check; reroll it using another stat. | NimbleCoreRules3.2 p.29 |
 | Wyrdling | Chaotic Surge | Partly | The caster rolls on the Chaos Table and applies the result by hand. | NimbleCoreRules3.2 p.27 |
+| Zephyr | Airshift | By hand | Move the willing creature by hand to a space adjacent to or along your Windstep path. | Zephyr3.1 p.6 |
+| Zephyr | Blur | Partly | When you roll Initiative, add 10 Momentum by hand. | Zephyr3.1 p.5 |
+| Zephyr | Bodily Discipline | Partly | Remove the condition by hand (and gain 1 HP if it was Dying, 1 action if it was Dazed, etc.). | Zephyr3.1 p.6 |
+| Zephyr | Burst of Speed | Partly | Slipstream: when you Defend, apply your Defense to every attack against you this round, or move 1 space first. Windstep: move, ignoring enemy spaces this turn. | Zephyr3.1 p.4 |
+| Zephyr | Cyclonic Pull | By hand | Swap your token with the attacker’s when you avoid all of a melee attack’s damage. | Zephyr3.1 p.6 |
+| Zephyr | Enduring Soul | By hand | Add the Hit Dice by hand when you roll Initiative and remove unused ones at the end of combat. | Zephyr3.1 p.6 |
+| Zephyr | I Jump on His Back! | Partly | While Riding, any damage you avoid is dealt to your Ride (apply by hand). | Zephyr3.1 p.7 |
+| Zephyr | Infuse Strength | By hand | Spend Hit Dice by hand, roll them and add them to the Unarmed Strike’s total; heal the target for the total instead of dealing damage. | Zephyr3.1 p.5 |
+| Zephyr | Kinetic Barrage | By hand | Once per turn, after a melee attack where you spent no Momentum, add DEX Momentum by hand. | Zephyr3.1 p.7 |
+| Zephyr | Kinetic Marvel | By hand | Each Momentum spent on a melee attack adds 2 damage instead of 1. | Zephyr3.1 p.5 |
+| Zephyr | Mighty Soul | By hand | When you would fail a roll, mark a Wound and add STR to the result; repeat as often as you like. | Zephyr3.1 p.7 |
+| Zephyr | Momentum | Partly | Add 1 Momentum for every space you move. When you spend Momentum on a melee attack, add that much damage to the attack by hand. | Zephyr3.1 p.4 |
+| Zephyr | Piercing Blows | By hand | Before an Unarmed Strike, spend Momentum by hand; roll with 1 advantage for every 2 Momentum spent. | Zephyr3.1 p.4 |
+| Zephyr | Quickstrike | By hand | When you Interpose, roll a free Unarmed Strike against the enemy first. | Zephyr3.1 p.7 |
+| Zephyr | Reactive Force | Partly | When you gain a Wound, add 1 Burst of Speed by hand. | Zephyr3.1 p.4 |
+| Zephyr | Skystrider | By hand | Ignore Grappled/Restrained while conscious and terrain effects while moving. | Zephyr3.1 p.7 |
+| Zephyr | Supernatural Speed | By hand | When a Primary Die is rolled against you while unarmored, spend Momentum by hand; it counts as 1 lower for every 2 Momentum spent. | Zephyr3.1 p.5 |
+| Zephyr | Swift Fists | By hand | If you have no actions left and haven’t attacked this turn, use Galeforce Strike without spending an action. | Zephyr3.1 p.5 |
+| Zephyr | Twisting Deflection | Partly | The GM applies the attack to the new target. | Zephyr3.1 p.7 |
+| Zephyr | Unyielding Resolve | By hand | The first time you would suffer a Wound each encounter, don’t mark it (when-Wounded abilities still trigger). | Zephyr3.1 p.5 |
+| Zephyr | Unyielding Resolve (2) | By hand | Don’t mark the first 2 Wounds you would suffer each encounter. | Zephyr3.1 p.5 |
+| Zephyr | Unyielding Resolve (3) | Partly | Don’t mark the first 3 Wounds you would suffer each encounter. | Zephyr3.1 p.5 |
+| Zephyr | Windborne | Partly | Take 1 extra action every turn (while Dying, you have a max of 2 actions). | Zephyr3.1 p.5 |
 
-64 features listed.
+223 features listed.
